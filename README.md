@@ -558,7 +558,7 @@ export class AppModule {}
 
 Slice Pipe
 
-```jsx
+```typescript
 <p>{{ ['apple', 'banana', 'orange', 'mango'] | slice:1:3 }}</p>
 ```
 
