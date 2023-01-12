@@ -208,8 +208,6 @@ export class AppComponent  {
 }
 ```
 
-[Stackblitz Link](https://angular-ivy-sn3tgd.stackblitz.io)
-
 **ngSwitch** -
 
 ```html
