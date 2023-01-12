@@ -166,25 +166,17 @@ class binding
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-s1pkwg?file=src/app/app.component.ts)
 
-ClassName Property binding
+<!-- ngClass directive
 
-[Stackblitz Example]()
-
-Set the Class attribute with class binding
-
-[Stackblitz Example]()
-
-ngClass directive
-
-[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-cn1fph?file=src/app/app.component.ts)
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-cn1fph?file=src/app/app.component.ts) -->
 
 style binding
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-w8nf7f?file=src/app/app.component.ts)
 
-ngStyle directive
+<!-- ngStyle directive
 
-[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zcgf1h?file=src/app/app.component.ts)
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zcgf1h?file=src/app/app.component.ts) -->
 
 attribute binding
 
@@ -194,7 +186,7 @@ attribute binding
 
 **Event binding** -
 
-[](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
 
 ### 2. Two ways binding
 
@@ -860,8 +852,159 @@ ngAfterContentChecked
 
 ## Forms
 
-```ts
+### Template Driven Form
 
+```html
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+    <input [(ngModel)]="name" name="name" required>
+    <button type="submit">Submit</button>
+</form>
+```
+
+Example
+
+```html
+<!-- form template -->
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <label>
+    Name:
+    <input type="text" [(ngModel)]="name" name="name" required>
+  </label>
+  <br>
+  <label>
+    Email:
+    <input type="email" [(ngModel)]="email" name="email" required>
+  </label>
+  <br>
+  <button type="submit" [disabled]="!form.valid">Submit</button>
+</form>
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  name: string;
+  email: string;
+
+  onSubmit(form: NgForm) {
+    console.log(form.value); // { name: 'your name', email: 'your email' }
+    console.log(form.valid); // true
+  }
+}
+```
+
+### Reactive Form
+
+```typescript
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    // other imports ...
+    ReactiveFormsModule
+  ],
+})
+export class AppModule { }
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-name-editor',
+  templateUrl: './name-editor.component.html',
+  styleUrls: ['./name-editor.component.css']
+})
+export class NameEditorComponent {
+  name = new FormControl('');
+}
+```
+
+```html
+<label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name">
+```
+
+Grouping form controls
+
+```typescript
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-profile-editor',
+  templateUrl: './profile-editor.component.html',
+  styleUrls: ['./profile-editor.component.css']
+})
+export class ProfileEditorComponent {
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
+}
+```
+
+```html
+<form [formGroup]="profileForm">
+
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstName">
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName">
+
+</form>
+```
+
+Creating nested form groups
+
+```typescript
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-profile-editor',
+  templateUrl: './profile-editor.component.html',
+  styleUrls: ['./profile-editor.component.css']
+})
+export class ProfileEditorComponent {
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    address: new FormGroup({
+      street: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zip: new FormControl('')
+    })
+  });
+}
+```
+
+```html
+<div formGroupName="address">
+  <h2>Address</h2>
+
+  <label for="street">Street: </label>
+  <input id="street" type="text" formControlName="street">
+
+  <label for="city">City: </label>
+  <input id="city" type="text" formControlName="city">
+
+  <label for="state">State: </label>
+  <input id="state" type="text" formControlName="state">
+
+  <label for="zip">Zip Code: </label>
+  <input id="zip" type="text" formControlName="zip">
+</div>
 ```
 
 ## Forms Validation
