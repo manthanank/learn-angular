@@ -160,29 +160,47 @@ export class AppComponent {
 
 **Property binding** -
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-vcpyoq?file=src/app/app.component.ts)
+
 class binding
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-s1pkwg?file=src/app/app.component.ts)
 
 ClassName Property binding
 
+[Stackblitz Example]()
+
 Set the Class attribute with class binding
+
+[Stackblitz Example]()
 
 ngClass directive
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-cn1fph?file=src/app/app.component.ts)
+
 style binding
 
-Style Binding
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-w8nf7f?file=src/app/app.component.ts)
 
 ngStyle directive
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zcgf1h?file=src/app/app.component.ts)
+
 attribute binding
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bhqsgc?file=src/app/app.component.html)
 
 ### b. From View to Component
 
 **Event binding** -
 
+[](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
+
 ### 2. Two ways binding
 
 **ngModel** -
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src/app/app.component.ts)
 
 ## Angular Directives
 
