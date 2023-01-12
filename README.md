@@ -196,6 +196,8 @@ attribute binding
 
 ## Angular Directives
 
+Directives add behaviour to an existing DOM element or an existing component instance.
+
 ### Structural DIrectives -
 
 **ngFor** -
@@ -1351,3 +1353,11 @@ export class AppRoutingModule { }
 ## Observables in Angular
 
 An observable is a class that can be used to handle asynchronous data streams. Observables are used to handle data that can arrive over time, such as data received from a server, user input, or timed events.
+
+## JIT
+
+Just-in-Time (JIT) is a type of compilation that compiles your app in the browser at runtime.
+
+## AOT
+
+Ahead-of-Time (AOT) is a type of compilation that compiles your app at build time.
