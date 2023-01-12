@@ -156,6 +156,8 @@ export class AppComponent {
 
 **Interpolation** -
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zu564w?file=src%2Fapp%2Fapp.component.ts)
+
 **Property binding** -
 
 class binding
