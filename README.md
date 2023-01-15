@@ -1401,6 +1401,8 @@ Ahead-of-Time (AOT) is a type of compilation that compiles your app at build tim
 - [Angular JumpStart](https://github.com/DanWahlin/Angular-JumpStart)
 - [Angular Interview Questions](https://github.com/sudheerj/angular-interview-questions)
 - [Angular Learning Resources](https://github.com/avatsaev/angular-learning-resources)
+- [CodAffection](https://github.com/CodAffection)
+- [Bezkoder](https://github.com/bezkoder)
 
 ## Learn more from Websites
 
@@ -1418,6 +1420,7 @@ Ahead-of-Time (AOT) is a type of compilation that compiles your app at build tim
 - [NX Blog](https://blog.nrwl.io/angular/home)
 - [Indepthdev](https://indepth.dev/angular)
 - [Angular University](https://blog.angular-university.io/)
+- [Bezkoder](https://www.bezkoder.com/)
 
 ## Learn more from Books
 
