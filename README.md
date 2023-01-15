@@ -1,13 +1,6 @@
 # Learn Angular
 
 <!-- ![Logo](./assets/angularjs-plain.svg) -->
-<p style="text-align:center">
-  <img src="./assets/angularjs-plain.svg" alt="angular-logo" width="120px" height="120px"/>
-  <br>
-  <i><b>Angular</b> is a development platform for building mobile and desktop web applications
-    <br> using Typescript/JavaScript and other languages.</i>
-  <br>
-</p>
 
 ## Contents
 
