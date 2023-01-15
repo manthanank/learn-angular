@@ -12,7 +12,7 @@
 ## Contents
 
 - [Introduction](#introduction)
-- [Installation](#installation)
+- [Setup a Project](#setting-up-a-project)
 - [Components](#introduction-to-components)
 - [Data Binding](#data-binding)
 - [Directives](#angular-directives)
@@ -37,30 +37,35 @@
 
 **Angular** is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your applications.
 
-## Installation
+### Prerequisites
+
+- Node.js
+
+## Setting Up a Project
+
+Install the Angular CLI globally:
 
 ```jsx
 npm install -g @angular/cli
 ```
 
-### Check version
+Check version
 
 ```jsx
 ng version
 ```
 
-## Generating new application
+Create workspace:
 
 ```jsx
-ng new app-name
+ng new [PROJECT NAME]
 ```
 
-## Run the application
+Run the application:
 
 ```jsx
+cd [PROJECT NAME]
 ng serve
-ng serve --open
-ng serve -o
 ```
 
 ## Introduction to components
