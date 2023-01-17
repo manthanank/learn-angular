@@ -1122,6 +1122,12 @@ deleteData(id: string){
 }
 ```
 
+## HTTP Interceptor
+
+```typescript
+
+```
+
 ### Using Observables
 
 ```typescript
@@ -1394,6 +1400,38 @@ Just-in-Time (JIT) is a type of compilation that compiles your app in the browse
 ## AOT
 
 Ahead-of-Time (AOT) is a type of compilation that compiles your app at build time.
+
+## Route Guards
+
+CanActivate
+
+```typescript
+import { Injectable } from '@angular/core';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    return false;
+  }
+}
+```
+
+CanDeactivate
+
+Resolve
+
+CanLoad
+
+CanActivateChild
 
 ## Learn more from GitHub Repositories
 
