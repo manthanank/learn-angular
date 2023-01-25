@@ -75,21 +75,23 @@ Component is the main building block of an Angular Application.
 
 ### Important Component metadata properties
 
-**Selector** -
+**Selector** - defines the element name or CSS selector that identifies the component in the HTML template.
 
-**Providers** -
+**Providers** - defines the providers of the component's dependencies.
 
-**Directives** -
+**styles** - defines the inline styles for the component.
 
-**styles/styleUrls** -
+**styleUrls** - defines an array of URLs of the stylesheets for the component.
 
-**template/templateUrl** -
+**template** - defines the HTML template for the component.
+
+**templateUrl** - defines the URL of the HTML template for the component.
 
 ## Creating the Component
 
 The creation of the Angular component requires you to follow these steps :
 
-**Create the Component file** -
+**Create the Component file** - file with ts extension
 
 **Import the required external Classes/Functions** -
 
@@ -166,7 +168,7 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
-### Creating the inline Template & StyleUrls
+**Creating the inline Template & StyleUrls** -
 
 ```typescript
 import { Component } from '@angular/core';
@@ -191,7 +193,7 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zu564w?file=src%2Fapp%2Fapp.component.ts)
 
-**Property binding** -
+**Property binding** - This allows for binding a property of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-vcpyoq?file=src/app/app.component.ts)
 
@@ -217,11 +219,13 @@ attribute binding
 
 ### b. From View to Component
 
-**Event binding** -
+**Event binding** - This allows for binding an event of an HTML element to a method in the component's class. It is denoted by parentheses (()).
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
 
 ### 2. Two ways binding
+
+This allows for binding a property of an HTML element to a property in the component's class and vice-versa. This is done by using a combination of property binding and event binding. It is denoted by `[(ngModel)]`.
 
 **ngModel** -
 
