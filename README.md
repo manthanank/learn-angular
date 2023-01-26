@@ -841,49 +841,106 @@ export class AppComponent  {
 
 ## Life Cycle Hooks
 
-ngOnChanges
+**ngOnChanges** - It is called when any data-bound property of a directive or component changes.
+
+```html
+<form>
+  <input [(ngModel)]="message" name="message" />
+  <button type="submit" (click)="onSubmit()">Submit</button>
+</form>
+<p>{{ message }}</p>
+```
+
+```ts
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css'],
+})
+export class TestComponent implements OnChanges {
+  @Input() message: string;
+  prevMessage: string;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.message) {
+      console.log(
+        `message changed from ${changes.message.previousValue} to ${changes.message.currentValue}`
+      );
+    }
+  }
+
+  onSubmit() {
+    this.prevMessage = this.message;
+  }
+}
+```
+
+```html
+<app-test  [message]="'Hello World'"></app-test>
+```
+
+[Stackblitz Link](https://stackblitz.com/edit/angular-ivy-19r5mc?file=src/app/test/test.component.ts)
+
+**ngOnInit** - It is called after a component has been initialized and its data-bound properties have been checked for the first time.
+
+```ts
+import { Component, VERSION } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  constructor() {}
+
+  ngOnInit() {
+    console.log('logged from ngOnInit');
+  }
+}
+```
+
+[Stackblits Link](https://stackblitz.com/edit/angular-ivy-hkmssz?file=src/app/app.component.html)
+
+**ngOnDestroy** -
 
 ```ts
 
 ```
 
-ngOnInit
+**ngDoCheck** -
 
 ```ts
 
 ```
 
-ngOnDestroy
+**ngAfterViewInit** -
 
 ```ts
 
 ```
 
-ngDoCheck
+**ngAfterViewChecked** -
 
 ```ts
 
 ```
 
-ngAfterViewInit
+**ngAfterContentInit** -
 
 ```ts
 
 ```
 
-ngAfterViewChecked
-
-```ts
-
-```
-
-ngAfterContentInit
-
-```ts
-
-```
-
-ngAfterContentChecked
+**ngAfterContentChecked** -
 
 ```ts
 
