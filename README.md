@@ -910,17 +910,24 @@ export class AppComponent {
 
 [Stackblits Link](https://stackblitz.com/edit/angular-ivy-hkmssz?file=src/app/app.component.html)
 
-**ngOnDestroy** -
+**ngDoCheck** - It is called during every change detection cycle. It allows a component to detect and act upon changes that Angular can't detect on its own.
 
 ```ts
+import { Component, DoCheck, VERSION } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements DoCheck {
+  ngDoCheck() {
+    console.log('ngDoCheck Called');
+  }
+}
 ```
 
-**ngDoCheck** -
-
-```ts
-
-```
+[Stackblitz Link](https://stackblitz.com/edit/angular-ivy-f5msas?file=src/app/app.component.ts)
 
 **ngAfterViewInit** -
 
@@ -945,6 +952,36 @@ export class AppComponent {
 ```ts
 
 ```
+
+**ngOnDestroy** - It is called just before a component or directive is destroyed. It is a good place to clean up any subscriptions or detach any event handlers to avoid memory leaks.
+
+```ts
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { of } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+
+  ngOnInit() {
+    const someObservable = of(1, 2, 3);
+    this.subscription = someObservable.subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+}
+```
+
+[Stackblitz Link](https://stackblitz.com/edit/angular-ivy-urqida?file=src/app/app.module.ts)
 
 ## Forms
 
