@@ -1,0 +1,19 @@
+name: Generate PDF
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Generate PDF
+      uses: actions/pandoc@v2
+      with:
+        args: -s -o README.pdf README.md
