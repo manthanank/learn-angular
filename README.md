@@ -1148,7 +1148,7 @@ export class ProfileEditorComponent {
 
 ## HTTP
 
-**Import HttpClient Module in Root Module** -
+Import HttpClient Module in Root Module -
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -1167,13 +1167,13 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppModule { }
 ```
 
-**Import Required Module in Component/Service** -
+Import Required Module in Component/Service -
 
 ```typescript
 import { HttpClient } from '@angular/common/http';
 ```
 
-**Inject HttpClient service** -
+Inject HttpClient service -
 
 ```typescript
 constructor(public http: HttpClient) {
@@ -1220,7 +1220,7 @@ deleteData(id: string){
 }
 ```
 
-## HTTP Interceptor
+### HTTP Interceptor
 
 ```typescript
 
@@ -1259,7 +1259,6 @@ export class MyService {
     return this.http.delete<any>(`utl/${id}`);
   }
 }
-
 ```
 
 ## Module
@@ -1525,11 +1524,27 @@ export class AuthGuard implements CanActivate {
 
 CanDeactivate
 
+```typescript
+
+```
+
 Resolve
+
+```typescript
+
+```
 
 CanLoad
 
+```typescript
+
+```
+
 CanActivateChild
+
+```typescript
+
+```
 
 ## Learn more from GitHub Repositories
 
@@ -1603,5 +1618,8 @@ CanActivateChild
 - [Hacker Noon](https://hackernoon.com/)
 
 ## Learn More From Twitter Users
+
+- [Mosh](https://twitter.com/moshhamedani)
+- [Minko Gechev](https://twitter.com/mgechev)
 
 ### 🙏🏻Please Support and Don't Forget to give star⭐, Also Feel free to contribute
