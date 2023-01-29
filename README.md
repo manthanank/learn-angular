@@ -24,7 +24,9 @@
 - [Learn From Books](#learn-more-from-books)
 - [Learn From YouTube Channels](#learn-from-youtube-channels)
 - [Learn More From Blogs Sites](#learn-more-from-blogs-sites)
-- [Learn More From Twitter Users](#learn-more-from-twitter-users)
+- [List of Online Compilers/Editors](#list-of-online-editorscompiler)
+- [List of Twitter Users](#list-of-twitter-users)
+- [List of LinkedIn Users](#list-of-linkedin-users)
 
 ## Introduction
 
@@ -1617,9 +1619,24 @@ CanActivateChild
 - [Hashnode](https://hashnode.com/)
 - [Hacker Noon](https://hackernoon.com/)
 
-## Learn More From Twitter Users
+## List of Online Editors/Compiler
+
+- [Stackblitz](https://stackblitz.com/)
+- [CodeSandbox](https://codesandbox.io/)
+
+## List of Twitter Users
 
 - [Mosh](https://twitter.com/moshhamedani)
 - [Minko Gechev](https://twitter.com/mgechev)
+
+## List of LinkedIn Users
+
+- [Kevin Kreuzer](https://www.linkedin.com/in/kevin-kreuzer-a63b39121/)
+- [Aristeidis Bampakos](https://www.linkedin.com/in/aristeidisbampakos/)
+- [Dmytro Mezhenskyi](https://www.linkedin.com/in/dmezhenskyi/)
+- [Santosh Yadav](https://www.linkedin.com/in/santoshyadavdev/)
+- [Tomas Trajan](https://www.linkedin.com/in/tomastrajan/)
+- [Marko Stanimirović](https://www.linkedin.com/in/markostanimirovic/)
+- [Teja Gandhamu](https://www.linkedin.com/in/tejagandhamu/)
 
 ### 🙏🏻Please Support and Don't Forget to give star⭐, Also Feel free to contribute
