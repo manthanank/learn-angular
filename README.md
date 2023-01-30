@@ -1552,10 +1552,11 @@ CanActivateChild
 
 - [Awesomw Angular](https://github.com/PatrickJS/awesome-angular)
 - [Angular JumpStart](https://github.com/DanWahlin/Angular-JumpStart)
-- [Angular Interview Questions](https://github.com/sudheerj/angular-interview-questions)
+- [Angular Interview Questions by Sudheerj](https://github.com/sudheerj/angular-interview-questions)
 - [Angular Learning Resources](https://github.com/avatsaev/angular-learning-resources)
 - [CodAffection](https://github.com/CodAffection)
 - [Bezkoder](https://github.com/bezkoder)
+- [Angular Interview Questions by Yonet](https://github.com/Yonet/Angular-Interview-Questions)
 
 ## Learn more from Websites
 
