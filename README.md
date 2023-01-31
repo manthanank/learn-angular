@@ -1500,6 +1500,10 @@ Just-in-Time (JIT) is a type of compilation that compiles your app in the browse
 
 Ahead-of-Time (AOT) is a type of compilation that compiles your app at build time.
 
+## JIT vs AOT
+
+![jitvsaot](/assets/jitvsaot.png)
+
 ## Route Guards
 
 CanActivate
