@@ -427,6 +427,8 @@ export class AppModule {}
 
 ## Pipes
 
+A pipe takes in data as input and transforms it to a desired output.
+
 Syntax
 
 ```bash
@@ -622,6 +624,8 @@ Decimal/number Pipe
 ```
 
 ## Decorators
+
+Decorators are design patterns used to isolate the modification or decoration of a class without modifying the source code.
 
 **Input** -
 
