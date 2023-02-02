@@ -1228,11 +1228,13 @@ deleteData(id: string){
 
 ### HTTP Interceptor
 
+Http Interceptors are part of @angular/common/http, which inspect and transform HTTP requests from your application to the server and vice-versa on HTTP responses. These interceptors can perform a variety of implicit tasks, from authentication to logging.
+
 ```typescript
 
 ```
 
-### Using Observables
+### Using Observable
 
 ```typescript
 import { Observable } from 'rxjs';
@@ -1425,11 +1427,17 @@ export class Page2Module {}
 
 ## Router
 
+Angular Router is a mechanism in which navigation happens from one view to the next as users perform application tasks. It borrows the concepts or model of browser's application navigation.
+
 ```typescript
 
 ```
 
 ## Services & Dependency Injection
+
+**Services**
+
+A service is used when a common functionality needs to be provided to various modules. Services allow for greater separation of concerns for your application and better modularity by allowing you to extract common functionality out of components.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -1444,6 +1452,10 @@ export class SharedService {
 }
 
 ```
+
+**Dependency Injection**
+
+Dependency injection (DI), is an important application design pattern in which a class asks for dependencies from external sources rather than creating them itself. 
 
 ## Routing Module
 
@@ -1495,6 +1507,10 @@ export class AppRoutingModule { }
 ## Observables in Angular
 
 An observable is a class that can be used to handle asynchronous data streams. Observables are used to handle data that can arrive over time, such as data received from a server, user input, or timed events.
+
+## Standalone Components
+
+A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications.
 
 ## JIT
 
@@ -1555,6 +1571,209 @@ CanActivateChild
 ```typescript
 
 ```
+
+## Angular Universal
+
+Angular Universal is a server-side rendering module for Angular applications in various scenarios. This is a community driven project and available under @angular/platform-server package.
+
+## Angular Animations
+
+Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
+
+## Rxjs
+
+**Reactive Extensions Library for JavaScript** - RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. 
+
+## Observales
+
+Observables are lazy Push collections of multiple values.
+
+```typescript
+
+```
+
+## Observer
+
+An Observer is a consumer of values delivered by an Observable. Observers are simply a set of callbacks, one for each type of notification delivered by the Observable: next, error, and complete. 
+
+
+```typescript
+
+```
+
+## Operators
+
+Operators are functions. There are two kinds of operators:
+
+**Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`. 
+
+**Creation Operators** are the other kind of operator, which can be called as standalone functions to create a new Observable.
+
+## Categories of operators
+
+### Creation Operators
+
+- ajax
+- bindCallback
+- bindNodeCallback
+- defer
+- empty
+- from
+- fromEvent
+- fromEventPattern
+- generate
+- interval
+- of
+- range
+- throwError
+- timer
+- iif
+
+### Join Creation Operators
+
+- combineLatest
+- concat
+- forkJoin
+- merge
+- partition
+- race
+- zip
+
+### Transformation Operators
+
+- buffer
+- bufferCount
+- bufferTime
+- bufferToggle
+- bufferWhen
+- concatMap
+- concatMapTo
+- exhaust
+- exhaustMap
+- expand
+- groupBy
+- map
+- mapTo
+- mergeMap
+- mergeMapTo
+- mergeScan
+- pairwise
+- partition
+- pluck
+- scan
+- switchScan
+- switchMap
+- switchMapTo
+- window
+- windowCount
+- windowTime
+- windowToggle
+- windowWhen
+
+### Filtering Operators
+
+- audit
+- auditTime
+- debounce
+- debounceTime
+- distinct
+- distinctUntilChanged
+- distinctUntilKeyChanged
+- elementAt
+- filter
+- first
+- ignoreElements
+- last
+- sample
+- sampleTime
+- single
+- skip
+- skipLast
+- skipUntil
+- skipWhile
+- take
+- takeLast
+- takeUntil
+- takeWhile
+- throttle
+- throttleTime
+
+### Join Operators
+
+- combineLatestAll
+- concatAll
+- exhaustAll
+- mergeAll
+- switchAll
+- startWith
+- withLatestFrom
+
+### Multicasting Operators
+
+- multicast
+- publish
+- publishBehavior
+- publishLast
+- publishReplay
+- share
+
+### Error Handling Operators
+
+- catchError
+- retry
+- retryWhen
+
+### Utility Operators
+
+- tap
+- delay
+- delayWhen
+- dematerialize
+- materialize
+- observeOn
+- subscribeOn
+- timeInterval
+- timestamp
+- timeout
+- timeoutWith
+- toArray
+
+### Conditional and Boolean Operators
+
+- defaultIfEmpty
+- every
+- find
+- findIndex
+- isEmpty
+
+### Mathematical and Aggregate Operators
+
+- count
+- max
+- min
+- reduce
+
+## Subscription
+
+A Subscription is an object that represents a disposable resource, usually the execution of an Observable. 
+
+## Subject 
+
+An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. 
+
+## Scheduler
+
+A scheduler controls when a subscription starts and when notifications are delivered. It consists of three components.
+
+A Scheduler is a data structure. It knows how to store and queue tasks based on priority or other criteria.
+
+A Scheduler is an execution context. It denotes where and when the task is executed (e.g. immediately, or in another callback mechanism such as setTimeout or process.nextTick, or the animation frame).
+
+A Scheduler has a (virtual) clock. It provides a notion of "time" by a getter method now() on the scheduler. Tasks being scheduled on a particular scheduler will adhere only to the time denoted by that clock.
+
+## NgRx
+
+Reactive State for Angular
 
 ## Learn more from GitHub Repositories
 
