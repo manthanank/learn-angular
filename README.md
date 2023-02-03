@@ -1576,6 +1576,14 @@ CanActivateChild
 
 Angular Universal is a server-side rendering module for Angular applications in various scenarios. This is a community driven project and available under @angular/platform-server package.
 
+```jsx
+// create the application
+ng add @nguniversal/express-engine
+
+//run the application
+npm run dev:ssr
+```
+
 ## Angular Animations
 
 Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
@@ -1586,7 +1594,7 @@ Angular's animation system is built on CSS functionality in order to animate any
 
 ## Observales
 
-Observables are lazy Push collections of multiple values.
+Observables are declarative which provide support for passing messages between publishers and subscribers.
 
 ```typescript
 
