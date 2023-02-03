@@ -1597,7 +1597,9 @@ Angular's animation system is built on CSS functionality in order to animate any
 Observables are declarative which provide support for passing messages between publishers and subscribers.
 
 ```typescript
+// pipe
 
+// subscribe
 ```
 
 ## Observer
@@ -1606,7 +1608,11 @@ An Observer is a consumer of values delivered by an Observable. Observers are si
 
 
 ```typescript
+// next
 
+// error
+
+// complete
 ```
 
 ## Operators
