@@ -308,7 +308,7 @@ export class AppComponent {
 }
 ```
 
-### Attribute Diretives
+### Attribute Directives
 
 **ngModel** -
 
@@ -1633,11 +1633,69 @@ Operators are functions. There are two kinds of operators:
 - defer
 - empty
 - from
+
+```jsx
+import 'zone.js/dist/zone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { from } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+  <h1>from operator</h1>
+  `,
+})
+export class App implements OnInit {
+  ngOnInit() {
+    const obj = from(['a', 'b', 'c', 'd']);
+
+    obj.subscribe((res) => {
+      console.log(res);
+    });
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - fromEvent
 - fromEventPattern
 - generate
 - interval
 - of
+
+```jsx
+import 'zone.js/dist/zone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { from, of } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+  <h1>of operator</h1>
+  `,
+})
+export class App implements OnInit {
+  ngOnInit() {
+    const obj = of('a', 'b', 'c', 'd');
+
+    obj.subscribe((res) => {
+      console.log(res);
+    });
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - range
 - throwError
 - timer
@@ -1667,6 +1725,49 @@ Operators are functions. There are two kinds of operators:
 - expand
 - groupBy
 - map
+
+```jsx
+import 'zone.js/dist/zone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { from, map } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>map operator</h1>
+  `,
+})
+export class App implements OnInit {
+  ngOnInit() {
+    const data = from([
+      {
+        id: 1,
+      },
+      {
+        id: 2,
+      },
+      {
+        id: 3,
+      },
+      {
+        id: 4,
+      },
+      {
+        id: 5,
+      },
+    ]);
+
+    data.pipe(map((data) => data.id)).subscribe((res) => console.log(res));
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - mapTo
 - mergeMap
 - mergeMapTo
@@ -1677,6 +1778,39 @@ Operators are functions. There are two kinds of operators:
 - scan
 - switchScan
 - switchMap
+
+```jsx
+import 'zone.js/dist/zone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { from, of, switchMap } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>switchMap operator</h1>
+  `,
+})
+export class App implements OnInit {
+  ngOnInit() {
+    const data = from(['abc', 'xyz', 'efg', 'pqr', 'lmn']);
+
+    data
+      .pipe(switchMap((data) => this.getData(data)))
+      .subscribe((res) => console.log(res));
+  }
+
+  getData(data) {
+    return of('name is' + data);
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - switchMapTo
 - window
 - windowCount
