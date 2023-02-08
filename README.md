@@ -152,6 +152,7 @@ import { TestComponent } from './app.component';
 ```
 
 ```typescript
+//app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
  
@@ -201,6 +202,10 @@ export class AppComponent {
 
 class binding
 
+```jsx
+
+```
+
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-s1pkwg?file=src/app/app.component.ts)
 
 <!-- ngClass directive
@@ -208,6 +213,10 @@ class binding
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-cn1fph?file=src/app/app.component.ts) -->
 
 style binding
+
+```jsx
+
+```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-w8nf7f?file=src/app/app.component.ts)
 
@@ -217,11 +226,19 @@ style binding
 
 attribute binding
 
+```jsx
+
+```
+
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bhqsgc?file=src/app/app.component.html)
 
 ### b. From View to Component
 
 **Event binding** - This allows for binding an event of an HTML element to a method in the component's class. It is denoted by parentheses (()).
+
+```jsx
+
+```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
 
@@ -230,6 +247,10 @@ attribute binding
 This allows for binding a property of an HTML element to a property in the component's class and vice-versa. This is done by using a combination of property binding and event binding. It is denoted by `[(ngModel)]`.
 
 **ngModel** -
+
+```jsx
+
+```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src/app/app.component.ts)
 
@@ -1433,6 +1454,12 @@ Angular Router is a mechanism in which navigation happens from one view to the n
 
 ```
 
+### Params
+
+```jsx
+
+```
+
 ## Services & Dependency Injection
 
 **Services**
@@ -1632,7 +1659,8 @@ Operators are functions. There are two kinds of operators:
 - bindNodeCallback
 - defer
 - empty
-- from
+
+**from** - Creates an Observable from an Array, an array-like object, a Promise, an iterable object, or an Observable-like object.
 
 ```jsx
 import 'zone.js/dist/zone';
@@ -1650,11 +1678,14 @@ import { from } from 'rxjs';
   `,
 })
 export class App implements OnInit {
+  data: any;
+
   ngOnInit() {
     const obj = from(['a', 'b', 'c', 'd']);
 
     obj.subscribe((res) => {
       console.log(res);
+      this.data = res;
     });
   }
 }
@@ -1662,7 +1693,59 @@ export class App implements OnInit {
 bootstrapApplication(App);
 ```
 
-- fromEvent
+[Stackblitz Link](https://stackblitz.com/edit/angular-psyjew?file=src/main.ts)
+
+**fromEvent** - Creates an Observable that emits events of a specific type coming from the given event target.
+
+Example:
+
+```jsx
+import 'zone.js/dist/zone';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { fromEvent } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>fromEvent Example</h1>
+    <button #add>Add</button>
+    {{countVal}}
+    <table>
+      <tr *ngFor="let value of values">
+        <td>{{value}}</td>
+      </tr>
+    </table>
+  `,
+})
+export class App implements AfterViewInit {
+  data: any;
+  count = 0;
+  values = [];
+  countVal: any;
+
+  @ViewChild('add') add: ElementRef;
+
+  ngAfterViewInit() {
+    let count = 0;
+    fromEvent(this.add.nativeElement, 'click').subscribe((data) => {
+      console.log(count++);
+      this.countVal = count++;
+      console.log(this.countVal);
+      this.count++;
+      this.values.push(this.count);
+    });
+  }
+}
+
+bootstrapApplication(App);
+```
+
+[Stackblitz Link](https://stackblitz.com/edit/angular-qy1hve?file=src/main.ts)
+
 - fromEventPattern
 - generate
 - interval
