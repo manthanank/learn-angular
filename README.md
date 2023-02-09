@@ -1,12 +1,12 @@
 # Learn Angular
 
-<!-- ![Logo](./assets/angularjs-plain.svg) -->
+<!-- ![Logo](./assets/angular.svg) -->
 
 ## Contents
 
 - [Introduction](#introduction)
 - [Setup a Project](#setting-up-a-project)
-- [Components](#introduction-to-components)
+- [Components](#components)
 - [Data Binding](#data-binding)
 - [Directives](#angular-directives)
 - [Pipes](#pipes)
@@ -63,7 +63,7 @@ cd [PROJECT NAME]
 ng serve
 ```
 
-## Introduction to components
+## Components
 
 Component is the main building block of an Angular Application.
 
@@ -170,8 +170,6 @@ import { AppComponent } from './app.component';
 })
 export class AppModule { }
 ```
-
-<script src="https://gist.github.com/manthanank/1795ee349862e597b951113fcfd5825e.js"></script>
 
 **Creating the inline Template & StyleUrls** -
 
