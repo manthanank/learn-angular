@@ -171,6 +171,8 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
+<script src="https://gist.github.com/manthanank/1795ee349862e597b951113fcfd5825e.js"></script>
+
 **Creating the inline Template & StyleUrls** -
 
 ```typescript
@@ -185,6 +187,8 @@ export class AppComponent {
   title = 'app';
 }
 ```
+
+[Back to top⤴️](#contents)
 
 ## Data binding
 
@@ -253,6 +257,8 @@ This allows for binding a property of an HTML element to a property in the compo
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src/app/app.component.ts)
+
+[Back to top⤴️](#contents)
 
 ## Angular Directives
 
@@ -445,6 +451,8 @@ import { CustomDirectiveDirective } from './custom-directive.directive';
 })
 export class AppModule {}
 ```
+
+[Back to top⤴️](#contents)
 
 ## Pipes
 
@@ -643,6 +651,8 @@ Decimal/number Pipe
 ```html
 <p>{{ 123456.78 | number:'3.2-3' }}</p>
 ```
+
+[Back to top⤴️](#contents)
 
 ## Decorators
 
@@ -866,6 +876,8 @@ export class AppComponent  {
 <button #childButton2>Button 2</button>
 ```
 
+[Back to top⤴️](#contents)
+
 ## Life Cycle Hooks
 
 **ngOnChanges** - It is called when any data-bound property of a directive or component changes.
@@ -1009,6 +1021,8 @@ export class AppComponent implements OnInit, OnDestroy {
 ```
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-ivy-urqida?file=src/app/app.module.ts)
+
+[Back to top⤴️](#contents)
 
 ## Forms
 
@@ -1549,7 +1563,7 @@ Ahead-of-Time (AOT) is a type of compilation that compiles your app at build tim
 
 ## JIT vs AOT
 
-![jitvsaot](/assets/jitvsaot.png)
+![jitvsaot](./src/assets/jitvsaot.png)
 
 ## Route Guards
 
@@ -1967,7 +1981,64 @@ bootstrapApplication(App);
 - timestamp
 - timeout
 - timeoutWith
-- toArray
+
+**toArray** - Collects all source emissions and emits them as an array when the source completes.
+
+Example:
+
+```jsx
+import 'zone.js/dist/zone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { from, interval, of, Subscription, take, toArray } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>toArray Example</h1>
+  `,
+})
+export class App implements OnInit {
+  subscription: Subscription;
+
+  data = [
+    { id: 1, name: 'abc' },
+    { id: 2, name: 'efg' },
+    { id: 3, name: 'lmn' },
+    { id: 4, name: 'pqr' },
+    { id: 5, name: 'xyz' },
+  ];
+
+  ngOnInit() {
+    //eaxample 1
+    const count = interval(1000);
+    this.subscription = count.pipe(take(5), toArray()).subscribe((res) => {
+      console.log(res);
+    });
+
+    //exampe 2
+    const datas = from(this.data);
+    this.subscription = datas.pipe(toArray()).subscribe((res) => {
+      console.log(res);
+    });
+
+    //example 3
+    const data = of('a', 'b', 'c');
+    this.subscription = data.pipe(toArray()).subscribe((res) => {
+      console.log(res);
+    });
+  }
+}
+
+bootstrapApplication(App);
+```
+
+[Stackblitz Link](https://stackblitz.com/edit/angular-qh5szd?file=src/main.ts)
+
+[Back to top⤴️](#contents)
 
 ### Conditional and Boolean Operators
 
