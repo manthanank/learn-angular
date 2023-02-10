@@ -363,7 +363,38 @@ bootstrapApplication(App);
 - skipLast
 - skipUntil
 - skipWhile
-- take
+
+**take** - Emits only the first count values emitted by the source Observable.
+
+```jsx
+import 'zone.js/dist/zone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { from, interval, take } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>take Example</h1>
+  `,
+})
+export class App implements OnInit {
+  data = ['a', 'b', 'c', 'd'];
+  ngOnInit() {
+    const datas = from(this.data);
+
+    datas.pipe(take(3)).subscribe((res) => {
+      console.log(res);
+    });
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - takeLast
 - takeUntil
 - takeWhile
