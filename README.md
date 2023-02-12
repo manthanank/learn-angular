@@ -5,7 +5,7 @@
 ## Contents
 
 - [Introduction](#introduction)
-- [Setup a Project](#setting-up-a-project)
+- [Configuration](#configuration)
 - [Components](#components)
 - [Data Binding](#data-binding)
 - [Directives](#angular-directives)
@@ -36,7 +36,7 @@
 
 - Node.js
 
-## Setting Up a Project
+## Configuration
 
 Install the Angular CLI globally:
 
