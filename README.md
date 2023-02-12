@@ -80,19 +80,19 @@ ng serve
 
 Component is the main building block of an Angular Application.
 
-### Three main building blocks -
+### Three main building blocks
 
 - Template
 - Class
 - Metadata
 
-**Template** - Defines the layout and content of the View. Without the template,  there is nothing for Angular to render to the DOM.
+**Template** - Defines the layout and content of the View.
 
-**Class** - Class provides the data & logic to the View. It contains the JavaScript code associated with Template (View).
+**Class** - Class provides the data & logic to the View.
 
 **MetaData** - Metadata Provides additional information about the component to the Angular.
 
-### Component metadata properties -
+### Component metadata properties
 
 - Selector
 - Providers
