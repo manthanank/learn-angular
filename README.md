@@ -30,13 +30,26 @@
 
 ## Introduction
 
-**Angular** is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your applications.
+**Angular** is a platform and framework for building single-page client applications using HTML and TypeScript.
+
+AngularJS vs Angular
+
+| AngularJS | Angular |
+|-----|-----|
+|Based on MVC Architecture|Based on Components|
+|Uses JavaScript to build the application| Uses TypeScript to build the application|
+|No Mobile Support|Mobile supports|
+|Run on only client-side|Runs on both client-side as well as server-side|
+|CLI not present|CLI present|
+|No SEO Friendly|Seo Friendly|
+
+## Configuration
 
 ### Prerequisites
 
 - Node.js
 
-## Configuration
+### Installation
 
 Install the Angular CLI globally:
 
@@ -67,31 +80,42 @@ ng serve
 
 Component is the main building block of an Angular Application.
 
-### The Components consists of three main building blocks
+### Three main building blocks -
+
+- Template
+- Class
+- Metadata
 
 **Template** - Defines the layout and content of the View. Without the template,  there is nothing for Angular to render to the DOM.
 
 **Class** - Class provides the data & logic to the View. It contains the JavaScript code associated with Template (View).
 
-**MetaData** - Metadata Provides additional information about the component to the Angular. Angular uses this information to process the class. We use the @Component decorator to provide the Metadata to the Component.
+**MetaData** - Metadata Provides additional information about the component to the Angular.
 
-### Important Component metadata properties
+### Component metadata properties -
 
-**Selector** - defines the element name or CSS selector that identifies the component in the HTML template.
+- Selector
+- Providers
+- Styles
+- StyleUrls
+- Template
+- TemplateUrl
 
-**Providers** - defines the providers of the component's dependencies.
+**Selector** - Defines the element name or CSS selector that identifies the component in the HTML template.
 
-**styles** - defines the inline styles for the component.
+**Providers** - Defines the providers of the component's dependencies.
 
-**styleUrls** - defines an array of URLs of the stylesheets for the component.
+**styles** - Defines the inline styles for the component.
 
-**template** - defines the HTML template for the component.
+**styleUrls** - Defines an array of URLs of the stylesheets for the component.
 
-**templateUrl** - defines the URL of the HTML template for the component.
+**template** - Defines the HTML template for the component.
 
-## Creating the Component
+**templateUrl** - Defines the URL of the HTML template for the component.
 
-The creation of the Angular component requires you to follow these steps :
+## Component Creation
+
+Steps are:
 
 **Create the Component file** - file with ts extension
 
@@ -1474,7 +1498,7 @@ Angular Router is a mechanism in which navigation happens from one view to the n
 
 ## Services & Dependency Injection
 
-**Services**
+**Services** -
 
 A service is used when a common functionality needs to be provided to various modules. Services allow for greater separation of concerns for your application and better modularity by allowing you to extract common functionality out of components.
 
@@ -1485,16 +1509,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SharedService {
-
   constructor() { }
-
 }
-
 ```
 
-**Dependency Injection**
+**Dependency Injection** -
 
-Dependency injection (DI), is an important application design pattern in which a class asks for dependencies from external sources rather than creating them itself. 
+Dependency injection (DI), is an important application design pattern in which a class asks for dependencies from external sources rather than creating them itself.
 
 ## Routing Module
 

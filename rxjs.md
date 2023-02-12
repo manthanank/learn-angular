@@ -1,6 +1,6 @@
-## Rxjs
+# Rxjs
 
-**Reactive Extensions Library for JavaScript** - RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. 
+**Reactive Extensions Library for JavaScript** - RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
 
 ## Contents
 
@@ -34,8 +34,7 @@ Observables are declarative which provide support for passing messages between p
 
 ## Observer
 
-An Observer is a consumer of values delivered by an Observable. Observers are simply a set of callbacks, one for each type of notification delivered by the Observable: next, error, and complete. 
-
+An Observer is a consumer of values delivered by an Observable. Observers are simply a set of callbacks, one for each type of notification delivered by the Observable: next, error, and complete.
 
 ```typescript
 // next
@@ -49,7 +48,7 @@ An Observer is a consumer of values delivered by an Observable. Observers are si
 
 Operators are functions. There are two kinds of operators:
 
-**Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`. 
+**Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`.
 
 **Creation Operators** are the other kind of operator, which can be called as standalone functions to create a new Observable.
 
@@ -59,7 +58,7 @@ Operators are functions. There are two kinds of operators:
 
 **ajax** - It creates an observable for an Ajax request with either a request object with url, headers, etc or a string for a URL.
 
-```
+```typescript
 import 'zone.js/dist/zone';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -565,11 +564,11 @@ bootstrapApplication(App);
 
 ## Subscription
 
-A Subscription is an object that represents a disposable resource, usually the execution of an Observable. 
+A Subscription is an object that represents a disposable resource, usually the execution of an Observable.
 
-## Subject 
+## Subject
 
-An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. 
+An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers.
 
 ## Scheduler
 

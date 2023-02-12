@@ -1,4 +1,4 @@
-## NgRx
+# NgRx
 
 Reactive State for Angular
 
