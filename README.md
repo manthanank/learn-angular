@@ -117,62 +117,81 @@ Component is the main building block of an Angular Application.
 
 Steps are:
 
-**Create the Component file** - file with ts extension
+1. Navigate to your Angular project directory.
+2. Create a new file, `<component-name>`.component.ts.
+3. At the top of the file, add the following import statement.
 
-**Import the required external Classes/Functions** -
+    ```jsx
+    import { Component } from '@angular/core';
+    ```
+
+4. After the import statement, add a @Component decorator.
+
+    ```jsx
+    @Component({
+    })
+    ```
+
+5. Choose a CSS selector for the component.
+
+    ```jsx
+    @Component({
+      selector: 'test-component',
+    })
+    ```
+
+6. Define the HTML template that the component uses to display information. In most cases, this template is a separate HTML file.
+
+    ```jsx
+    @Component({
+      selector: 'test-component',
+      templateUrl: './test-component.component.html',
+    })
+    ```
+
+7. Select the styles for the component's template. In most cases, you define the styles for your component's template in a separate file.
+
+    ```jsx
+    @Component({
+      selector: 'test-component',
+      templateUrl: './component.component.html',
+      styleUrls: ['./component.component.css']
+    })
+    ```
+
+8. Add a class statement that includes the code for the component.
+
+    ```jsx
+    export class TestComponent {
+
+    }
+    ```
+
+9. Register the Component in Angular Module -
+
+    ```typescript
+    import { TestComponent } from './app.component';
+    ```
+
+    ```typescript
+    @NgModule({ 
+      declarations: [ TestComponent ]
+    })
+    ```
 
 ```typescript
+//test-component.component.ts
 import { Component } from '@angular/core';
-```
 
-**Create the Component class and export it** -
-
-```typescript
-export class TestComponent {
-  title = 'test';
-}
-```
-
-**Add @Component decorator** -
-
-```typescript
 @Component({
+  selector: 'test-component',
+  templateUrl: './component.component.html',
+  styleUrls: ['./component.component.css']
 })
+
 export class TestComponent {
-  title = 'app';
+
 }
-```
-
-**Add metadata to @Component decorator** -
-
-```typescript
-@Component({
-  selector: 'app-root',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
-})
-```
-
-**Create the Template** -
-
-```html
-<h1>
-    Welcome to {{title}}!
-</h1>
-```
-
-**Create the CSS Styles** -
-
-**Register the Component in Angular Module** -
-
-```typescript
-import { TestComponent } from './app.component';
-```
-
-```typescript
-@NgModule({ 
-  declarations: [ TestComponent ]
-})
 ```
 
 ```typescript
@@ -181,10 +200,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
  
 import { AppComponent } from './app.component';
- 
+import { TestComponent } from './app.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule
@@ -220,9 +241,48 @@ export class AppComponent {
 
 **Interpolation** -
 
+```html
+<h1>{{ firstText }} {{ lastText }}</h1>
+```
+
+```jsx
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  firstText = 'Interpolation';
+  lastText = 'Example';
+}
+```
+
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zu564w?file=src%2Fapp%2Fapp.component.ts)
 
 **Property binding** - This allows for binding a property of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
+
+```html
+<h1 [innerText]="title"></h1>
+
+<button [disabled]="isDisabled">I am disabled</button>
+```
+
+```jsx
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  title = 'Angular Property Binding Example';
+
+  isDisabled = true;
+}
+```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-vcpyoq?file=src/app/app.component.ts)
 
@@ -234,10 +294,6 @@ class binding
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-s1pkwg?file=src/app/app.component.ts)
 
-<!-- ngClass directive
-
-[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-cn1fph?file=src/app/app.component.ts) -->
-
 style binding
 
 ```jsx
@@ -245,10 +301,6 @@ style binding
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-w8nf7f?file=src/app/app.component.ts)
-
-<!-- ngStyle directive
-
-[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zcgf1h?file=src/app/app.component.ts) -->
 
 attribute binding
 
@@ -263,7 +315,23 @@ attribute binding
 **Event binding** - This allows for binding an event of an HTML element to a method in the component's class. It is denoted by parentheses (()).
 
 ```jsx
+import { Component } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
+  onClick() {
+    console.log('Button was clicked');
+  }
+}
+```
+
+```html
+<h1>Event Binding Example</h1>
+<button (click)="onClick()">Click me</button>
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
