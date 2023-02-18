@@ -295,7 +295,102 @@ bootstrapApplication(App);
 - mergeScan
 - pairwise
 - partition
-- pluck
+
+**pluck** - Maps each source value to its specified nested property.
+
+```typescript
+import 'zone.js/dist/zone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { from, pluck, toArray } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>Pluck Example</h1>
+    <div class="row">
+      <div class="col">
+        <ul *ngFor="let item of data1">
+          <li>{{item}}</li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul *ngFor="let item of data2">
+          <li>{{item}}</li>
+        </ul>
+      </div>
+    </div>
+  `,
+})
+export class App implements OnInit {
+  users = [
+    {
+      name: 'abc',
+      age: '25',
+      address: {
+        state: 'DL',
+        country: 'India',
+      },
+    },
+    {
+      name: 'efg',
+      age: '25',
+      address: {
+        state: 'MH',
+        country: 'India',
+      },
+    },
+    {
+      name: 'lmn',
+      age: '25',
+      address: {
+        state: 'KA',
+        country: 'India',
+      },
+    },
+    {
+      name: 'pqr',
+      age: '25',
+      address: {
+        state: 'KL',
+        country: 'India',
+      },
+    },
+    {
+      name: 'xyz',
+      age: '25',
+      address: {
+        state: 'GA',
+        country: 'India',
+      },
+    },
+  ];
+  data1: any;
+  data2: any;
+  constructor() {}
+
+  ngOnInit() {
+    from(this.users)
+      .pipe(pluck('name'), toArray())
+      .subscribe((res) => {
+        console.log(res);
+        this.data1 = res;
+      });
+    from(this.users)
+      .pipe(pluck('address', 'state'), toArray())
+      .subscribe((res) => {
+        console.log(res);
+        this.data2 = res;
+      });
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - scan
 - switchScan
 - switchMap
