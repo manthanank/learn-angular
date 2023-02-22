@@ -441,9 +441,116 @@ bootstrapApplication(App);
 - audit
 - auditTime
 - debounce
-- debounceTime
+
+**debounceTime** - Emits a notification from the source Observable only after a particular time span has passed without another source emission.
+
+```typescript
+import 'zone.js/dist/zone';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { fromEvent, map, debounceTime } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>debounceTime Example</h1>
+    <input type="text" #myInput />
+    <p *ngIf="requestedData != null">Data: {{requestedData}}</p>
+  `,
+})
+export class App implements OnInit, AfterViewInit {
+  requestedData = null;
+  @ViewChild('myInput') myInput: ElementRef;
+  constructor() {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    const searchItem = fromEvent<any>(this.myInput.nativeElement, 'keyup').pipe(
+      map((event) => {
+        event.target.value;
+      }),
+      debounceTime(1000)
+    );
+    searchItem.subscribe((res) => {
+      console.log(res);
+      this.requestedData = res;
+
+      setTimeout(() => {
+        this.requestedData = null;
+      }, 2000);
+    });
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - distinct
-- distinctUntilChanged
+
+**distinctUntilChanged** - Returns a result Observable that emits all values pushed by the source observable if they are distinct in comparison to the last value the result observable emitted.
+
+```typescript
+import 'zone.js/dist/zone';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { fromEvent, map, debounceTime, distinctUntilChanged } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <h1>distinctUntilChanged Example</h1>
+    <input type="text" #myInput />
+    <p *ngIf="requestedData != null">Data: {{requestedData}}</p>
+  `,
+})
+export class App implements OnInit, AfterViewInit {
+  requestedData = null;
+  @ViewChild('myInput') myInput: ElementRef;
+  constructor() {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    const searchItem = fromEvent<any>(this.myInput.nativeElement, 'keyup').pipe(
+      map((event) => {
+        event.target.value;
+      }),
+      debounceTime(500),
+      distinctUntilChanged()
+    );
+    searchItem.subscribe((res) => {
+      console.log(res);
+      this.requestedData = res;
+
+      setTimeout(() => {
+        this.requestedData = null;
+      }, 2000);
+    });
+  }
+}
+
+bootstrapApplication(App);
+```
+
 - distinctUntilKeyChanged
 - elementAt
 - filter
