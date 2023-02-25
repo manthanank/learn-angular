@@ -1700,6 +1700,14 @@ CanActivateChild
 
 ```
 
+**ng-container** - A special element that can hold structural directives without adding new elements to the DOM.
+
+```html
+<ng-container>
+  ......
+</ng-container>
+```
+
 ## Angular Universal
 
 Angular Universal is a server-side rendering module for Angular applications in various scenarios. This is a community driven project and available under @angular/platform-server package.
