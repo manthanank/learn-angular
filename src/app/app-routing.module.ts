@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularMaterialComponent } from './docs/angular-material/angular-material.component';
 import { AngularComponent } from './docs/angular/angular.component';
-import { RxjsComponent } from './docs/rxjs/rxjs.component';
 import { TypescriptComponent } from './docs/typescript/typescript.component';
 
 const routes: Routes = [
@@ -16,7 +15,7 @@ const routes: Routes = [
     path : 'angular-material', component: AngularMaterialComponent
   },
   {
-    path: 'rxjs', component: RxjsComponent
+    path: 'rxjs', loadChildren: () => import('./docs/rxjs/routes').then(m => m.RXJS_ROUTES)
   }
 ];
 
