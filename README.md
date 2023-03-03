@@ -1166,6 +1166,8 @@ export class AppComponent {
 
 ### Reactive Form
 
+Basic Form Control
+
 ```typescript
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -1197,7 +1199,25 @@ export class NameEditorComponent {
 <input id="name" type="text" [formControl]="name">
 ```
 
-Grouping form controls
+To display form control values
+
+```html
+{{ name.value }}
+```
+
+To replace the form control value
+
+```html
+<button (click)="update()">Update</button>
+```
+
+```typescript
+update(){
+  this.name.setValue('Manthan');
+}
+```
+
+Form Group
 
 ```typescript
 import { Component } from '@angular/core';
@@ -1217,18 +1237,21 @@ export class ProfileEditorComponent {
 ```
 
 ```html
-<form [formGroup]="profileForm">
-
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName">
-
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName">
-
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName">
+  </div>
+  <div>
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName">
+  </div>
 </form>
+<p>Complete the form to enable button.</p>
+<button type="submit" [disabled]="!profileForm.valid">Submit</button>
 ```
 
-Creating nested form groups
+Nested form groups
 
 ```typescript
 import { Component } from '@angular/core';
