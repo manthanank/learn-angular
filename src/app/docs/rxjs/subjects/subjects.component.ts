@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-pipes',
+  selector: 'app-subjects',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './pipes.component.html',
-  styleUrls: ['./pipes.component.scss']
+  templateUrl: './subjects.component.html',
+  styleUrls: ['./subjects.component.scss']
 })
-export class PipesComponent {
+export class SubjectsComponent {
 
 }
