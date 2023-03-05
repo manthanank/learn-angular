@@ -1,4 +1,4 @@
-name: Release
+name: Build and Release
 
 on:
   push:
@@ -6,31 +6,44 @@ on:
       - main
 
 jobs:
-  release:
+  build-and-release:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          submodules: 'recursive'
+          fetch-depth: 0
+          persist-credentials: false
+        if: github.event_name != 'pull_request'
+        env:
+          NODE_VERSION: 16.x
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '16.x'
 
       - name: Install dependencies
         run: npm install
+
+      - name: Build app
+        run: npm run build
 
       - name: Bump version and generate changelog
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          semantic: 'angular'
+          title: 'Angular'
 
-      - name: Push new tag and release to GitHub
-        uses: actions/create-release@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create release
+        uses: actions/create-release@v1
         with:
-          tag_name: ${{ env.RELEASE_VERSION }}
-          release_name: Release ${{ env.RELEASE_VERSION }}
-          body: ${{ env.RELEASE_NOTES }}
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.autorelease.outputs.changelog }}
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
