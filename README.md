@@ -299,24 +299,80 @@ export class AppComponent {
 
 class binding
 
-```jsx
+```typescript
+import { Component } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  isActive = false;
+
+  toggleActive() {
+    this.isActive = !this.isActive;
+  }
+}
+```
+
+```html
+<div [class.active]="isActive">This div is active.</div>
+<button (click)="toggleActive()">Toggle Active</button>
+```
+
+```css
+.active {
+  background-color: yellow;
+}
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-s1pkwg?file=src/app/app.component.ts)
 
 style binding
 
-```jsx
+```typescript
+import { Component } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  backgroundColor = 'red';
+  textColor = 'white';
+}
+```
+
+```html
+<div [style.background-color]="backgroundColor">
+  <h1 [style.color]="textColor">Hello, world!</h1>
+</div>
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-w8nf7f?file=src/app/app.component.ts)
 
 attribute binding
 
-```jsx
+```typescript
+import { Component } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  imageUrl = 'https://example.com/image.jpg';
+  imageAlt = 'Example image';
+  isButtonDisabled = false;
+}
+```
+
+```html
+<img [attr.src]="imageUrl" [attr.alt]="imageAlt">
+<button [attr.disabled]="isButtonDisabled">Click me</button>
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bhqsgc?file=src/app/app.component.html)
@@ -353,8 +409,22 @@ This allows for binding a property of an HTML element to a property in the compo
 
 **ngModel** -
 
-```jsx
+```typescript
+import { Component } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  name: string = '';
+}
+```
+
+```html
+<input [(ngModel)]="name" placeholder="Enter your name">
+<p>Your name is: {{name}}</p>
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src/app/app.component.ts)
