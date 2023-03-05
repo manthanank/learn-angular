@@ -12,8 +12,6 @@ import { AngularMaterialComponent } from './docs/angular-material/angular-materi
 import { AngularComponent } from './docs/angular/angular.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsComponent } from './docs/angular/forms/reactive-forms/reactive-forms.component';
-import { TemplateDrivenFormsComponent } from './docs/angular/forms/template-driven-forms/template-driven-forms.component';
-import { LifeCycleHooksComponent } from './docs/angular/life-cycle-hooks/life-cycle-hooks.component';
 import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [

@@ -2,12 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularMaterialComponent } from './docs/angular-material/angular-material.component';
 import { TypescriptComponent } from './docs/typescript/typescript.component';
-import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  // {
-  //   path: '', component: MainComponent
-  // },
   {
     path: '', loadChildren: () => import('./docs/angular/angular-routes').then(m => m.ANGULAR_ROUTES),
     title: 'Learn Angular'
