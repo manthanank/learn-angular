@@ -28,6 +28,15 @@
 - [List of Twitter Users](#list-of-twitter-users)
 - [List of LinkedIn Users](#list-of-linkedin-users)
 
+Other Pages
+
+- [CLI Commands](/cli-commands.md)
+- [Snippets](/snippets.md)
+- [Imports](/imports.md)
+- [RsJs](/rsjs.md)
+- [TypeScript](/typescript.md)
+- [NgRX](/ngrx.md)
+
 ## Introduction
 
 **Angular** is a platform and framework for building single-page client applications using HTML and TypeScript.
@@ -1817,7 +1826,6 @@ Angular's animation system is built on CSS functionality in order to animate any
 - [Medium](https://medium.com/)
 - [Dev.to](https://dev.to/)
 - [Hashnode](https://hashnode.com/)
-- [Hacker Noon](https://hackernoon.com/)
 
 ## List of Online Editors/Compiler
 
