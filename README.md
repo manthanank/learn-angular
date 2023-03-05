@@ -493,7 +493,7 @@ export class AppComponent {
 ```
 
 ```typescript
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -661,7 +661,7 @@ Currency Pipe
 
 ```ts
 import { CurrencyPipe } from '@angular/common';
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -705,7 +705,7 @@ Percent Pipe
 
 ```ts
 import { PercentPipe } from '@angular/common';
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -890,7 +890,7 @@ HostListener
 ```
 
 ```ts
-import { Component, HostListener, VERSION } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -1032,7 +1032,7 @@ export class TestComponent implements OnChanges {
 **ngOnInit** - It is called after a component has been initialized and its data-bound properties have been checked for the first time.
 
 ```ts
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -1053,7 +1053,7 @@ export class AppComponent {
 **ngDoCheck** - It is called during every change detection cycle. It allows a component to detect and act upon changes that Angular can't detect on its own.
 
 ```ts
-import { Component, DoCheck, VERSION } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'my-app',
