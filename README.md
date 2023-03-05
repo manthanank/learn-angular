@@ -188,6 +188,8 @@ Steps are:
     })
     ```
 
+Complete code for the component creation
+
 ```typescript
 //test-component.component.ts
 import { Component } from '@angular/core';
