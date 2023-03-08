@@ -35,7 +35,6 @@ Other Pages
 - [Imports](/imports.md)
 - [RxJs](/rxjs.md)
 - [TypeScript](/typescript.md)
-- [NgRX](/ngrx.md)
 
 ## Introduction
 
