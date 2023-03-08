@@ -89,10 +89,29 @@ export class App implements OnInit {
 bootstrapApplication(App);
 ```
 
-- bindCallback
-- bindNodeCallback
-- defer
-- empty
+**bindCallback** -
+
+```typescript
+
+```
+
+**bindNodeCallback** -
+
+```typescript
+
+```
+
+**defer** -
+
+```typescript
+
+```
+
+**empty** -
+
+```typescript
+
+```
 
 **from** - Creates an Observable from an Array, an array-like object, a Promise, an iterable object, or an Observable-like object.
 
@@ -180,10 +199,25 @@ bootstrapApplication(App);
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-qy1hve?file=src/main.ts)
 
-- fromEventPattern
-- generate
-- interval
-- of
+**fromEventPattern** -
+
+```typescript
+
+```
+
+**generate** -
+
+```typescript
+
+```
+
+**interval** -
+
+```typescript
+
+```
+
+**of** -
 
 ```jsx
 import 'zone.js/dist/zone';
@@ -213,39 +247,147 @@ export class App implements OnInit {
 bootstrapApplication(App);
 ```
 
-- range
-- throwError
-- timer
-- iif
+**range** -
+
+```typescript
+
+```
+
+**throwError** -
+
+```typescript
+
+```
+
+**timer** -
+
+```typescript
+
+```
+
+**iif** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
 ### Join Creation Operators
 
-- combineLatest
-- concat
-- forkJoin
-- merge
-- partition
-- race
-- zip
+**combineLatest** -
+
+```typescript
+
+```
+
+**concat** -
+
+```typescript
+
+```
+
+**forkJoin** -
+
+```typescript
+
+```
+
+**merge** -
+
+```typescript
+
+```
+
+**partition** -
+
+```typescript
+
+```
+
+**race** -
+
+```typescript
+
+```
+
+**zip** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
 ### Transformation Operators
 
-- buffer
-- bufferCount
-- bufferTime
-- bufferToggle
-- bufferWhen
-- concatMap
-- concatMapTo
-- exhaust
-- exhaustMap
-- expand
-- groupBy
-- map
+**buffer** -
+
+```typescript
+
+```
+
+**bufferCount** -
+
+```typescript
+
+```
+
+**bufferTime** -
+
+```typescript
+
+```
+
+**bufferToggle** -
+
+```typescript
+
+```
+
+**bufferWhen** -
+
+```typescript
+
+```
+
+**concatMap** -
+
+```typescript
+
+```
+
+**concatMapTo** -
+
+```typescript
+
+```
+
+**exhaust** -
+
+```typescript
+
+```
+
+**exhaustMap** -
+
+```typescript
+
+```
+
+**expand** -
+
+```typescript
+
+```
+
+**groupBy** -
+
+```typescript
+
+```
+
+**map** -
 
 ```jsx
 import 'zone.js/dist/zone';
@@ -289,12 +431,41 @@ export class App implements OnInit {
 bootstrapApplication(App);
 ```
 
-- mapTo
-- mergeMap
-- mergeMapTo
-- mergeScan
-- pairwise
-- partition
+**mapTo** -
+
+```typescript
+
+```
+
+**mergeMap** -
+
+```typescript
+
+```
+
+**mergeMapTo** -
+
+```typescript
+
+```
+
+**mergeScan** -
+
+```typescript
+
+```
+
+**pairwise** -
+
+```typescript
+
+```
+
+**partition** -
+
+```typescript
+
+```
 
 **pluck** - Maps each source value to its specified nested property.
 
@@ -391,9 +562,19 @@ export class App implements OnInit {
 bootstrapApplication(App);
 ```
 
-- scan
-- switchScan
-- switchMap
+**scan** -
+
+```typescript
+
+```
+
+**switchScan** -
+
+```typescript
+
+```
+
+**switchMap** -
 
 ```jsx
 import 'zone.js/dist/zone';
@@ -427,20 +608,63 @@ export class App implements OnInit {
 bootstrapApplication(App);
 ```
 
-- switchMapTo
-- window
-- windowCount
-- windowTime
-- windowToggle
-- windowWhen
+**switchMapTo** -
+
+```typescript
+
+```
+
+**window** -
+
+```typescript
+
+```
+
+**windowCount** -
+
+```typescript
+
+```
+
+**windowTime** -
+
+```typescript
+
+```
+
+**windowToggle** -
+
+```typescript
+
+```
+
+**windowWhen** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
 ### Filtering Operators
 
-- audit
-- auditTime
-- debounce
+**audit** -
+
+```typescript
+
+```
+
+**auditTime** -
+
+```typescript
+
+```
+
+**debounce** -
+
+```typescript
+
+```
 
 **debounceTime** - Emits a notification from the source Observable only after a particular time span has passed without another source emission.
 
@@ -495,7 +719,11 @@ export class App implements OnInit, AfterViewInit {
 bootstrapApplication(App);
 ```
 
-- distinct
+**distinct** -
+
+```typescript
+
+```
 
 **distinctUntilChanged** - Returns a result Observable that emits all values pushed by the source observable if they are distinct in comparison to the last value the result observable emitted.
 
@@ -551,19 +779,83 @@ export class App implements OnInit, AfterViewInit {
 bootstrapApplication(App);
 ```
 
-- distinctUntilKeyChanged
-- elementAt
-- filter
-- first
-- ignoreElements
-- last
-- sample
-- sampleTime
-- single
-- skip
-- skipLast
-- skipUntil
-- skipWhile
+**distinctUntilKeyChanged** -
+
+```typescript
+
+```
+
+**elementAt** -
+
+```typescript
+
+```
+
+**filter** -
+
+```typescript
+
+```
+
+**first** -
+
+```typescript
+
+```
+
+**ignoreElements** -
+
+```typescript
+
+```
+
+**last** -
+
+```typescript
+
+```
+
+**sample** -
+
+```typescript
+
+```
+
+**sampleTime** -
+
+```typescript
+
+```
+
+**single** -
+
+```typescript
+
+```
+
+**skip** -
+
+```typescript
+
+```
+
+**skipLast** -
+
+```typescript
+
+```
+
+**skipUntil** -
+
+```typescript
+
+```
+
+**skipWhile** -
+
+```typescript
+
+```
 
 **take** - Emits only the first count values emitted by the source Observable.
 
@@ -596,40 +888,141 @@ export class App implements OnInit {
 bootstrapApplication(App);
 ```
 
-- takeLast
-- takeUntil
-- takeWhile
-- throttle
-- throttleTime
+**takeLast** -
+
+```typescript
+
+```
+
+**takeUntil** -
+
+```typescript
+
+```
+
+**takeWhile** -
+
+```typescript
+
+```
+
+**throttle** -
+
+```typescript
+
+```
+
+**throttleTime** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
 ### Join Operators
 
-- combineLatestAll
-- concatAll
-- exhaustAll
-- mergeAll
-- switchAll
-- startWith
-- withLatestFrom
+**combineLatestAll** -
+
+```typescript
+
+```
+
+**concatAll** -
+
+```typescript
+
+```
+
+**exhaustAll** -
+
+```typescript
+
+```
+
+**mergeAll** -
+
+```typescript
+
+```
+
+**switchAll** -
+
+```typescript
+
+```
+
+**startWith** -
+
+```typescript
+
+```
+
+**withLatestFrom** -
+
+```typescript
+
+```
 
 ### Multicasting Operators
 
-- multicast
-- publish
-- publishBehavior
-- publishLast
-- publishReplay
-- share
+**multicast** -
+
+```typescript
+
+```
+
+**publish** -
+
+```typescript
+
+```
+
+**publishBehavior** -
+
+```typescript
+
+```
+
+**publishLast** -
+
+```typescript
+
+```
+
+**publishReplay** -
+
+```typescript
+
+```
+
+**share** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
 ### Error Handling Operators
 
-- catchError
-- retry
-- retryWhen
+**catchError** -
+
+```typescript
+
+```
+
+**retry** -
+
+```typescript
+
+```
+
+**retryWhen** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
@@ -747,20 +1140,63 @@ bootstrapApplication(App);
 
 ### Conditional and Boolean Operators
 
-- defaultIfEmpty
-- every
-- find
-- findIndex
-- isEmpty
+**defaultIfEmpty** -
+
+```typescript
+
+```
+
+**every** -
+
+```typescript
+
+```
+
+**find** -
+
+```typescript
+
+```
+
+**findIndex** -
+
+```typescript
+
+```
+
+**isEmpty** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
 ### Mathematical and Aggregate Operators
 
-- count
-- max
-- min
-- reduce
+**count** -
+
+```typescript
+
+```
+
+**max** -
+
+```typescript
+
+```
+
+**min** -
+
+```typescript
+
+```
+
+**reduce** -
+
+```typescript
+
+```
 
 [Back to top⤴️](#contents)
 
