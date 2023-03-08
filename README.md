@@ -33,7 +33,7 @@ Other Pages
 - [CLI Commands](/cli-commands.md)
 - [Snippets](/snippets.md)
 - [Imports](/imports.md)
-- [RsJs](/rsjs.md)
+- [RxJs](/rxjs.md)
 - [TypeScript](/typescript.md)
 - [NgRX](/ngrx.md)
 
