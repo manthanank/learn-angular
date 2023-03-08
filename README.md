@@ -1051,6 +1051,8 @@ export class AppComponent  {
 
 ## Life Cycle Hooks
 
+![lifecycle-hooks](/src/assets/lifecycle-hooks.png)
+
 **ngOnChanges** - It is called when any data-bound property of a directive or component changes.
 
 ```html
@@ -1139,10 +1141,10 @@ export class AppComponent implements DoCheck {
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-ivy-f5msas?file=src/app/app.component.ts)
 
-**ngAfterViewInit** -
+**ngAfterViewInit** - It is called after app has fully initialized a component's view.
 
 ```ts
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -1150,16 +1152,23 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewInit{
-
-  @ViewChild('myParagraph') myParagraph!: ElementRef;
   
   ngAfterViewInit(){
-    console.log(this.myParagraph.nativeElement.innerText);
+    console.log("after view init")
+  }
+  clickMe(){
+    console.log("link clicked")
   }
 }
 ```
 
-**ngAfterViewChecked** -
+```html
+<a (click)="clickMe()">Click me</a>
+```
+
+[Stackblitz Link](https://stackblitz.com/edit/angular-wscf59?file=src/main.ts)
+
+**ngAfterViewChecked** - It is called after the default change detector has completed checking a component's view for changes.
 
 ```ts
 import { AfterViewChecked, Component } from '@angular/core';
@@ -1170,29 +1179,72 @@ import { AfterViewChecked, Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewChecked {
-  message = 'Hello';
-
-  ngAfterViewChecked() {
-    console.log('View checked!');
+  ngAfterViewChecked(){
+    console.log("after view checked")
+  }
+  clickMe(){
+    console.log("link clicked")
   }
 }
 ```
 
 ```html
-<p>{{message}}</p>
+<a (click)="clickMe()">Click me</a>
 ```
 
-**ngAfterContentInit** -
+[Stackblitz Link](https://stackblitz.com/edit/angular-wnwfnv?file=src/main.ts)
+
+**ngAfterContentInit** - It is called after Angular has fully initialized all content of a directive.
 
 ```ts
+import { AfterContentInit, Component } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements AfterContentInit {
+  ngAfterContentInit() {
+    console.log('after content init');
+  }
+  clickMe() {
+    console.log('clicked');
+  }
+}
 ```
 
-**ngAfterContentChecked** -
+```html
+<a (click)="clickMe()">Click me</a>
+```
+
+[Stackblitz Link](https://stackblitz.com/edit/angular-qhy7cw?file=src/main.ts)
+
+**ngAfterContentChecked** - It is called after the default change detector has completed checking all content of a directive.
 
 ```ts
+import { AfterContentInit, Component } from '@angular/core';
 
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements AfterContentInit {
+  ngAfterContentChecked() {
+    console.log('after content init');
+  }
+  clickMe() {
+    console.log('clicked');
+  }
+}
 ```
+
+```html
+<a (click)="clickMe()">Click me</a>
+```
+
+[Stackblitz Link](https://stackblitz.com/edit/angular-ryx2uh?file=src/main.ts)
 
 **ngOnDestroy** - It is called just before a component or directive is destroyed. It is a good place to clean up any subscriptions or detach any event handlers to avoid memory leaks.
 
