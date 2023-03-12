@@ -5,6 +5,7 @@
 ## Contents
 
 - [Introduction](#introduction)
+- [Roadmap](#roadmap---link)
 - [Configuration](#configuration)
 - [Components](#components)
 - [Data Binding](#data-binding)
@@ -50,6 +51,8 @@ AngularJS vs Angular
 |Run on only client-side|Runs on both client-side as well as server-side|
 |CLI not present|CLI present|
 |No SEO Friendly|Seo Friendly|
+
+## Roadmap - [Link](https://roadmap.sh/angular)
 
 ## Configuration
 
