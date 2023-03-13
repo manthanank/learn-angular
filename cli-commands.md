@@ -140,3 +140,9 @@ ng generate application sub-app-name
 
 ng new app-name --create-application=false
 ```
+
+Generate environments
+
+```jsx
+ng generate environments
+```
