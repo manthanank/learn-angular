@@ -347,6 +347,18 @@ export class AppComponent  {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
 
+```html
+Remeber💡
+
+The (click) calls the specified function when a user clicks on the given element (in your example, when a user clicks on a row).
+
+The (change) event binds to HTML's onChange event. This event is fired for `<input>`, `<select>`, and `<textarea>` elements when a change to the element's value is committed by the user.
+
+The (change) event can also be specifically implemented by other Angular components. It is generally implemented on components where the contents of the component are changed by the user.
+```
+
+[☝️Source of Explaination](https://stackoverflow.com/a/51127794/14292971)
+
 ### 2. Two ways binding
 
 This allows for binding a property of an HTML element to a property in the component's class and vice-versa. This is done by using a combination of property binding and event binding. It is denoted by `[(ngModel)]`.
