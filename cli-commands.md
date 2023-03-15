@@ -63,6 +63,20 @@ Running project
 ng serve
 ```
 
+Run project on particular port
+
+```jsx
+ng serve --port=portname
+// example
+ng serve --port=3000
+```
+
+Run project and open the url in default browser
+
+```jsx
+ng  serve --open
+```
+
 Update
 
 ```jsx

@@ -405,6 +405,18 @@ export class AppComponent  {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
 
+```html
+Remeber💡
+
+The (click) calls the specified function when a user clicks on the given element (in your example, when a user clicks on a row).
+
+The (change) event binds to HTML's onChange event. This event is fired for `<input>`, `<select>`, and `<textarea>` elements when a change to the element's value is committed by the user.
+
+The (change) event can also be specifically implemented by other Angular components. It is generally implemented on components where the contents of the component are changed by the user.
+```
+
+[☝️Source of Explaination](https://stackoverflow.com/a/51127794/14292971)
+
 ### 2. Two ways binding
 
 This allows for binding a property of an HTML element to a property in the component's class and vice-versa. This is done by using a combination of property binding and event binding. It is denoted by `[(ngModel)]`.
@@ -1460,7 +1472,25 @@ export class ProfileEditorComponent {
 </div>
 ```
 
-## Forms Validation
+Form Data
+
+```typescript
+
+```
+
+Control State, Validity, and Error Messages
+
+```typescript
+
+```
+
+Form and Data Model
+
+```typescript
+
+```
+
+FormArrays
 
 ```typescript
 
@@ -1581,6 +1611,18 @@ export class MyService {
     return this.http.delete<any>(`utl/${id}`);
   }
 }
+```
+
+Options—Headers/Params
+
+```typescript
+
+```
+
+Options—Observe/Response Type
+
+```typescript
+
 ```
 
 ## Module
@@ -1747,6 +1789,24 @@ Angular Router is a mechanism in which navigation happens from one view to the n
 
 ```
 
+Required Route Params
+
+```typescript
+
+```
+
+Navigating in app
+
+```typescript
+
+```
+
+Optional Route Params
+
+```typescript
+
+```
+
 ### Params
 
 ```jsx
@@ -1889,6 +1949,36 @@ CanActivateChild
 
 ```
 
+API/Server Calls and CORS
+
+```typescript
+
+```
+
+Different Environments
+
+```typescript
+
+```
+
+Caching
+
+```typescript
+
+```
+
+Production Build
+
+```typescript
+
+```
+
+Base Href
+
+```typescript
+
+```
+
 **ng-container** - A special element that can hold structural directives without adding new elements to the DOM.
 
 ```html
@@ -1912,6 +2002,12 @@ npm run dev:ssr
 ## Angular Animations
 
 Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
+
+Deploying an Angular Application
+
+```typescript
+
+```
 
 ## Learn more from GitHub Repositories
 
