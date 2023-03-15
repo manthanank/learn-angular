@@ -1317,7 +1317,25 @@ export class ProfileEditorComponent {
 </div>
 ```
 
-## Forms Validation
+Form Data
+
+```typescript
+
+```
+
+Control State, Validity, and Error Messages
+
+```typescript
+
+```
+
+Form and Data Model
+
+```typescript
+
+```
+
+FormArrays
 
 ```typescript
 
@@ -1438,6 +1456,18 @@ export class MyService {
     return this.http.delete<any>(`utl/${id}`);
   }
 }
+```
+
+Options—Headers/Params
+
+```typescript
+
+```
+
+Options—Observe/Response Type
+
+```typescript
+
 ```
 
 ## Module
@@ -1604,6 +1634,24 @@ Angular Router is a mechanism in which navigation happens from one view to the n
 
 ```
 
+Required Route Params
+
+```typescript
+
+```
+
+Navigating in app
+
+```typescript
+
+```
+
+Optional Route Params
+
+```typescript
+
+```
+
 ### Params
 
 ```jsx
@@ -1746,6 +1794,36 @@ CanActivateChild
 
 ```
 
+API/Server Calls and CORS
+
+```typescript
+
+```
+
+Different Environments
+
+```typescript
+
+```
+
+Caching
+
+```typescript
+
+```
+
+Production Build
+
+```typescript
+
+```
+
+Base Href
+
+```typescript
+
+```
+
 **ng-container** - A special element that can hold structural directives without adding new elements to the DOM.
 
 ```html
@@ -1769,6 +1847,12 @@ npm run dev:ssr
 ## Angular Animations
 
 Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
+
+Deploying an Angular Application
+
+```typescript
+
+```
 
 ## Learn more from GitHub Repositories
 
