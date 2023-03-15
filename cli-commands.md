@@ -71,6 +71,12 @@ ng serve --port=portname
 ng serve --port=3000
 ```
 
+Run project and open the url in default browser
+
+```jsx
+ng  serve --open
+```
+
 Update
 
 ```jsx
