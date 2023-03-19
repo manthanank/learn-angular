@@ -1918,6 +1918,7 @@ Deploying an Angular Application
 - [Devstackr](https://www.youtube.com/@Devstackr)
 - [David Acosta](https://www.youtube.com/@davidacosta4611)
 - [Testy Codiez](https://www.youtube.com/@TestyCodiez)
+- [CodAffection](https://www.youtube.com/@CodAffection)
 
 ## Learn More From Blogs Sites
 
