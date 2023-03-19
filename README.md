@@ -1896,6 +1896,7 @@ Deploying an Angular Application
 - [Rangle.io](https://angular-training-guide.rangle.io/)
 - [Angular 2 Succinctly](https://www.syncfusion.com/succinctly-free-ebooks/angular2-succinctly)
 - [Angular2Book](https://goalkicker.com/Angular2Book/)
+- [Learning Angular: A no-nonsense guide to building web applications with Angular 15, 4th Edition](https://a.co/d/epVsJMG)
 
 ## Learn from YouTube Channels
 
