@@ -20,6 +20,8 @@
 - [Observables](#observables-in-angular)
 - [JIT](#jit)
 - [AOT](#aot)
+- [CLI Commands](#cli-commands)
+- [Imports](#imports)
 - [Learn From GitHub Repositories](#learn-more-from-github-repositories)
 - [Learn From Websites](#learn-more-from-websites)
 - [Learn From Books](#learn-more-from-books)
@@ -2007,6 +2009,211 @@ Deploying an Angular Application
 
 ```typescript
 
+```
+
+## CLI Commands
+
+Installing Angular CLI
+
+```bash
+npm install -g @angular/cli
+```
+
+Help
+
+```jsx
+ng help
+```
+
+Check version
+
+```jsx
+ng version
+```
+
+Create, build, and serve a new, basic Angular project cli command
+
+```jsx
+ng new my-first-project
+cd my-first-project
+ng serve
+```
+
+Generating new application
+
+```bash
+ng new app-name
+```
+
+Create new app without installing cli
+
+```bash
+npm init @angular app-name
+```
+
+Component
+
+```bash
+ng g c component-name
+ng generate component component-name
+```
+
+Adding External libraries
+
+```jsx
+ng add
+```
+
+Build
+
+```jsx
+ng build
+```
+
+Running project
+
+```jsx
+ng serve
+```
+
+Run project on particular port
+
+```jsx
+ng serve --port=portname
+// example
+ng serve --port=3000
+```
+
+Run project and open the url in default browser
+
+```jsx
+ng  serve --open
+```
+
+Update
+
+```jsx
+ng update
+```
+
+Directive
+
+```bash
+ng generate directive component-name
+ng g directive component-name
+```
+
+Module
+
+```bash
+ng generate module module-name
+ng g m module-name
+```
+
+Service
+
+```bash
+ng generate service component-name
+ng g service component-name
+```
+
+Routing Module
+
+```bash
+ng g module module-name --routing
+ng g m module-name --routing
+```
+
+Component with module, routing module
+
+```bash
+ng generate module component-name --route component-name --module app.module
+```
+
+Pipe
+
+```bash
+ng g pipe pipe-name
+```
+
+Enum
+
+```bash
+ng g enum some-enum
+```
+
+Class
+
+```bash
+ng g cl my-class
+```
+
+Interface
+
+```bash
+ng g interface my-interface
+```
+
+Guard
+
+```bash
+ng g guard guard-name
+```
+
+Multiple Projects in one Angular App
+
+```bash
+ng generate application sub-app-name
+
+ng new app-name --create-application=false
+```
+
+Generate environments
+
+```jsx
+ng generate environments
+```
+
+## Imports
+
+HttpCientModule
+
+```javascript
+import { HttpCientModule } from '@angular/common/http';
+```
+
+FormsModule
+
+```javascript
+import { FormsModule } from '@angular/forms';
+```
+
+ReactiveFormsModule
+
+```javascript
+import { ReactiveFormsModule } from '@angular/forms';
+```
+
+RxJS
+
+```javascript
+import { } from 'rxjs';
+```
+
+Firebase
+
+```jsx
+import { AngularFireModule } from "@angular/fire/compat";
+
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
+import { AngularFireStorage } from '@angular/fire/storage';
 ```
 
 ## Learn more from GitHub Repositories
