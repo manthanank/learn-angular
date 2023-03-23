@@ -1,6 +1,7 @@
 {
   "name": "learn-angular",
   "version": "0.0.0",
+  "description": "Complete Angular with all resources to learn.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +9,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^15.2.0",
     "@angular/cdk": "^15.2.0",
