@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/manthanank/learn-angular/compare/v1.2.0...v1.3.0) (2023-04-09)
+
+
+### Features
+
+* updated ([e01d73b](https://github.com/manthanank/learn-angular/commit/e01d73b8c01ef9d9218b010548d73c8db1f399eb))
+
+
+
 # [1.2.0](https://github.com/manthanank/learn-angular/compare/v1.1.0...v1.2.0) (2023-03-29)
 
 
