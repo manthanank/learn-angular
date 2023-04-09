@@ -116,10 +116,10 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
-"@angular/animations@^15.0.0 || ^16.0.0", "@angular/animations@^15.2.0", "@angular/animations@15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/animations/-/animations-15.2.0.tgz"
-  integrity sha512-Hh/ijBlHsFlr6vR7e9KZgFpdQf+ebr3uIDDRsVHjRkt8utsv3CpUcJkb75UyTv+Ok5gYmfsI1Lj1CDYujyA0Fg==
+"@angular/animations@^15.0.0 || ^16.0.0", "@angular/animations@^15.2.6", "@angular/animations@15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/animations/-/animations-15.2.6.tgz"
+  integrity sha512-2fEhhj7xTzWHD61B502eXwDclsurkOK7CU+iRdl8EAtEobLRt62sG/XHmJ71UaaniWyI/H0sUSEJuF8TIPcaoQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -156,17 +156,17 @@
     symbol-observable "4.0.0"
     yargs "17.6.2"
 
-"@angular/common@^15.0.0 || ^16.0.0", "@angular/common@^15.2.0", "@angular/common@15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/common/-/common-15.2.0.tgz"
-  integrity sha512-B+e5pbkvlwlSwlQjtDrYQq+Xs62mScWm1plEZRHQm3cjBhA0RFT3MiUa/YNaHv8VoGjlrOm1rdJVEVQQxroZTg==
+"@angular/common@^15.0.0 || ^16.0.0", "@angular/common@^15.2.6", "@angular/common@15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/common/-/common-15.2.6.tgz"
+  integrity sha512-kPGJoSkFPXsIeHzcjlal8JC8/jYK9qAr+wv+HDX8O1J2FEzQjwoX4SYvpnvVk5WTqUkxMkRCTMu2YFAAmU1+qg==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/compiler-cli@^15.0.0", "@angular/compiler-cli@^15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/compiler-cli/-/compiler-cli-15.2.0.tgz"
-  integrity sha512-ETnRBdY/LGcmDRQ9GQc9KyCd1kuRnj+Y9luq2dCTMysP+NgylmYoGDsJOsDKm6SzPo+B4PSAyHX2J4CVQFHpPg==
+"@angular/compiler-cli@^15.0.0", "@angular/compiler-cli@^15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/compiler-cli/-/compiler-cli-15.2.6.tgz"
+  integrity sha512-GHwL4l+NkaUGGdypF+nMFWCmTqvGusTzIriIwpnp38wc8lpmVME2jVodB6sHAkrxFmaHXU/gOCDFK4AnOi6Gmw==
   dependencies:
     "@babel/core" "7.19.3"
     "@jridgewell/sourcemap-codec" "^1.4.14"
@@ -179,24 +179,24 @@
     tslib "^2.3.0"
     yargs "^17.2.1"
 
-"@angular/compiler@^15.2.0", "@angular/compiler@15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/compiler/-/compiler-15.2.0.tgz"
-  integrity sha512-bGMc8xBs/3l5Ab2PmGGifuWVLxCzmYQPXeBYrwpmy+aYCwGzuVKxQp6L1UjA0OZNra7Am8bu4mOsLSR9ENdX6w==
+"@angular/compiler@^15.2.6", "@angular/compiler@15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/compiler/-/compiler-15.2.6.tgz"
+  integrity sha512-6oBAIY5KcC1UNsrnWGLcopZ9RD7c0HzpTCQY46N6HytHtUjBvzLbGWZu5MfahPtIjKz9FMVYBX9hugcbVpWnTA==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^15.0.0 || ^16.0.0", "@angular/core@^15.2.0", "@angular/core@15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/core/-/core-15.2.0.tgz"
-  integrity sha512-UNHNcW3NqzMbG5gMjzXhb4xHrJcZq8rFdLwTLntB0oo2I/WxQFVlxz28nrW+Y09DbJf02MCASBLxD9If/6eT3g==
+"@angular/core@^15.0.0 || ^16.0.0", "@angular/core@^15.2.6", "@angular/core@15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/core/-/core-15.2.6.tgz"
+  integrity sha512-eN46OfSOLQGN6AciUvyHOJ8xQxmiEakkxJeoG1jwcSRXCjwSYYnQ/6drnhUpq5p43XXBAIduKfJXNztEPvLAkA==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@^15.0.0 || ^16.0.0", "@angular/forms@^15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/forms/-/forms-15.2.0.tgz"
-  integrity sha512-a93ysagAhbbyNbWM1yjWcPZaZBNrNjZ6SNIQYyelqySeShStXlKrDxYY5q7G/qqGpQzg2YF5qCIOOQxJJA9//g==
+"@angular/forms@^15.0.0 || ^16.0.0", "@angular/forms@^15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/forms/-/forms-15.2.6.tgz"
+  integrity sha512-SdZxsE9MUOVMz0FjOwtx1RN/SGpObnAyZBqXNrN0c4BmJg+faJzvKIBBN102CKpWZOGRoq2YYrgxow9StMhxTw==
   dependencies:
     tslib "^2.3.0"
 
@@ -254,24 +254,24 @@
     "@material/typography" "15.0.0-canary.684e33d25.0"
     tslib "^2.3.0"
 
-"@angular/platform-browser-dynamic@^15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-15.2.0.tgz"
-  integrity sha512-OErEz/AX9S6I+RJUrFS/r9mF0rJGF1bhAvPjNvyc4mL+ai9JWZB6JgrZPzEz3v0nXG8SsAvnB1wJdKCp90Ed2g==
+"@angular/platform-browser-dynamic@^15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-15.2.6.tgz"
+  integrity sha512-ZSyiigpxBWIM5f8t/a28Y3BCzHn1FtI2KsJysE7di5UUflOzwbxbfycVlpiZp0girbDYRyF18vvefvitNh17Gw==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser@^15.0.0 || ^16.0.0", "@angular/platform-browser@^15.2.0", "@angular/platform-browser@15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-15.2.0.tgz"
-  integrity sha512-+FB+KMoRHktF/MR7hn8ofubVLpu3+KZpudupKlxthPSL2KPMJn6h00ewrJDv3W+MtpqphqCjQSLmKpzw2UKKug==
+"@angular/platform-browser@^15.0.0 || ^16.0.0", "@angular/platform-browser@^15.2.6", "@angular/platform-browser@15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-15.2.6.tgz"
+  integrity sha512-8afckDEWfYf+cyxs2SboZBJkiCwFgYE8IH24RUW1t3zLC+wfrTr7UEfrCoD4YJRVJdqnPoRWN5gjz98n3n4zsA==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/router@^15.2.0":
-  version "15.2.0"
-  resolved "https://registry.npmjs.org/@angular/router/-/router-15.2.0.tgz"
-  integrity sha512-FPmGP7DmJtzqgmM7FMs8bfe3vX0r6cdI4zbHMEVv7Zbn/yApgAzAsX7MXJYy7Oi45S6ZTH7SIVHVYVAqay1NVQ==
+"@angular/router@^15.2.6":
+  version "15.2.6"
+  resolved "https://registry.npmjs.org/@angular/router/-/router-15.2.6.tgz"
+  integrity sha512-yB9uc9Xi9N0dErsugleywBA1KYG+GQ9WWSlri34oe2VsCqZazImn71n4wKPtrm2Xiy/mI23wJcr+jiCAtzp49Q==
   dependencies:
     tslib "^2.3.0"
 
@@ -6747,7 +6747,7 @@ yargs@^17.2.1, yargs@17.6.2:
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
 
-"zone.js@~0.11.4 || ~0.12.0", zone.js@~0.12.0:
+"zone.js@~0.11.4 || ~0.12.0 || ~0.13.0", zone.js@~0.12.0:
   version "0.12.0"
   resolved "https://registry.npmjs.org/zone.js/-/zone.js-0.12.0.tgz"
   integrity sha512-XtC+I5dXU14HrzidAKBNMqneIVUykLEAA1x+v4KVrd6AUPWlwYORF8KgsVqvgdHiKZ4BkxxjvYi/ksEixTPR0Q==
