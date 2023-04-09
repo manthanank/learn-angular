@@ -32,14 +32,6 @@
 - [List of Twitter Users](#list-of-twitter-users)
 - [List of LinkedIn Users](#list-of-linkedin-users)
 
-Other Pages
-
-- [CLI Commands](/cli-commands.md)
-- [Snippets](/snippets.md)
-- [Imports](/imports.md)
-- [RxJs](/rxjs.md)
-- [TypeScript](/typescript.md)
-
 ## Introduction
 
 **Angular** is a platform and framework for building single-page client applications using HTML and TypeScript.
