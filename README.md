@@ -1998,7 +1998,78 @@ npm run dev:ssr
 
 Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
 
-Deploying an Angular Application
+## Meta tags
+
+Meta Service
+
+```jsx
+import { BrowserModule, Meta } from '@angular/platform-browser';
+```
+
+```jsx
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [Meta],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+```jsx
+import { Component, OnInit } from '@angular/core';
+import { Meta, MetaDefinition } from '@angular/platform-browser';
+ 
+@Component({
+  template: `<h1>App Component</h1>`
+})
+export class AppComponent implements OnInit {
+  title = 'App Component';
+ 
+  constructor(private metaService:Meta){
+  }
+ 
+  ngOnInit() {
+    this.metaService.addTag( { name:'description',content:"Article Description"});
+  }
+ 
+}
+```
+
+Adding Tags with addTag() & addTags()
+
+```jsx
+
+```
+
+```jsx
+
+```
+
+Reading the Tags with getTag()
+
+```jsx
+
+```
+
+Update the Tag with updateTag()
+
+```jsx
+
+```
+
+Removing the Tag with removeTag()
+
+```jsx
+
+```
+
+## Deploying an Angular Application
 
 ```typescript
 
