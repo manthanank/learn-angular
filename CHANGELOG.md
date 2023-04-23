@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/manthanank/learn-angular/compare/v1.3.0...v1.4.0) (2023-04-23)
+
+
+### Features
+
+* added meta tags ([69dfb4e](https://github.com/manthanank/learn-angular/commit/69dfb4e384198e84f696a407f61a7eaea41690a9))
+
+
+
 # [1.3.0](https://github.com/manthanank/learn-angular/compare/v1.2.0...v1.3.0) (2023-04-09)
 
 
