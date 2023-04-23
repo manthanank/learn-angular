@@ -21,6 +21,7 @@
 - [Observables](#observables-in-angular)
 - [JIT](#jit)
 - [AOT](#aot)
+- [Meta Tags](#meta-tags)
 - [CLI Commands](#cli-commands)
 - [Imports](#imports)
 - [Learn From GitHub Repositories](#learn-more-from-github-repositories)
