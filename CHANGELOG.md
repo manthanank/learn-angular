@@ -1,3 +1,14 @@
+# [1.6.0](https://github.com/manthanank/learn-angular/compare/v1.5.0...v1.6.0) (2023-04-24)
+
+
+### Features
+
+* updated ([8c5c19b](https://github.com/manthanank/learn-angular/commit/8c5c19b5c3f2c1908df236283d3609bf845a3309))
+* updated ([ebe0539](https://github.com/manthanank/learn-angular/commit/ebe053994e4d45c2203329b8f40b7c53441d6500))
+* updated ([af0382d](https://github.com/manthanank/learn-angular/commit/af0382ddbebe85e7cd47fa40159b4e9880037794))
+
+
+
 # [1.5.0](https://github.com/manthanank/learn-angular/compare/v1.4.0...v1.5.0) (2023-04-23)
 
 
@@ -31,16 +42,6 @@
 ### Features
 
 * added npm downloads badge ([f2c0515](https://github.com/manthanank/learn-angular/commit/f2c05151bcb3b843c566184a8651dd6d3d24e3f9))
-
-
-
-# [1.1.0](https://github.com/manthanank/learn-angular/compare/cd4b725c1f0256aa8588f4771fdbd4c949b59712...v1.1.0) (2023-03-27)
-
-
-### Features
-
-* added release yml and json file ([c3c7db7](https://github.com/manthanank/learn-angular/commit/c3c7db73eb02a880c3b0a8267ed224eb5115984e))
-* docker added ([cd4b725](https://github.com/manthanank/learn-angular/commit/cd4b725c1f0256aa8588f4771fdbd4c949b59712))
 
 
 
