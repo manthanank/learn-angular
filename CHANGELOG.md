@@ -1,3 +1,13 @@
+# [1.7.0](https://github.com/manthanank/learn-angular/compare/v1.6.0...v1.7.0) (2023-04-26)
+
+
+### Features
+
+* added title service & its ex ([d763604](https://github.com/manthanank/learn-angular/commit/d763604930e175a2e4af68e4a7f560143362cf01))
+* updated title service & its ex ([d4eb626](https://github.com/manthanank/learn-angular/commit/d4eb626f888f939fadefce3a129e120545a32274))
+
+
+
 # [1.6.0](https://github.com/manthanank/learn-angular/compare/v1.5.0...v1.6.0) (2023-04-24)
 
 
@@ -33,15 +43,6 @@
 ### Features
 
 * updated ([e01d73b](https://github.com/manthanank/learn-angular/commit/e01d73b8c01ef9d9218b010548d73c8db1f399eb))
-
-
-
-# [1.2.0](https://github.com/manthanank/learn-angular/compare/v1.1.0...v1.2.0) (2023-03-29)
-
-
-### Features
-
-* added npm downloads badge ([f2c0515](https://github.com/manthanank/learn-angular/commit/f2c05151bcb3b843c566184a8651dd6d3d24e3f9))
 
 
 
