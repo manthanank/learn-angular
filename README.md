@@ -2001,6 +2001,157 @@ Angular's animation system is built on CSS functionality in order to animate any
 
 ## Meta tags
 
+Title Service
+
+```jsx
+import { BrowserModule, Title } from '@angular/platform-browser';
+```
+
+```jsx
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [Title],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+```jsx
+export class TitleComponent implements OnInit {
+  constructor(private title:Title) { }
+}
+```
+
+```jsx
+ngOnInit() {
+  this.title.setTitle("Learn Angular")
+}
+```
+
+```jsx
+import { Component, OnInit } from '@angular/core';
+import { Title, MetaDefinition } from '@angular/platform-browser';
+ 
+@Component({
+  template: `<h1>App Component</h1>`
+})
+export class AppComponent implements OnInit {
+  title = 'App Component';
+ 
+  constructor(private title:Title){
+  }
+ 
+  ngOnInit() {
+    this.title.setTitle("Learn Angular")
+  }
+ 
+}
+```
+
+Title Service
+
+```jsx
+// app.module.ts
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+ 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
+ 
+@NgModule({
+  declarations: [
+    AppComponent, HomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [Title],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+```jsx
+// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home.component';
+
+const routes: Routes = [
+  {path: 'home', component:HomeComponent},
+];
+ 
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+```jsx
+// app.component.ts
+import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+ 
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Title Service Example';
+ 
+  constructor(private titleService:Title) {
+  }
+ 
+  ngOnInit() {
+    this.titleService.setTitle(this.title);
+  }
+}
+```
+
+```html
+<!-- app.component.html -->
+<h1>Title Service Example</h1>
+ 
+<ul>
+  <li><a [routerLink]="['/home']">Home</a> </li>
+</ul>
+ 
+<router-outlet></router-outlet>
+```
+
+```typescript
+// home.component.ts
+@Component({
+  template: `<h1>Home Component</h1>`
+})
+export class HomeComponent implements OnInit {
+  title = 'Home Component Title';
+ 
+  constructor(private titleService:Title){
+  }
+ 
+  ngOnInit() {
+    this.titleService.setTitle(this.title);
+  }
+ 
+}
+```
+
 Meta Service
 
 ```jsx
