@@ -22,6 +22,9 @@
 - [JIT](#jit)
 - [AOT](#aot)
 - [Meta Tags](#meta-tags)
+  - [Title Service](#title-service)
+    - [Dynamic Title](#dynamic-title)
+  - [Meta Service](#meta-service)
 - [CLI Commands](#cli-commands)
 - [Imports](#imports)
 - [Learn From GitHub Repositories](#learn-more-from-github-repositories)
@@ -2001,7 +2004,7 @@ Angular's animation system is built on CSS functionality in order to animate any
 
 ## Meta tags
 
-Title Service
+### Title Service
 
 ```jsx
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -2059,7 +2062,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Title Service
+### Title Service Example
 
 ```jsx
 // app.module.ts
@@ -2136,6 +2139,9 @@ export class AppComponent {
 
 ```typescript
 // home.component.ts
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
 @Component({
   template: `<h1>Home Component</h1>`
 })
@@ -2152,7 +2158,172 @@ export class HomeComponent implements OnInit {
 }
 ```
 
-Meta Service
+### Dynamic Title
+
+```jsx
+// app.module.ts
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+ 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
+ 
+@NgModule({
+  declarations: [
+    AppComponent, HomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [Title],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+```jsx
+// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home.component';
+import { PParentComponent } from './parent.component';
+import { ChildComponent } from './child.component';
+
+const routes: Routes = [
+  {path: '', component:HomeComponent, data : {title:'Title for Home Component'}},
+  {path: 'parent', component:ParentComponent, data : {title:'Title for Parent Component'},
+    children: [
+      { path: 'child', component:ChildComponent, data : {title:'Title for Child Component'}}
+    ]
+  },
+];
+ 
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+```jsx
+// app.component.ts
+import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+ 
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+ constructor(
+  private router: Router,
+  private activatedRoute: ActivatedRoute,
+  private titleService: Title
+  ) { }
+ 
+  ngOnInit() {
+ 
+    this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd),
+      )
+      .subscribe(() => {
+ 
+        var rt = this.getChild(this.activatedRoute)
+ 
+        rt.data.subscribe(data => {
+          console.log(data);
+          this.titleService.setTitle(data.title)})
+      })
+ 
+  }
+ 
+  getChild(activatedRoute: ActivatedRoute) {
+    if (activatedRoute.firstChild) {
+      return this.getChild(activatedRoute.firstChild);
+    } else {
+      return activatedRoute;
+    }
+ 
+  }
+}
+```
+
+```html
+<!-- app.component.html -->
+<h1>Dynamic Title Example</h1>
+ 
+<ul>
+  <li><a routerLink="">Home</a> </li>
+  <li><a [routerLink]="['/parent']">Parent</a> </li>
+  <li><a [routerLink]="['/child']">Child</a> </li>
+</ul>
+ 
+<router-outlet></router-outlet>
+```
+
+```typescript
+// home.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  template: `<h1>Home Component</h1>`
+})
+export class HomeComponent implements OnInit {
+ 
+  constructor(){
+  }
+ 
+  ngOnInit() {
+  }
+ 
+}
+```
+
+```typescript
+// parent.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  template: `<h1>Parent Component</h1>
+  <router-outlet></router-outlet>
+  `
+})
+export class ParentComponent implements OnInit {
+ 
+  constructor(){
+  }
+ 
+  ngOnInit() {
+  }
+ 
+}
+```
+
+```typescript
+// child.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  template: `<h1>Child Component</h1>`
+})
+export class ChildComponent implements OnInit {
+ 
+  constructor(){
+  }
+ 
+  ngOnInit() {
+  }
+ 
+}
+```
+
+### Meta Service
 
 ```jsx
 import { BrowserModule, Meta } from '@angular/platform-browser';
