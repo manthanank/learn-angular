@@ -10,6 +10,8 @@
 - [Configuration](#configuration)
 - [Components](#components)
 - [Data Binding](#data-binding)
+  - [One Way Binding](#one-way-binding)
+  - [Two Way Binding](#two-ways-binding)
 - [Directives](#directives)
   - [Structural Directives](#structural-directives)
   - [Attribute Directives](#attribute-directives)
@@ -270,9 +272,9 @@ export class AppComponent {
 
 ## Data binding
 
-### 1. One way binding
+### One way binding
 
-### a. From Component to View
+a. From Component to View
 
 **Interpolation** -
 
@@ -401,7 +403,7 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bhqsgc?file=src/app/app.component.html)
 
-### b. From View to Component
+b. From View to Component
 
 **Event binding** - This allows for binding an event of an HTML element to a method in the component's class. It is denoted by parentheses (()).
 
@@ -439,7 +441,7 @@ The (change) event can also be specifically implemented by other Angular compone
 
 [☝️Source of Explaination](https://stackoverflow.com/a/51127794/14292971)
 
-### 2. Two ways binding
+### Two ways binding
 
 This allows for binding a property of an HTML element to a property in the component's class and vice-versa. This is done by using a combination of property binding and event binding. It is denoted by `[(ngModel)]`.
 
