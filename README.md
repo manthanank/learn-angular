@@ -24,6 +24,8 @@
   - [Percent Pipe](#percent-pipe)
   - [Slice Pipe](#slice-pipe)
   - [Decimal/number Pipe](#decimalnumber-pipe)
+  - [JSON Pipe](#json-pipe)
+  - [Async Pipe](#async-pipe)
 - [Decorators](#decorators)
   - [Input](#input)
   - [Output](#output)
@@ -859,6 +861,18 @@ export class AppModule {}
 
 ```html
 <p>{{ 123456.78 | number:'3.2-3' }}</p>
+```
+
+### JSON Pipe
+
+```html
+<p>{{data | json}}</p>
+```
+
+### Async Pipe
+
+```html
+<p>{{data | async}}</p>
 ```
 
 [Back to top⤴️](#contents)
