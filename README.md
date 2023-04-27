@@ -2,6 +2,9 @@
 
 <!-- ![Logo](./assets/angular.svg) -->
 ![npm](https://img.shields.io/npm/dw/learn-angular)
+![npm](https://img.shields.io/npm/dm/learn-angular)
+![npm](https://img.shields.io/npm/dy/learn-angular)
+![npm](https://img.shields.io/npm/dt/learn-angular)
 
 ## Contents
 
@@ -54,6 +57,8 @@
   - [Meta Service](#meta-service)
 - [CLI Commands](#cli-commands)
 - [Imports](#imports)
+- [TypeScript](#typescript)
+- [RxJS](#rxjs)
 - [Learn From GitHub Repositories](#learn-more-from-github-repositories)
 - [Learn From Websites](#learn-more-from-websites)
 - [Learn From Books](#learn-more-from-books)
@@ -2659,6 +2664,14 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { AngularFireStorage } from '@angular/fire/storage';
 ```
+
+## TypeScript
+
+TypeScript is JavaScript with syntax for types.
+
+## Rxjs
+
+**Reactive Extensions Library for JavaScript** - RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
 
 ## Learn more from GitHub Repositories
 
