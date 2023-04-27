@@ -10,10 +10,33 @@
 - [Configuration](#configuration)
 - [Components](#components)
 - [Data Binding](#data-binding)
-- [Directives](#angular-directives)
+- [Directives](#directives)
+  - [Structural Directives](#structural-directives)
+  - [Attribute Directives](#attribute-directives)
+  - [Custom Directives](#custom-directives)
 - [Pipes](#pipes)
+  - [Date Pipe](#date-pipe)
+  - [Uppercase Pipe](#uppercase-pipe)
+  - [Lowercase Pipe](#lowercase-pipe)
+  - [Currency Pipe](#currency-pipe)
+  - [Percent Pipe](#percent-pipe)
+  - [Slice Pipe](#slice-pipe)
+  - [Decimal/number Pipe](#decimalnumber-pipe)
 - [Decorators](#decorators)
+  - [Input](#input)
+  - [Output](#output)
+  - [HostListener](#hostlistener)
+  - [ContentChild & ContentChildren](#contentchild--contentchildren)
+  - [ViewChild & ViewChildren](#viewchild--viewchildren)
 - [Life Cycle Hooks](#life-cycle-hooks)
+  - [OnChanges](#onchanges)
+  - [OnInit](#oninit)
+  - [DoCheck](#docheck)
+  - [AfterViewInit](#afterviewinit)
+  - [AfterViewChecked](#afterviewchecked)
+  - [AfterContentInit](#aftercontentinit)
+  - [AfterContentChecked](#aftercontentchecked)
+  - [OnDestroy](#ondestroy)
 - [Forms](#forms)
 - [Http](#http)
 - [Module](#module)
@@ -444,11 +467,11 @@ export class AppComponent {
 
 [Back to top⤴️](#contents)
 
-## Angular Directives
+## Directives
 
 Directives add behaviour to an existing DOM element or an existing component instance.
 
-### Structural DIrectives -
+### Structural Directives
 
 **ngFor** -
 
@@ -653,7 +676,7 @@ Expression | pipeOperator[:pipeArguments]
 # pipeArguments: arguments to the Pipe
 ```
 
-Date Pipe
+### Date Pipe
 
 ```html
 <h1>Date Pipe Example</h1>
@@ -696,7 +719,7 @@ import { DatePipe } from '@angular/common';
 export class AppModule {}
 ```
 
-Uppercase Pipe
+### Uppercase Pipe
 
 ```html
 <h1>Upper Case Pipe Example</h1>
@@ -716,7 +739,7 @@ export class AppComponent {
 }
 ```
 
-Lowercase Pipe
+### Lowercase Pipe
 
 ```html
 <p>{{ name | lowercase }}</p>
@@ -735,7 +758,7 @@ export class AppComponent {
 }
 ```
 
-Currency Pipe
+### Currency Pipe
 
 ```html
 <h1>Currency Pipe Example</h1>
@@ -779,7 +802,7 @@ import { CurrencyPipe } from '@angular/common';
 export class AppModule {}
 ```
 
-Percent Pipe
+### Percent Pipe
 
 ```html
 <h1>Percent Pipe Example</h1>
@@ -824,13 +847,13 @@ import { PercentPipe } from '@angular/common';
 export class AppModule {}
 ```
 
-Slice Pipe
+### Slice Pipe
 
 ```typescript
 <p>{{ ['apple', 'banana', 'orange', 'mango'] | slice:1:3 }}</p>
 ```
 
-Decimal/number Pipe
+### Decimal/number Pipe
 
 ```html
 <p>{{ 123456.78 | number:'3.2-3' }}</p>
@@ -842,7 +865,7 @@ Decimal/number Pipe
 
 Decorators are design patterns used to isolate the modification or decoration of a class without modifying the source code.
 
-**Input** -
+### Input
 
 ```ts
 import { Component, Input, OnInit } from '@angular/core';
@@ -910,7 +933,7 @@ import { ParentComponent } from './parent/parent.component';
 export class AppModule {}
 ```
 
-**Output** -
+### Output
 
 ```ts
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
@@ -965,7 +988,7 @@ export class ParentComponent implements OnInit {
 <app-parent></app-parent>
 ```
 
-HostListener
+### HostListener
 
 ```html
 <h1>@HostListener Decorator Example</h1>
@@ -988,7 +1011,7 @@ export class AppComponent {
 }
 ```
 
-contentChild & contentChildren
+### contentChild & contentChildren
 
 ```ts
 import {
@@ -1031,7 +1054,7 @@ export class ParentComponent implements OnInit {
 <app-parent></app-parent>
 ```
 
-viewChild & viewChildren
+### viewChild & viewChildren
 
 ```ts
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
@@ -1066,7 +1089,9 @@ export class AppComponent  {
 
 ![lifecycle-hooks](/src/assets/lifecycle-hooks.png)
 
-**ngOnChanges** - It is called when any data-bound property of a directive or component changes.
+### OnChanges
+
+It is called when any data-bound property of a directive or component changes.
 
 ```html
 <form>
@@ -1114,7 +1139,9 @@ export class TestComponent implements OnChanges {
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-ivy-19r5mc?file=src/app/test/test.component.ts)
 
-**ngOnInit** - It is called after a component has been initialized and its data-bound properties have been checked for the first time.
+### OnInit
+
+It is called after a component has been initialized and its data-bound properties have been checked for the first time.
 
 ```ts
 import { Component } from '@angular/core';
@@ -1135,7 +1162,9 @@ export class AppComponent {
 
 [Stackblits Link](https://stackblitz.com/edit/angular-ivy-hkmssz?file=src/app/app.component.html)
 
-**ngDoCheck** - It is called during every change detection cycle. It allows a component to detect and act upon changes that Angular can't detect on its own.
+### DoCheck
+
+It is called during every change detection cycle. It allows a component to detect and act upon changes that Angular can't detect on its own.
 
 ```ts
 import { Component, DoCheck } from '@angular/core';
@@ -1154,7 +1183,9 @@ export class AppComponent implements DoCheck {
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-ivy-f5msas?file=src/app/app.component.ts)
 
-**ngAfterViewInit** - It is called after app has fully initialized a component's view.
+### AfterViewInit
+
+It is called after app has fully initialized a component's view.
 
 ```ts
 import { AfterViewInit, Component } from '@angular/core';
@@ -1181,7 +1212,9 @@ export class AppComponent implements AfterViewInit{
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-wscf59?file=src/main.ts)
 
-**ngAfterViewChecked** - It is called after the default change detector has completed checking a component's view for changes.
+### AfterViewChecked
+
+It is called after the default change detector has completed checking a component's view for changes.
 
 ```ts
 import { AfterViewChecked, Component } from '@angular/core';
@@ -1207,7 +1240,9 @@ export class AppComponent implements AfterViewChecked {
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-wnwfnv?file=src/main.ts)
 
-**ngAfterContentInit** - It is called after Angular has fully initialized all content of a directive.
+### AfterContentInit
+
+It is called after Angular has fully initialized all content of a directive.
 
 ```ts
 import { AfterContentInit, Component } from '@angular/core';
@@ -1233,7 +1268,9 @@ export class AppComponent implements AfterContentInit {
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-qhy7cw?file=src/main.ts)
 
-**ngAfterContentChecked** - It is called after the default change detector has completed checking all content of a directive.
+### AfterContentChecked
+
+It is called after the default change detector has completed checking all content of a directive.
 
 ```ts
 import { AfterContentInit, Component } from '@angular/core';
@@ -1259,7 +1296,9 @@ export class AppComponent implements AfterContentInit {
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-ryx2uh?file=src/main.ts)
 
-**ngOnDestroy** - It is called just before a component or directive is destroyed. It is a good place to clean up any subscriptions or detach any event handlers to avoid memory leaks.
+### OnDestroy
+
+It is called just before a component or directive is destroyed. It is a good place to clean up any subscriptions or detach any event handlers to avoid memory leaks.
 
 ```ts
 import { Component, OnDestroy, OnInit } from '@angular/core';
