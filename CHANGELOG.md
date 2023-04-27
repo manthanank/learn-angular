@@ -1,3 +1,14 @@
+# [1.11.0](https://github.com/manthanank/learn-angular/compare/v1.10.0...v1.11.0) (2023-04-27)
+
+
+### Features
+
+* updated ([491c3c3](https://github.com/manthanank/learn-angular/commit/491c3c3e241f81964b9946308ff226f54caee653))
+* updated ([b043d14](https://github.com/manthanank/learn-angular/commit/b043d148cebe58a96e3b2ed9e80642d041921d24))
+* updated ([e5a3c30](https://github.com/manthanank/learn-angular/commit/e5a3c306c50b7f9cd3531dc67b6f4c2659e6050b))
+
+
+
 # [1.10.0](https://github.com/manthanank/learn-angular/compare/v1.9.0...v1.10.0) (2023-04-27)
 
 
@@ -32,17 +43,6 @@
 
 * added title service & its ex ([d763604](https://github.com/manthanank/learn-angular/commit/d763604930e175a2e4af68e4a7f560143362cf01))
 * updated title service & its ex ([d4eb626](https://github.com/manthanank/learn-angular/commit/d4eb626f888f939fadefce3a129e120545a32274))
-
-
-
-# [1.6.0](https://github.com/manthanank/learn-angular/compare/v1.5.0...v1.6.0) (2023-04-24)
-
-
-### Features
-
-* updated ([8c5c19b](https://github.com/manthanank/learn-angular/commit/8c5c19b5c3f2c1908df236283d3609bf845a3309))
-* updated ([ebe0539](https://github.com/manthanank/learn-angular/commit/ebe053994e4d45c2203329b8f40b7c53441d6500))
-* updated ([af0382d](https://github.com/manthanank/learn-angular/commit/af0382ddbebe85e7cd47fa40159b4e9880037794))
 
 
 
