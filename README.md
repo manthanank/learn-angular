@@ -45,6 +45,7 @@
   - [AfterContentChecked](#aftercontentchecked)
   - [OnDestroy](#ondestroy)
 - [Forms](#forms)
+- [Signals](#signals)
 - [Http](#http)
 - [Module](#module)
 - [Router](#router)
@@ -1556,6 +1557,10 @@ FormArrays
 ```typescript
 
 ```
+
+## Signals
+
+A signal is a wrapper around a value that can notify interested consumers when that value changes. Signals can contain any value, from simple primitives to complex data structures.
 
 ## HTTP
 
