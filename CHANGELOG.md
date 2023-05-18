@@ -1,3 +1,12 @@
+# [1.24.0](https://github.com/manthanank/learn-angular/compare/v1.23.0...v1.24.0) (2023-05-18)
+
+
+### Features
+
+* added generate pdf yml ([5306670](https://github.com/manthanank/learn-angular/commit/5306670141c2601d53a57e18140429a85a39b252))
+
+
+
 # [1.23.0](https://github.com/manthanank/learn-angular/compare/v1.22.0...v1.23.0) (2023-05-18)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * added generate pdf yml ([36b1812](https://github.com/manthanank/learn-angular/commit/36b18120aa95fca41fe54c0ffac294daa4a93391))
-
-
-
-# [1.19.0](https://github.com/manthanank/learn-angular/compare/v1.18.0...v1.19.0) (2023-05-18)
-
-
-### Features
-
-* added generate pdf yml ([3c99105](https://github.com/manthanank/learn-angular/commit/3c99105e6016125e3f324c5d4e5f8c009fdff6eb))
 
 
 
