@@ -6,7 +6,7 @@ on:
       - main
     # Paths can be used to only trigger actions when you have edited certain files, such as a file within the /docs directory
     paths:
-      - '**.md'
+      - README.md
       - 'images/**'
 
 jobs:
@@ -17,8 +17,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: baileyjm02/markdown-to-pdf@v1
         with:
-          input_dir: docs
-          output_dir: assets
+          input_dir: README.md
+          output_dir: assets/README.pdf
           images_dir: docs/images
           # for example <img src="./images/file-name.png">
           image_import: ./images
