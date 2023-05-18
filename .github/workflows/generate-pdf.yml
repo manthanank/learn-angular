@@ -22,4 +22,4 @@ jobs:
       run: npm install markdown-pdf --global
       
     - name: Generate PDF
-      run: markdown-pdf readme.md --out assets/readme.pdf
+      run: markdown-pdf README.md --out assets/README.pdf
