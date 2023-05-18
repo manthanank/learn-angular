@@ -1111,7 +1111,7 @@ export class AppComponent  {
 
 ## Life Cycle Hooks
 
-![lifecycle-hooks](/src/assets/lifecycle-hooks.png)
+<!-- ![lifecycle-hooks](/src/assets/lifecycle-hooks.png) -->
 
 ### OnChanges
 
@@ -1965,7 +1965,7 @@ Ahead-of-Time (AOT) is a type of compilation that compiles your app at build tim
 
 ## JIT vs AOT
 
-![jitvsaot](./src/assets/jitvsaot.png)
+<!-- ![jitvsaot](./src/assets/jitvsaot.png) -->
 
 ## Route Guards
 
