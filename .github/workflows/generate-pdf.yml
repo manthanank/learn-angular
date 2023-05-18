@@ -1,23 +1,26 @@
-name: Generate PDF from Readme
+name: Generate PDF
 
 on:
   push:
     branches:
-      - main  # Change this to your default branch if necessary
+      - main # Change this to your branch name if necessary
 
 jobs:
-  generate-pdf:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install rsvg-convert
-      run: sudo apt-get install -y librsvg2-bin
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
 
-    - name: Install pdflatex
-      run: sudo apt-get install -y texlive-latex-base
+      - name: Install dependencies
+        run: npm install puppeteer
 
-    - name: Generate PDF
-      run: pandoc README.md -o assets/README.pdf
+      - name: Generate PDF
+        run: |
+          npx puppeteer print README.md --pdf ./assets/README.pdf
