@@ -13,5 +13,5 @@ jobs:
       - uses: BaileyJM02/markdown-to-pdf@v1
         with:
           input_path: README.md
-          output_dir: ./pdfs
+          output_dir: pdf
           build_pdf: true
