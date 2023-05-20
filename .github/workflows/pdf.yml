@@ -20,4 +20,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: pdf
-          path: pdfs/README.pdf
+          path: pdf/README.pdf
