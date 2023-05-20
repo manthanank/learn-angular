@@ -15,3 +15,9 @@ jobs:
           input_path: README.md
           output_dir: pdf
           build_pdf: true
+
+      - name: Upload PDF to GitHub Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf
+          path: pdfs/README.pdf
