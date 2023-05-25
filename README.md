@@ -46,6 +46,8 @@
   - [OnDestroy](#ondestroy)
 - [Forms](#forms)
 - [Signals](#signals)
+- [Angular Signals](#angular-signals)
+- [Destroy Ref](#destroy-ref)
 - [Http](#http)
 - [Module](#module)
 - [Router](#router)
@@ -1560,7 +1562,77 @@ FormArrays
 
 ## Signals
 
-A signal is a wrapper around a value that can notify interested consumers when that value changes. Signals can contain any value, from simple primitives to complex data structures.
+Signals serve as wrappers around values, offering the ability to notify interested consumers whenever the encapsulated value undergoes a change. These signals can accommodate a wide range of values, encompassing both basic primitives and intricate data structures.
+
+## Angular Signals
+
+Angular Signals is a powerful system that provides detailed monitoring of state usage within an application, enabling the framework to efficiently optimize rendering updates.
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { signal } from '@angular/cdk/platform-browser';
+
+ @Component({
+    selector: 'my-app',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+
+count = signal(0);
+
+constructor() { }
+
+ngOnInit() {
+   this.count.subscribe(value => {
+      console.log('Count changed to', value);
+   });
+}
+
+incrementCount() {
+   this.count.value++;
+}
+
+}
+```
+
+```html
+<h1>Angular Signals Example</h1>
+
+<button (click)="incrementCount()">Increment Count</button>
+
+<p>Count: {{ count }}</p>
+```
+
+## Destroy Ref
+
+DestroyRef is a new provider in Angular 16 that allows you to register destroy callbacks for a specific lifecycle scope. This feature is applicable to components, directives, pipes, embedded views, and instances of EnvironmentInjector.
+
+```typescript
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DestroyRef } from '@angular/core/testing';
+
+@Component({
+  selector: 'my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.css']
+})
+export class MyComponent implements OnInit, OnDestroy {
+
+  constructor(private destroyRef: DestroyRef) {}
+
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    // Register a destroy callback with the DestroyRef provider.
+    this.destroyRef.register(() => {
+      // Do any cleanup tasks here.
+    });
+  }
+
+}
+```
 
 ## HTTP
 
