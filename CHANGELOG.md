@@ -1,3 +1,12 @@
+# [1.37.0](https://github.com/manthanank/learn-angular/compare/v1.36.0...v1.37.0) (2023-05-29)
+
+
+### Features
+
+* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([085b0a2](https://github.com/manthanank/learn-angular/commit/085b0a2fe6c5f7608649c24cc65b97a0cf7da3c2))
+
+
+
 # [1.36.0](https://github.com/manthanank/learn-angular/compare/v1.35.0...v1.36.0) (2023-05-29)
 
 
@@ -32,15 +41,6 @@
 ### Features
 
 * added route parameters ([e99de68](https://github.com/manthanank/learn-angular/commit/e99de68ffe75c8566d6cf1d1a8642158192d4377))
-
-
-
-# [1.32.0](https://github.com/manthanank/learn-angular/compare/v1.31.0...v1.32.0) (2023-05-25)
-
-
-### Features
-
-* added signals, angular signals, destroyref ([b0a8e78](https://github.com/manthanank/learn-angular/commit/b0a8e78a1d5e80054b2f6cf317845e8bfec83510))
 
 
 
