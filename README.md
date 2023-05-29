@@ -19,6 +19,7 @@
   - [Structural Directives](#structural-directives)
   - [Attribute Directives](#attribute-directives)
   - [Custom Directives](#custom-directives)
+  - [Other Directives](#other-directives)
 - [Pipes](#pipes)
   - [Date Pipe](#date-pipe)
   - [Uppercase Pipe](#uppercase-pipe)
