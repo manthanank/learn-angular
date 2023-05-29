@@ -1,3 +1,13 @@
+# [1.36.0](https://github.com/manthanank/learn-angular/compare/v1.35.0...v1.36.0) (2023-05-29)
+
+
+### Features
+
+* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([300d3c7](https://github.com/manthanank/learn-angular/commit/300d3c7da35588d001fa7f37bfb4b1e35933bc18))
+* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([8b41558](https://github.com/manthanank/learn-angular/commit/8b41558de8d95845c83acba3c9c1820b87131c4a))
+
+
+
 # [1.35.0](https://github.com/manthanank/learn-angular/compare/v1.34.0...v1.35.0) (2023-05-29)
 
 
@@ -31,15 +41,6 @@
 ### Features
 
 * added signals, angular signals, destroyref ([b0a8e78](https://github.com/manthanank/learn-angular/commit/b0a8e78a1d5e80054b2f6cf317845e8bfec83510))
-
-
-
-# [1.31.0](https://github.com/manthanank/learn-angular/compare/v1.30.0...v1.31.0) (2023-05-20)
-
-
-### Features
-
-* removed generate pdf yml ([b182866](https://github.com/manthanank/learn-angular/commit/b182866ba9b21afd7af59ef7223aae0413acff5a))
 
 
 
