@@ -750,7 +750,7 @@ export class AppModule {}
     <button (click)="selectedTemplate = template2">Load Template 2</button>
     ```
 
-    In the above example, clicking the "Load Template 1" button will render the content from template1 within the `<ng-container>`, and clicking the "Load Template 2" button will render the content from template2. The selectedTemplate property is bound to the ngTemplateOutlet directive, dynamically selecting and rendering the chosen template..
+    In the above example, clicking the "Load Template 1" button will render the content from template1 within the `<ng-container>`, and clicking the "Load Template 2" button will render the content from template2. The selectedTemplate property is bound to the ngTemplateOutlet directive, dynamically selecting and rendering the chosen template.
 
 ## Pipes
 
