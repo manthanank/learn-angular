@@ -1,3 +1,12 @@
+# [1.38.0](https://github.com/manthanank/learn-angular/compare/v1.37.0...v1.38.0) (2023-05-29)
+
+
+### Features
+
+* added unsubscribe in angular ([f3a4925](https://github.com/manthanank/learn-angular/commit/f3a4925d57303e5ad2f7ba229605d735b76d6901))
+
+
+
 # [1.37.0](https://github.com/manthanank/learn-angular/compare/v1.36.0...v1.37.0) (2023-05-29)
 
 
@@ -32,15 +41,6 @@
 ### Features
 
 * added unsubscribe in angular ([fb486eb](https://github.com/manthanank/learn-angular/commit/fb486eb327975992e67fecc64a30a789bb452112))
-
-
-
-# [1.33.0](https://github.com/manthanank/learn-angular/compare/v1.32.0...v1.33.0) (2023-05-29)
-
-
-### Features
-
-* added route parameters ([e99de68](https://github.com/manthanank/learn-angular/commit/e99de68ffe75c8566d6cf1d1a8642158192d4377))
 
 
 
