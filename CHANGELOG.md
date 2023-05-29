@@ -1,3 +1,12 @@
+# [1.35.0](https://github.com/manthanank/learn-angular/compare/v1.34.0...v1.35.0) (2023-05-29)
+
+
+### Features
+
+* added unsubscribe in angular ([dc93ea1](https://github.com/manthanank/learn-angular/commit/dc93ea12e8a998ad8a5ad264a4fca77514ee3f1b))
+
+
+
 # [1.34.0](https://github.com/manthanank/learn-angular/compare/v1.33.0...v1.34.0) (2023-05-29)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * removed generate pdf yml ([b182866](https://github.com/manthanank/learn-angular/commit/b182866ba9b21afd7af59ef7223aae0413acff5a))
-
-
-
-# [1.30.0](https://github.com/manthanank/learn-angular/compare/v1.29.0...v1.30.0) (2023-05-20)
-
-
-### Features
-
-* added generate pdf yml ([4e4b27d](https://github.com/manthanank/learn-angular/commit/4e4b27d17e5a762425154b82e05d0ee4e389a71b))
 
 
 
