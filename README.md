@@ -19,6 +19,7 @@
   - [Structural Directives](#structural-directives)
   - [Attribute Directives](#attribute-directives)
   - [Custom Directives](#custom-directives)
+  - [Other Directives](#other-directives)
 - [Pipes](#pipes)
   - [Date Pipe](#date-pipe)
   - [Uppercase Pipe](#uppercase-pipe)
@@ -676,6 +677,80 @@ export class AppModule {}
 ```
 
 [Back to top⤴️](#contents)
+
+### Other directives
+
+1. ngContainer
+
+    The `ngContainer` directive is a simple container that doesn't generate any markup in the DOM. It's mainly used as a placeholder to group and structure content within Angular templates. It's particularly helpful when you need to apply structural directives like ngIf or ngFor to a group of elements without adding an extra wrapping element.
+
+    ```html
+    <div *ngIf="condition">
+      <ng-container>
+        <p>Content to be conditionally rendered</p>
+        <p>More content...</p>
+      </ng-container>
+    </div>
+    ```
+
+    In the above example, the `ng-container` acts as a grouping element for the conditional content, allowing you to apply the ngIf directive without introducing an extra `<div>` element.
+
+2. ngTemplate
+
+    The `ngTemplate` directive is used to define a reusable template block that can be used later within the same component or shared across components using the ngTemplateOutlet directive. It allows you to define a template without rendering it immediately.
+
+    ```html
+    <ng-template #myTemplate>
+      <p>This is a template</p>
+      <p>It can be reused in multiple places</p>
+    </ng-template>
+
+    <!-- Usage of the template -->
+    <div>
+      <ng-container *ngTemplateOutlet="myTemplate"></ng-container>
+    </div>
+    ```
+
+    In the above example, the `ng-template` defines a template block named myTemplate. Later, within the same component, the ngTemplateOutlet directive is used to render the template inside a `<div>`.
+
+3. ngContent
+
+    The `ngContent` directive is used for content projection or transclusion. It allows you to create reusable components with customizable content. By using ngContent, you can define placeholders in the component's template where external content can be inserted.
+
+    ```html
+      <!-- Parent Component -->
+      <app-child>
+        <p>Content projected into the child component</p>
+      </app-child>
+
+      <!-- Child Component Template -->
+      <div>
+        <ng-content></ng-content>
+      </div>
+    ```
+
+    In the above example, the `<app-child>` component has a `<ng-content>` tag in its template. When the component is used, the content provided between the opening and closing tags of the component is projected into the ng-content placeholder.
+
+4. ngTemplateOutlet
+
+    The `ngTemplateOutlet` directive is used to render a template defined using ngTemplate. It allows you to dynamically render a template within a component's template.
+
+    ```html
+    <ng-container *ngTemplateOutlet="selectedTemplate"></ng-container>
+
+    <ng-template #template1>
+      <!-- Template 1 content -->
+    </ng-template>
+
+    <ng-template #template2>
+      <!-- Template 2 content -->
+    </ng-template>
+
+    <button (click)="selectedTemplate = template1">Load Template 1</button>
+    <button (click)="selectedTemplate = template2">Load Template 2</button>
+    ```
+
+    In the above example, clicking the "Load Template 1" button will render the content from template1 within the `<ng-container>`, and clicking the "Load Template 2" button will render the content from template2. The selectedTemplate property is bound to the ngTemplateOutlet directive, dynamically selecting and rendering the chosen template..
 
 ## Pipes
 
