@@ -53,6 +53,7 @@
 - [Router](#router)
 - [Route Parameter](#route-parameters)
 - [Observables](#observables-in-angular)
+- [Unsubscribe](#unsubscribe-in-angular)
 - [JIT](#jit)
 - [AOT](#aot)
 - [Meta Tags](#meta-tags)
