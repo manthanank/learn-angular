@@ -1,37 +1,46 @@
-# [1.4.0](https://github.com/manthanank/learn-angular/compare/v1.3.0...v1.4.0) (2023-04-23)
+# [1.36.0](https://github.com/manthanank/learn-angular/compare/v1.35.0...v1.36.0) (2023-05-29)
 
 
 ### Features
 
-* added meta tags ([69dfb4e](https://github.com/manthanank/learn-angular/commit/69dfb4e384198e84f696a407f61a7eaea41690a9))
+* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([300d3c7](https://github.com/manthanank/learn-angular/commit/300d3c7da35588d001fa7f37bfb4b1e35933bc18))
+* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([8b41558](https://github.com/manthanank/learn-angular/commit/8b41558de8d95845c83acba3c9c1820b87131c4a))
 
 
 
-# [1.3.0](https://github.com/manthanank/learn-angular/compare/v1.2.0...v1.3.0) (2023-04-09)
-
-
-### Features
-
-* updated ([e01d73b](https://github.com/manthanank/learn-angular/commit/e01d73b8c01ef9d9218b010548d73c8db1f399eb))
-
-
-
-# [1.2.0](https://github.com/manthanank/learn-angular/compare/v1.1.0...v1.2.0) (2023-03-29)
+# [1.35.0](https://github.com/manthanank/learn-angular/compare/v1.34.0...v1.35.0) (2023-05-29)
 
 
 ### Features
 
-* added npm downloads badge ([f2c0515](https://github.com/manthanank/learn-angular/commit/f2c05151bcb3b843c566184a8651dd6d3d24e3f9))
+* added unsubscribe in angular ([dc93ea1](https://github.com/manthanank/learn-angular/commit/dc93ea12e8a998ad8a5ad264a4fca77514ee3f1b))
 
 
 
-# [1.1.0](https://github.com/manthanank/learn-angular/compare/cd4b725c1f0256aa8588f4771fdbd4c949b59712...v1.1.0) (2023-03-27)
+# [1.34.0](https://github.com/manthanank/learn-angular/compare/v1.33.0...v1.34.0) (2023-05-29)
 
 
 ### Features
 
-* added release yml and json file ([c3c7db7](https://github.com/manthanank/learn-angular/commit/c3c7db73eb02a880c3b0a8267ed224eb5115984e))
-* docker added ([cd4b725](https://github.com/manthanank/learn-angular/commit/cd4b725c1f0256aa8588f4771fdbd4c949b59712))
+* added unsubscribe in angular ([fb486eb](https://github.com/manthanank/learn-angular/commit/fb486eb327975992e67fecc64a30a789bb452112))
+
+
+
+# [1.33.0](https://github.com/manthanank/learn-angular/compare/v1.32.0...v1.33.0) (2023-05-29)
+
+
+### Features
+
+* added route parameters ([e99de68](https://github.com/manthanank/learn-angular/commit/e99de68ffe75c8566d6cf1d1a8642158192d4377))
+
+
+
+# [1.32.0](https://github.com/manthanank/learn-angular/compare/v1.31.0...v1.32.0) (2023-05-25)
+
+
+### Features
+
+* added signals, angular signals, destroyref ([b0a8e78](https://github.com/manthanank/learn-angular/commit/b0a8e78a1d5e80054b2f6cf317845e8bfec83510))
 
 
 
