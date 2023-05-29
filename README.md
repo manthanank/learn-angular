@@ -51,6 +51,7 @@
 - [Http](#http)
 - [Module](#module)
 - [Router](#router)
+- [Route Parameter](#route-parameters)
 - [Observables](#observables-in-angular)
 - [JIT](#jit)
 - [AOT](#aot)
@@ -2018,6 +2019,44 @@ const routes: Routes = [];
 })
 export class AppRoutingModule { }
 ```
+
+## Route Parameters
+
+In Angular, route parameters are used to pass dynamic values in the URL of a route. They allow you to define variable segments in the route path, which can be accessed and used by components and services within your application. Route parameters are denoted by a colon (":") followed by the parameter name.
+
+There are three types of route parameters in Angular:
+
+***Path Parameters***:
+
+Path parameters are used to define dynamic segments in the URL path. They are specified as part of the route's path and are extracted from the actual URL when navigating to that route. Path parameters are denoted by a colon (":") followed by the parameter name. For example:
+
+```typescript
+{ path: 'users/:id', component: UserComponent }
+```
+
+In this example, ":id" is the path parameter. When navigating to a URL like "/users/123", the value "123" will be extracted and can be accessed in the UserComponent.
+
+***Query Parameters***:
+
+Query parameters are used to pass additional information in the URL as key-value pairs. They are appended to the URL after a question mark ("?") and can be accessed by components and services. Query parameters are not part of the route path, but they provide additional data to the route. For example:
+
+```typescript
+{ path: 'search', component: SearchComponent }
+```
+
+In this example, a URL like "/search?query=angular" contains a query parameter "query" with the value "angular". The SearchComponent can retrieve the value of the query parameter and use it for searching.
+
+***Optional Parameters***:
+
+Optional parameters are used when you want to make a route parameter optional. They are denoted by placing a question mark ("?") after the parameter name. Optional parameters can be useful when you have routes with varying parameters. For example:
+
+```typescript
+{ path: 'products/:id/:category?', component: ProductComponent }
+```
+
+In this example, the ":category" parameter is optional. The ProductComponent can be accessed with URLs like "/products/123" or "/products/123/electronics". If the ":category" parameter is present in the URL, it will be available in the component, otherwise, it will be undefined.
+
+Route parameters provide a flexible way to handle dynamic data in your Angular application. They allow you to create routes that can be easily customized and provide a seamless user experience by reflecting the current state of the application in the URL.
 
 ## Observables in Angular
 
