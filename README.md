@@ -2183,8 +2183,8 @@ In Angular, managing subscriptions is crucial to avoid memory leaks and improve 
     - Angular automatically handles the subscription and unsubscription for you.
     - Ensure you don't manually subscribe to the observable in your component.
 
-    ```typescript
-
+    ```html
+    <div>{{ someObservable$ | async }}</div>
     ```
 
 3. Using the Subscription object:
