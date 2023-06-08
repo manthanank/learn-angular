@@ -55,6 +55,8 @@
 - [Route Parameter](#route-parameters)
 - [Observables](#observables-in-angular)
 - [Unsubscribe](#unsubscribe-in-angular)
+- [Renderer2](#renderer2)
+- [Standalone Components](#standalone-components)
 - [JIT](#jit)
 - [AOT](#aot)
 - [Meta Tags](#meta-tags)
@@ -958,8 +960,52 @@ export class AppModule {}
 
 ### Async Pipe
 
+`async` pipe is a built-in feature that provides an easy way to handle asynchronous data streams directly in templates. It is used to subscribe to and automatically unwrap the result of an asynchronous operation, such as an Observable or Promise, in a template.
+
 ```html
-<p>{{data | async}}</p>
+<p>{{data$ | async}}</p>
+```
+
+```typescript
+// DataService.service.ts
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
+@Injectable()
+export class DataService {
+  private data$: Observable<string>;
+
+  constructor() {
+    // Simulating an asynchronous data source
+    this.data$ = of('Hello, async pipe!').pipe(
+      // Simulating delay
+      delay(2000)
+    );
+  }
+
+  getData(): Observable<string> {
+    return this.data$;
+  }
+}
+```
+
+```typescript
+// ExampleComponent.component.ts
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-example',
+  template: '<div>{{ data$ | async }}</div>',
+})
+export class ExampleComponent {
+  data$: Observable<string>;
+
+  constructor(private dataService: DataService) {
+    this.data$ = this.dataService.getData();
+  }
+}
 ```
 
 [Back to top⤴️](#contents)
@@ -2280,6 +2326,30 @@ In Angular, managing subscriptions is crucial to avoid memory leaks and improve 
       }
     }
     ```
+
+## Renderer2
+
+Renderer2 is a utility class that provides methods to manipulate and interact with the DOM (Document Object Model). It is used to perform operations such as creating, modifying, and removing elements, applying styles, and listening to events.
+
+```typescript
+import { Component, Renderer2, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'app-example',
+  template: `
+    <button (click)="changeColor()">Change Color</button>
+  `
+})
+export class ExampleComponent {
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
+
+  changeColor() {
+    const button = this.el.nativeElement.querySelector('button');
+    this.renderer.setStyle(button, 'background-color', 'red');
+  }
+}
+
+```
 
 ## Standalone Components
 
