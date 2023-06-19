@@ -1,3 +1,12 @@
+# [1.41.0](https://github.com/manthanank/learn-angular/compare/v1.40.0...v1.41.0) (2023-06-19)
+
+
+### Features
+
+* updated ([dd532e8](https://github.com/manthanank/learn-angular/commit/dd532e89cb7351ecda00cf348bdf68218b4d7e6d))
+
+
+
 # [1.40.0](https://github.com/manthanank/learn-angular/compare/v1.39.0...v1.40.0) (2023-06-19)
 
 
@@ -31,16 +40,6 @@
 ### Features
 
 * added ngContainer, ng Template, ngContent, ngTemplateOutlet ([085b0a2](https://github.com/manthanank/learn-angular/commit/085b0a2fe6c5f7608649c24cc65b97a0cf7da3c2))
-
-
-
-# [1.36.0](https://github.com/manthanank/learn-angular/compare/v1.35.0...v1.36.0) (2023-05-29)
-
-
-### Features
-
-* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([300d3c7](https://github.com/manthanank/learn-angular/commit/300d3c7da35588d001fa7f37bfb4b1e35933bc18))
-* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([8b41558](https://github.com/manthanank/learn-angular/commit/8b41558de8d95845c83acba3c9c1820b87131c4a))
 
 
 
