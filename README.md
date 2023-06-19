@@ -2835,36 +2835,45 @@ export class AppComponent implements OnInit {
 Adding Tags with addTag() & addTags()
 
 ```jsx
-
+this.metaService.addTag( { name:'description',content:"Article Description"});
 ```
 
 ```jsx
-
+this.metaService.addTag( 
+  { name: 'description', content: 'Article Description' },
+  { name: 'robots', content: 'index,follow' },
+  { property: 'og:title', content: 'Content Title for social media' }
+);
 ```
 
 Reading the Tags with getTag()
 
 ```jsx
-
+this.metaService.getTag("name='description'")
 ```
 
 Update the Tag with updateTag()
 
 ```jsx
-
+this.metaService.updateTag( { name:'robots', content:'index, nofoloow'},"name='robots'");
 ```
 
 Removing the Tag with removeTag()
 
 ```jsx
-
+this.metaService.removeTag("name='robots'");
 ```
 
 ## Deploying an Angular Application
 
-```typescript
-
-```
+| DEPLOYMENT TO | PACKAGE
+|---|---|
+| Firebase hosting | @angular/fire |
+| Vercel | vercel init angular |
+| Netlify | @netlify-builder/deploy |
+| GitHub pages | angular-cli-ghpages |
+| NPM | ngx-deploy-npm |
+| Amazon Cloud S3 | @jefiozie/ngx-aws-deploy |
 
 ## CLI Commands
 
@@ -3042,53 +3051,120 @@ ng generate environments
 
 ## Imports
 
-HttpCientModule
+Angular
 
-```javascript
-import { HttpCientModule } from '@angular/common/http';
-```
-
-FormsModule
-
-```javascript
+```typescript
+import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { NgModel } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 ```
 
-ReactiveFormsModule
+Angular Material
 
-```javascript
-import { ReactiveFormsModule } from '@angular/forms';
+```typescript
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 ```
 
 RxJS
 
 ```javascript
-import { } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { AsyncSubject } from 'rxjs/AsyncSubject';
+import { Subscription } from 'rxjs/Subscription';
+import { from } from 'rxjs';
+import { fromEvent } from 'rxjs';
+import { interval } from 'rxjs';
+import { timer } from 'rxjs';
+import { merge } from 'rxjs';
+import { zip } from 'rxjs';
+import { combineLatest } from 'rxjs';
+import { concat } from 'rxjs';
+import { forkJoin } from 'rxjs';
+import { race } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { reduce } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { retry } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
+// and many more...
 ```
 
 Firebase
 
 ```jsx
 import { AngularFireModule } from "@angular/fire/compat";
-
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-
 import { AngularFireStorage } from '@angular/fire/storage';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 ```
 
 ## TypeScript
 
-TypeScript is JavaScript with syntax for types.
+**TypeScript** is JavaScript with syntax for types.
 
 ## Rxjs
 
 **Reactive Extensions Library for JavaScript** - RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
+
+## NgRx
+
+**NgRx** is a Reactive libraries for Angular,
 
 ## Learn more from GitHub Repositories
 
