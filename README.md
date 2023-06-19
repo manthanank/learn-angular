@@ -64,6 +64,7 @@
     - [Dynamic Title](#dynamic-title)
   - [Meta Service](#meta-service)
 - [CLI Commands](#cli-commands)
+- [Version compatibility](#version-compatibility)
 - [Imports](#imports)
 - [TypeScript](#typescript)
 - [RxJS](#rxjs)
@@ -80,7 +81,7 @@
 
 **Angular** is a platform and framework for building single-page client applications using HTML and TypeScript.
 
-AngularJS vs Angular
+### Difference between AngularJS vs Angular
 
 | AngularJS | Angular |
 |-----|-----|
@@ -3027,6 +3028,17 @@ Generate environments
 ```jsx
 ng generate environments
 ```
+
+## Version compatibility
+
+| ANGULAR | NODE.JS | TYPESCRIPT | RXJS |
+|---|---|----|---|
+| 16.1.x | ^16.14.0 and ^18.10.0 | >=4.9.3 <5.2.0 | ^6.5.3 and ^7.4.0 |
+| 16.0.x | ^16.14.0 and ^18.10.0 | >=4.9.3 <5.1.0 | ^6.5.3 and ^7.4.0 |
+| 15.1.x and 15.2.x | ^14.20.0 and ^16.13.0 and ^18.10.0 | >=4.8.2 <5.0.0 | ^6.5.3 and ^7.4.0 |
+| 15.0.x | ^14.20.0 and ^16.13.0 and ^18.10.0 | ~4.8.2 | ^6.5.3 and ^7.4.0 |
+| 14.2.x and 14.3.x | ^14.15.0 and ^16.10.0 | >=4.6.2 <4.9.0 | ^6.5.3 and ^7.4.0 |
+| 14.0.x and 14.1.x | ^14.15.0 and ^16.10.0 | >=4.6.2 <4.8.0 | ^6.5.3 and ^7.4.0 |
 
 ## Imports
 
