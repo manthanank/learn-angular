@@ -1,3 +1,12 @@
+# [1.42.0](https://github.com/manthanank/learn-angular/compare/v1.41.0...v1.42.0) (2023-06-21)
+
+
+### Features
+
+* added angular app and updated readme.md ([39d21a3](https://github.com/manthanank/learn-angular/commit/39d21a344f4360585d1c46092d487e4775f8f594))
+
+
+
 # [1.41.0](https://github.com/manthanank/learn-angular/compare/v1.40.0...v1.41.0) (2023-06-19)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * added unsubscribe in angular ([f3a4925](https://github.com/manthanank/learn-angular/commit/f3a4925d57303e5ad2f7ba229605d735b76d6901))
-
-
-
-# [1.37.0](https://github.com/manthanank/learn-angular/compare/v1.36.0...v1.37.0) (2023-05-29)
-
-
-### Features
-
-* added ngContainer, ng Template, ngContent, ngTemplateOutlet ([085b0a2](https://github.com/manthanank/learn-angular/commit/085b0a2fe6c5f7608649c24cc65b97a0cf7da3c2))
 
 
 
