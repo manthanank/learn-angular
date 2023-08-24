@@ -1,3 +1,13 @@
+# [1.43.0](https://github.com/manthanank/learn-angular/compare/v1.42.0...v1.43.0) (2023-08-24)
+
+
+### Features
+
+* updated to latest ([ab9c674](https://github.com/manthanank/learn-angular/commit/ab9c674ca544af80a20dd24539bee0c12d50610f))
+* updated to latest ([c0d7cff](https://github.com/manthanank/learn-angular/commit/c0d7cff9bebcd1722ecd8a44f5111423d0a76297))
+
+
+
 # [1.42.0](https://github.com/manthanank/learn-angular/compare/v1.41.0...v1.42.0) (2023-06-21)
 
 
@@ -31,15 +41,6 @@
 ### Features
 
 * added async pipe ex ([e5cb9b1](https://github.com/manthanank/learn-angular/commit/e5cb9b14fb5525d97552e2eaee3bab17789b287f))
-
-
-
-# [1.38.0](https://github.com/manthanank/learn-angular/compare/v1.37.0...v1.38.0) (2023-05-29)
-
-
-### Features
-
-* added unsubscribe in angular ([f3a4925](https://github.com/manthanank/learn-angular/commit/f3a4925d57303e5ad2f7ba229605d735b76d6901))
 
 
 
