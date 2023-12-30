@@ -58,6 +58,7 @@
 - [Standalone Components](#standalone-components)
 - [JIT](#jit)
 - [AOT](#aot)
+- [Deferrable Views](#deferrable-views)
 - [Meta Tags](#meta-tags)
   - [Title Service](#title-service)
     - [Dynamic Title](#dynamic-title)
@@ -2472,6 +2473,16 @@ Base Href
 <ng-container>
   ......
 </ng-container>
+```
+
+## Deferrable Views
+
+Deferrable views can be used in component template to defer the loading of select dependencies within that template.
+
+```jsx
+@defer {
+  <large-component />
+}
 ```
 
 ## Angular Universal
