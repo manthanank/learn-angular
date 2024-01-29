@@ -2060,36 +2060,108 @@ export class Page2Module {}
 <router-outlet></router-outlet>
 ```
 
-## Router
+Certainly! Let's complete the Angular Router guide with examples for the provided sections:
 
-Angular Router is a mechanism in which navigation happens from one view to the next as users perform application tasks. It borrows the concepts or model of browser's application navigation.
+### Router
+
+Angular Router is a mechanism in which navigation happens from one view to the next as users perform application tasks. It borrows the concepts or model of a browser's application navigation.
 
 ```typescript
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  // Define your routes here
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 ```
 
-Required Route Params
+### Required Route Params
+
+Route parameters are used to pass data to a route during navigation. In the example below, we have a route with a required parameter (`:id`).
 
 ```typescript
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
+const routes: Routes = [
+  { path: 'user/:id', component: UserDetailsComponent },
+  // Other routes...
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 ```
 
-Navigating in app
+### Navigating in the App
+
+To navigate to a route programmatically, you can use the `Router` service. For example, in a component:
 
 ```typescript
+// some-component.component.ts
+import { Router } from '@angular/router';
 
+export class SomeComponent {
+
+  constructor(private router: Router) {}
+
+  navigateToUserDetails(userId: number): void {
+    this.router.navigate(['/user', userId]);
+  }
+}
 ```
 
-Optional Route Params
+### Optional Route Params
+
+You can make route parameters optional by appending a `?` to them. In the example below, `:id` is optional:
 
 ```typescript
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
+const routes: Routes = [
+  { path: 'user/:id?', component: UserDetailsComponent },
+  // Other routes...
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 ```
 
 ### Params
 
-```jsx
+To access route parameters in a component, you can use the `ActivatedRoute` service. For example, in `user-details.component.ts`:
 
+```typescript
+// user-details.component.ts
+import { ActivatedRoute } from '@angular/router';
+
+export class UserDetailsComponent {
+
+  constructor(private route: ActivatedRoute) {
+    // Accessing route parameters
+    this.route.params.subscribe(params => {
+      const userId = params['id'];
+      // Do something with the userId...
+    });
+  }
+}
 ```
 
 ## Services & Dependency Injection
@@ -2433,55 +2505,132 @@ export class AuthGuard implements CanActivate {
 CanDeactivate
 
 ```typescript
+// can-deactivate.guard.ts
+import { Injectable } from '@angular/core';
+import { CanDeactivate } from '@angular/router';
+import { Observable } from 'rxjs';
 
+export interface CanDeactivateComponent {
+  canDeactivate: () => boolean | Observable<boolean>;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CanDeactivateGuard
+  implements CanDeactivate<CanDeactivateComponent> {
+
+  canDeactivate(
+    component: CanDeactivateComponent
+  ): boolean | Observable<boolean> {
+    return component.canDeactivate ? component.canDeactivate() : true;
+  }
+}
+```
+
+```typescript
+// your-component.component.ts
+import { Component } from '@angular/core';
+import { CanDeactivateComponent } from './can-deactivate.guard';
+
+@Component({
+  selector: 'app-your-component',
+  template: 'Your component content here.'
+})
+export class YourComponent implements CanDeactivateComponent {
+  // ... your component code ...
+
+  canDeactivate(): boolean | Observable<boolean> {
+    // Your deactivation logic goes here
+    // Return true if navigation is allowed, false otherwise
+    return true;
+  }
+}
 ```
 
 Resolve
 
 ```typescript
+// resolve.guard.ts
+import { Injectable } from '@angular/core';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class DataResolver implements Resolve<string> {
+
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): string | Observable<string> | Promise<string> {
+    // Fetch data asynchronously and return it
+    return 'Data resolved asynchronously';
+  }
+}
 ```
 
 CanLoad
 
 ```typescript
+// can-load.guard.ts
+import { Injectable } from '@angular/core';
+import { CanLoad, Route, UrlSegment, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class CanLoadGuard implements CanLoad {
+
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    // Check if the user is authenticated to load the module lazily
+    const isAuthenticated = /* your authentication logic here */;
+
+    if (isAuthenticated) {
+      return true; // Allow lazy loading
+    } else {
+      // Redirect to the login page if not authenticated
+      return false;
+    }
+  }
+}
 ```
 
 CanActivateChild
 
 ```typescript
+// auth-child.guard.ts
+import { Injectable } from '@angular/core';
+import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-```
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthChildGuard implements CanActivateChild {
 
-API/Server Calls and CORS
+  constructor(private router: Router) {}
 
-```typescript
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    // Check if the user is authenticated for child routes
+    const isAuthenticated = /* your authentication logic here */;
 
-```
-
-Different Environments
-
-```typescript
-
-```
-
-Caching
-
-```typescript
-
-```
-
-Production Build
-
-```typescript
-
-```
-
-Base Href
-
-```typescript
-
+    if (isAuthenticated) {
+      return true; // Allow navigation to child routes
+    } else {
+      // Redirect to the login page if not authenticated
+      return this.router.createUrlTree(['/login']);
+    }
+  }
+}
 ```
 
 **ng-container** - A special element that can hold structural directives without adding new elements to the DOM.
