@@ -2899,12 +2899,12 @@ this.metaService.removeTag("name='robots'");
 
 | DEPLOYMENT TO | PACKAGE |
 |---|---|
-| Firebase hosting | @angular/fire |
+| Firebase hosting | ng add @angular/fire |
 | Vercel | vercel init angular |
-| Netlify | @netlify-builder/deploy |
-| GitHub pages | angular-cli-ghpages |
-| NPM | ngx-deploy-npm |
-| Amazon Cloud S3 | @jefiozie/ngx-aws-deploy |
+| Netlify | ng add @netlify-builder/deploy |
+| GitHub pages | ng add angular-cli-ghpages |
+| NPM | ng add ngx-deploy-npm |
+| Amazon Cloud S3 | ng add @jefiozie/ngx-aws-deploy |
 
 ## CLI Commands
 
@@ -3073,6 +3073,7 @@ ng generate environments
 
 | ANGULAR | NODE.JS | TYPESCRIPT | RXJS |
 |---|---|----|---|
+| 17.0.x | ^18.13.0 and ^20.9.0 | >=4.9.3 and <5.3.0 | ^6.5.3 and ^7.4.0 |
 | 16.1.x | ^16.14.0 and ^18.10.0 | >=4.9.3 <5.2.0 | ^6.5.3 and ^7.4.0 |
 | 16.0.x | ^16.14.0 and ^18.10.0 | >=4.9.3 <5.1.0 | ^6.5.3 and ^7.4.0 |
 | 15.1.x and 15.2.x | ^14.20.0 and ^16.13.0 and ^18.10.0 | >=4.8.2 <5.0.0 | ^6.5.3 and ^7.4.0 |
