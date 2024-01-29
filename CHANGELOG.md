@@ -1,3 +1,12 @@
+# [1.51.0](https://github.com/manthanank/learn-angular/compare/v1.50.0...v1.51.0) (2024-01-29)
+
+
+### Features
+
+* updated ([9e30381](https://github.com/manthanank/learn-angular/commit/9e30381c5d562a2fc442c4e099aa217c00714c41))
+
+
+
 # [1.50.0](https://github.com/manthanank/learn-angular/compare/v1.49.0...v1.50.0) (2024-01-29)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * updated ([845a602](https://github.com/manthanank/learn-angular/commit/845a602649a520e73498f159ba13f35d1319f17b))
-
-
-
-# [1.46.0](https://github.com/manthanank/learn-angular/compare/v1.45.0...v1.46.0) (2023-12-21)
-
-
-### Features
-
-* updated ([72036dd](https://github.com/manthanank/learn-angular/commit/72036dd00abcbce884d0192c289141cd7868845d))
 
 
 
