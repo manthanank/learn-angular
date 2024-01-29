@@ -1837,7 +1837,24 @@ deleteData(id: string){
 Http Interceptors are part of @angular/common/http, which inspect and transform HTTP requests from your application to the server and vice-versa on HTTP responses. These interceptors can perform a variety of implicit tasks, from authentication to logging.
 
 ```typescript
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+@Injectable()
+export class MyInterceptor implements HttpInterceptor {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // Modify the request before it is sent
+    const modifiedRequest = request.clone({
+      setHeaders: {
+        'Authorization': 'Bearer my-token'
+      }
+    });
+
+    // Pass the modified request to the next handler
+    return next.handle(modifiedRequest);
+  }
+}
 ```
 
 ### Using Observable
