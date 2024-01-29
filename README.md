@@ -3373,6 +3373,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 - [CodAffection](https://github.com/CodAffection)
 - [Bezkoder](https://github.com/bezkoder)
 - [Angular Interview Questions by Yonet](https://github.com/Yonet/Angular-Interview-Questions)
+- [Angular Basics ( v14.x )](https://github.com/learning-zone/angular-basics)
 
 ## Learn more from Websites
 
