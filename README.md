@@ -2897,7 +2897,7 @@ this.metaService.removeTag("name='robots'");
 
 ## Deploying an Angular Application
 
-| DEPLOYMENT TO | PACKAGE
+| DEPLOYMENT TO | PACKAGE |
 |---|---|
 | Firebase hosting | @angular/fire |
 | Vercel | vercel init angular |
