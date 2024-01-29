@@ -1,8 +1,7 @@
 # Contributing
 
 Thank you for considering contributing to this project! By this, you
-agree to abide by the [Code Of Conduct](https://github.com/manthanank/learn-angular/CODE_OF_CONDUCT.md).
-...
+agree to abide by the [Code Of Conduct](https://github.com/manthanank/learn-angular/blob/main/CODE_OF_CONDUCT.md).
 
 ## How to Contribute
 
