@@ -1,3 +1,12 @@
+# [1.53.0](https://github.com/manthanank/learn-angular/compare/v1.52.0...v1.53.0) (2024-05-08)
+
+
+### Features
+
+* Create LICENSE ([b9035d7](https://github.com/manthanank/learn-angular/commit/b9035d7da6fbbaa02417b1ff0214e0cf89d5e921))
+
+
+
 # [1.52.0](https://github.com/manthanank/learn-angular/compare/v1.51.0...v1.52.0) (2024-01-29)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * updated ([88ab6e7](https://github.com/manthanank/learn-angular/commit/88ab6e7a1eea6c60c120d7c3a00ad92584309cc9))
-
-
-
-# [1.48.0](https://github.com/manthanank/learn-angular/compare/v1.47.0...v1.48.0) (2024-01-29)
-
-
-### Features
-
-* updated ([737241e](https://github.com/manthanank/learn-angular/commit/737241e2ef80e095f0a9e81a60d7b17c55944199))
 
 
 
