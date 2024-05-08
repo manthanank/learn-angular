@@ -1,3 +1,12 @@
+# [1.56.0](https://github.com/manthanank/learn-angular/compare/v1.55.0...v1.56.0) (2024-05-08)
+
+
+### Features
+
+* Create pull_request_template.md ([672ba1b](https://github.com/manthanank/learn-angular/commit/672ba1b7cd2685b67fad3c7269a4ce7c4a330ee6))
+
+
+
 # [1.55.0](https://github.com/manthanank/learn-angular/compare/v1.54.0...v1.55.0) (2024-05-08)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * updated ([53bbb08](https://github.com/manthanank/learn-angular/commit/53bbb08f32ea6f0a585f58eb9dc2d563319d57c4))
-
-
-
-# [1.51.0](https://github.com/manthanank/learn-angular/compare/v1.50.0...v1.51.0) (2024-01-29)
-
-
-### Features
-
-* updated ([9e30381](https://github.com/manthanank/learn-angular/commit/9e30381c5d562a2fc442c4e099aa217c00714c41))
 
 
 
