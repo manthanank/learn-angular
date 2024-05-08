@@ -1,3 +1,12 @@
+# [1.58.0](https://github.com/manthanank/learn-angular/compare/v1.57.0...v1.58.0) (2024-05-08)
+
+
+### Features
+
+* Update issue templates ([b2c6842](https://github.com/manthanank/learn-angular/commit/b2c684254006de2061fc8c32897e0faee073246d))
+
+
+
 # [1.57.0](https://github.com/manthanank/learn-angular/compare/v1.56.0...v1.57.0) (2024-05-08)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Create SECURITY.md ([3f76c7e](https://github.com/manthanank/learn-angular/commit/3f76c7e61cbd73df03fe98ff6cb5370970e5daa5))
-
-
-
-# [1.53.0](https://github.com/manthanank/learn-angular/compare/v1.52.0...v1.53.0) (2024-05-08)
-
-
-### Features
-
-* Create LICENSE ([b9035d7](https://github.com/manthanank/learn-angular/commit/b9035d7da6fbbaa02417b1ff0214e0cf89d5e921))
 
 
 
