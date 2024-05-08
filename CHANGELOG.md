@@ -1,3 +1,12 @@
+# [1.59.0](https://github.com/manthanank/learn-angular/compare/v1.58.0...v1.59.0) (2024-05-08)
+
+
+### Features
+
+* deleted issue templates ([62c5600](https://github.com/manthanank/learn-angular/commit/62c5600bf4c48df6c6e8f94a7a4dc022dc6b35c5))
+
+
+
 # [1.58.0](https://github.com/manthanank/learn-angular/compare/v1.57.0...v1.58.0) (2024-05-08)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Update issue templates ([d5fe4bd](https://github.com/manthanank/learn-angular/commit/d5fe4bdaedabcb7adf5749bd35f97e296b3dc4d9))
-
-
-
-# [1.54.0](https://github.com/manthanank/learn-angular/compare/v1.53.0...v1.54.0) (2024-05-08)
-
-
-### Features
-
-* Create SECURITY.md ([3f76c7e](https://github.com/manthanank/learn-angular/commit/3f76c7e61cbd73df03fe98ff6cb5370970e5daa5))
 
 
 
