@@ -2449,22 +2449,22 @@ A standalone component is a type of component which is not part of any Angular m
 
 **Just-in-Time** (JIT) is a type of compilation that compiles your app in the browser at runtime.
 
+### Advantages of JIT
+
+- Faster development cycle as changes can be seen immediately.
+- No build step required during development.
+- More flexible for dynamic template generation.
+
+## AOT
+
+**Ahead-of-Time** (AOT) is a type of compilation that compiles your app at build time.
+
 ### Advantages of AOT
 
 - Faster startup times as the browser only needs to execute the compiled code.
 - Improved performance due to optimized and pre-compiled templates.
 - Better security as the templates are already compiled and validated before deployment.
 - Smaller bundle sizes since the templates are not included.
-
-## AOT
-
-**Ahead-of-Time** (AOT) is a type of compilation that compiles your app at build time.
-
-### Advantages of JIT
-
-- Faster development cycle as changes can be seen immediately.
-- No build step required during development.
-- More flexible for dynamic template generation.
 
 ## JIT vs AOT
 
