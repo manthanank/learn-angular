@@ -1,5 +1,7 @@
 # Learn Angular
 
+This repository contains a list of resources to learn Angular.
+
 ![npm](https://img.shields.io/npm/dw/learn-angular)
 ![npm](https://img.shields.io/npm/dm/learn-angular)
 ![npm](https://img.shields.io/npm/dy/learn-angular)
@@ -11,10 +13,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/manthanank/learn-angular)
 ![GitHub repo size](https://img.shields.io/github/repo-size/manthanank/learn-angular)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/manthanank/learn-angular)
-
-Angular is a platform and framework for building single-page client applications using HTML and TypeScript. It is maintained by Google and a community of developers. Angular provides a set of tools and libraries for building web applications, including data binding, routing, forms, HTTP client, and more.
-
-This repository contains a list of resources to learn Angular.
+![GitHub contributors](https://img.shields.io/github/contributors/manthanank/learn-angular)
 
 ## Table of Contents
 
