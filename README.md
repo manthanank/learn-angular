@@ -4,8 +4,19 @@
 ![npm](https://img.shields.io/npm/dm/learn-angular)
 ![npm](https://img.shields.io/npm/dy/learn-angular)
 ![npm](https://img.shields.io/npm/dt/learn-angular)
+![GitHub issues](https://img.shields.io/github/issues/manthanank/learn-angular)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/manthanank/learn-angular)
+![GitHub](https://img.shields.io/github/license/manthanank/learn-angular)
+![GitHub last commit](https://img.shields.io/github/last-commit/manthanank/learn-angular)
+![GitHub top language](https://img.shields.io/github/languages/top/manthanank/learn-angular)
+![GitHub repo size](https://img.shields.io/github/repo-size/manthanank/learn-angular)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/manthanank/learn-angular)
 
-## Contents
+Angular is a platform and framework for building single-page client applications using HTML and TypeScript. It is maintained by Google and a community of developers. Angular provides a set of tools and libraries for building web applications, including data binding, routing, forms, HTTP client, and more.
+
+This repository contains a list of resources to learn Angular.
+
+## Table of Contents
 
 - [Introduction](#introduction)
 - [Roadmap](#roadmap)
@@ -73,13 +84,39 @@
 - [Learn From Books](#learn-more-from-books)
 - [Learn From YouTube Channels](#learn-from-youtube-channels)
 - [Learn More From Blogs Sites](#learn-more-from-blogs-sites)
-- [List of Online Compilers/Editors](#list-of-online-editorscompiler)
-- [List of Twitter Users](#list-of-twitter-users)
-- [List of LinkedIn Users](#list-of-linkedin-users)
+- [List of Online Editors/Compiler for Angular](#list-of-online-editorscompiler-for-angular)
+- [List of Twitter Users to Follow](#list-of-twitter-users-to-follow)
+- [List of LinkedIn Users to Follow](#list-of-linkedin-users-to-follow)
 
 ## Introduction
 
-**Angular** is a platform and framework for building single-page client applications using HTML and TypeScript.
+Angular is a platform and framework for building single-page client applications using HTML and TypeScript. It is maintained by Google and a community of developers. Angular provides a set of tools and libraries for building web applications, including data binding, routing, forms, HTTP client, and more. Angular is based on the Model-View-Controller (MVC) architecture and uses TypeScript as the primary language for building applications.
+
+### Features of Angular
+
+- **Component-Based Architecture** - Angular is based on a component-based architecture, where components are the main building blocks of an application. Components are reusable, self-contained units of code that define the UI and behavior of a part of the application.
+
+- **Two-Way Data Binding** - Angular provides two-way data binding, which allows for automatic synchronization of data between the model and the view. This means that changes to the model are reflected in the view, and changes to the view are reflected in the model.
+
+- **Dependency Injection** - Angular uses dependency injection to provide components with the services they need. This allows for better modularity, testability, and reusability of code.
+
+- **Routing** - Angular provides a powerful routing system that allows for navigation between different views of an application. Routing is based on the URL of the application and allows for deep linking, lazy loading, and route guards.
+
+- **Forms** - Angular provides a rich set of tools for working with forms, including template-driven forms and reactive forms. Forms in Angular are based on the model-driven approach, where the form controls are bound to properties in the component's class.
+
+- **HTTP Client** - Angular provides an HTTP client module that allows for making HTTP requests to a server. The HTTP client module provides a simple API for working with RESTful APIs and handling responses.
+
+- **Observables** - Angular uses observables to handle asynchronous operations, such as HTTP requests and event handling. Observables are a powerful way to work with asynchronous data streams and provide a consistent way to handle events in an application.
+
+- **TypeScript** - Angular is built using TypeScript, a superset of JavaScript that adds static typing and other features to the language. TypeScript provides better tooling, error checking, and code completion, which makes it easier to build and maintain large applications.
+
+- **Performance** - Angular is designed for performance and scalability. It uses a virtual DOM to optimize rendering performance, and provides tools for lazy loading, tree shaking, and ahead-of-time compilation to reduce the size of the application and improve performance.
+
+- **Mobile Support** - Angular provides tools for building mobile applications, including responsive design, touch gestures, and mobile-specific features. Angular applications can be built as Progressive Web Apps (PWAs) and deployed to mobile devices using Cordova or Capacitor.
+
+- **SEO Friendly** - Angular provides tools for building SEO-friendly applications, including server-side rendering, pre-rendering, and meta tags. Angular applications can be optimized for search engines to improve visibility and ranking in search results.
+
+- **Community Support** - Angular has a large and active community of developers, who contribute to the framework, provide support, and share knowledge through blogs, forums, and social media. The Angular community is known for its helpfulness, inclusivity, and diversity.
 
 ### Difference between AngularJS vs Angular
 
@@ -91,6 +128,7 @@
 |Run on only client-side|Runs on both client-side as well as server-side|
 |CLI not present|CLI present|
 |No SEO Friendly|Seo Friendly|
+|Performance is slow|Performance is fast|
 
 ## Roadmap
 
@@ -106,32 +144,32 @@
 
 Install the Angular CLI globally:
 
-```jsx
+```bash
 npm install -g @angular/cli
 ```
 
 Check version
 
-```jsx
+```bash
 ng version
 ```
 
 Create workspace:
 
-```jsx
+```bash
 ng new [PROJECT NAME]
 ```
 
 Run the application:
 
-```jsx
+```bash
 cd [PROJECT NAME]
 ng serve
 ```
 
 ## Components
 
-Component is the main building block of an Angular Application.
+Component is the main building block of an Angular Application. It is a TypeScript class that interacts with the HTML template and provides the data and logic to the view.
 
 ### Three main building blocks
 
@@ -168,71 +206,99 @@ Component is the main building block of an Angular Application.
 
 ## Component Creation
 
-Steps are:
+### Using Angular CLI
 
-1. Navigate to your Angular project directory.
-2. Create a new file, `<component-name>`.component.ts.
-3. At the top of the file, add the following import statement.
+```bash
+ng generate component [component-name]
+```
 
-    ```jsx
-    import { Component } from '@angular/core';
-    ```
+### Manual Creation
 
-4. After the import statement, add a @Component decorator.
+**Step 1** - Create a new folder for the component inside the `src/app` folder.
 
-    ```jsx
-    @Component({
-    })
-    ```
+```bash
+src/app/[component-name]
+```
 
-5. Choose a CSS selector for the component.
+**Step 2** - Create a new TypeScript file for the component inside the new folder.
 
-    ```jsx
-    @Component({
-      selector: 'test-component',
-    })
-    ```
+```bash
+src/app/[component-name]/[component-name].component.ts
+```
 
-6. Define the HTML template that the component uses to display information. In most cases, this template is a separate HTML file.
+**Step 3** - Create a new HTML file for the component inside the new folder.
 
-    ```jsx
-    @Component({
-      selector: 'test-component',
-      templateUrl: './test-component.component.html',
-    })
-    ```
+```bash
+src/app/[component-name]/[component-name].component.html
+```
 
-7. Select the styles for the component's template. In most cases, you define the styles for your component's template in a separate file.
+**Step 4** - Create a new CSS file for the component inside the new folder.
 
-    ```jsx
-    @Component({
-      selector: 'test-component',
-      templateUrl: './component.component.html',
-      styleUrls: ['./component.component.css']
-    })
-    ```
+```bash
+src/app/[component-name]/[component-name].component.css
+```
 
-8. Add a class statement that includes the code for the component.
+**Step 5** - Import the Component class from the `@angular/core` module.
 
-    ```jsx
-    export class TestComponent {
+```typescript
+import { Component } from '@angular/core';
+```
 
-    }
-    ```
+**Step 6** - Decorate the class with the `@Component` decorator.
 
-9. Register the Component in Angular Module -
+```typescript
+@Component({
+  selector: 'app-[component-name]',
+  templateUrl: './[component-name].component.html',
+  styleUrls: ['./[component-name].component.css']
+})
+```
 
-    ```typescript
-    import { TestComponent } from './app.component';
-    ```
+**Step 7** - Define the selector, template, and styles for the component.
 
-    ```typescript
-    @NgModule({ 
-      declarations: [ TestComponent ]
-    })
-    ```
+```text
+selector - The selector for the component.
+templateUrl - The URL of the HTML template for the component.
+styleUrls - An array of URLs of the stylesheets for the component.
+```
 
-Complete code for the component creation
+**Step 8** - Export the class.
+
+```typescript
+export class [ComponentName]Component {
+}
+```
+
+**Step 9** - Import the component class in the `app.module.ts` file.
+
+```typescript
+import { [ComponentName]Component } from './[component-name]/[component-name].component';
+```
+
+**Step 10** - Add the component to the `declarations` array in the `@NgModule` decorator.
+
+```typescript
+declarations: [
+  AppComponent,
+  [ComponentName]Component
+]
+```
+
+**Step 11** - Use the component selector in the HTML template of the `app.component.ts` file.
+
+```typescript
+<app-[component-name]></app-[component-name]>
+```
+
+**Step 12** - Run the application using the `ng serve` command.
+
+```bash
+ng serve
+```
+
+### Example
+
+**Creating the component files** -
 
 ```typescript
 //test-component.component.ts
@@ -248,6 +314,20 @@ export class TestComponent {
 
 }
 ```
+
+```html
+<!--component.component.html-->
+<h1>Test Component</h1>
+```
+
+```css
+/*component.component.css*/
+h1 {
+  color: red;
+}
+```
+
+**Importing the component in the app.module.ts file** -
 
 ```typescript
 //app.module.ts
@@ -286,21 +366,23 @@ export class AppComponent {
 }
 ```
 
-[Back to top⤴️](#contents)
+[Back to top⤴️](#table-of-contents)
 
 ## Data binding
 
 ### One way binding
 
-a. From Component to View
+a. From Component to View - This allows for passing data from the component's class to the HTML template.
 
-**Interpolation** -
+**Interpolation** - This allows for embedding expressions in the HTML template. It is denoted by double curly braces ({{}}).
+
+Example :
 
 ```html
 <h1>{{ firstText }} {{ lastText }}</h1>
 ```
 
-```jsx
+```typescript
 import { Component } from '@angular/core';
 
 @Component({
@@ -318,13 +400,15 @@ export class AppComponent {
 
 **Property binding** - This allows for binding a property of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
 
+Example :
+
 ```html
 <h1 [innerText]="title"></h1>
 
 <button [disabled]="isDisabled">I am disabled</button>
 ```
 
-```jsx
+```typescript
 import { Component } from '@angular/core';
 
 @Component({
@@ -341,7 +425,9 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-vcpyoq?file=src/app/app.component.ts)
 
-class binding
+class binding - This allows for binding a class of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
+
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -373,7 +459,9 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-s1pkwg?file=src/app/app.component.ts)
 
-style binding
+style binding - This allows for binding a style of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
+
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -397,7 +485,9 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-w8nf7f?file=src/app/app.component.ts)
 
-attribute binding
+attribute binding - This allows for binding an attribute of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
+
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -421,11 +511,13 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bhqsgc?file=src/app/app.component.html)
 
-b. From View to Component
+b. From View to Component - This allows for passing data from the HTML template to the component's class.
 
 **Event binding** - This allows for binding an event of an HTML element to a method in the component's class. It is denoted by parentheses (()).
 
-```jsx
+Example :
+
+```typescript
 import { Component } from '@angular/core';
 
 @Component({
@@ -485,7 +577,7 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src/app/app.component.ts)
 
-[Back to top⤴️](#contents)
+[Back to top⤴️](#table-of-contents)
 
 ## Directives
 
@@ -493,7 +585,23 @@ Directives add behaviour to an existing DOM element or an existing component ins
 
 ### Structural Directives
 
-**ngFor** -
+**ngFor** - The `ngFor` directive is used to iterate over a list of items and create a template for each item. It is commonly used to display a list of items in the UI.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  items = ['Item 1', 'Item 2', 'Item 3'];
+}
+```
 
 ```html
 <h1>ngFor Example</h1>
@@ -502,30 +610,11 @@ Directives add behaviour to an existing DOM element or an existing component ins
 </ul>
 ```
 
-```typescript
-import { Component } from '@angular/core';
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-sn3tgd?file=src%2Fapp%2Fapp.component.ts)
 
-@Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
-})
-export class AppComponent  {
-  items = ['item 1', 'item 2', 'item 3'];
-}
-```
+**ngSwitch** - The `ngSwitch` directive is used to conditionally display elements based on the value of a given expression. It is similar to a switch statement in JavaScript.
 
-**ngSwitch** -
-
-```html
-<h1>ngSwitch Example</h1>
-<div [ngSwitch]="value">
-  <div *ngSwitchCase="1">Case 1</div>
-  <div *ngSwitchCase="2">Case 2</div>
-  <div *ngSwitchCase="3">Case 3</div>
-  <div *ngSwitchDefault>Default case</div>
-</div>
-```
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -540,14 +629,21 @@ export class AppComponent {
 }
 ```
 
-**ngIf** -
-
 ```html
-<h1>ngIf Example</h1>
-<div *ngIf="showElement">
-  This element will only be displayed if showElement is true.
+<h1>ngSwitch Example</h1>
+<div [ngSwitch]="value">
+  <div *ngSwitchCase="1">Case 1</div>
+  <div *ngSwitchCase="2">Case 2</div>
+  <div *ngSwitchCase="3">Case 3</div>
+  <div *ngSwitchDefault>Default case</div>
 </div>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-xm8ztp?file=src%2Fapp%2Fapp.component.ts)
+
+**ngIf** - The `ngIf` directive is used to conditionally display elements based on the value of a given expression. It is commonly used to show or hide elements in the UI based on certain conditions.
+
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -562,17 +658,20 @@ export class AppComponent {
 }
 ```
 
+```html
+<h1>ngIf Example</h1>
+<div *ngIf="showElement">
+  This element will only be displayed if showElement is true.
+</div>
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bajfgs?file=src%2Fapp%2Fapp.component.ts)
+
 ### Attribute Directives
 
-**ngModel** -
+**ngModel** - The `ngModel` directive is used to create two-way data binding between an input element and a property in the component's class. It is commonly used to bind form controls to properties in the component.
 
-```html
-<h1>ngModel Example</h1>
-<form>
-  <label for="name">Name:</label>
-  <input type="text" id="name" [(ngModel)]="name" name="name" />
-</form>
-```
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -587,14 +686,19 @@ export class AppComponent {
 }
 ```
 
-**ngClass** -
-
 ```html
-<h1>ngClass Example</h1>
-<div [ngClass]="{ highlighted: isHighlighted }">
-  This element will have the 'highlighted' class if isHighlighted is true.
-</div>
+<h1>ngModel Example</h1>
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="name" name="name" />
+</form>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src%2Fapp%2Fapp.component.ts)
+
+**ngClass** - The `ngClass` directive is used to conditionally apply CSS classes to an element based on the value of a given expression. It is commonly used to apply styles to elements based on certain conditions.
+
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -609,14 +713,24 @@ export class AppComponent {
 }
 ```
 
-**ngStyle** -
-
 ```html
-<h1>ngStyle Example</h1>
-<div [ngStyle]="{ color: color }">
-  This element will have the color style set to the value of the color property.
+<h1>ngClass Example</h1>
+<div [ngClass]="{ highlighted: isHighlighted }">
+  This element will have the 'highlighted' class if isHighlighted is true.
 </div>
 ```
+
+```css
+.highlighted {
+  background-color: yellow;
+}
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-cn1fph?file=src%2Fapp%2Fapp.component.ts)
+
+**ngStyle** - The `ngStyle` directive is used to conditionally apply inline styles to an element based on the value of a given expression. It is commonly used to apply dynamic styles to elements based on certain conditions.
+
+Example :
 
 ```typescript
 import { Component } from '@angular/core';
@@ -631,14 +745,18 @@ export class AppComponent {
 }
 ```
 
-### Custom Directives
-
 ```html
-<h1>Custom Directive Element</h1>
-<div appCustomDirective>
-  This element will have a yellow background when the mouse is over it.
+<h1>ngStyle Example</h1>
+<div [ngStyle]="{ color: color }">
+  This element will have the color style set to the value of the color property.
 </div>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zcgf1h?file=src%2Fapp%2Fapp.component.ts)
+
+### Custom Directives
+
+Custom directives are used to add custom behavior to elements in the DOM. They are created using the @Directive decorator and can be applied to elements as attributes, classes, or elements.
 
 ```typescript
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
@@ -679,81 +797,164 @@ import { CustomDirectiveDirective } from './custom-directive.directive';
 export class AppModule {}
 ```
 
-[Back to top⤴️](#contents)
+```html
+<h1>Custom Directive Element</h1>
+<div appCustomDirective>
+  This element will have a yellow background when the mouse is over it.
+</div>
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-xyv8qw?file=src%2Fapp%2Fapp.component.ts)
+
+[Back to top⤴️](#table-of-contents)
 
 ### Other directives
 
-1. ngContainer
+ngContainer, ngTemplate, ngContent, ngTemplateOutlet are some of the other directives in Angular.
 
-    The `ngContainer` directive is a simple container that doesn't generate any markup in the DOM. It's mainly used as a placeholder to group and structure content within Angular templates. It's particularly helpful when you need to apply structural directives like ngIf or ngFor to a group of elements without adding an extra wrapping element.
+**ngContainer** - The `ngContainer` directive is a simple container that doesn't generate any markup in the DOM. It's mainly used as a placeholder to group and structure content within Angular templates.
 
-    ```html
-    <div *ngIf="condition">
-      <ng-container>
-        <p>Content to be conditionally rendered</p>
-        <p>More content...</p>
-      </ng-container>
-    </div>
-    ```
+Example :
 
-    In the above example, the `ng-container` acts as a grouping element for the conditional content, allowing you to apply the ngIf directive without introducing an extra `<div>` element.
+```typescript
+import { Component } from '@angular/core';
 
-2. ngTemplate
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
 
-    The `ngTemplate` directive is used to define a reusable template block that can be used later within the same component or shared across components using the ngTemplateOutlet directive. It allows you to define a template without rendering it immediately.
+export class AppComponent {
+  condition = true;
+}
+```
 
-    ```html
-    <ng-template #myTemplate>
-      <p>This is a template</p>
-      <p>It can be reused in multiple places</p>
-    </ng-template>
+```html
+<h1>ngContainer Example</h1>
+<div *ngIf="condition">
+  <ng-container>
+    <p>Content to be conditionally rendered</p>
+    <p>More content...</p>
+  </ng-container>
+</div>
+```
 
-    <!-- Usage of the template -->
-    <div>
-      <ng-container *ngTemplateOutlet="myTemplate"></ng-container>
-    </div>
-    ```
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-zjr4xc?file=src%2Fmain.ts)
 
-    In the above example, the `ng-template` defines a template block named myTemplate. Later, within the same component, the ngTemplateOutlet directive is used to render the template inside a `<div>`.
+**ngTemplate** - The `ngTemplate` directive is used to define a reusable template block that can be used later within the same component or shared across components using the ngTemplateOutlet directive.
 
-3. ngContent
+Example :
 
-    The `ngContent` directive is used for content projection or transclusion. It allows you to create reusable components with customizable content. By using ngContent, you can define placeholders in the component's template where external content can be inserted.
+```typescript
+import { Component } from '@angular/core';
 
-    ```html
-      <!-- Parent Component -->
-      <app-child>
-        <p>Content projected into the child component</p>
-      </app-child>
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
 
-      <!-- Child Component Template -->
-      <div>
-        <ng-content></ng-content>
-      </div>
-    ```
+export class AppComponent {
+  selectedTemplate: any;
+}
+```
 
-    In the above example, the `<app-child>` component has a `<ng-content>` tag in its template. When the component is used, the content provided between the opening and closing tags of the component is projected into the ng-content placeholder.
+```html
+<h1>ngTemplate Example</h1>
+<ng-template #myTemplate>
+  <p>This is a template</p>
+  <p>It can be reused in multiple places</p>
+</ng-template>
 
-4. ngTemplateOutlet
+<div>
+  <ng-container *ngTemplateOutlet="selectedTemplate"></ng-container>
+</div>
 
-    The `ngTemplateOutlet` directive is used to render a template defined using ngTemplate. It allows you to dynamically render a template within a component's template.
+<button (click)="selectedTemplate = myTemplate">Load Template</button>
+```
 
-    ```html
-    <ng-container *ngTemplateOutlet="selectedTemplate"></ng-container>
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-azqjxv?file=src%2Fmain.ts)
 
-    <ng-template #template1>
-      <!-- Template 1 content -->
-    </ng-template>
+**ngContent** - The `ngContent` directive is used for content projection or transclusion. It allows you to create reusable components with customizable content.
 
-    <ng-template #template2>
-      <!-- Template 2 content -->
-    </ng-template>
+Example :
 
-    <button (click)="selectedTemplate = template1">Load Template 1</button>
-    <button (click)="selectedTemplate = template2">Load Template 2</button>
-    ```
+```typescript
+import { Component } from '@angular/core';
 
-    In the above example, clicking the "Load Template 1" button will render the content from template1 within the `<ng-container>`, and clicking the "Load Template 2" button will render the content from template2. The selectedTemplate property is bound to the ngTemplateOutlet directive, dynamically selecting and rendering the chosen template.
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css'],
+})
+
+export class ChildComponent {}
+```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  templateUrl: './parent.component.html',
+  styleUrls: ['./parent.component.css'],
+})
+
+export class ParentComponent {}
+```
+
+```html
+<!-- Parent Component -->
+<app-child>
+  <p>Content projected into the child component</p>
+</app-child>
+```
+
+```html
+<!-- Child Component Template -->
+<div>
+  <ng-content></ng-content>
+</div>
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-8ddr3h?file=src%2Fmain.ts)
+
+**ngTemplateOutlet** - The `ngTemplateOutlet` directive is used to render a template defined using ngTemplate. It allows you to dynamically render a template within a component's template.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  selectedTemplate: any;
+}
+```
+
+```html
+<h1>ngTemplateOutlet Example</h1>
+<ng-container *ngTemplateOutlet="selectedTemplate"></ng-container>
+
+<ng-template #template1>
+  Template 1 content
+</ng-template>
+
+<ng-template #template2>
+  Template 2 content
+</ng-template>
+
+<button (click)="selectedTemplate = template1">Load Template 1</button>
+<button (click)="selectedTemplate = template2">Load Template 2</button>
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-yerwcu?file=src%2Fmain.ts)
 
 ## Pipes
 
@@ -761,7 +962,7 @@ A pipe takes in data as input and transforms it to a desired output.
 
 Syntax
 
-```bash
+```text
 Expression | pipeOperator[:pipeArguments]
 
 # Expression: is the expression, which you want to transform
@@ -772,10 +973,7 @@ Expression | pipeOperator[:pipeArguments]
 
 ### Date Pipe
 
-```html
-<h1>Date Pipe Example</h1>
-<p>{{ date | date: 'shortDate' }}</p>
-```
+The `date` pipe is used to format a date value according to the locale rules specified in the application.
 
 ```ts
 import { DatePipe } from '@angular/common';
@@ -797,6 +995,11 @@ export class AppComponent {
 }
 ```
 
+```html
+<h1>Date Pipe Example</h1>
+<p>{{ date | date: 'shortDate' }}</p>
+```
+
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -814,6 +1017,8 @@ export class AppModule {}
 ```
 
 ### Uppercase Pipe
+
+The `uppercase` pipe is used to transform a string to uppercase.
 
 ```html
 <h1>Upper Case Pipe Example</h1>
@@ -835,6 +1040,8 @@ export class AppComponent {
 
 ### Lowercase Pipe
 
+The `lowercase` pipe is used to transform a string to lowercase.
+
 ```html
 <p>{{ name | lowercase }}</p>
 ```
@@ -853,6 +1060,8 @@ export class AppComponent {
 ```
 
 ### Currency Pipe
+
+The `currency` pipe is used to format a number as currency using the locale rules specified in the application.
 
 ```html
 <h1>Currency Pipe Example</h1>
@@ -897,6 +1106,8 @@ export class AppModule {}
 ```
 
 ### Percent Pipe
+
+The `percent` pipe is used to format a number as a percentage.
 
 ```html
 <h1>Percent Pipe Example</h1>
@@ -943,11 +1154,15 @@ export class AppModule {}
 
 ### Slice Pipe
 
+The `slice` pipe is used to create a new array or string containing a subset of the elements of the input array or string.
+
 ```typescript
 <p>{{ ['apple', 'banana', 'orange', 'mango'] | slice:1:3 }}</p>
 ```
 
 ### Decimal/number Pipe
+
+The `number` pipe is used to format a number as text. It can be used to format a number as a percentage, currency, or decimal number.
 
 ```html
 <p>{{ 123456.78 | number:'3.2-3' }}</p>
@@ -955,13 +1170,15 @@ export class AppModule {}
 
 ### JSON Pipe
 
+The `json` pipe is used to transform a JavaScript object into a JSON string.
+
 ```html
 <p>{{data | json}}</p>
 ```
 
 ### Async Pipe
 
-`async` pipe is a built-in feature that provides an easy way to handle asynchronous data streams directly in templates. It is used to subscribe to and automatically unwrap the result of an asynchronous operation, such as an Observable or Promise, in a template.
+The `async` pipe is used to subscribe to an Observable or Promise and return the latest value it has emitted.
 
 ```html
 <p>{{data$ | async}}</p>
@@ -1009,13 +1226,15 @@ export class ExampleComponent {
 }
 ```
 
-[Back to top⤴️](#contents)
+[Back to top⤴️](#table-of-contents)
 
 ## Decorators
 
 Decorators are design patterns used to isolate the modification or decoration of a class without modifying the source code.
 
 ### Input
+
+The `@Input` decorator is used to pass data from a parent component to a child component.
 
 ```ts
 import { Component, Input, OnInit } from '@angular/core';
@@ -1085,6 +1304,8 @@ export class AppModule {}
 
 ### Output
 
+The `@Output` decorator is used to pass data from a child component to a parent component.
+
 ```ts
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -1140,6 +1361,8 @@ export class ParentComponent implements OnInit {
 
 ### HostListener
 
+The `@HostListener` decorator is used to listen for events on the host element of a directive or component.
+
 ```html
 <h1>@HostListener Decorator Example</h1>
 <p>Click the host element to trigger the 'click' event.</p>
@@ -1162,6 +1385,8 @@ export class AppComponent {
 ```
 
 ### contentChild & contentChildren
+
+The `@ContentChild` and `@ContentChildren` decorators are used to query for content children in the component's view.
 
 ```ts
 import {
@@ -1206,6 +1431,8 @@ export class ParentComponent implements OnInit {
 
 ### viewChild & viewChildren
 
+The `@ViewChild` and `@ViewChildren` decorators are used to query for view children in the component's view.
+
 ```ts
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 
@@ -1233,7 +1460,7 @@ export class AppComponent  {
 <button #childButton2>Button 2</button>
 ```
 
-[Back to top⤴️](#contents)
+[Back to top⤴️](#table-of-contents)
 
 ## Life Cycle Hooks
 
@@ -1241,7 +1468,7 @@ export class AppComponent  {
 
 ### OnChanges
 
-It is called when any data-bound property of a directive or component changes.
+It is called when the data-bound properties of a directive/component are changed. It is called before ngOnInit and whenever one or more data-bound input properties change.
 
 ```html
 <form>
@@ -1291,7 +1518,7 @@ export class TestComponent implements OnChanges {
 
 ### OnInit
 
-It is called after a component has been initialized and its data-bound properties have been checked for the first time.
+It is called after Angular has initialized all data-bound properties of a directive/component. It is called only once after the first ngOnChanges.
 
 ```ts
 import { Component } from '@angular/core';
@@ -1314,7 +1541,7 @@ export class AppComponent {
 
 ### DoCheck
 
-It is called during every change detection cycle. It allows a component to detect and act upon changes that Angular can't detect on its own.
+It is called during every change detection run, and it is used to detect and act upon changes that Angular doesn't catch on its own.
 
 ```ts
 import { Component, DoCheck } from '@angular/core';
@@ -1335,7 +1562,7 @@ export class AppComponent implements DoCheck {
 
 ### AfterViewInit
 
-It is called after app has fully initialized a component's view.
+It is called after Angular has fully initialized a component's view. It is the perfect place to put any initialization logic that depends on the view.
 
 ```ts
 import { AfterViewInit, Component } from '@angular/core';
@@ -1364,7 +1591,7 @@ export class AppComponent implements AfterViewInit{
 
 ### AfterViewChecked
 
-It is called after the default change detector has completed checking a component's view for changes.
+It is called after Angular has checked the component's view and child views. It is called after ngAfterViewInit and every subsequent ngAfterContentChecked.
 
 ```ts
 import { AfterViewChecked, Component } from '@angular/core';
@@ -1392,7 +1619,7 @@ export class AppComponent implements AfterViewChecked {
 
 ### AfterContentInit
 
-It is called after Angular has fully initialized all content of a directive.
+It is called after Angular has fully initialized the content of a directive. It is the perfect place to put any initialization logic that depends on the content.
 
 ```ts
 import { AfterContentInit, Component } from '@angular/core';
@@ -1420,7 +1647,7 @@ export class AppComponent implements AfterContentInit {
 
 ### AfterContentChecked
 
-It is called after the default change detector has completed checking all content of a directive.
+It is called after the default change detector has completed checking all content of a directive. It is called after ngAfterContentInit and every subsequent ngAfterContentChecked.
 
 ```ts
 import { AfterContentInit, Component } from '@angular/core';
@@ -1448,7 +1675,7 @@ export class AppComponent implements AfterContentInit {
 
 ### OnDestroy
 
-It is called just before a component or directive is destroyed. It is a good place to clean up any subscriptions or detach any event handlers to avoid memory leaks.
+It is called just before Angular destroys the directive/component. It is used to cleanup any resources or subscriptions that the directive/component has created.
 
 ```ts
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -1478,7 +1705,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 [Stackblitz Link](https://stackblitz.com/edit/angular-ivy-urqida?file=src/app/app.module.ts)
 
-[Back to top⤴️](#contents)
+[Back to top⤴️](#table-of-contents)
 
 ## Forms
 
@@ -1663,25 +1890,124 @@ export class ProfileEditorComponent {
 Form Data
 
 ```typescript
+onSubmit() {
+  console.warn(this.profileForm.value);
+}
+```
 
+```html
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <!-- form fields -->
+</form>
 ```
 
 Control State, Validity, and Error Messages
 
 ```typescript
+get firstName() {
+  return this.profileForm.get('firstName');
+}
+```
 
+```html
+<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+  <div *ngIf="firstName.errors.required">
+    First Name is required.
+  </div>
+</div>
 ```
 
 Form and Data Model
 
 ```typescript
+import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
+@Component({
+  selector: 'app-profile-editor',
+  templateUrl: './profile-editor.component.html',
+  styleUrls: ['./profile-editor.component.css']
+})
+
+export class ProfileEditorComponent {
+  profileForm = this.fb.group({
+    firstName: [''],
+    lastName: [''],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: ['']
+    })
+  });
+
+  constructor(private fb: FormBuilder) { }
+
+  onSubmit() {
+    console.warn(this.profileForm.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <!-- form fields -->
+</form>
 ```
 
 FormArrays
 
 ```typescript
+import { Component } from '@angular/core';
+import { FormArray, FormBuilder } from '@angular/forms';
 
+@Component({
+  selector: 'app-profile-editor',
+  templateUrl: './profile-editor.component.html',
+  styleUrls: ['./profile-editor.component.css']
+})
+
+export class ProfileEditorComponent {
+  profileForm = this.fb.group({
+    firstName: [''],
+    lastName: [''],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: ['']
+    }),
+    aliases: this.fb.array([
+      this.fb.control('')
+    ])
+  });
+
+  get aliases() {
+    return this.profileForm.get('aliases') as FormArray;
+  }
+
+  addAlias() {
+    this.aliases.push(this.fb.control(''));
+  }
+
+  constructor(private fb: FormBuilder) { }
+
+  onSubmit() {
+    console.warn(this.profileForm.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <button type="button" (click)="addAlias()">Add Alias</button>
+  <div formArrayName="aliases">
+    <div *ngFor="let alias of aliases.controls; let i=index">
+      <input [formControlName]="i" placeholder="Alias">
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
 ```
 
 ## Signals
@@ -1694,43 +2020,47 @@ Angular Signals is a powerful system that provides detailed monitoring of state 
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
-import { signal } from '@angular/cdk/platform-browser';
+import { signal, computed } from '@angular/core'; // Import from '@angular/core'
 
- @Component({
-    selector: 'my-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  count = signal(0);
+  doubleCount = computed(() => this.count() * 2);
 
-count = signal(0);
+  constructor() {}
 
-constructor() { }
+  ngOnInit() {
+    // Optional logging for debugging displayedCount changes
+    // console.log('Displayed count changed to:', this.displayedCount());
+  }
 
-ngOnInit() {
-   this.count.subscribe(value => {
-      console.log('Count changed to', value);
-   });
-}
+  incrementCount() {
+    this.count.set(this.count() + 1);
+  }
 
-incrementCount() {
-   this.count.value++;
-}
-
+  decrementCount() {
+    this.count.update((value) => Math.max(0, value - 1));
+  }
 }
 ```
 
 ```html
 <h1>Angular Signals Example</h1>
 
-<button (click)="incrementCount()">Increment Count</button>
+<button (click)="incrementCount()" style="margin-right: 10px;">Increment Count</button>
+<button (click)="decrementCount()">Decrement Count</button>
 
-<p>Count: {{ count }}</p>
+<p>Count: {{ count() }}</p>
+<p>Double Count: {{ doubleCount() }}</p>
 ```
 
 ## Destroy Ref
 
-DestroyRef is a new provider in Angular 16 that allows you to register destroy callbacks for a specific lifecycle scope. This feature is applicable to components, directives, pipes, embedded views, and instances of EnvironmentInjector.
+The DestroyRef provider is a utility that allows Angular components to register cleanup callbacks that are executed when the component is destroyed. This is useful for cleaning up resources, such as subscriptions, timers, or other resources that need to be released when the component is no longer in use.
 
 ```typescript
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -1834,7 +2164,7 @@ deleteData(id: string){
 
 ### HTTP Interceptor
 
-Http Interceptors are part of @angular/common/http, which inspect and transform HTTP requests from your application to the server and vice-versa on HTTP responses. These interceptors can perform a variety of implicit tasks, from authentication to logging.
+Http Interceptors are a powerful feature provided by the `@angular/common/http` module. They allow you to intercept and modify HTTP requests and responses in your Angular application. With interceptors, you can perform various tasks such as authentication, logging, error handling, and more. Interceptors provide a way to add global behavior to your HTTP requests and responses, making it easier to implement common functionalities across your application.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -1895,13 +2225,34 @@ export class MyService {
 Options—Headers/Params
 
 ```typescript
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 
+const headers = new HttpHeaders({
+  'Content-Type': 'application
+  'Authorization': 'Bearer my-token'
+});
+
+const params = new HttpParams()
+  .set('param1', 'value1')
+  .set('param2', 'value2');
+
+this.http.get('url', { headers, params });
+
+this.http.post('url', data, { headers, params });
+
+this.http.put('url', data, { headers, params });
+
+this.http.patch('url', data, { headers, params });
+
+this.http.delete(`url/${id}`, { headers, params });
 ```
 
 Options—Observe/Response Type
 
 ```typescript
+import { HttpResponse } from '@angular/common/http';
 
+this.http.get('url', { observe: 'response' });
 ```
 
 ## Module
@@ -2064,7 +2415,7 @@ Certainly! Let's complete the Angular Router guide with examples for the provide
 
 ### Router
 
-Angular Router is a mechanism in which navigation happens from one view to the next as users perform application tasks. It borrows the concepts or model of a browser's application navigation.
+The Angular Router is a powerful tool that allows you to define navigation paths and routes in your application. It enables you to navigate between different components and views based on the URL path.
 
 ```typescript
 // app.module.ts
@@ -2084,7 +2435,7 @@ export class AppRoutingModule { }
 
 ### Required Route Params
 
-Route parameters are used to pass data to a route during navigation. In the example below, we have a route with a required parameter (`:id`).
+To define a route with a required parameter, you can use a colon (`:`) followed by the parameter name. For example, in `app.module.ts`:
 
 ```typescript
 // app.module.ts
@@ -2106,7 +2457,7 @@ export class AppRoutingModule { }
 
 ### Navigating in the App
 
-To navigate to a route programmatically, you can use the `Router` service. For example, in a component:
+To navigate to a route with a required parameter, you can use the `Router` service. For example, in a component:
 
 ```typescript
 // some-component.component.ts
@@ -2124,7 +2475,7 @@ export class SomeComponent {
 
 ### Optional Route Params
 
-You can make route parameters optional by appending a `?` to them. In the example below, `:id` is optional:
+To define a route with an optional parameter, you can use a question mark (`?`) after the parameter name. For example, in `app.module.ts`:
 
 ```typescript
 // app.module.ts
@@ -2146,7 +2497,7 @@ export class AppRoutingModule { }
 
 ### Params
 
-To access route parameters in a component, you can use the `ActivatedRoute` service. For example, in `user-details.component.ts`:
+To access route parameters in a component, you can use the `ActivatedRoute` service. For example, in a component:
 
 ```typescript
 // user-details.component.ts
@@ -2168,7 +2519,7 @@ export class UserDetailsComponent {
 
 **Services** -
 
-A service is used when a common functionality needs to be provided to various modules. Services allow for greater separation of concerns for your application and better modularity by allowing you to extract common functionality out of components.
+Services in Angular are classes that are responsible for handling specific tasks or providing functionality that can be shared across multiple components. They are used to encapsulate logic and data that can be reused throughout an application.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -2183,9 +2534,26 @@ export class SharedService {
 
 **Dependency Injection** -
 
-Dependency injection (DI), is an important application design pattern in which a class asks for dependencies from external sources rather than creating them itself.
+Dependency Injection is a design pattern in which a class receives its dependencies from an external source rather than creating them itself. In Angular, dependency injection is used to provide services to components and other services.
+
+```typescript
+import { Component } from '@angular/core';
+import { SharedService } from './shared.service';
+
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.css']
+})
+
+export class MyComponent {
+  constructor(private sharedService: SharedService) { }
+}
+```
 
 ## Routing Module
+
+The Angular Router module provides a powerful mechanism for defining navigation paths and routes in your application. It allows you to define routes, navigate between different components, and handle route parameters and query parameters.
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -2219,6 +2587,8 @@ export class HomeModule { }
 
 ## Routing Module -
 
+The Angular Router module provides a powerful mechanism for defining navigation paths and routes in your application. It allows you to define routes, navigate between different components, and handle route parameters and query parameters.
+
 ```typescript
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -2234,41 +2604,140 @@ export class AppRoutingModule { }
 
 ## Route Parameters
 
-In Angular, route parameters are used to pass dynamic values in the URL of a route. They allow you to define variable segments in the route path, which can be accessed and used by components and services within your application. Route parameters are denoted by a colon (":") followed by the parameter name.
+Route parameters are used to pass data to a route in Angular. They allow you to create dynamic routes that can be customized based on user input or other factors. Route parameters are defined in the route configuration and can be accessed in the component associated with the route.
 
 There are three types of route parameters in Angular:
 
 ***Path Parameters***:
 
-Path parameters are used to define dynamic segments in the URL path. They are specified as part of the route's path and are extracted from the actual URL when navigating to that route. Path parameters are denoted by a colon (":") followed by the parameter name. For example:
+Path parameters are used to extract data from the URL path. They are denoted by placing a colon (":") before the parameter name in the route configuration. Path parameters are part of the route path and can be accessed in the component associated with the route. For example:
 
 ```typescript
 { path: 'users/:id', component: UserComponent }
 ```
 
-In this example, ":id" is the path parameter. When navigating to a URL like "/users/123", the value "123" will be extracted and can be accessed in the UserComponent.
+In this example, the ":id" parameter is a path parameter. The UserComponent can retrieve the value of the ":id" parameter from the URL and use it to fetch user data.
 
 ***Query Parameters***:
 
-Query parameters are used to pass additional information in the URL as key-value pairs. They are appended to the URL after a question mark ("?") and can be accessed by components and services. Query parameters are not part of the route path, but they provide additional data to the route. For example:
+Query parameters are used to pass data as key-value pairs in the URL query string. They are denoted by placing a question mark ("?") after the route path, followed by the parameter name and value. Query parameters are not part of the route path but can be accessed in the component associated with the route. For example:
 
 ```typescript
 { path: 'search', component: SearchComponent }
 ```
 
-In this example, a URL like "/search?query=angular" contains a query parameter "query" with the value "angular". The SearchComponent can retrieve the value of the query parameter and use it for searching.
+In this example, the SearchComponent can access query parameters like "/search?query=angular" or "/search?query=react" and use them to perform a search operation.
 
 ***Optional Parameters***:
 
-Optional parameters are used when you want to make a route parameter optional. They are denoted by placing a question mark ("?") after the parameter name. Optional parameters can be useful when you have routes with varying parameters. For example:
+Optional parameters are used to define route parameters that are not required. They are denoted by placing a question mark ("?") after the parameter name in the route configuration. Optional parameters can be present or absent in the URL, and the component associated with the route can handle both cases. For example:
 
 ```typescript
 { path: 'products/:id/:category?', component: ProductComponent }
 ```
 
-In this example, the ":category" parameter is optional. The ProductComponent can be accessed with URLs like "/products/123" or "/products/123/electronics". If the ":category" parameter is present in the URL, it will be available in the component, otherwise, it will be undefined.
+In this example, the ":category" parameter is optional. The ProductComponent can handle URLs like "/products/123" or "/products/123/electronics" based on the presence of the ":category" parameter.
 
-Route parameters provide a flexible way to handle dynamic data in your Angular application. They allow you to create routes that can be easily customized and provide a seamless user experience by reflecting the current state of the application in the URL.
+## Route Guards
+
+Route guards are used to control access to routes in an Angular application. They allow you to implement logic that determines whether a user is allowed to navigate to a particular route or not. Route guards can be used to protect routes based on user authentication, authorization, or other criteria.
+
+There are four types of route guards in Angular:
+
+***CanActivate***:
+
+The CanActivate guard is used to determine whether a route can be activated or not. It is typically used to check if a user is authenticated before allowing access to a route. The guard returns a boolean value or an Observable or Promise that resolves to a boolean value. If the guard returns true, the route is activated; if it returns false, the route is blocked.
+
+```typescript
+import { Injectable } from '@angular/core';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    // Check if the user is authenticated
+    return true; // Allow access
+  }
+}
+```
+
+***CanActivateChild***:
+
+The CanActivateChild guard is similar to CanActivate but is used to protect child routes of a parent route. It is applied to the parent route configuration and is triggered when any child route is activated. The guard returns a boolean value or an Observable or Promise that resolves to a boolean value.
+
+```typescript
+import { Injectable } from '@angular/core';
+import {
+  CanActivateChild,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthGuard implements CanActivateChild {
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    // Check if the user is authenticated
+    return true; // Allow access
+  }
+}
+```
+
+***CanDeactivate***:
+
+The CanDeactivate guard is used to determine whether a route can be deactivated or not. It is typically used to prompt the user for confirmation before leaving a route with unsaved changes. The guard returns a boolean value or an Observable or Promise that resolves to a boolean value. If the guard returns true, the route is deactivated; if it returns false, the route is not deactivated.
+
+```typescript
+import { Injectable } from '@angular/core';
+import {
+  CanDeactivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class ConfirmDeactivateGuard implements CanDeactivate<any> {
+  canDeactivate(
+    component: any,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    // Check if the user wants to leave the route
+    return confirm('Are you sure you want to leave?');
+  }
+}
+```
+
+***CanLoad***:
+
+The CanLoad guard is used to determine whether a lazy-loaded module can be loaded or not. It is applied to the route configuration of a lazy-loaded module and is triggered when the module is about to be loaded. The guard returns a boolean value or an Observable or Promise that resolves to a boolean value. If the guard returns true, the module is loaded; if it returns false, the module is not loaded.
+
+```typescript
+import { Injectable } from '@angular/core';
+import { CanLoad, Route } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthGuard implements CanLoad {
+  canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
+    // Check if the user is authenticated
+    return true; // Allow loading
+  }
+}
+```
 
 ## Observables in Angular
 
@@ -2447,7 +2916,7 @@ A standalone component is a type of component which is not part of any Angular m
 
 ## JIT
 
-**Just-in-Time** (JIT) is a type of compilation that compiles your app in the browser at runtime.
+**Just-in-Time** (JIT) is a type of compilation that compiles your app in the browser at runtime. This is the default compilation mode for Angular applications.
 
 ### Advantages of JIT
 
@@ -2457,7 +2926,7 @@ A standalone component is a type of component which is not part of any Angular m
 
 ## AOT
 
-**Ahead-of-Time** (AOT) is a type of compilation that compiles your app at build time.
+**Ahead-of-Time** (AOT) is a type of compilation that compiles your app at build time. This mode is used to pre-compile your Angular application before deployment.
 
 ### Advantages of AOT
 
@@ -2477,175 +2946,13 @@ A standalone component is a type of component which is not part of any Angular m
 | Application load time | Faster | Slower |
 | Debugging | More difficult | Easier |
 | Development | More difficult | Easier |
-
-## Route Guards
-
-CanActivate
-
-```typescript
-import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-} from '@angular/router';
-import { Observable } from 'rxjs';
-
-@Injectable()
-export class AuthGuard implements CanActivate {
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    return false;
-  }
-}
-```
-
-CanDeactivate
-
-```typescript
-// can-deactivate.guard.ts
-import { Injectable } from '@angular/core';
-import { CanDeactivate } from '@angular/router';
-import { Observable } from 'rxjs';
-
-export interface CanDeactivateComponent {
-  canDeactivate: () => boolean | Observable<boolean>;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class CanDeactivateGuard
-  implements CanDeactivate<CanDeactivateComponent> {
-
-  canDeactivate(
-    component: CanDeactivateComponent
-  ): boolean | Observable<boolean> {
-    return component.canDeactivate ? component.canDeactivate() : true;
-  }
-}
-```
-
-```typescript
-// your-component.component.ts
-import { Component } from '@angular/core';
-import { CanDeactivateComponent } from './can-deactivate.guard';
-
-@Component({
-  selector: 'app-your-component',
-  template: 'Your component content here.'
-})
-export class YourComponent implements CanDeactivateComponent {
-  // ... your component code ...
-
-  canDeactivate(): boolean | Observable<boolean> {
-    // Your deactivation logic goes here
-    // Return true if navigation is allowed, false otherwise
-    return true;
-  }
-}
-```
-
-Resolve
-
-```typescript
-// resolve.guard.ts
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class DataResolver implements Resolve<string> {
-
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): string | Observable<string> | Promise<string> {
-    // Fetch data asynchronously and return it
-    return 'Data resolved asynchronously';
-  }
-}
-```
-
-CanLoad
-
-```typescript
-// can-load.guard.ts
-import { Injectable } from '@angular/core';
-import { CanLoad, Route, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class CanLoadGuard implements CanLoad {
-
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]
-  ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    // Check if the user is authenticated to load the module lazily
-    const isAuthenticated = /* your authentication logic here */;
-
-    if (isAuthenticated) {
-      return true; // Allow lazy loading
-    } else {
-      // Redirect to the login page if not authenticated
-      return false;
-    }
-  }
-}
-```
-
-CanActivateChild
-
-```typescript
-// auth-child.guard.ts
-import { Injectable } from '@angular/core';
-import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthChildGuard implements CanActivateChild {
-
-  constructor(private router: Router) {}
-
-  canActivateChild(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    // Check if the user is authenticated for child routes
-    const isAuthenticated = /* your authentication logic here */;
-
-    if (isAuthenticated) {
-      return true; // Allow navigation to child routes
-    } else {
-      // Redirect to the login page if not authenticated
-      return this.router.createUrlTree(['/login']);
-    }
-  }
-}
-```
-
-**ng-container** - A special element that can hold structural directives without adding new elements to the DOM.
-
-```html
-<ng-container>
-  ......
-</ng-container>
-```
+| Performance | Better | Worse |
 
 ## Deferrable Views
 
 Deferrable views can be used in component template to defer the loading of select dependencies within that template.
 
-```jsx
+```typescript
 @defer {
   <large-component />
 }
@@ -2655,7 +2962,7 @@ Deferrable views can be used in component template to defer the loading of selec
 
 Angular Universal is a server-side rendering module for Angular applications in various scenarios. This is a community driven project and available under @angular/platform-server package.
 
-```jsx
+```bash
 // create the application
 ng add @nguniversal/express-engine
 
@@ -2671,11 +2978,11 @@ Angular's animation system is built on CSS functionality in order to animate any
 
 ### Title Service
 
-```jsx
+```typescript
 import { BrowserModule, Title } from '@angular/platform-browser';
 ```
 
-```jsx
+```typescript
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -2695,19 +3002,19 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
-```jsx
+```typescript
 export class TitleComponent implements OnInit {
   constructor(private title:Title) { }
 }
 ```
 
-```jsx
+```typescript
 ngOnInit() {
   this.title.setTitle("Learn Angular")
 }
 ```
 
-```jsx
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { Title, MetaDefinition } from '@angular/platform-browser';
  
@@ -2729,7 +3036,7 @@ export class AppComponent implements OnInit {
 
 ### Title Service Example
 
-```jsx
+```typescript
 // app.module.ts
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -2752,7 +3059,7 @@ import { HomeComponent } from './home.component';
 export class AppModule { }
 ```
 
-```jsx
+```typescript
 // app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -2769,7 +3076,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 ```
 
-```jsx
+```typescript
 // app.component.ts
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
@@ -2825,7 +3132,7 @@ export class HomeComponent implements OnInit {
 
 ### Dynamic Title
 
-```jsx
+```typescript
 // app.module.ts
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -2848,7 +3155,7 @@ import { HomeComponent } from './home.component';
 export class AppModule { }
 ```
 
-```jsx
+```typescript
 // app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -2872,7 +3179,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 ```
 
-```jsx
+```typescript
 // app.component.ts
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
@@ -2990,11 +3297,11 @@ export class ChildComponent implements OnInit {
 
 ### Meta Service
 
-```jsx
+```typescript
 import { BrowserModule, Meta } from '@angular/platform-browser';
 ```
 
-```jsx
+```typescript
 @NgModule({
   declarations: [
     AppComponent
@@ -3009,7 +3316,7 @@ import { BrowserModule, Meta } from '@angular/platform-browser';
 export class AppModule { }
 ```
 
-```jsx
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { Meta, MetaDefinition } from '@angular/platform-browser';
  
@@ -3031,11 +3338,11 @@ export class AppComponent implements OnInit {
 
 Adding Tags with addTag() & addTags()
 
-```jsx
+```typescript
 this.metaService.addTag( { name:'description',content:"Article Description"});
 ```
 
-```jsx
+```typescript
 this.metaService.addTag( 
   { name: 'description', content: 'Article Description' },
   { name: 'robots', content: 'index,follow' },
@@ -3045,19 +3352,19 @@ this.metaService.addTag(
 
 Reading the Tags with getTag()
 
-```jsx
+```typescript
 this.metaService.getTag("name='description'")
 ```
 
 Update the Tag with updateTag()
 
-```jsx
+```typescript
 this.metaService.updateTag( { name:'robots', content:'index, nofoloow'},"name='robots'");
 ```
 
 Removing the Tag with removeTag()
 
-```jsx
+```typescript
 this.metaService.removeTag("name='robots'");
 ```
 
@@ -3082,19 +3389,19 @@ npm install -g @angular/cli
 
 Help
 
-```jsx
+```bash
 ng help
 ```
 
 Check version
 
-```jsx
+```bash
 ng version
 ```
 
 Create, build, and serve a new, basic Angular project cli command
 
-```jsx
+```bash
 ng new my-first-project
 cd my-first-project
 ng serve
@@ -3121,25 +3428,25 @@ ng generate component component-name
 
 Adding External libraries
 
-```jsx
+```bash
 ng add
 ```
 
 Build
 
-```jsx
+```bash
 ng build
 ```
 
 Running project
 
-```jsx
+```bash
 ng serve
 ```
 
 Run project on particular port
 
-```jsx
+```bash
 ng serve --port=portname
 // example
 ng serve --port=3000
@@ -3147,13 +3454,13 @@ ng serve --port=3000
 
 Run project and open the url in default browser
 
-```jsx
+```bash
 ng  serve --open
 ```
 
 Update
 
-```jsx
+```bash
 ng update
 ```
 
@@ -3231,42 +3538,86 @@ ng new app-name --create-application=false
 
 Generate environments
 
-```jsx
+```bash
 ng generate environments
 ```
 
 ## Version compatibility
 
-| ANGULAR | NODE.JS | TYPESCRIPT | RXJS |
-|---|---|----|---|
-| 17.0.x | ^18.13.0 and ^20.9.0 | >=4.9.3 and <5.3.0 | ^6.5.3 and ^7.4.0 |
-| 16.1.x | ^16.14.0 and ^18.10.0 | >=4.9.3 <5.2.0 | ^6.5.3 and ^7.4.0 |
-| 16.0.x | ^16.14.0 and ^18.10.0 | >=4.9.3 <5.1.0 | ^6.5.3 and ^7.4.0 |
-| 15.1.x and 15.2.x | ^14.20.0 and ^16.13.0 and ^18.10.0 | >=4.8.2 <5.0.0 | ^6.5.3 and ^7.4.0 |
-| 15.0.x | ^14.20.0 and ^16.13.0 and ^18.10.0 | ~4.8.2 | ^6.5.3 and ^7.4.0 |
-| 14.2.x and 14.3.x | ^14.15.0 and ^16.10.0 | >=4.6.2 <4.9.0 | ^6.5.3 and ^7.4.0 |
-| 14.0.x and 14.1.x | ^14.15.0 and ^16.10.0 | >=4.6.2 <4.8.0 | ^6.5.3 and ^7.4.0 |
+| Angular            | Node.js                              | TypeScript     | RxJS               |
+| ------------------ | ------------------------------------ | -------------- | ------------------ |
+| 18.0.x             | ^18.19.1 \|\| ^20.11.1 \|\| ^22.0.0  | >=5.4.0 <5.5.0 | ^6.5.3 \|\| ^7.4.0 |
+| 17.3.x             | ^18.13.0 \|\| ^20.9.0                | >=5.2.0 <5.5.0 | ^6.5.3 \|\| ^7.4.0 |
+| 17.1.x \|\| 17.2.x | ^18.13.0 \|\| ^20.9.0                | >=5.2.0 <5.4.0 | ^6.5.3 \|\| ^7.4.0 |
+| 17.0.x             | ^18.13.0 \|\| ^20.9.0                | >=5.2.0 <5.3.0 | ^6.5.3 \|\| ^7.4.0 |
+| 16.1.x \|\| 16.2.x | ^16.14.0 \|\| ^18.10.0               | >=4.9.3 <5.2.0 | ^6.5.3 \|\| ^7.4.0 |
+| 16.0.x             | ^16.14.0 \|\| ^18.10.0               | >=4.9.3 <5.1.0 | ^6.5.3 \|\| ^7.4.0 |
 
 ## Imports
 
-Angular
+Angular Core
 
 ```typescript
-import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
-import { NgModel } from '@angular/forms';
-import { NgForm } from '@angular/forms';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'; // Component decorator
+import { NgModule } from '@angular/core'; // NgModule decorator
+import { RouterModule, Routes } from '@angular/router'; // Routing module
+import { FormsModule } from '@angular/forms'; // Forms module
+import { ReactiveFormsModule } from '@angular/forms'; // Reactive forms module
+import { HttpClientModule } from '@angular/common/http'; // HTTP client module
+import { BrowserModule } from '@angular/platform-browser'; // Browser module
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Animations module
+import { CommonModule } from '@angular/common'; // Common module
+import { NgModel } from '@angular/forms'; // NgModel directive
+import { NgForm } from '@angular/forms'; // NgForm directive
+import { FormGroup, FormControl, Validators } from '@angular/forms'; // Form group, form control, validators
+import { HttpClient } from '@angular/common/http'; // HTTP client
+import { ActivatedRoute } from '@angular/router'; // Route parameters
+import { Router } from '@angular/router'; // Router service
+import { Title } from '@angular/platform-browser'; // Title service
+import { Meta } from '@angular/platform-browser'; // Meta service
+import { Renderer2 } from '@angular/core'; // Renderer2 service
+import { ElementRef } from '@angular/core'; // ElementRef service
+import { ViewChild } from '@angular/core'; // ViewChild decorator
+import { ViewContainerRef } from '@angular/core'; // ViewContainerRef service
+import { ComponentFactoryResolver } from '@angular/core'; // ComponentFactoryResolver service
+import { ChangeDetectorRef } from '@angular/core'; // ChangeDetectorRef service
+import { Pipe, PipeTransform } from '@angular/core'; // Pipe decorator, PipeTransform interface
+import { Injectable } from '@angular/core'; // Injectable decorator
+import { EventEmitter } from '@angular/core'; // EventEmitter class
+import { Output } from '@angular/core'; // Output decorator
+import { Input } from '@angular/core'; // Input decorator
+import { HostListener } from '@angular/core'; // HostListener decorator
+import { HostBinding } from '@angular/core';  // HostBinding decorator
+import { ContentChild } from '@angular/core'; // ContentChild decorator
+import { ContentChildren } from '@angular/core';  // ContentChildren decorator
+import { QueryList } from '@angular/core';  // QueryList class
+import { AfterContentInit } from '@angular/core'; // AfterContentInit interface
+import { AfterContentChecked } from '@angular/core';  // AfterContentChecked interface
+import { AfterViewInit } from '@angular/core';  // AfterViewInit interface
+import { AfterViewChecked } from '@angular/core'; // AfterViewChecked interface
+import { OnInit } from '@angular/core'; // OnInit interface
+import { OnDestroy } from '@angular/core';  // OnDestroy interface
+import { OnChanges } from '@angular/core';  // OnChanges interface
+import { SimpleChanges } from '@angular/core';  // SimpleChanges class
+import { DoCheck } from '@angular/core';  // DoCheck interface
+import { KeyValueDiffers } from '@angular/core';  // KeyValueDiffers service
+import { KeyValueDiffer } from '@angular/core'; // KeyValueDiffer interface
+import { KeyValueChanges } from '@angular/core';  // KeyValueChanges interface
+import { KeyValueChangeRecord } from '@angular/core'; // KeyValueChangeRecord interface 
+import { IterableDiffers } from '@angular/core';  // IterableDiffers service
+import { IterableDiffer } from '@angular/core'; // IterableDiffer interface
+import { IterableChanges } from '@angular/core';  // IterableChanges interface
+import { IterableChangeRecord } from '@angular/core'; // IterableChangeRecord interface
+import { ChangeDetectionStrategy } from '@angular/core';  // ChangeDetectionStrategy enum
+import { ChangeDetectorRef } from '@angular/core';  // ChangeDetectorRef service
+import { NgZone } from '@angular/core'; // NgZone service
+import { ApplicationRef } from '@angular/core'; // ApplicationRef service
+import { ComponentRef } from '@angular/core'; // ComponentRef class
+import { ComponentFactory } from '@angular/core'; // ComponentFactory class
+import { ComponentFactoryResolver } from '@angular/core'; // ComponentFactoryResolver service
+import { ViewContainerRef } from '@angular/core'; // ViewContainerRef service
+import { TemplateRef } from '@angular/core';  // TemplateRef class
+import { EmbeddedViewRef } from '@angular/core';  // EmbeddedViewRef class
 ```
 
 Angular Material
@@ -3299,11 +3650,24 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatButtonToggleModule } from '@angular/material/button-toggle'; 
+import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatRippleModule } from '@angular/material/core';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTreeModule } from '@angular/material/tree';
 ```
 
 RxJS
 
-```javascript
+```typescript
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -3330,12 +3694,41 @@ import { switchMap } from 'rxjs/operators';
 import { take } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
 import { distinctUntilChanged } from 'rxjs/operators';
-// and many more...
+import { scan } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
+import { exhaustMap } from 'rxjs/operators';
+import { concatMap } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
+import { share } from 'rxjs/operators';
+import { shareReplay } from 'rxjs/operators';
+import { buffer } from 'rxjs/operators';
+import { bufferCount } from 'rxjs/operators';
+import { bufferTime } from 'rxjs/operators';
+import { bufferToggle } from 'rxjs/operators';
+import { bufferWhen } from 'rxjs/operators';
+import { combineAll } from 'rxjs/operators';
+import { concatAll } from 'rxjs/operators';
+import { count } from 'rxjs/operators';
+import { endWith } from 'rxjs/operators';
+import { every } from 'rxjs/operators';
+import { exhaust } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
+import { groupBy } from 'rxjs/operators';
+import { ignoreElements } from 'rxjs/operators';
+import { isEmpty } from 'rxjs/operators';
+import { last } from 'rxjs/operators';
+import { max } from 'rxjs/operators';
+import { mergeAll } from 'rxjs/operators';
+import { min } from 'rxjs/operators';
+import { pairwise } from 'rxjs/operators';
+import { partition } from 'rxjs/operators';
+import { pluck } from 'rxjs/operators';
 ```
 
 Firebase
 
-```jsx
+```typescript
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -3350,11 +3743,15 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFirePerformanceModule } from '@angular/fire/performance';
+import { AngularFireRemoteConfigModule } from '@angular/fire/remote-config';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 ```
 
 ## TypeScript
 
-**TypeScript** is JavaScript with syntax for types.
+**TypeScript** is JavaScript with syntax for types. TypeScript is a superset of JavaScript that compiles to plain JavaScript. It is developed and maintained by Microsoft.
 
 ## Rxjs
 
@@ -3362,7 +3759,11 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 ## NgRx
 
-**NgRx** is a Reactive libraries for Angular,
+**NgRx** is a Reactive libraries for Angular. It provides state management, side effects, and route handling. It is inspired by Redux. It is a set of Angular libraries to help manage state at scale in Angular applications.
+
+## NgXS
+
+**NgXS** is a state management pattern + library for Angular. It acts as a single source of truth for your application's state, providing simple rules for predictable state mutations.
 
 ## Learn more from GitHub Repositories
 
@@ -3413,6 +3814,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 - [Freecodecamp](https://www.youtube.com/@freecodecamp)
 - [Programming With Mosh](https://www.youtube.com/@programmingwithmosh)
+- [Angular University](https://www.youtube.com/@AngularUniversity)
 - [Traversy Media](https://www.youtube.com/@TraversyMedia)
 - [Code With Harry](https://www.youtube.com/@CodeWithHarry)
 - [Fireship](https://www.youtube.com/@Fireship)
@@ -3430,6 +3832,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 - [David Acosta](https://www.youtube.com/@davidacosta4611)
 - [Testy Codiez](https://www.youtube.com/@TestyCodiez)
 - [CodAffection](https://www.youtube.com/@CodAffection)
+- [Techsith](https://www.youtube.com/@techsithtube)
 
 ## Learn More From Blogs Sites
 
@@ -3437,18 +3840,33 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 - [Medium](https://medium.com/)
 - [Dev.to](https://dev.to/)
 - [Hashnode](https://hashnode.com/)
+- [Angular Blog](https://blog.angular.io/)
+- [Angular In Depth](https://angularindepth.com/)
+- [Angular University](https://blog.angular-university.io/)
 
-## List of Online Editors/Compiler
+## List of Online Editors/Compiler for Angular
 
 - [Stackblitz](https://stackblitz.com/)
 - [CodeSandbox](https://codesandbox.io/)
+- [Plunker](https://plnkr.co/)
 
-## List of Twitter Users
+## List of Twitter Users to Follow
 
 - [Mosh](https://twitter.com/moshhamedani)
 - [Minko Gechev](https://twitter.com/mgechev)
+- [Todd Motto](https://twitter.com/toddmotto)
+- [Deborah Kurata](https://twitter.com/DeborahKurata)
+- [John Papa](https://twitter.com/John_Papa)
+- [Dan Wahlin](https://twitter.com/DanWahlin)
+- [Maximilian Schwarzmüller](https://twitter.com/maxedapps)
+- [Wes Bos](https://twitter.com/wesbos)
+- [Tracy Lee | ladyleet](https://twitter.com/ladyleet)
+- [Shai Reznik](https://twitter.com/shai_reznik)
+- [Victor Savkin](https://twitter.com/victorsavkin)
+- [Stephen Fluin](https://twitter.com/stephenfluin)
+- [Juri Strumpflohner](https://twitter.com/juristr)
 
-## List of LinkedIn Users
+## List of LinkedIn Users to Follow
 
 - [Kevin Kreuzer](https://www.linkedin.com/in/kevin-kreuzer-a63b39121/)
 - [Aristeidis Bampakos](https://www.linkedin.com/in/aristeidisbampakos/)
@@ -3457,5 +3875,42 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 - [Tomas Trajan](https://www.linkedin.com/in/tomastrajan/)
 - [Marko Stanimirović](https://www.linkedin.com/in/markostanimirovic/)
 - [Teja Gandhamu](https://www.linkedin.com/in/tejagandhamu/)
+- [Santosh Yadav](https://www.linkedin.com/in/santoshyadavdev/)
+- [Juri Strumpflohner](https://www.linkedin.com/in/juristr/)
+- [Minko Gechev](https://www.linkedin.com/in/mgechev/)
+- [Todd Motto](https://www.linkedin.com/in/toddmotto/)
+- [Deborah Kurata](https://www.linkedin.com/in/deborah-kurata-7b7b5a1/)
 
-### 🙏🏻Please Support and Don't Forget to give star⭐, Also Feel free to contribute
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Angular](https://angular.io/)
+- [Stackblitz](https://stackblitz.com/)
+
+## Connect with me
+
+- [Twitter](https://twitter.com/manthan_ank)
+- [LinkedIn](https://www.linkedin.com/in/manthanank)
+- [Facebook](https://www.facebook.com/manthanank/)
+- [Instagram](https://www.instagram.com/manthan_ank/)
+- [YouTube](https://www.youtube.com/@manthanank)
+- [GitHub](https://github.com/manthanank)
+
+## Support
+
+If you like this learning repository and find it useful, consider buying me a coffee or sponsoring me through the GitHub Sponsor. Your support will help me to continue and bring more exciting projects. Thank you!
+
+[![Buy Me A Coffee](/public/bmc-button.svg)](https://www.buymeacoffee.com/manthanank)
+
+[![Sponsor Me](https://img.shields.io/badge/Sponsor-GitHub-green)]([https://](https://github.com/sponsors/manthanank))
+
+---
+
+Show your support by 🌟 the repository.
