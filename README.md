@@ -55,8 +55,21 @@ This repository contains a list of resources to learn Angular.
   - [AfterContentChecked](#aftercontentchecked)
   - [OnDestroy](#ondestroy)
 - [Forms](#forms)
-- [Signals](#signals)
-- [Angular Signals](#angular-signals)
+  - [Template Driven Forms](#template-driven-forms)
+  - [Reactive Forms](#reactive-forms)
+- [Services](#services)
+  - [Injectable](#injectable)
+  - [Dependency Injection](#dependency-injection)
+  - [Providers](#providers)
+- [Routing](#routing)
+  - [Router Outlet](#router-outlet)
+  - [Router Link](#router-link)
+  - [Router Link Active](#router-link-active)
+  - [Router State](#router-state)
+  - [Router Events](#router-events)
+  - [Router Guards](#router-guards)
+- [Lazy Loading](#lazy-loading)
+- [HTTP Client](#http-client)
 - [Destroy Ref](#destroy-ref)
 - [Http](#http)
 - [Module](#module)
@@ -65,7 +78,6 @@ This repository contains a list of resources to learn Angular.
 - [Observables](#observables-in-angular)
 - [Unsubscribe](#unsubscribe-in-angular)
 - [Renderer2](#renderer2)
-- [Standalone Components](#standalone-components)
 - [JIT](#jit)
 - [AOT](#aot)
 - [Deferrable Views](#deferrable-views)
@@ -73,6 +85,8 @@ This repository contains a list of resources to learn Angular.
   - [Title Service](#title-service)
     - [Dynamic Title](#dynamic-title)
   - [Meta Service](#meta-service)
+- [Standalone Components](#standalone-components)
+- [Angular Signals](#angular-signals)
 - [CLI Commands](#cli-commands)
 - [Version compatibility](#version-compatibility)
 - [Imports](#imports)
@@ -1708,354 +1722,879 @@ export class AppComponent implements OnInit, OnDestroy {
 
 ## Forms
 
-### Template Driven Form
+Angular provides two ways to work with forms: template-driven forms and reactive forms.
+
+### Template-driven Forms
+
+Template-driven forms are created using directives in the template. Angular automatically tracks the value and validity of the form controls.
 
 ```html
-<form (ngSubmit)="onSubmit()" #form="ngForm">
-    <input [(ngModel)]="name" name="name" required>
-    <button type="submit">Submit</button>
-</form>
-```
-
-Example
-
-```html
-<!-- form template -->
-<form (ngSubmit)="onSubmit(form)" #form="ngForm">
-  <label>
-    Name:
-    <input type="text" [(ngModel)]="name" name="name" required>
-  </label>
-  <br>
-  <label>
-    Email:
-    <input type="email" [(ngModel)]="email" name="email" required>
-  </label>
-  <br>
-  <button type="submit" [disabled]="!form.valid">Submit</button>
-</form>
-```
-
-```typescript
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  name: string;
-  email: string;
-
-  onSubmit(form: NgForm) {
-    console.log(form.value); // { name: 'your name', email: 'your email' }
-    console.log(form.valid); // true
-  }
-}
-```
-
-### Reactive Form
-
-Basic Form Control
-
-```typescript
-import { ReactiveFormsModule } from '@angular/forms';
-
-@NgModule({
-  imports: [
-    // other imports ...
-    ReactiveFormsModule
-  ],
-})
-export class AppModule { }
-```
-
-```typescript
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-
-@Component({
-  selector: 'app-name-editor',
-  templateUrl: './name-editor.component.html',
-  styleUrls: ['./name-editor.component.css']
-})
-export class NameEditorComponent {
-  name = new FormControl('');
-}
-```
-
-```html
-<label for="name">Name: </label>
-<input id="name" type="text" [formControl]="name">
-```
-
-To display form control values
-
-```html
-{{ name.value }}
-```
-
-To replace the form control value
-
-```html
-<button (click)="update()">Update</button>
-```
-
-```typescript
-update(){
-  this.name.setValue('Manthan');
-}
-```
-
-Form Group
-
-```typescript
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-
-@Component({
-  selector: 'app-profile-editor',
-  templateUrl: './profile-editor.component.html',
-  styleUrls: ['./profile-editor.component.css']
-})
-export class ProfileEditorComponent {
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-  });
-}
-```
-
-```html
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="first-name">First Name: </label>
-    <input id="first-name" type="text" formControlName="firstName">
-  </div>
-  <div>
-    <label for="last-name">Last Name: </label>
-    <input id="last-name" type="text" formControlName="lastName">
-  </div>
-</form>
-<p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!profileForm.valid">Submit</button>
-```
-
-Nested form groups
-
-```typescript
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-
-@Component({
-  selector: 'app-profile-editor',
-  templateUrl: './profile-editor.component.html',
-  styleUrls: ['./profile-editor.component.css']
-})
-export class ProfileEditorComponent {
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    address: new FormGroup({
-      street: new FormControl(''),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      zip: new FormControl('')
-    })
-  });
-}
-```
-
-```html
-<div formGroupName="address">
-  <h2>Address</h2>
-
-  <label for="street">Street: </label>
-  <input id="street" type="text" formControlName="street">
-
-  <label for="city">City: </label>
-  <input id="city" type="text" formControlName="city">
-
-  <label for="state">State: </label>
-  <input id="state" type="text" formControlName="state">
-
-  <label for="zip">Zip Code: </label>
-  <input id="zip" type="text" formControlName="zip">
-</div>
-```
-
-Form Data
-
-```typescript
-onSubmit() {
-  console.warn(this.profileForm.value);
-}
-```
-
-```html
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <!-- form fields -->
-</form>
-```
-
-Control State, Validity, and Error Messages
-
-```typescript
-get firstName() {
-  return this.profileForm.get('firstName');
-}
-```
-
-```html
-<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-  <div *ngIf="firstName.errors.required">
-    First Name is required.
-  </div>
-</div>
-```
-
-Form and Data Model
-
-```typescript
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-
-@Component({
-  selector: 'app-profile-editor',
-  templateUrl: './profile-editor.component.html',
-  styleUrls: ['./profile-editor.component.css']
-})
-
-export class ProfileEditorComponent {
-  profileForm = this.fb.group({
-    firstName: [''],
-    lastName: [''],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: ['']
-    })
-  });
-
-  constructor(private fb: FormBuilder) { }
-
-  onSubmit() {
-    console.warn(this.profileForm.value);
-  }
-}
-```
-
-```html
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <!-- form fields -->
-</form>
-```
-
-FormArrays
-
-```typescript
-import { Component } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
-
-@Component({
-  selector: 'app-profile-editor',
-  templateUrl: './profile-editor.component.html',
-  styleUrls: ['./profile-editor.component.css']
-})
-
-export class ProfileEditorComponent {
-  profileForm = this.fb.group({
-    firstName: [''],
-    lastName: [''],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: ['']
-    }),
-    aliases: this.fb.array([
-      this.fb.control('')
-    ])
-  });
-
-  get aliases() {
-    return this.profileForm.get('aliases') as FormArray;
-  }
-
-  addAlias() {
-    this.aliases.push(this.fb.control(''));
-  }
-
-  constructor(private fb: FormBuilder) { }
-
-  onSubmit() {
-    console.warn(this.profileForm.value);
-  }
-}
-```
-
-```html
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <button type="button" (click)="addAlias()">Add Alias</button>
-  <div formArrayName="aliases">
-    <div *ngFor="let alias of aliases.controls; let i=index">
-      <input [formControlName]="i" placeholder="Alias">
-    </div>
-  </div>
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+  <input type="text" name="name" ngModel required />
   <button type="submit">Submit</button>
 </form>
 ```
 
-## Signals
-
-Signals serve as wrappers around values, offering the ability to notify interested consumers whenever the encapsulated value undergoes a change. These signals can accommodate a wide range of values, encompassing both basic primitives and intricate data structures.
-
-## Angular Signals
-
-Angular Signals is a powerful system that provides detailed monitoring of state usage within an application, enabling the framework to efficiently optimize rendering updates.
-
-```typescript
-import { Component, OnInit } from '@angular/core';
-import { signal, computed } from '@angular/core'; // Import from '@angular/core'
+```ts
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  count = signal(0);
-  doubleCount = computed(() => this.count() * 2);
+export class AppComponent {
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+  }
+}
+```
 
-  constructor() {}
+### Reactive Forms
 
-  ngOnInit() {
-    // Optional logging for debugging displayedCount changes
-    // console.log('Displayed count changed to:', this.displayedCount());
+Reactive forms are created programmatically using form controls and form groups. They provide more control and flexibility compared to template-driven forms.
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.email],
+    });
   }
 
-  incrementCount() {
-    this.count.set(this.count() + 1);
-  }
-
-  decrementCount() {
-    this.count.update((value) => Math.max(0, value - 1));
+  onSubmit() {
+    console.log(this.form.value);
   }
 }
 ```
 
 ```html
-<h1>Angular Signals Example</h1>
-
-<button (click)="incrementCount()" style="margin-right: 10px;">Increment Count</button>
-<button (click)="decrementCount()">Decrement Count</button>
-
-<p>Count: {{ count() }}</p>
-<p>Double Count: {{ doubleCount() }}</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <input type="email" formControlName="email" />
+  <button type="submit">Submit</button>
+</form>
 ```
+
+[Back to top⤴️](#table-of-contents)
+
+Set Value in Template Driven forms in Angular
+
+```html
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+  <input type="text" name="name" ngModel required />
+  <button type="submit">Submit</button>
+</form>
+```
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  onSubmit(form: NgForm) {
+    form.setValue({ name: 'John' });
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+FormBuilder in Reactive Forms
+  
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.email],
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+SetValue & PatchValue in Angular
+  
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      email: '',
+    });
+
+    this.form.setValue({
+      name: 'John',
+      email: 'john.doe@gmail.com',
+    });
+
+    this.form.patchValue({
+      name: 'Jane',
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+StatusChanges in Angular Forms
+  
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      email: '',
+    });
+
+    this.form.statusChanges.subscribe((status) => {
+      console.log(status);
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+ValueChanges in Angular Forms
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      email: '',
+    });
+
+    this.form.valueChanges.subscribe((value) => {
+      console.log(value);
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+FormControl
+
+```ts
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  name = new FormControl('');
+
+  onSubmit() {
+    console.log(this.name.value);
+  }
+}
+```
+
+FormGroup
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      email: '',
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+FormArray Example
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      emails: this.fb.array([]),
+    });
+  }
+
+  get emails() {
+    return this.form.get('emails') as FormArray;
+  }
+
+  addEmail() {
+    this.emails.push(this.fb.control(''));
+  }
+
+  removeEmail(index: number) {
+    this.emails.removeAt(index);
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <div formArrayName="emails">
+    <div *ngFor="let email of emails.controls; let i = index">
+      <input type="email" [formControlName]="i" />
+      <button type="button" (click)="removeEmail(i)">Remove</button>
+    </div>
+  </div>
+  <button type="button" (click)="addEmail()">Add Email</button>
+  <button type="submit">Submit</button>
+</form>
+```
+
+Build Dynamic or Nested Forms using FormArray
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      addresses: this.fb.array([]),
+    });
+  }
+
+  get addresses() {
+    return this.form.get('addresses') as FormArray;
+  }
+
+  addAddress() {
+    this.addresses.push(
+      this.fb.group({
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+      })
+    );
+  }
+
+  removeAddress(index: number) {
+    this.addresses.removeAt(index);
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <div formArrayName="addresses">
+    <div *ngFor="let address of addresses.controls; let i = index">
+      <div [formGroupName]="i">
+        <input type="text" formControlName="street" />
+        <input type="text" formControlName="city" />
+        <input type="text" formControlName="state" />
+        <input type="text" formControlName="zip" />
+        <button type="button" (click)="removeAddress(i)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <button type="button" (click)="addAddress()">Add Address</button>
+  <button type="submit">Submit</button>
+</form>
+```
+
+SetValue & PatchValue in FormArray
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      addresses: this.fb.array([]),
+    });
+
+    this.form.setValue({
+      name: 'John',
+      addresses: [
+        { street: '123 Main St', city: 'Anytown', state: 'CA', zip: '12345' },
+        { street: '456 Elm St', city: 'Othertown', state: 'NY', zip: '67890' },
+      ],
+    });
+
+    this.form.patchValue({
+      name: 'Jane',
+    });
+  }
+
+  get addresses() {
+    return this.form.get('addresses') as FormArray;
+  }
+
+  addAddress() {
+    this.addresses.push(
+      this.fb.group({
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+      })
+    );
+  }
+
+  removeAddress(index: number) {
+    this.addresses.removeAt(index);
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <div formArrayName="addresses">
+    <div *ngFor="let address of addresses.controls; let i = index">
+      <div [formGroupName]="i">
+        <input type="text" formControlName="street" />
+        <input type="text" formControlName="city" />
+        <input type="text" formControlName="state" />
+        <input type="text" formControlName="zip" />
+        <button type="button" (click)="removeAddress(i)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <button type="button" (click)="addAddress()">Add Address</button>
+  <button type="submit">Submit</button>
+</form>
+```
+
+Select Options Dropdown
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      gender: '',
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <select formControlName="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <button type="submit">Submit</button>
+</form>
+```
+
+Typed Forms in Angular
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+interface User {
+  name: string;
+  email: string;
+}
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group<User>({
+      name: '',
+      email: '',
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <input type="email" formControlName="email" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+FormRecord in Angular
+
+```ts
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: '',
+      email: '',
+    });
+  }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+}
+```
+
+```html
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <input type="email" formControlName="email" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+## Services
+
+Services are used to encapsulate reusable functionality that can be shared across components. They are used to fetch data from a server, perform calculations, or interact with external services.
+
+```ts
+import { Injectable } from '@angular/core';
+
+@Injectable
+export class DataService {
+  getData() {
+    return 'Data from the service';
+  }
+}
+```
+
+```ts
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  data: string;
+
+  constructor(private dataService: DataService) {
+    this.data = this.dataService.getData();
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Injectable
+
+The `@Injectable` decorator is used to define a service class that can be injected into other components or services.
+
+```ts
+import { Injectable } from '@angular/core';
+
+@Injectable
+export class DataService {
+  getData() {
+    return 'Data from the service';
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Dependency Injection
+
+Dependency injection is a design pattern used to create objects and manage their dependencies. It allows you to inject dependencies into a class rather than creating them within the class.
+
+```ts
+import { Injectable } from '@angular/core';
+
+@Injectable
+export class DataService {
+  getData() {
+    return 'Data from the service';
+  }
+}
+```
+
+```ts
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  data: string;
+
+  constructor(private dataService: DataService) {
+    this.data = this.dataService.getData();
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Providers
+
+Providers are used to define dependencies that are injected into components, directives, pipes, and services. They are defined in the `@NgModule` decorator of the root module or feature modules.
+
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { DataService } from './data.service';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  providers: [DataService],
+})
+
+export class AppModule {}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Routing
+
+Routing is used to navigate between different components in an Angular application. It allows users to move between different parts of the application by changing the URL in the browser.
+
+```ts
+import { NgModule } from '@angular/core';
+
+import { RouterModule, Routes } from '@angular/router';
+
+import { HomeComponent } from './home.component';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+
+export class AppRoutingModule {}
+```
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  template: '<h1>Home Component</h1>',
+})
+
+export class HomeComponent {}
+```
+
+```html
+<router-outlet></router-outlet>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Router Outlet
+
+The `router-outlet` directive is used to render the component associated with the current route.
+
+```html
+<router-outlet></router-outlet>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Router Link
+
+The `routerLink` directive is used to navigate to a different route when the element is clicked.
+
+```html
+<a [routerLink]="['/home']">Home</a>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Router Link Active
+
+The `routerLinkActive` directive is used to add a CSS class to an element when the associated route is active.
+
+```html
+<a routerLink="/home" routerLinkActive="active">Home</a>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Router Link Active Options
+
+The `routerLinkActiveOptions` directive is used to configure the behavior of the `routerLinkActive` directive.
+
+```html
+<a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Router State
+
+The `RouterState` class is used to access the current state of the router.
+
+```ts
+import { Router } from '@angular/router';
+
+constructor(private router: Router) {
+  const state = this.router.routerState;
+  console.log(state);
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Router Events
+
+The `RouterEvents` class is used to listen for router events such as navigation start, navigation end, and navigation error.
+
+```ts
+import { Router, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+
+constructor(private router: Router) {
+  router.events.subscribe((event) => {
+    if (event instanceof NavigationStart) {
+      console.log('Navigation started');
+    }
+    if (event instanceof NavigationEnd) {
+      console.log('Navigation ended');
+    }
+    if (event instanceof NavigationError) {
+      console.log('Navigation error');
+    }
+  });
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Router Guards
+
+Router guards are used to control navigation and access to routes in an Angular application. They can be used to prevent unauthorized access to certain routes, redirect users to a login page, or perform other actions before navigating to a route.
+
+```ts
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(private router: Router) {}
+
+  canActivate() {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
+}
+```
+
+```ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [AuthGuard],
+})
+
+export class AppRoutingModule {}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## HTTP Client
+
+The `HttpClient` service is used to make HTTP requests to a server. It provides methods for making GET, POST, PUT, DELETE, and other types of requests.
+
+```ts
+import { HttpClient } from '@angular/common/http';
+
+constructor(private http: HttpClient) {}
+
+getData() {
+  return this.http.get('https://api.example.com/data');
+}
+```
+
+[Back to top⤴️](#table-of-contents)
 
 ## Destroy Ref
 
@@ -2256,48 +2795,29 @@ this.http.get('url', { observe: 'response' });
 
 ## Module
 
+A module is a container for a group of related components, directives, pipes, and services. It is used to organize an Angular application into cohesive blocks of functionality.
+
 ```typescript
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}
 ```
 
-```typescript
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { Page1Component } from './page-1/page-1.component';
-import { Page2Component } from './page-2/page-2.component';
-
-const routes: Routes = [
-  { path: 'page-1', component: Page1Component },
-  { path: 'page-2', component: Page2Component },
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
-```
-
-```html
-<h1>Routing Example</h1>
-<a routerLink="page-1">Page-1</a> &nbsp;
-<a routerLink="page-2">Page2-</a>
-<router-outlet></router-outlet>
-```
+[Back to top⤴️](#table-of-contents)
 
 ### Lazy loading
+
+Lazy loading is a technique used to load modules only when they are needed. This can help reduce the initial load time of the application by loading only the necessary modules.
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -2514,91 +3034,80 @@ export class UserDetailsComponent {
 }
 ```
 
-## Services & Dependency Injection
-
-**Services** -
-
-Services in Angular are classes that are responsible for handling specific tasks or providing functionality that can be shared across multiple components. They are used to encapsulate logic and data that can be reused throughout an application.
-
-```typescript
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class SharedService {
-  constructor() { }
-}
-```
-
-**Dependency Injection** -
-
-Dependency Injection is a design pattern in which a class receives its dependencies from an external source rather than creating them itself. In Angular, dependency injection is used to provide services to components and other services.
-
-```typescript
-import { Component } from '@angular/core';
-import { SharedService } from './shared.service';
-
-@Component({
-  selector: 'app-my-component',
-  templateUrl: './my-component.component.html',
-  styleUrls: ['./my-component.component.css']
-})
-
-export class MyComponent {
-  constructor(private sharedService: SharedService) { }
-}
-```
-
 ## Routing Module
 
-The Angular Router module provides a powerful mechanism for defining navigation paths and routes in your application. It allows you to define routes, navigate between different components, and handle route parameters and query parameters.
+A routing module is a feature module that contains the routes and components related to a specific feature or section of an Angular application. It helps organize the application into smaller, more manageable modules.
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  bootstrap: [AppComponent],
-})
-export class AppModule { }
-```
-
-```typescript
+// app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
- 
-import { HomeComponent } from './home.component';
- 
-@NgModule({
-  declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-  ],
-  providers: [],
-})
-export class HomeModule { }
-```
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
-## Routing Module -
+const routes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  }
+];
 
-The Angular Router module provides a powerful mechanism for defining navigation paths and routes in your application. It allows you to define routes, navigate between different components, and handle route parameters and query parameters.
-
-```typescript
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
- 
-const routes: Routes = [];
- 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
+```
+
+```typescript
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+```
+
+```html
+<!-- app.component.html -->
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/about">About</a>
+</nav>
+
+<router-outlet></router-outlet>
+```
+
+```html
+<!-- home.component.html -->
+<h1>Home Component</h1>
+```
+
+```html
+<!-- about.component.html -->
+<h1>About Component</h1>
 ```
 
 ## Route Parameters
@@ -2908,10 +3417,6 @@ export class ExampleComponent {
 }
 
 ```
-
-## Standalone Components
-
-A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications.
 
 ## JIT
 
@@ -3366,6 +3871,58 @@ Removing the Tag with removeTag()
 ```typescript
 this.metaService.removeTag("name='robots'");
 ```
+
+[Back to top⤴️](#table-of-contents)
+
+## Standalone Components
+
+A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications.
+
+## Angular Signals
+
+Angular Signals is a powerful system that provides detailed monitoring of state usage within an application, enabling the framework to efficiently optimize rendering updates.
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { signal, computed } from '@angular/core'; // Import from '@angular/core'
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  count = signal(0);
+  doubleCount = computed(() => this.count() * 2);
+
+  constructor() {}
+
+  ngOnInit() {
+    // Optional logging for debugging displayedCount changes
+    // console.log('Displayed count changed to:', this.displayedCount());
+  }
+
+  incrementCount() {
+    this.count.set(this.count() + 1);
+  }
+
+  decrementCount() {
+    this.count.update((value) => Math.max(0, value - 1));
+  }
+}
+```
+
+```html
+<h1>Angular Signals Example</h1>
+
+<button (click)="incrementCount()" style="margin-right: 10px;">Increment Count</button>
+<button (click)="decrementCount()">Decrement Count</button>
+
+<p>Count: {{ count() }}</p>
+<p>Double Count: {{ doubleCount() }}</p>
+```
+
+[Back to top⤴️](#table-of-contents)
 
 ## Deploying an Angular Application
 
