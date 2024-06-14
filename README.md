@@ -18,9 +18,19 @@ This repository contains a list of resources to learn Angular.
 ## Table of Contents
 
 - [Introduction](#introduction)
+  - [Features of Angular](#features-of-angular)
+  - [Difference between AngularJS vs Angular](#difference-between-angularjs-vs-angular)
+  - [Angular vs React](#angular-vs-react)
 - [Roadmap](#roadmap)
 - [Configuration](#configuration)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 - [Components](#components)
+  - [Three main building blocks](#three-main-building-blocks)
+  - [Component Creation](#component-creation)
+    - [Using Angular CLI](#using-angular-cli)
+    - [Manual Creation](#manual-creation)
+    - [Example](#example)
 - [Data Binding](#data-binding)
   - [One Way Binding](#one-way-binding)
   - [Two Way Binding](#two-ways-binding)
@@ -142,6 +152,22 @@ Angular is a platform and framework for building single-page client applications
 |CLI not present|CLI present|
 |No SEO Friendly|Seo Friendly|
 |Performance is slow|Performance is fast|
+
+[Back to top⤴️](#table-of-contents)
+
+### Angular vs React
+
+- **Angular** - Angular is a full-fledged framework that provides a complete solution for building web applications. It includes features like two-way data binding, routing, forms, HTTP client, and more. Angular is maintained by Google and has a large and active community of developers.
+
+- **React** - React is a JavaScript library for building user interfaces. It is focused on the view layer of an application and provides a simple and declarative way to build UI components. React is maintained by Facebook and has a large and active community of developers.
+
+**Comparison** - Angular is a full-fledged framework that provides a complete solution for building web applications, while React is a library focused on building user interfaces. Angular provides features like two-way data binding, routing, forms, and HTTP client out of the box, while React is more flexible and allows developers to choose the tools and libraries they want to use.
+
+**When to use Angular** - Angular is a good choice for building large and complex web applications that require a complete solution for building UI components, managing state, and handling data. Angular provides a set of tools and libraries that work well together and are designed to scale with the size of the application.
+
+**When to use React** - React is a good choice for building user interfaces that are focused on the view layer of an application. React provides a simple and declarative way to build UI components and allows developers to choose the tools and libraries they want to use. React is a good choice for building small to medium-sized applications that require flexibility and customization.
+
+[Back to top⤴️](#table-of-contents)
 
 ## Roadmap
 
