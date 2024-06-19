@@ -35,6 +35,9 @@ This repository contains a list of resources to learn Angular.
     - [Emulated View Encapsulation](#emulated-view-encapsulation)
     - [Shadow DOM View Encapsulation](#shadow-dom-view-encapsulation)
     - [None View Encapsulation](#none-view-encapsulation)
+  - [Component Communication](#component-communication)
+    - [Parent to Child](#parent-to-child)
+    - [Child to Parent](#child-to-parent)
 - [Data Binding](#data-binding)
   - [One Way Binding](#one-way-binding)
   - [Two Way Binding](#two-ways-binding)
@@ -209,6 +212,10 @@ Run the application:
 cd [PROJECT NAME]
 ng serve
 ```
+
+Open the browser and navigate to `http://localhost:4200/`.
+
+[Back to top⤴️](#table-of-contents)
 
 ## Components
 
@@ -471,6 +478,109 @@ export class AppComponent {
 
 [Back to top⤴️](#table-of-contents)
 
+## Component Communication
+
+Component communication is the process of passing data between components in an Angular application. There are several ways to achieve component communication in Angular, including Input and Output decorators, EventEmitter, and services.
+
+### Parent to Child
+
+**Input Decorator** - The `@Input` decorator is used to pass data from a parent component to a child component. It allows the parent component to bind a property to the child component.
+
+Example :
+
+```typescript
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css']
+})
+
+export class ChildComponent {
+  @Input() message: string;
+}
+```
+
+```html
+<!--child.component.html-->
+<p>{{ message }}</p>
+```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  templateUrl: './parent.component.html',
+  styleUrls: ['./parent.component.css']
+})
+
+export class ParentComponent {
+  message = 'Hello from parent component';
+}
+```
+
+```html
+<!--parent.component.html-->
+<app-child [message]="message"></app-child>
+```
+
+### Child to Parent
+
+**Output Decorator** - The `@Output` decorator is used to pass data from a child component to a parent component. It allows the child component to emit events that the parent component can listen to.
+
+Example :
+
+```typescript
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css']
+})
+
+export class ChildComponent {
+  @Output() messageEvent = new EventEmitter<string>();
+
+  sendMessage() {
+    this.messageEvent.emit('Hello from child component');
+  }
+}
+```
+
+```html
+<!--child.component.html-->
+<button (click)="sendMessage()">Send Message</button>
+```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  templateUrl: './parent.component.html',
+  styleUrls: ['./parent.component.css']
+})
+
+export class ParentComponent {
+  message: string;
+
+  receiveMessage($event) {
+    this.message = $event;
+  }
+}
+```
+
+```html
+<!--parent.component.html-->
+<app-child (messageEvent)="receiveMessage($event)"></app-child>
+<p>{{ message }}</p>
+```
+
+[Back to top⤴️](#table-of-contents)
+
 ## Data binding
 
 ### One way binding
@@ -658,7 +768,7 @@ The (change) event can also be specifically implemented by other Angular compone
 
 This allows for binding a property of an HTML element to a property in the component's class and vice-versa. This is done by using a combination of property binding and event binding. It is denoted by `[(ngModel)]`.
 
-**ngModel** -
+**ngModel** - The `ngModel` directive is used to create two-way data binding between an input element and a property in the component's class. It is commonly used to bind form controls to properties in the component.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -679,6 +789,62 @@ export class AppComponent {
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src/app/app.component.ts)
+
+[Back to top⤴️](#table-of-contents)
+
+**ngModelChange** - The `ngModelChange` event is emitted when the value of an input element bound to `ngModel` changes. It can be used to perform additional logic when the value changes.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  name: string = '';
+
+  onNameChange(value: string) {
+    console.log('Name changed to:', value);
+  }
+}
+```
+
+```html
+<input [(ngModel)]="name" (ngModelChange)="onNameChange($event)" placeholder="Enter your name">
+<p>Your name is: {{name}}</p>
+```
+
+*change event* - The `change` event is emitted when the value of an input element changes. It can be used to perform additional logic when the value changes.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  name: string = '';
+
+  onNameChange(value: string) {
+    console.log('Name changed to:', value);
+  }
+}
+```
+
+```html
+<input [(ngModel)]="name" (change)="onNameChange($event.target.value)" placeholder="Enter your name">
+<p>Your name is: {{name}}</p>
+```
 
 [Back to top⤴️](#table-of-contents)
 
