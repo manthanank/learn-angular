@@ -31,6 +31,10 @@ This repository contains a list of resources to learn Angular.
     - [Using Angular CLI](#using-angular-cli)
     - [Manual Creation](#manual-creation)
     - [Example](#example)
+  - [View Encapsulation](#view-encapsulation)
+    - [Emulated View Encapsulation](#emulated-view-encapsulation)
+    - [Shadow DOM View Encapsulation](#shadow-dom-view-encapsulation)
+    - [None View Encapsulation](#none-view-encapsulation)
 - [Data Binding](#data-binding)
   - [One Way Binding](#one-way-binding)
   - [Two Way Binding](#two-ways-binding)
@@ -399,6 +403,66 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: '<h1> {{title}} works </h1>',
   styles: ['h1 { font-weight: bold; }']
+})
+export class AppComponent {
+  title = 'app';
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## View Encapsulation
+
+View Encapsulation is a feature of Angular that allows you to control how styles are applied to components. By default, Angular uses Emulated View Encapsulation, which means that styles are scoped to the component and do not affect other components.
+
+### Emulated View Encapsulation
+
+Emulated View Encapsulation is the default mode in Angular. In this mode, Angular emulates the shadow DOM to apply styles to components. This means that styles are scoped to the component and do not affect other components.
+
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
+})
+export class AppComponent {
+  title = 'app';
+}
+```
+
+### Shadow DOM View Encapsulation
+
+Shadow DOM View Encapsulation uses the native shadow DOM to apply styles to components. This means that styles are encapsulated within the shadow DOM and do not affect other components.
+
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.ShadowDom
+})
+export class AppComponent {
+  title = 'app';
+}
+```
+
+### None View Encapsulation
+
+None View Encapsulation disables view encapsulation for the component. This means that styles are not scoped to the component and can affect other components.
+
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   title = 'app';
