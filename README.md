@@ -203,13 +203,24 @@ ng version
 Create workspace:
 
 ```bash
+# with standalone component
 ng new [PROJECT NAME]
+
+# without standalone component
+ng new [PROJECT NAME] --standalone=false
+```
+
+Note: In version v17 and later, the standalone component is default enabled. In version v16 and earlier, the standalone component is disabled by default. You can enable or disable the standalone component using the `--standalone` flag.
+
+Navigate to the project directory:
+
+```bash
+cd [PROJECT NAME]
 ```
 
 Run the application:
 
 ```bash
-cd [PROJECT NAME]
 ng serve
 ```
 
