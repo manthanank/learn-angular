@@ -167,7 +167,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
 
 ## Introduction
 
-Angular is a platform and framework for building single-page client applications using HTML and TypeScript. It is maintained by Google and a community of developers. Angular provides a set of tools and libraries for building web applications, including data binding, routing, forms, HTTP client, and more. Angular is based on the Model-View-Controller (MVC) architecture and uses TypeScript as the primary language for building applications.
+Angular is a popular open-source web application framework developed by Google. It is used for building single-page web applications and dynamic web applications. Angular provides a set of tools and libraries for building modern web applications, including components, services, forms, routing, HTTP client, and more. Angular is built using TypeScript, a superset of JavaScript that adds static typing and other features to the language. Angular is known for its performance, scalability, and developer productivity.
 
 ### Features of Angular
 
