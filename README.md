@@ -1,6 +1,6 @@
 # Learn Angular
 
-This repository contains a list of resources to learn Angular.
+This repository contains a list of resources to learn Angular. It includes tutorials, articles, videos, books, and other resources to help you learn Angular from scratch.
 
 ![npm](https://img.shields.io/npm/dw/learn-angular)
 ![npm](https://img.shields.io/npm/dm/learn-angular)
@@ -31,6 +31,7 @@ This repository contains a list of resources to learn Angular.
     - [Using Angular CLI](#using-angular-cli)
     - [Manual Creation](#manual-creation)
     - [Example](#example)
+  - [Scope](#scope)
   - [View Encapsulation](#view-encapsulation)
     - [Emulated View Encapsulation](#emulated-view-encapsulation)
     - [Shadow DOM View Encapsulation](#shadow-dom-view-encapsulation)
@@ -75,7 +76,7 @@ This repository contains a list of resources to learn Angular.
   - [Template Driven Forms](#template-driven-forms)
   - [Reactive Forms](#reactive-forms)
 - [Services](#services)
-  - [Injectable](#injectable)
+  - [Injectable Decorator](#injectable-decorator)
   - [Dependency Injection](#dependency-injection)
   - [Providers](#providers)
 - [Routing](#routing)
@@ -93,6 +94,9 @@ This repository contains a list of resources to learn Angular.
 - [Router](#router)
 - [Route Parameter](#route-parameters)
 - [Observables](#observables-in-angular)
+  - [Creating Observables](#creating-observables)
+  - [Subscribing to Observables](#subscribing-to-observables)
+  - [Difference between Observables and Promises in Angular](#difference-between-observables-and-promises-in-angular)
 - [Unsubscribe](#unsubscribe-in-angular)
 - [Renderer2](#renderer2)
 - [JIT](#jit)
@@ -124,6 +128,28 @@ This repository contains a list of resources to learn Angular.
   - [Auditing Angular applications](#auditing-angular-applications)
 - [Standalone Components](#standalone-components)
 - [Angular Signals](#angular-signals)
+- [Angular Animations](#angular-animations)
+  - [Installing Angular Animations](#installing-angular-animations)
+- [Angular Universal](#angular-universal)
+  - [Creating an Angular Universal application](#creating-an-angular-universal-application)
+- [Bootstrap](#bootstrap)
+  - [Installing Bootstrap](#installing-bootstrap)
+  - [Importing Bootstrap](#importing-bootstrap)
+- [Angular Material](#angular-material)
+  - [Installing Angular Material](#installing-angular-material)
+  - [Importing Angular Material](#importing-angular-material)
+- [Tailwind CSS](#tailwind-css)
+  - [Installing Tailwind CSS](#installing-tailwind-css)
+  - [Importing Tailwind CSS](#importing-tailwind-css)
+- [PrimeNG](#primeng)
+  - [Installing PrimeNG](#installing-primeng)
+  - [Importing PrimeNG](#importing-primeng)
+- [PWA](#pwa)
+  - [Installing PWA](#installing-pwa)
+  - [Configuring PWA](#configuring-pwa)
+  - [Building PWA](#building-pwa)
+  - [Service Worker](#service-worker)
+  - [Features of PWA](#features-of-pwa)
 - [CLI Commands](#cli-commands)
 - [Version compatibility](#version-compatibility)
 - [Imports](#imports)
@@ -137,6 +163,7 @@ This repository contains a list of resources to learn Angular.
 - [List of Online Editors/Compiler for Angular](#list-of-online-editorscompiler-for-angular)
 - [List of Twitter Users to Follow](#list-of-twitter-users-to-follow)
 - [List of LinkedIn Users to Follow](#list-of-linkedin-users-to-follow)
+- [List of Discord Servers to Join](#list-of-discord-servers-to-join)
 
 ## Introduction
 
@@ -193,6 +220,28 @@ Angular is a platform and framework for building single-page client applications
 **When to use Angular** - Angular is a good choice for building large and complex web applications that require a complete solution for building UI components, managing state, and handling data. Angular provides a set of tools and libraries that work well together and are designed to scale with the size of the application.
 
 **When to use React** - React is a good choice for building user interfaces that are focused on the view layer of an application. React provides a simple and declarative way to build UI components and allows developers to choose the tools and libraries they want to use. React is a good choice for building small to medium-sized applications that require flexibility and customization.
+
+[Back to top⤴️](#table-of-contents)
+
+## SPA
+
+SPA stands for Single Page Application. It is a web application or website that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from the server. This approach allows for a more fluid and responsive user experience, as the page does not need to be reloaded each time the user interacts with it.
+
+### Advantages of SPA
+
+- **Faster Load Times** - SPAs load faster than traditional web applications because they only need to load the initial page once. Subsequent interactions with the application can be handled by updating the current page dynamically.
+
+- **Better User Experience** - SPAs provide a more fluid and responsive user experience because they do not need to reload the entire page each time the user interacts with it. This allows for faster navigation and smoother transitions between pages.
+
+- **Reduced Server Load** - SPAs reduce the load on the server because they do not need to fetch and render entire new pages each time the user interacts with the application. This can lead to cost savings and improved performance.
+
+- **Improved SEO** - SPAs can be optimized for search engines by using server-side rendering, pre-rendering, and meta tags. This allows search engines to index the content of the application and improve its visibility in search results.
+
+- **Offline Support** - SPAs can provide offline support by using service workers and caching strategies. This allows users to access the application even when they are offline or have a slow internet connection.
+
+- **Mobile Support** - SPAs can be optimized for mobile devices by using responsive design, touch gestures, and mobile-specific features. This allows the application to work well on a wide range of devices and screen sizes.
+
+- **Scalability** - SPAs are scalable and can handle a large number of users and interactions. They can be optimized for performance by using lazy loading, tree shaking, and ahead-of-time compilation to reduce the size of the application and improve performance.
 
 [Back to top⤴️](#table-of-contents)
 
@@ -254,6 +303,8 @@ Component is the main building block of an Angular Application. It is a TypeScri
 
 ### Three main building blocks
 
+There are three main building blocks of an Angular component:
+
 - Template
 - Class
 - Metadata
@@ -265,6 +316,8 @@ Component is the main building block of an Angular Application. It is a TypeScri
 **MetaData** - Metadata Provides additional information about the component to the Angular.
 
 ### Component metadata properties
+
+There are several properties that can be defined in the component metadata:
 
 - Selector
 - Providers
@@ -449,6 +502,78 @@ export class AppComponent {
 
 [Back to top⤴️](#table-of-contents)
 
+## Scope
+
+The scope of a variable in Angular refers to the context in which the variable is defined and can be accessed. There are three main types of scope in Angular:
+
+- **Global Scope** - Variables defined in the global scope are accessible from anywhere in the application. They are defined outside of any function or block of code.
+
+- **Local Scope** - Variables defined in a function or block of code are accessible only within that function or block. They are not accessible outside of the function or block.
+
+- **Component Scope** - Variables defined in an Angular component are accessible within that component and its child components. They are not accessible outside of the component.
+
+### Global Scope
+
+Variables defined in the global scope are accessible from anywhere in the application. They are defined outside of any function or block of code.
+
+Example :
+
+```typescript
+// Global Scope
+let globalVariable = 'Global Variable';
+
+function testFunction() {
+  console.log(globalVariable); // Output: Global Variable
+}
+
+testFunction();
+```
+
+### Local Scope
+
+Variables defined in a function or block of code are accessible only within that function or block. They are not accessible outside of the function or block.
+
+Example :
+
+```typescript
+function testFunction() {
+  // Local Scope
+  let localVariable = 'Local Variable';
+  console.log(localVariable); // Output: Local Variable
+}
+
+testFunction();
+console.log(localVariable); // Error: localVariable is not defined
+```
+
+### Component Scope
+
+Variables defined in an Angular component are accessible within that component and its child components. They are not accessible outside of the component.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  // Component Scope
+  title = 'app';
+}
+```
+
+```html
+<!--app.component.html-->
+<h1>{{ title }}</h1>
+```
+
+[Back to top⤴️](#table-of-contents)
+
 ## View Encapsulation
 
 View Encapsulation is a feature of Angular that allows you to control how styles are applied to components. By default, Angular uses Emulated View Encapsulation, which means that styles are scoped to the component and do not affect other components.
@@ -614,9 +739,32 @@ export class ParentComponent {
 
 ## Data binding
 
+Data binding is a core feature of Angular that allows you to bind data between the component's class and the HTML template. There are two types of data binding in Angular:
+
+There are two types of data binding in Angular:
+
+- **One-way binding** - This allows for passing data from the component's class to the HTML template or vice-versa.
+
+- **Two-way binding** - This allows for binding a property of an HTML element to a property in the component's class and vice-versa.
+
 ### One way binding
 
-a. From Component to View - This allows for passing data from the component's class to the HTML template.
+One-way binding allows for passing data from the component's class to the HTML template.
+
+There are several ways to achieve one-way binding in Angular, including:
+
+1. From Component to View
+2. From View to Component
+
+**1. From Component to View** - This allows for passing data from the component's class to the HTML template.
+
+There are several ways to achieve one-way binding from the component to the view in Angular, including:
+
+1. Interpolation
+2. Property binding
+3. Class binding
+4. Style binding
+5. Attribute binding
 
 **Interpolation** - This allows for embedding expressions in the HTML template. It is denoted by double curly braces ({{}}).
 
@@ -669,7 +817,7 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-vcpyoq?file=src/app/app.component.ts)
 
-class binding - This allows for binding a class of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
+**class binding** - This allows for binding a class of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
 
 Example :
 
@@ -703,7 +851,7 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-s1pkwg?file=src/app/app.component.ts)
 
-style binding - This allows for binding a style of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
+**style binding** - This allows for binding a style of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
 
 Example :
 
@@ -729,7 +877,7 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-w8nf7f?file=src/app/app.component.ts)
 
-attribute binding - This allows for binding an attribute of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
+**attribute binding** - This allows for binding an attribute of an HTML element to a property in the component's class. It is denoted by square brackets ([]).
 
 Example :
 
@@ -755,7 +903,12 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bhqsgc?file=src/app/app.component.html)
 
-b. From View to Component - This allows for passing data from the HTML template to the component's class.
+**b. From View to Component** - This allows for passing data from the HTML template to the component's class.
+
+There are several ways to achieve one-way binding from the view to the component in Angular, including:
+
+1. Event binding
+2. ngModel
 
 **Event binding** - This allows for binding an event of an HTML element to a method in the component's class. It is denoted by parentheses (()).
 
@@ -783,21 +936,48 @@ export class AppComponent  {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-kxuxsk?file=src/app/app.component.ts)
 
+**ngModel** - The `ngModel` directive is used to create two-way data binding between an input element and a property in the component's class. It is commonly used to bind form controls to properties in the component.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  name: string = '';
+}
+```
+
 ```html
-Remeber💡
+<input [(ngModel)]="name" placeholder="Enter your name">
+<p>Your name is: {{name}}</p>
+```
+
+**Remeber💡** :
 
 The (click) calls the specified function when a user clicks on the given element (in your example, when a user clicks on a row).
 
 The (change) event binds to HTML's onChange event. This event is fired for `<input>`, `<select>`, and `<textarea>` elements when a change to the element's value is committed by the user.
 
 The (change) event can also be specifically implemented by other Angular components. It is generally implemented on components where the contents of the component are changed by the user.
-```
 
 [☝️Source of Explaination](https://stackoverflow.com/a/51127794/14292971)
 
 ### Two ways binding
 
-This allows for binding a property of an HTML element to a property in the component's class and vice-versa. This is done by using a combination of property binding and event binding. It is denoted by `[(ngModel)]`.
+Two-way binding allows for binding a property of an HTML element to a property in the component's class and vice-versa. It is denoted by `[(ngModel)]`.
+
+There are several ways to achieve two-way binding in Angular, including:
+
+1. ngModel
+2. ngModelChange
+3. change event
 
 **ngModel** - The `ngModel` directive is used to create two-way data binding between an input element and a property in the component's class. It is commonly used to bind form controls to properties in the component.
 
@@ -850,7 +1030,7 @@ export class AppComponent {
 <p>Your name is: {{name}}</p>
 ```
 
-*change event* - The `change` event is emitted when the value of an input element changes. It can be used to perform additional logic when the value changes.
+**change event** - The `change` event is emitted when the value of an input element changes. It can be used to perform additional logic when the value changes.
 
 Example :
 
@@ -883,7 +1063,49 @@ export class AppComponent {
 
 Directives add behaviour to an existing DOM element or an existing component instance.
 
+### Types of Directives
+
+There are three types of directives in Angular:
+
+1. **Structural Directives** - Structural directives are used to add or remove elements from the DOM based on a condition. They are denoted by an asterisk (*) before the directive name.
+
+2. **Attribute Directives** - Attribute directives are used to change the appearance or behavior of an element. They are denoted by square brackets [] before the directive name.
+
+3. **Custom Directives** - Custom directives are user-defined directives that add custom behavior to an element. They can be used to encapsulate complex behavior and reuse it across multiple components.
+
 ### Structural Directives
+
+There are several built-in structural directives in Angular, including:
+
+1. NgIf
+2. NgFor
+3. NgSwitch
+
+**ngIf** - The `ngIf` directive is used to conditionally display elements based on the value of a given expression. It is commonly used to show or hide elements in the UI based on certain conditions.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  showElement = true;
+}
+```
+
+```html
+<h1>ngIf Example</h1>
+<div *ngIf="showElement">
+  This element will only be displayed if showElement is true.
+</div>
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bajfgs?file=src%2Fapp%2Fapp.component.ts)
 
 **ngFor** - The `ngFor` directive is used to iterate over a list of items and create a template for each item. It is commonly used to display a list of items in the UI.
 
@@ -941,60 +1163,13 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-xm8ztp?file=src%2Fapp%2Fapp.component.ts)
 
-**ngIf** - The `ngIf` directive is used to conditionally display elements based on the value of a given expression. It is commonly used to show or hide elements in the UI based on certain conditions.
-
-Example :
-
-```typescript
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-})
-export class AppComponent {
-  showElement = true;
-}
-```
-
-```html
-<h1>ngIf Example</h1>
-<div *ngIf="showElement">
-  This element will only be displayed if showElement is true.
-</div>
-```
-
-[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-bajfgs?file=src%2Fapp%2Fapp.component.ts)
-
 ### Attribute Directives
 
-**ngModel** - The `ngModel` directive is used to create two-way data binding between an input element and a property in the component's class. It is commonly used to bind form controls to properties in the component.
+There are several built-in attribute directives in Angular, including:
 
-Example :
-
-```typescript
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-})
-export class AppComponent {
-  name: string;
-}
-```
-
-```html
-<h1>ngModel Example</h1>
-<form>
-  <label for="name">Name:</label>
-  <input type="text" id="name" [(ngModel)]="name" name="name" />
-</form>
-```
-
-[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src%2Fapp%2Fapp.component.ts)
+1. NgClass
+2. NgStyle
+3. NgModel
 
 **ngClass** - The `ngClass` directive is used to conditionally apply CSS classes to an element based on the value of a given expression. It is commonly used to apply styles to elements based on certain conditions.
 
@@ -1054,9 +1229,38 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/angular-ivy-zcgf1h?file=src%2Fapp%2Fapp.component.ts)
 
+**ngModel** - The `ngModel` directive is used to create two-way data binding between an input element and a property in the component's class. It is commonly used to bind form controls to properties in the component.
+
+Example :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  name: string;
+}
+```
+
+```html
+<h1>ngModel Example</h1>
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="name" name="name" />
+</form>
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-wrru3d?file=src%2Fapp%2Fapp.component.ts)
+
 ### Custom Directives
 
-Custom directives are used to add custom behavior to elements in the DOM. They are created using the @Directive decorator and can be applied to elements as attributes, classes, or elements.
+Custom directives are user-defined directives that add custom behavior to an element. They can be used to encapsulate complex behavior and reuse it across multiple components.
+
+Example :
 
 ```typescript
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
@@ -1110,7 +1314,12 @@ export class AppModule {}
 
 ### Other directives
 
-ngContainer, ngTemplate, ngContent, ngTemplateOutlet are some of the other directives in Angular.
+There are several other built-in directives in Angular, including:
+
+- **ngContainer**
+- **ngTemplate**
+- **ngContent**
+- **ngTemplateOutlet**
 
 **ngContainer** - The `ngContainer` directive is a simple container that doesn't generate any markup in the DOM. It's mainly used as a placeholder to group and structure content within Angular templates.
 
@@ -1260,7 +1469,11 @@ export class AppComponent {
 
 A pipe takes in data as input and transforms it to a desired output.
 
-Syntax
+Syntax:
+
+```text
+{{ data | pipe }}
+```
 
 ```text
 Expression | pipeOperator[:pipeArguments]
@@ -1270,6 +1483,20 @@ Expression | pipeOperator[:pipeArguments]
 # pipeOperator : name of the Pipe
 # pipeArguments: arguments to the Pipe
 ```
+
+### Built-in Pipes
+
+There are several built-in pipes in Angular, including:
+
+- **Date Pipe**
+- **Uppercase Pipe**
+- **Lowercase Pipe**
+- **Currency Pipe**
+- **Percent Pipe**
+- **Slice Pipe**
+- **Decimal/number Pipe**
+- **JSON Pipe**
+- **Async Pipe**
 
 ### Date Pipe
 
@@ -1526,11 +1753,242 @@ export class ExampleComponent {
 }
 ```
 
+### Impure Pipes
+
+By default, Angular pipes are pure, meaning they are stateless and do not change unless the input value changes. However, you can create impure pipes by setting the pure property to false in the @Pipe decorator.
+
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'impurePipe',
+  pure: false,
+})
+
+export class ImpurePipe implements PipeTransform {
+  transform(value: any): any {
+    return value;
+  }
+}
+```
+
 [Back to top⤴️](#table-of-contents)
 
 ## Decorators
 
 Decorators are design patterns used to isolate the modification or decoration of a class without modifying the source code.
+
+There are several built-in decorators in Angular, including:
+
+- **@Component**
+- **@Directive**
+- **@Injectable**
+- **@Pipe**
+- **@NgModule**
+- **@Input**
+- **@Output**
+- **@HostListener**
+- **@ContentChild**
+- **@ContentChildren**
+- **@ViewChild**
+- **@ViewChildren**
+
+### Component
+
+The `@Component` decorator is used to define a new component in Angular.
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  title = 'My App';
+}
+```
+
+```html
+<h1>{{ title }}</h1>
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+
+export class AppModule {}
+```
+
+### Directive
+
+The `@Directive` decorator is used to define a new directive in Angular.
+
+```ts
+import { Directive, ElementRef, HostListener } from '@angular/core';
+
+@Directive({
+  selector: '[appCustomDirective]',
+})
+
+export class CustomDirective {
+  constructor(private el: ElementRef) {}
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight('yellow');
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+}
+```
+
+```html
+<div appCustomDirective>
+  This element will have a yellow background when the mouse is over it.
+</div>
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+
+import { CustomDirective } from './custom.directive';
+
+@NgModule({
+  declarations: [CustomDirective],
+})
+
+export class AppModule {}
+```
+
+### Injectable
+
+The `@Injectable` decorator is used to define a new service in Angular.
+
+```ts
+import { Injectable } from '@angular/core';
+
+@Injectable
+export class DataService {
+  getData() {
+    return 'Hello, world!';
+  }
+}
+```
+
+```ts
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  data: string;
+
+  constructor(private dataService: DataService) {
+    this.data = this.dataService.getData();
+  }
+}
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  providers: [DataService],
+})
+
+export class AppModule {}
+```
+
+### Pipe
+
+The `@Pipe` decorator is used to define a new pipe in Angular.
+
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'customPipe',
+})
+
+export class CustomPipe implements PipeTransform {
+  transform(value: any, args?: any): any {
+    return value;
+  }
+}
+```
+
+```html
+<h1>{{ data | customPipe }}</h1>
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+
+import { CustomPipe } from './custom.pipe';
+
+@NgModule({
+  declarations: [CustomPipe],
+})
+
+export class AppModule {}
+```
+
+### NgModule
+
+The `@NgModule` decorator is used to define a new module in Angular.
+
+```ts
+import { NgModule } from '@angular/core';
+
+@NgModule({
+  imports: [],
+  declarations: [],
+  providers: [],
+  bootstrap: [],
+})
+
+export class AppModule {}
+```
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+
+export class AppModule {}
+```
 
 ### Input
 
@@ -1548,9 +2006,7 @@ export class ChildComponent implements OnInit {
   @Input() message: string;
   constructor() { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
 }
 ```
@@ -1764,7 +2220,18 @@ export class AppComponent  {
 
 ## Life Cycle Hooks
 
-<!-- ![lifecycle-hooks](/src/assets/lifecycle-hooks.png) -->
+Angular provides a set of lifecycle hooks that give you visibility into key moments in the component's lifecycle.
+
+There are several lifecycle hooks in Angular, including:
+
+- **ngOnChanges**
+- **ngOnInit**
+- **ngDoCheck**
+- **ngAfterContentInit**
+- **ngAfterContentChecked**
+- **ngAfterViewInit**
+- **ngAfterViewChecked**
+- **ngOnDestroy**
 
 ### OnChanges
 
@@ -2009,7 +2476,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
 ## Forms
 
-Angular provides two ways to work with forms: template-driven forms and reactive forms.
+Angular provides two types of forms:
+
+- **Template-driven forms**
+- **Reactive forms**
 
 ### Template-driven Forms
 
@@ -2632,7 +3102,7 @@ export class AppComponent {
 
 [Back to top⤴️](#table-of-contents)
 
-### Injectable
+### Injectable Decorator
 
 The `@Injectable` decorator is used to define a service class that can be injected into other components or services.
 
@@ -3534,9 +4004,73 @@ export class AuthGuard implements CanLoad {
 }
 ```
 
+[Back to top⤴️](#table-of-contents)
+
 ## Observables in Angular
 
 An observable is a class that can be used to handle asynchronous data streams. Observables are used to handle data that can arrive over time, such as data received from a server, user input, or timed events.
+
+### Creating Observables
+
+There are several ways to create observables in Angular:
+
+***Using the Observable Constructor***: You can create an observable using the `Observable` constructor and the `new` keyword. The constructor takes a function as an argument, which is called when the observable is subscribed to.
+
+```typescript
+import { Observable } from 'rxjs';
+
+const observable = new Observable((observer) => {
+  observer.next('Hello');
+  observer.next('World');
+  observer.complete();
+});
+```
+
+***Using the `of` Operator***: You can create an observable from a list of values using the `of` operator. The `of` operator emits each value in the list in sequence.
+
+```typescript
+import { of } from 'rxjs';
+
+const observable = of('Hello', 'World');
+```
+
+***Using the `from` Operator***: You can create an observable from an array, promise, or iterable using the `from` operator. The `from` operator emits each item in the array, promise, or iterable in sequence.
+
+```typescript
+import { from } from 'rxjs';
+
+const observable = from(['Hello', 'World']);
+```
+
+### Subscribing to Observables
+
+To receive data from an observable, you need to subscribe to it. The `subscribe` method is used to subscribe to an observable and receive data emitted by the observable.
+
+```typescript
+observable.subscribe({
+  next: (value) => console.log(value),
+  error: (error) => console.error(error),
+  complete: () => console.log('Complete')
+});
+```
+
+### Difference between `observables` and `promises` in Angular
+
+- **Observables**:
+  - Observables are lazy, meaning they only execute when subscribed to.
+  - Observables can emit multiple values over time.
+  - Observables can be canceled using the `unsubscribe` method.
+  - Observables can be transformed and combined using operators.
+  - Observables are used for handling streams of data, such as user input, server responses, and events.
+
+- **Promises**:
+  - Promises are eager, meaning they execute immediately when created.
+  - Promises can only emit a single value.
+  - Promises cannot be canceled once created.
+  - Promises do not have built-in transformation or combination methods.
+  - Promises are used for handling asynchronous operations that produce a single result, such as HTTP requests and file reads.
+
+[Back to top⤴️](#table-of-contents)
 
 ## Unsubscribe in Angular
 
@@ -3681,6 +4215,8 @@ In Angular, managing subscriptions is crucial to avoid memory leaks and improve 
     }
     ```
 
+[Back to top⤴️](#table-of-contents)
+
 ## Renderer2
 
 Renderer2 is a utility class that provides methods to manipulate and interact with the DOM (Document Object Model). It is used to perform operations such as creating, modifying, and removing elements, applying styles, and listening to events.
@@ -3748,22 +4284,6 @@ Deferrable views can be used in component template to defer the loading of selec
   <large-component />
 }
 ```
-
-## Angular Universal
-
-Angular Universal is a server-side rendering module for Angular applications in various scenarios. This is a community driven project and available under @angular/platform-server package.
-
-```bash
-// create the application
-ng add @nguniversal/express-engine
-
-//run the application
-npm run dev:ssr
-```
-
-## Angular Animations
-
-Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
 
 ## Meta tags
 
@@ -4453,6 +4973,285 @@ export class AppComponent implements OnInit {
 | NPM | ng add ngx-deploy-npm |
 | Amazon Cloud S3 | ng add @jefiozie/ngx-aws-deploy |
 
+[Back to top⤴️](#table-of-contents)
+
+## Angular Animations
+
+Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
+
+### Installing Angular Animations
+
+```bash
+npm install @angular/animations
+```
+
+### Importing Angular Animations
+
+To use Angular animations in an Angular application, you need to import the BrowserAnimationsModule module in the app.module.ts file.
+
+```typescript
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+```
+
+### Animation Example
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1s', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('1s', style({ opacity: 0 }))
+      ])
+    ])
+  ]
+})
+
+export class AppComponent {
+  show = false;
+
+  toggle() {
+    this.show = !this.show;
+  }
+}
+```
+
+```html
+<button (click)="toggle()">Toggle</button>
+<div *ngIf="show" @fadeInOut>
+  <h1>Angular Animation Example</h1>
+</div>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Angular Universal
+
+Angular Universal is a server-side rendering (SSR) solution for Angular applications that allows you to render your application on the server and send the fully rendered HTML to the client. This can improve performance, SEO, and user experience by reducing the time to first contentful paint and enabling search engines to crawl and index your application.
+
+### Creating an Angular Universal application
+
+To create an Angular Universal application, you can use the Angular CLI to generate a new project with the Universal schematic.
+
+```bash
+ng new --ssr
+```
+
+To add Angular Universal to an existing Angular application, you can use the Angular CLI to add the Universal schematic to the project.
+
+```bash
+ng add @angular/ssr
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Bootstrap
+
+Bootstrap is a popular front-end framework for building responsive web applications. It provides a set of CSS and JavaScript components that can be used to create modern and mobile-friendly user interfaces.
+
+### Installing Bootstrap
+
+```bash
+npm install bootstrap
+```
+
+### Importing Bootstrap
+
+To use Bootstrap in an Angular application, you need to import the Bootstrap CSS file in the styles array of the angular.json file.
+
+```json
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+]
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Angular Material
+
+Angular Material is a UI component library for Angular applications that provides a set of reusable and customizable components, such as buttons, cards, dialogs, and menus. It is built on top of the Angular CDK (Component Dev Kit) and follows the Material Design guidelines.
+
+### Installing Angular Material
+
+```bash
+ng add @angular/material
+```
+
+### Importing Angular Material
+
+To use Angular Material in an Angular application, you need to import the required modules in the app.module.ts file.
+
+```typescript
+import { MatSliderModule } from '@angular/material/slider';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSliderModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Tailwind CSS
+
+Tailwind CSS is a utility-first CSS framework that provides a set of pre-built utility classes for styling web applications. It allows you to build custom designs by composing utility classes together, rather than writing custom CSS styles.
+
+### Installing Tailwind CSS
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+
+### Configure your template paths
+
+```javascript
+// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{html,ts}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+### Importing Tailwind CSS
+
+```css
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## PrimeNG
+
+PrimeNG is a popular UI component library for Angular applications that provides a set of rich and customizable components, such as data tables, calendars, dialogs, and charts. It is built on top of the PrimeFaces library and follows the PrimeNG design guidelines.
+
+### Installing PrimeNG
+
+```bash
+npm install primeng
+```
+
+### Importing PrimeNG
+
+To use PrimeNG in an Angular application, you need to import the required styles and modules in the angular.json file.
+
+```json
+// angular.json
+"styles": [
+  "node_modules/primeng/resources/themes/saga-blue/theme.css",
+  "node_modules/primeng/resources/primeng.min.css",
+  "src/styles.css"
+]
+```
+
+```css
+/* styles.css */
+@import 'primeng/resources/themes/saga-blue/theme.css';
+@import 'primeng/resources/primeng.min.css';
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## PWA
+
+Progressive Web Apps (PWAs) are web applications that provide a native app-like experience to users, including offline support, push notifications, and home screen installation. Angular provides built-in support for creating PWAs using the @angular/pwa package.
+
+### Installing PWA
+
+```bash
+ng add @angular/pwa
+```
+
+### Configuring PWA
+
+To configure the PWA settings, you can modify the ngsw-config.json file in the src/ directory.
+
+```json
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    }
+  ]
+}
+```
+
+### Building PWA
+
+To build the PWA, you can run the ng build --prod command with the --configuration=production flag.
+
+```bash
+ng build --prod --configuration=production
+```
+
+### Service Worker
+
+The service worker is a script that runs in the background of the browser and handles tasks such as caching assets, intercepting network requests, and providing offline support. Angular's service worker is generated automatically when you create a PWA using the @angular/pwa package.
+
+### Features of PWA
+
+**Offline Support** - The service worker caches assets and intercepts network requests to provide offline support for the application.
+
+**Push Notifications** - The service worker can receive push notifications from the server and display them to the user.
+
+**Background Sync** - The service worker can perform background sync tasks, such as sending data to the server when the network connection is available.
+
+**Home Screen Installation** - The service worker can prompt the user to install the application on the home screen for quick access.
+
+[Back to top⤴️](#table-of-contents)
+
 ## CLI Commands
 
 Installing Angular CLI
@@ -4823,6 +5622,14 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 ```
 
+## MVVM
+
+**MVVM** stands for Model-View-ViewModel. It is a design pattern that separates the user interface (View) from the business logic (Model) using a ViewModel. The ViewModel acts as an intermediary between the View and the Model, providing data binding and event handling.
+
+## MVC
+
+**MVC** stands for Model-View-Controller. It is a design pattern that separates the user interface (View) from the business logic (Model) using a Controller. The Controller acts as an intermediary between the View and the Model, handling user input and updating the Model.
+
 ## TypeScript
 
 **TypeScript** is JavaScript with syntax for types. TypeScript is a superset of JavaScript that compiles to plain JavaScript. It is developed and maintained by Microsoft.
@@ -4838,6 +5645,8 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 ## NgXS
 
 **NgXS** is a state management pattern + library for Angular. It acts as a single source of truth for your application's state, providing simple rules for predictable state mutations.
+
+[Back to top⤴️](#table-of-contents)
 
 ## Learn more from GitHub Repositories
 
@@ -4954,6 +5763,10 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 - [Minko Gechev](https://www.linkedin.com/in/mgechev/)
 - [Todd Motto](https://www.linkedin.com/in/toddmotto/)
 - [Deborah Kurata](https://www.linkedin.com/in/deborah-kurata-7b7b5a1/)
+
+## List of Discord Servers to Join
+
+- [Angular](https://discord.com/invite/angular)
 
 ## Contributing
 
