@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/manthanank/learn-angular/compare/v2.1.0...v2.2.0) (2024-06-26)
+
+
+### Features
+
+* Update README.md with improved description of Angular framework ([fa07520](https://github.com/manthanank/learn-angular/commit/fa0752021f6d5c15b3b1cd8dc554dc5322fd62ec))
+
+
+
 # [2.1.0](https://github.com/manthanank/learn-angular/compare/v1.59.0...v2.1.0) (2024-06-26)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Create config.yml ([6c0f46c](https://github.com/manthanank/learn-angular/commit/6c0f46cb48876207a7349a5b7930817817e5ffaa))
-
-
-
-# [1.56.0](https://github.com/manthanank/learn-angular/compare/v1.55.0...v1.56.0) (2024-05-08)
-
-
-### Features
-
-* Create pull_request_template.md ([672ba1b](https://github.com/manthanank/learn-angular/commit/672ba1b7cd2685b67fad3c7269a4ce7c4a330ee6))
 
 
 
