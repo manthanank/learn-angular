@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/manthanank/learn-angular/compare/v1.59.0...v2.1.0) (2024-06-26)
+
+
+### Features
+
+* Bump version to 2.0.0 in package-lock.json, package.json, and releases.json ([b8033a2](https://github.com/manthanank/learn-angular/commit/b8033a2e13bca141b46909fa40374135b1316859))
+
+
+
 # [1.59.0](https://github.com/manthanank/learn-angular/compare/v1.58.0...v1.59.0) (2024-05-08)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Create pull_request_template.md ([672ba1b](https://github.com/manthanank/learn-angular/commit/672ba1b7cd2685b67fad3c7269a4ce7c4a330ee6))
-
-
-
-# [1.55.0](https://github.com/manthanank/learn-angular/compare/v1.54.0...v1.55.0) (2024-05-08)
-
-
-### Features
-
-* Update issue templates ([d5fe4bd](https://github.com/manthanank/learn-angular/commit/d5fe4bdaedabcb7adf5749bd35f97e296b3dc4d9))
 
 
 
