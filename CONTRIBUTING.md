@@ -5,9 +5,17 @@ agree to abide by the [Code Of Conduct](https://github.com/manthanank/learn-angu
 
 ## How to Contribute
 
-- If you find a bug, please [open an issue](https://github.com/manthanank/learn-angular/issues).
-- If you want to contribute code, please follow these steps:
-  1. Fork the repository.
-  2. Create a new branch for your feature or bug fix.
-  3. Make your changes and submit a pull request.
+- Fork the repository
+- Clone the repository
+- Create a new branch
+- Make your changes
+- Push your changes
+- Create a pull request
 
+## Code Of Conduct
+
+Please read the [Code Of Conduct](https://github.com/manthanank/learn-angular/blob/main/CODE_OF_CONDUCT.md) before contributing to this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/manthanank/learn-angular/blob/main/LICENSE) file for details.
