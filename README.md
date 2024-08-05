@@ -429,7 +429,26 @@ declarations: [
 ]
 ```
 
-**Step 11** - Use the component selector in the HTML template of the `app.component.ts` file.
+If you created a standalone component, `app.module.ts` file is not required. You can import the component in the `app.component.ts` file.
+as shown below.
+
+```typescript
+import { [ComponentName]Component } from './[component-name]/[component-name].component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [[ComponentName]Component],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+
+export class AppComponent {
+  title = 'app';
+}
+```
+
+**Step 11** - Use the component selector in the HTML template.
 
 ```typescript
 <app-[component-name]></app-[component-name]>
@@ -487,9 +506,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./test-component.component.css']
 })
 
-export class TestComponent {
-
-}
+export class TestComponent {}
 ```
 
 You can create a standalone component by setting the `standalone` property to `true`. The standalone component is enabled by default in Angular v17 and later. You can disable the standalone component by setting the `standalone` property to `false` in the `@Component` decorator of the component. If you disable the standalone component, you need to import the component in the `app.module.ts` file. If you created a non-standalone component, you will see no standalone property in the `@Component` decorator.
