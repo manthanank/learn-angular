@@ -167,7 +167,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
 
 ## Introduction
 
-Angular is a popular open-source web application framework developed by Google. It is used for building single-page web applications and dynamic web applications. Angular provides a set of tools and libraries for building modern web applications, including components, services, forms, routing, HTTP client, and more. Angular is built using TypeScript, a superset of JavaScript that adds static typing and other features to the language. Angular is known for its performance, scalability, and developer productivity.
+**Angular** is a popular open-source web application framework developed by Google. It is used for building single-page web applications and dynamic web applications. Angular provides a set of tools and libraries for building modern web applications, including components, services, forms, routing, HTTP client, and more. Angular is built using TypeScript, a superset of JavaScript that adds static typing and other features to the language. Angular is known for its performance, scalability, and developer productivity.
 
 ### Features of Angular
 
@@ -225,7 +225,7 @@ Angular is a popular open-source web application framework developed by Google. 
 
 ## SPA
 
-SPA stands for Single Page Application. It is a web application or website that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from the server. This approach allows for a more fluid and responsive user experience, as the page does not need to be reloaded each time the user interacts with it.
+**SPA** stands for **Single Page Application**. It is a web application or website that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from the server. This approach allows for a more fluid and responsive user experience, as the page does not need to be reloaded each time the user interacts with it.
 
 ### Advantages of SPA
 
@@ -254,6 +254,8 @@ SPA stands for Single Page Application. It is a web application or website that 
 ### Prerequisites
 
 - Node.js
+- NPM
+- Angular CLI
 
 ### Installation
 
@@ -263,13 +265,19 @@ Install the Angular CLI globally:
 npm install -g @angular/cli
 ```
 
+If you have already installed the Angular CLI, you can update it to the latest version using the following command:
+
+```bash
+npm install -g @angular/cli@latest
+```
+
 Check version
 
 ```bash
 ng version
 ```
 
-Create workspace:
+Create a new Angular project: (Replace `[PROJECT NAME]` with your project name)
 
 ```bash
 # with standalone component
@@ -279,7 +287,7 @@ ng new [PROJECT NAME]
 ng new [PROJECT NAME] --standalone=false
 ```
 
-Note: In version v17 and later, the standalone component is default enabled. In version v16 and earlier, the standalone component is disabled by default. You can enable or disable the standalone component using the `--standalone` flag.
+**Note**: In version v17 and later, the standalone component is default enabled. In version v16 and earlier, the standalone component is disabled by default. You can enable or disable the standalone component using the `--standalone` flag. (In this repository, an example repository is created with the latest version of Angular.)
 
 Navigate to the project directory:
 
@@ -383,10 +391,13 @@ import { Component } from '@angular/core';
 ```typescript
 @Component({
   selector: 'app-[component-name]',
+  standalone: true,
   templateUrl: './[component-name].component.html',
   styleUrls: ['./[component-name].component.css']
 })
 ```
+
+If you want to create a standalone component, set the `standalone` property to `true`. If you want to create a non-standalone component, set the `standalone` property to `false`. The standalone component is enabled by default in Angular v17 and later.
 
 **Step 7** - Define the selector, template, and styles for the component.
 
@@ -432,7 +443,9 @@ ng serve
 
 ### Example
 
-**Creating the component files** -
+**Creating the component files (Version 16 and earlier)** -
+
+```bash
 
 ```typescript
 //test-component.component.ts
@@ -461,7 +474,39 @@ h1 {
 }
 ```
 
-**Importing the component in the app.module.ts file** -
+**Creating the component files (Version 17 and later)** -
+
+```bash
+//test-component.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-test-component',
+  standalone: true,
+  templateUrl: './test-component.component.html',
+  styleUrls: ['./test-component.component.css']
+})
+
+export class TestComponent {
+
+}
+```
+
+You can create a standalone component by setting the `standalone` property to `true`. The standalone component is enabled by default in Angular v17 and later. You can disable the standalone component by setting the `standalone` property to `false` in the `@Component` decorator of the component. If you disable the standalone component, you need to import the component in the `app.module.ts` file. If you created a non-standalone component, you will see no standalone property in the `@Component` decorator.
+
+```html
+<!--test-component.component.html-->
+<h1>Test Component</h1>
+```
+
+```css
+/*test-component.component.css*/
+h1 {
+  color: red;
+}
+```
+
+**Importing the component in the app.module.ts file (Version 16 and earlier)** -
 
 ```typescript
 //app.module.ts
@@ -483,6 +528,71 @@ import { TestComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+```
+
+**Importing the component in the app.module.ts file (Version 17 and later without standalone component)** -
+
+```typescript
+//app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { TestComponent } from './test-component/test-component.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    TestComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+In version 17 and later, the standalone component is enabled by default. You can disable the standalone component by setting the `standalone` property to `false`. Inside app folder, `app.config.ts` file is created by default.
+
+```typescript
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+  ],
+};
+```
+
+You can import the component in the `app.component.ts` file and use the component selector in the HTML template.
+
+```typescript
+//app.component.ts
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { TestComponent } from './test-component/test-component.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [TestComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+  title = 'app';
+}
+```
+
+```html
+<!--app.component.html-->
+<app-test-component></app-test-component>
 ```
 
 **Creating the inline Template & StyleUrls** -
@@ -529,6 +639,30 @@ function testFunction() {
 testFunction();
 ```
 
+Example in Angular :
+
+```typescript
+import { Component } from '@angular/core';
+
+// Global Scope
+let globalVariable = 'Global Variable';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  title = globalVariable;
+}
+```
+
+```html
+<!--app.component.html-->
+<h1>{{ title }}</h1>
+```
+
 ### Local Scope
 
 Variables defined in a function or block of code are accessible only within that function or block. They are not accessible outside of the function or block.
@@ -544,6 +678,31 @@ function testFunction() {
 
 testFunction();
 console.log(localVariable); // Error: localVariable is not defined
+```
+
+Example in Angular :
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  testFunction() {
+    // Local Scope
+    let localVariable = 'Local Variable';
+    console.log(localVariable); // Output: Local Variable
+  }
+}
+```
+
+```html
+<!--app.component.html-->
+<button (click)="testFunction()">Test Function</button>
 ```
 
 ### Component Scope
