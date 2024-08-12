@@ -448,8 +448,6 @@ ng serve
 **Creating the component files (Version 16 and earlier)** -
 
 ```bash
-
-```typescript
 //test-component.component.ts
 import { Component } from '@angular/core';
 
