@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/manthanank/learn-angular/compare/v2.2.0...v2.4.0) (2024-10-03)
+
+
+### Features
+
+* Update styles configuration and documentation ([c6d2f52](https://github.com/manthanank/learn-angular/commit/c6d2f5200988eb207975d29f686dfd9ae98b2664))
+
+
+
 # [2.2.0](https://github.com/manthanank/learn-angular/compare/v2.1.0...v2.2.0) (2024-06-26)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Update issue templates ([b2c6842](https://github.com/manthanank/learn-angular/commit/b2c684254006de2061fc8c32897e0faee073246d))
-
-
-
-# [1.57.0](https://github.com/manthanank/learn-angular/compare/v1.56.0...v1.57.0) (2024-05-08)
-
-
-### Features
-
-* Create config.yml ([6c0f46c](https://github.com/manthanank/learn-angular/commit/6c0f46cb48876207a7349a5b7930817817e5ffaa))
 
 
 
