@@ -826,6 +826,8 @@ export class AppComponent {
 }
 ```
 
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-cc1rfn?file=src%2Fmain.ts)
+
 ### None View Encapsulation
 
 Disables encapsulation; styles can affect other components.
@@ -843,6 +845,8 @@ export class AppComponent {
   title = 'app';
 }
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-gzsxag?file=src%2Fmain.ts)
 
 [Back to top⤴️](#table-of-contents)
 
@@ -893,6 +897,8 @@ export class ParentComponent {
 <!--parent.component.html-->
 <app-child [message]="message"></app-child>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-qqjcgn?file=src%2Fmain.ts)
 
 ### Child to Parent
 
@@ -946,6 +952,8 @@ export class ParentComponent {
 <app-child (messageEvent)="receiveMessage($event)"></app-child>
 <p>{{ message }}</p>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-4qgrhm?file=src%2Fmain.ts)
 
 [Back to top⤴️](#table-of-contents)
 
@@ -1025,7 +1033,10 @@ export class Sibling2Component {
 ```html
 <!--sibling2.component.html-->
 <p>{{ message }}</p>
+<button (click)="receiveMessage()">Receive Message</button>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-uvqypy?file=src%2Fmain.ts)
 
 Example 2 :
 
@@ -1128,6 +1139,7 @@ export class Sibling1Component {
 ```html
 <!--sibling1.component.html-->
 <button (click)="sendMessage()">Send Message</button>
+<app-sibling2></app-sibling2>
 ```
 
 ```typescript
@@ -1148,6 +1160,8 @@ export class Sibling2Component {
 <!--sibling2.component.html-->
 <p>{{ message }}</p>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-nezkvf?file=src%2Fmain.ts)
 
 [Back to top⤴️](#table-of-contents)
 
