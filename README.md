@@ -14,6 +14,9 @@ This repository contains a list of resources to learn Angular. It includes tutor
 ![GitHub repo size](https://img.shields.io/github/repo-size/manthanank/learn-angular)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/manthanank/learn-angular)
 ![GitHub contributors](https://img.shields.io/github/contributors/manthanank/learn-angular)
+![GitHub forks](https://img.shields.io/github/forks/manthanank/learn-angular)
+![GitHub stars](https://img.shields.io/github/stars/manthanank/learn-angular)
+![GitHub watchers](https://img.shields.io/github/watchers/manthanank/learn-angular)
 
 ## Table of Contents
 
@@ -144,6 +147,8 @@ This repository contains a list of resources to learn Angular. It includes tutor
 - [PrimeNG](#primeng)
   - [Installing PrimeNG](#installing-primeng)
   - [Importing PrimeNG](#importing-primeng)
+- [SPA](#spa)
+  - [Advantages of SPA](#advantages-of-spa)
 - [PWA](#pwa)
   - [Installing PWA](#installing-pwa)
   - [Configuring PWA](#configuring-pwa)
@@ -212,25 +217,9 @@ This repository contains a list of resources to learn Angular. It includes tutor
 
 [Back to top⤴️](#table-of-contents)
 
-## SPA
-
-**SPA** (Single Page Application) is a web application that dynamically rewrites the current page instead of loading entire new pages from the server, providing a fluid and responsive user experience.
-
-### Advantages of SPA
-
-- **Faster Load Times**: Loads the initial page once; subsequent interactions update dynamically.
-- **Better User Experience**: No full page reloads, allowing faster navigation and smoother transitions.
-- **Reduced Server Load**: Less server load as only necessary data is fetched.
-- **Improved SEO**: Optimizable for search engines with server-side rendering and meta tags.
-- **Offline Support**: Accessible offline using service workers and caching.
-- **Mobile Support**: Optimized for mobile with responsive design and touch gestures.
-- **Scalability**: Handles many users and interactions with performance optimizations like lazy loading.
-
-[Back to top⤴️](#table-of-contents)
-
 ## Roadmap
 
-[https://roadmap.sh/angular](https://roadmap.sh/angular)
+[Angular Roadmap](https://roadmap.sh/angular)
 
 ## Configuration
 
@@ -286,6 +275,37 @@ ng serve
 
 Open the browser and navigate to `http://localhost:4200/`.
 
+Project structure:
+
+```bash
+[PROJECT NAME]
+├── node_modules
+├── public
+│   ├── favicon.ico
+│   └── ...
+├── src
+│   ├── app
+│   │   ├── app.component.css
+│   │   ├── app.component.html
+│   │   ├── app.component.spec.ts
+│   │   ├── app.component.ts
+│   │   ├── app.config.ts
+│   │   ├── app.routes.ts
+│   │   └── ...
+│   ├── index.html
+│   ├── main.ts
+│   ├── styles.css
+│   └── ...
+├── .editorconfig
+├── .gitignore
+├── angular.json
+├── package.json
+├── README.md
+├── tsconfig.json
+├── tslint.json
+└── ...
+```
+
 [Back to top⤴️](#table-of-contents)
 
 ## Components
@@ -319,15 +339,39 @@ There are several properties that can be defined in the component metadata:
 
 **Selector** - Defines the element name or CSS selector that identifies the component in the HTML template.
 
+```typescript
+selector: 'app-root'
+```
+
 **Providers** - Defines the providers of the component's dependencies.
+
+```typescript
+providers: [MyService]
+```
 
 **styles** - Defines the inline styles for the component.
 
+```typescript
+styles: ['h1 { color: red; }']
+```
+
 **styleUrls** - Defines an array of URLs of the stylesheets for the component.
+
+```typescript
+styleUrls: ['./app.component.css']
+```
 
 **template** - Defines the HTML template for the component.
 
+```typescript
+template: '<h1>My Component</h1>'
+```
+
 **templateUrl** - Defines the URL of the HTML template for the component.
+
+```typescript
+templateUrl: './app.component.html'
+```
 
 ## Component Creation
 
@@ -335,6 +379,10 @@ There are several properties that can be defined in the component metadata:
 
 ```bash
 ng generate component [component-name]
+
+# or
+
+ng g c [component-name]
 ```
 
 ### Manual Creation
@@ -380,7 +428,7 @@ import { Component } from '@angular/core';
 })
 ```
 
-If you want to create a standalone component, set the `standalone` property to `true`. If you want to create a non-standalone component, set the `standalone` property to `false`. The standalone component is enabled by default in Angular v17 and later.
+If you want to create a non-standalone component, set the `standalone` property to `false`. The standalone component is enabled by default in Angular v17 and later.
 
 **Step 7** - Define the selector, template, and styles for the component.
 
@@ -394,6 +442,7 @@ styleUrls - An array of URLs of the stylesheets for the component.
 
 ```typescript
 export class [ComponentName]Component {
+  // Component logic here
 }
 ```
 
@@ -441,6 +490,10 @@ export class AppComponent {
 
 ```bash
 ng serve
+
+# or
+
+ng serve --open
 ```
 
 ### Example
@@ -458,7 +511,7 @@ import { Component } from '@angular/core';
 })
 
 export class TestComponent {
-
+  // Component logic here
 }
 ```
 
@@ -487,7 +540,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./test-component.component.css']
 })
 
-export class TestComponent {}
+export class TestComponent {
+  // Component logic here
+}
 ```
 
 You can create a standalone component by setting the `standalone` property to `true`. The standalone component is enabled by default in Angular v17 and later. You can disable the standalone component by setting the `standalone` property to `false` in the `@Component` decorator of the component. If you disable the standalone component, you need to import the component in the `app.module.ts` file. If you created a non-standalone component, you will see no standalone property in the `@Component` decorator.
@@ -750,6 +805,8 @@ export class AppComponent {
   title = 'app';
 }
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-xfz4uk?file=src%2Fmain.ts)
 
 ### Shadow DOM View Encapsulation
 
@@ -5548,6 +5605,22 @@ To use PrimeNG in an Angular application, you need to import the required styles
 @import 'primeng/resources/themes/saga-blue/theme.css';
 @import 'primeng/resources/primeng.min.css';
 ```
+
+[Back to top⤴️](#table-of-contents)
+
+## SPA
+
+**SPA** (Single Page Application) is a web application that dynamically rewrites the current page instead of loading entire new pages from the server, providing a fluid and responsive user experience.
+
+### Advantages of SPA
+
+- **Faster Load Times**: Loads the initial page once; subsequent interactions update dynamically.
+- **Better User Experience**: No full page reloads, allowing faster navigation and smoother transitions.
+- **Reduced Server Load**: Less server load as only necessary data is fetched.
+- **Improved SEO**: Optimizable for search engines with server-side rendering and meta tags.
+- **Offline Support**: Accessible offline using service workers and caching.
+- **Mobile Support**: Optimized for mobile with responsive design and touch gestures.
+- **Scalability**: Handles many users and interactions with performance optimizations like lazy loading.
 
 [Back to top⤴️](#table-of-contents)
 
