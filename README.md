@@ -1458,6 +1458,8 @@ export class AppComponent {
 <p>Your name is: {{name}}</p>
 ```
 
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-s43hdu?file=src%2Fmain.ts)
+
 **change event** - The `change` event is emitted when the value of an input element changes. It can be used to perform additional logic when the value changes.
 
 Example :
@@ -1484,6 +1486,8 @@ export class AppComponent {
 <input [(ngModel)]="name" (change)="onNameChange($event.target.value)" placeholder="Enter your name">
 <p>Your name is: {{name}}</p>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-s43hdu?file=src%2Fmain.ts)
 
 [Back to top⤴️](#table-of-contents)
 
