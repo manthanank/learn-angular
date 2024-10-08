@@ -1975,6 +1975,8 @@ import { DatePipe } from '@angular/common';
 export class AppModule {}
 ```
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-fobnad?file=src%2Fapp%2Fapp.component.ts)
+
 ### Uppercase Pipe
 
 The `uppercase` pipe is used to transform a string to uppercase.
@@ -1997,6 +1999,8 @@ export class AppComponent {
 }
 ```
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-hlmoxp?file=src%2Fapp%2Fapp.component.ts)
+
 ### Lowercase Pipe
 
 The `lowercase` pipe is used to transform a string to lowercase.
@@ -2017,6 +2021,8 @@ export class AppComponent {
   name = 'Manthan Ank';
 }
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-6gcdgx?file=src%2Fapp%2Fapp.component.ts)
 
 ### Currency Pipe
 
@@ -2063,6 +2069,8 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class AppModule {}
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-3fhhzz?file=src%2Fapp%2Fapp.component.ts)
 
 ### Percent Pipe
 
@@ -2111,6 +2119,8 @@ import { PercentPipe } from '@angular/common';
 export class AppModule {}
 ```
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-tccybj?file=src%2Fapp%2Fapp.component.ts)
+
 ### Slice Pipe
 
 The `slice` pipe is used to create a new array or string containing a subset of the elements of the input array or string.
@@ -2118,6 +2128,8 @@ The `slice` pipe is used to create a new array or string containing a subset of 
 ```typescript
 <p>{{ ['apple', 'banana', 'orange', 'mango'] | slice:1:3 }}</p>
 ```
+
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-q88gmm?file=src%2Fapp%2Fapp.component.ts)
 
 ### Decimal/number Pipe
 
@@ -2127,6 +2139,8 @@ The `number` pipe is used to format a number as text. It can be used to format a
 <p>{{ 123456.78 | number:'3.2-3' }}</p>
 ```
 
+[Stackblitz Example](https://stackblitz.com/edit/angular-ivy-7cwk1u?file=src%2Fapp%2Fapp.component.ts)
+
 ### JSON Pipe
 
 The `json` pipe is used to transform a JavaScript object into a JSON string.
@@ -2134,6 +2148,22 @@ The `json` pipe is used to transform a JavaScript object into a JSON string.
 ```html
 <p>{{data | json}}</p>
 ```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  data = { name: 'Manthan Ank', age: 25 };
+}
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-jgc252?file=src%2Fmain.ts)
 
 ### Async Pipe
 
@@ -2185,6 +2215,8 @@ export class ExampleComponent {
 }
 ```
 
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-iatcbn?file=src%2Fmain.ts)
+
 ### Impure Pipes
 
 By default, Angular pipes are pure, meaning they are stateless and do not change unless the input value changes. However, you can create impure pipes by setting the pure property to false in the @Pipe decorator.
@@ -2203,6 +2235,40 @@ export class ImpurePipe implements PipeTransform {
   }
 }
 ```
+
+```html
+<p>{{ data | impurePipe }}</p>
+```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  data = 'Hello, world!';
+}
+```
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent, ImpurePipe],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+[Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-xy3hhp?file=src%2Fmain.ts)
 
 [Back to top⤴️](#table-of-contents)
 
