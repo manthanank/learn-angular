@@ -66,6 +66,9 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [HostListener](#hostlistener)
   - [ContentChild & ContentChildren](#contentchild--contentchildren)
   - [ViewChild & ViewChildren](#viewchild--viewchildren)
+  - [HostListener](#hostlistener)
+  - [ContentChild & ContentChildren](#contentchild--contentchildren)
+  - [ViewChild & ViewChildren](#viewchild--viewchildren)
 - [Life Cycle Hooks](#life-cycle-hooks)
   - [OnChanges](#onchanges)
   - [OnInit](#oninit)
@@ -96,6 +99,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
 - [Module](#module)
 - [Router](#router)
 - [Route Parameter](#route-parameters)
+- [Route Guards](#route-guards)
 - [Observables](#observables-in-angular)
   - [Creating Observables](#creating-observables)
   - [Subscribing to Observables](#subscribing-to-observables)
@@ -157,6 +161,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Features of PWA](#features-of-pwa)
 - [CLI Commands](#cli-commands)
 - [Version compatibility](#version-compatibility)
+- [Deploying an Angular Application](#deploying-an-angular-application)
 - [Imports](#imports)
 - [TypeScript](#typescript)
 - [RxJS](#rxjs)
@@ -5460,19 +5465,6 @@ export class AppComponent implements OnInit {
 
 [Back to top⤴️](#table-of-contents)
 
-## Deploying an Angular Application
-
-| DEPLOYMENT TO | PACKAGE |
-|---|---|
-| Firebase hosting | ng add @angular/fire |
-| Vercel | vercel init angular |
-| Netlify | ng add @netlify-builder/deploy |
-| GitHub pages | ng add angular-cli-ghpages |
-| NPM | ng add ngx-deploy-npm |
-| Amazon Cloud S3 | ng add @jefiozie/ngx-aws-deploy |
-
-[Back to top⤴️](#table-of-contents)
-
 ## Angular Animations
 
 Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
@@ -5939,6 +5931,19 @@ ng generate environments
 | 17.0.x             | ^18.13.0 \|\| ^20.9.0                | >=5.2.0 <5.3.0 | ^6.5.3 \|\| ^7.4.0 |
 | 16.1.x \|\| 16.2.x | ^16.14.0 \|\| ^18.10.0               | >=4.9.3 <5.2.0 | ^6.5.3 \|\| ^7.4.0 |
 | 16.0.x             | ^16.14.0 \|\| ^18.10.0               | >=4.9.3 <5.1.0 | ^6.5.3 \|\| ^7.4.0 |
+
+## Deploying an Angular Application
+
+| DEPLOYMENT TO | PACKAGE |
+|---|---|
+| Firebase hosting | ng add @angular/fire |
+| Vercel | vercel init angular |
+| Netlify | ng add @netlify-builder/deploy |
+| GitHub pages | ng add angular-cli-ghpages |
+| NPM | ng add ngx-deploy-npm |
+| Amazon Cloud S3 | ng add @jefiozie/ngx-aws-deploy |
+
+[Back to top⤴️](#table-of-contents)
 
 ## Imports
 
