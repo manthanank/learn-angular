@@ -3688,10 +3688,7 @@ Routing is used to navigate between different components in an Angular applicati
 
 ```ts
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes } from '@angular/router';
-
-import { HomeComponent } from './home.component';
 
 const routes: Routes = [];
 
@@ -3703,19 +3700,24 @@ const routes: Routes = [];
 export class AppRoutingModule {}
 ```
 
-```ts
-import { Component } from '@angular/core';
+```typescript
+import { Routes } from '@angular/router';
 
-@Component({
-  selector: 'app-home',
-  template: '<h1>Home Component</h1>',
-})
-
-export class HomeComponent {}
+export const routes: Routes = [];
 ```
 
-```html
-<router-outlet></router-outlet>
+```typescript
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+  ],
+};
 ```
 
 [Back to top⤴️](#table-of-contents)
@@ -4079,6 +4081,8 @@ export class AppModule {}
 
 Lazy loading is a technique used to load modules only when they are needed. This can help reduce the initial load time of the application by loading only the necessary modules.
 
+Example of lazy loading in non standalone components:
+
 ```typescript
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -4190,11 +4194,67 @@ export class Page2Module {}
 <router-outlet></router-outlet>
 ```
 
-Certainly! Let's complete the Angular Router guide with examples for the provided sections:
+Example of lazy loading in standalone components:
+
+```typescript
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: 'page-1',
+    loadComponent: () => import('./page-1/page-1.component').then((m) => m.Page1Component),
+  },
+  {
+    path: 'page-2',
+    loadComponent: () => import('./page-2/page-2.component').then((m) => m.Page2Component),
+  }
+];
+```
+
+```typescript
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes)
+  ],
+};
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+  // component logic here
+}
+```
+
+```html
+<h1>Lazy Loading Example</h1>
+<a routerLink="page-1">Page-1</a> &nbsp;
+<a routerLink="page-2">Page-2</a>
+<router-outlet></router-outlet>
+```
+
+[Back to top⤴️](#table-of-contents)
 
 ### Router
 
 The Angular Router is a powerful tool that allows you to define navigation paths and routes in your application. It enables you to navigate between different components and views based on the URL path.
+
+Example of routing in Angular non standalone components:
 
 ```typescript
 // app.module.ts
@@ -4292,82 +4352,6 @@ export class UserDetailsComponent {
     });
   }
 }
-```
-
-## Routing Module
-
-A routing module is a feature module that contains the routes and components related to a specific feature or section of an Angular application. It helps organize the application into smaller, more manageable modules.
-
-```typescript
-// app-routing.module.ts
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-
-const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent
-  }
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-
-export class AppRoutingModule { }
-```
-
-```typescript
-// app.module.ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-
-export class AppModule { }
-```
-
-```html
-<!-- app.component.html -->
-<nav>
-  <a routerLink="/home">Home</a>
-  <a routerLink="/about">About</a>
-</nav>
-
-<router-outlet></router-outlet>
-```
-
-```html
-<!-- home.component.html -->
-<h1>Home Component</h1>
-```
-
-```html
-<!-- about.component.html -->
-<h1>About Component</h1>
 ```
 
 ## Route Parameters
