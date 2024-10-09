@@ -3972,19 +3972,35 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class MyInterceptor implements HttpInterceptor {
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Modify the request before it is sent
-    const modifiedRequest = request.clone({
-      setHeaders: {
-        'Authorization': 'Bearer my-token'
-      }
-    });
-
-    // Pass the modified request to the next handler
-    return next.handle(modifiedRequest);
+export class ErrorInterceptor implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('Request started');
+    return next.handle(req).pipe(
+      catchError((error) => {
+        console.error('Request failed', error);
+        return throwError(error);
+      })
+    );
   }
 }
+```
+
+In angular v17, the `HttpInterceptor` interface has been deprecated in favor of the `HttpInterceptorFn` type. The `HttpInterceptorFn` type is a function that takes a `HttpRequest` and a `HttpHandler` and returns an `Observable<HttpEvent>`. Here is an example of how to create an interceptor using the `HttpInterceptorFn` type:
+
+```typescript
+import { HttpInterceptorFn } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
+export const ErrorInterceptor: HttpInterceptorFn = (req, next) => {
+  console.log('Request started');
+  return next.handle(req).pipe(
+    catchError((error) => {
+      console.error('Request failed', error);
+      return throwError(error);
+    })
+  );
+};
 ```
 
 ### Using Observable
