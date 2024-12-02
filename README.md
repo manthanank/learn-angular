@@ -135,6 +135,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Auditing Angular applications](#auditing-angular-applications)
 - [Standalone Components](#standalone-components)
 - [Angular Signals](#angular-signals)
+- [Control Flow](#control-flow)
 - [Angular Animations](#angular-animations)
   - [Installing Angular Animations](#installing-angular-animations)
 - [Angular Universal](#angular-universal)
@@ -5493,6 +5494,65 @@ export class AppComponent implements OnInit {
 
 <p>Count: {{ count() }}</p>
 <p>Double Count: {{ doubleCount() }}</p>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Control Flow
+
+Conditionally display content with @if, @else-if and @else
+
+```html
+@if (a > b) {
+  <p>{{a}} is greater than {{b}}</p>
+}
+```
+
+```html
+@if (a > b) {
+  {{a}} is greater than {{b}}
+} @else if (b > a) {
+  {{a}} is less than {{b}}
+} @else {
+  {{a}} is equal to {{b}}
+}
+```
+
+Repeat content with the @for block
+
+```html
+@for (item of items; track item.id) {
+  {{ item.name }}
+}
+```
+
+Providing a fallback for @for blocks with the @empty block
+
+```html
+@for (item of items; track item.name) {
+  <li> {{ item.name }}</li>
+} @empty {
+  <li aria-hidden="true"> There are no items. </li>
+}
+```
+
+Conditionally display content with the @switch block
+
+```html
+@switch (userPermissions) {
+  @case ('admin') {
+    <app-admin-dashboard />
+  }
+  @case ('reviewer') {
+    <app-reviewer-dashboard />
+  }
+  @case ('editor') {
+    <app-editor-dashboard />
+  }
+  @default {
+    <app-viewer-dashboard />
+  }
+}
 ```
 
 [Back to top⤴️](#table-of-contents)
