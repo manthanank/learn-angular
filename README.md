@@ -42,6 +42,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Component Communication](#component-communication)
     - [Parent to Child](#parent-to-child)
     - [Child to Parent](#child-to-parent)
+- [Standalone Components](#standalone-components)
 - [Data Binding](#data-binding)
   - [One Way Binding](#one-way-binding)
   - [Two Way Binding](#two-ways-binding)
@@ -114,7 +115,6 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Title Service](#title-service)
     - [Dynamic Title](#dynamic-title)
   - [Meta Service](#meta-service)
-- [Standalone Components](#standalone-components)
 - [Angular Signals](#angular-signals)
 - [Security](#security)
   - [Preventing cross-site scripting (XSS)](#preventing-cross-site-scripting-xss)
@@ -1277,6 +1277,73 @@ export class Sibling2Component {
 ```
 
 [Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-nezkvf?file=src%2Fmain.ts)
+
+[Back to top⤴️](#table-of-contents)
+
+## Standalone Components
+
+A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications by reducing the need for NgModules. Standalone components are self-contained and declare their own dependencies.
+
+### Creating a Standalone Component
+
+```typescript
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-standalone',
+  standalone: true, // Mark as standalone
+  imports: [CommonModule], // Import required dependencies
+  template: `
+    <h1>Standalone Component</h1>
+    <p>This is a self-contained component</p>
+  `
+})
+export class StandaloneComponent {
+  // Component logic here
+}
+```
+
+### Key Features of Standalone Components
+
+- **Self-contained**: Declares its own dependencies through the imports array
+- **No NgModule required**: Can be used without declaring in a module
+- **Easier testing**: Simpler to test due to explicit dependencies
+- **Better tree-shaking**: Enables more efficient bundle optimization
+- **Simplified lazy-loading**: Can be lazy-loaded directly without module
+
+### Using Standalone Components
+
+```typescript
+// Importing in another standalone component
+@Component({
+  selector: 'app-parent',
+  standalone: true,
+  imports: [StandaloneComponent],
+  template: `
+    <app-standalone></app-standalone>
+  `
+})
+export class ParentComponent {}
+
+// Bootstrapping a standalone component
+import { bootstrapApplication } from '@angular/platform-browser';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    // Root providers here
+  ]
+});
+```
+
+### Converting to Standalone
+
+To convert an existing component to standalone:
+
+1. Add `standalone: true` to the component decorator
+2. Move dependencies from NgModule imports to component imports
+3. Remove component declaration from NgModule
+4. Import required dependencies directly in the component
 
 [Back to top⤴️](#table-of-contents)
 
@@ -5404,73 +5471,6 @@ Removing the Tag with removeTag()
 ```typescript
 this.metaService.removeTag("name='robots'");
 ```
-
-[Back to top⤴️](#table-of-contents)
-
-## Standalone Components
-
-A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications by reducing the need for NgModules. Standalone components are self-contained and declare their own dependencies.
-
-### Creating a Standalone Component
-
-```typescript
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-@Component({
-  selector: 'app-standalone',
-  standalone: true, // Mark as standalone
-  imports: [CommonModule], // Import required dependencies
-  template: `
-    <h1>Standalone Component</h1>
-    <p>This is a self-contained component</p>
-  `
-})
-export class StandaloneComponent {
-  // Component logic here
-}
-```
-
-### Key Features of Standalone Components
-
-- **Self-contained**: Declares its own dependencies through the imports array
-- **No NgModule required**: Can be used without declaring in a module
-- **Easier testing**: Simpler to test due to explicit dependencies
-- **Better tree-shaking**: Enables more efficient bundle optimization
-- **Simplified lazy-loading**: Can be lazy-loaded directly without module
-
-### Using Standalone Components
-
-```typescript
-// Importing in another standalone component
-@Component({
-  selector: 'app-parent',
-  standalone: true,
-  imports: [StandaloneComponent],
-  template: `
-    <app-standalone></app-standalone>
-  `
-})
-export class ParentComponent {}
-
-// Bootstrapping a standalone component
-import { bootstrapApplication } from '@angular/platform-browser';
-
-bootstrapApplication(AppComponent, {
-  providers: [
-    // Root providers here
-  ]
-});
-```
-
-### Converting to Standalone
-
-To convert an existing component to standalone:
-
-1. Add `standalone: true` to the component decorator
-2. Move dependencies from NgModule imports to component imports
-3. Remove component declaration from NgModule
-4. Import required dependencies directly in the component
 
 [Back to top⤴️](#table-of-contents)
 
