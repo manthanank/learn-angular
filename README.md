@@ -2012,6 +2012,65 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-yerwcu?file=src%2Fmain.ts)
 
+## Control Flow
+
+Conditionally display content with @if, @else-if and @else
+
+```html
+@if (a > b) {
+  <p>{{a}} is greater than {{b}}</p>
+}
+```
+
+```html
+@if (a > b) {
+  {{a}} is greater than {{b}}
+} @else if (b > a) {
+  {{a}} is less than {{b}}
+} @else {
+  {{a}} is equal to {{b}}
+}
+```
+
+Repeat content with the @for block
+
+```html
+@for (item of items; track item.id) {
+  {{ item.name }}
+}
+```
+
+Providing a fallback for @for blocks with the @empty block
+
+```html
+@for (item of items; track item.name) {
+  <li> {{ item.name }}</li>
+} @empty {
+  <li aria-hidden="true"> There are no items. </li>
+}
+```
+
+Conditionally display content with the @switch block
+
+```html
+@switch (userPermissions) {
+  @case ('admin') {
+    <app-admin-dashboard />
+  }
+  @case ('reviewer') {
+    <app-reviewer-dashboard />
+  }
+  @case ('editor') {
+    <app-editor-dashboard />
+  }
+  @default {
+    <app-viewer-dashboard />
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
 ## Pipes
 
 A pipe takes in data as input and transforms it to a desired output.
@@ -3643,7 +3702,7 @@ export class AppComponent {
 </form>
 ```
 
-FormRecord in Angular
+FormArray in Angular
 
 ```ts
 import { Component } from '@angular/core';
@@ -3761,6 +3820,28 @@ export class AppComponent {
   data: string;
 
   constructor(private dataService: DataService) {
+    this.data = this.dataService.getData();
+  }
+}
+```
+
+Using `@inject` decorator is an alternative way to inject dependencies into a class.
+
+```typescript
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  data: string;
+  private dataService = inject(DataService);
+
+  constructor() {
     this.data = this.dataService.getData();
   }
 }
@@ -5607,65 +5688,6 @@ export class AppComponent implements OnInit {
 
 [Back to top⤴️](#table-of-contents)
 
-## Control Flow
-
-Conditionally display content with @if, @else-if and @else
-
-```html
-@if (a > b) {
-  <p>{{a}} is greater than {{b}}</p>
-}
-```
-
-```html
-@if (a > b) {
-  {{a}} is greater than {{b}}
-} @else if (b > a) {
-  {{a}} is less than {{b}}
-} @else {
-  {{a}} is equal to {{b}}
-}
-```
-
-Repeat content with the @for block
-
-```html
-@for (item of items; track item.id) {
-  {{ item.name }}
-}
-```
-
-Providing a fallback for @for blocks with the @empty block
-
-```html
-@for (item of items; track item.name) {
-  <li> {{ item.name }}</li>
-} @empty {
-  <li aria-hidden="true"> There are no items. </li>
-}
-```
-
-Conditionally display content with the @switch block
-
-```html
-@switch (userPermissions) {
-  @case ('admin') {
-    <app-admin-dashboard />
-  }
-  @case ('reviewer') {
-    <app-reviewer-dashboard />
-  }
-  @case ('editor') {
-    <app-editor-dashboard />
-  }
-  @default {
-    <app-viewer-dashboard />
-  }
-}
-```
-
-[Back to top⤴️](#table-of-contents)
-
 ## Angular Animations
 
 Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
@@ -5852,6 +5874,10 @@ module.exports = {
 @tailwind utilities;
 ```
 
+### Upgrading Tailwind CSS
+
+To upgrade Tailwind CSS to the latest version, follow the steps outlined in the [Tailwind CSS Upgrade Guide](https://tailwindcss.com/docs/upgrade-guide). This guide provides detailed instructions on how to update your Tailwind CSS configuration and resolve any breaking changes.
+
 [Back to top⤴️](#table-of-contents)
 
 ## PrimeNG
@@ -5997,6 +6023,10 @@ Create new app without installing cli
 
 ```bash
 npm init @angular app-name
+
+or
+
+npx -p @angular/cli ng new app-name
 ```
 
 Component
@@ -6126,12 +6156,17 @@ ng generate environments
 
 | Angular            | Node.js                              | TypeScript     | RxJS               |
 | ------------------ | ------------------------------------ | -------------- | ------------------ |
+| 19.1.x             | ^18.19.1 \|\| ^20.11.1 \|\| ^22.0.0  | >=5.5.0 <5.8.0 | ^6.5.3 \|\| ^7.4.0 |
+| 19.0.x             | ^18.19.1 \|\| ^20.11.1 \|\| ^22.0.0  | >=5.5.0 <5.7.0 | ^6.5.3 \|\| ^7.4.0 |
+| 18.1.x \|\| 18.2.x | ^18.19.1 \|\| ^20.11.1 \|\| ^22.0.0  | >=5.4.0 <5.6.0 | ^6.5.3 \|\| ^7.4.0 |
 | 18.0.x             | ^18.19.1 \|\| ^20.11.1 \|\| ^22.0.0  | >=5.4.0 <5.5.0 | ^6.5.3 \|\| ^7.4.0 |
 | 17.3.x             | ^18.13.0 \|\| ^20.9.0                | >=5.2.0 <5.5.0 | ^6.5.3 \|\| ^7.4.0 |
 | 17.1.x \|\| 17.2.x | ^18.13.0 \|\| ^20.9.0                | >=5.2.0 <5.4.0 | ^6.5.3 \|\| ^7.4.0 |
 | 17.0.x             | ^18.13.0 \|\| ^20.9.0                | >=5.2.0 <5.3.0 | ^6.5.3 \|\| ^7.4.0 |
-| 16.1.x \|\| 16.2.x | ^16.14.0 \|\| ^18.10.0               | >=4.9.3 <5.2.0 | ^6.5.3 \|\| ^7.4.0 |
-| 16.0.x             | ^16.14.0 \|\| ^18.10.0               | >=4.9.3 <5.1.0 | ^6.5.3 \|\| ^7.4.0 |
+
+For more detailed information on each version, you can visit the [Angular Versions](https://angular.dev/reference/versions) page.
+
+[Back to top⤴️](#table-of-contents)
 
 ## Deploying an Angular Application
 
