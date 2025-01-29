@@ -50,6 +50,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Attribute Directives](#attribute-directives)
   - [Custom Directives](#custom-directives)
   - [Other Directives](#other-directives)
+- [New Control Flow](#new-control-flow)
 - [Pipes](#pipes)
   - [Date Pipe](#date-pipe)
   - [Uppercase Pipe](#uppercase-pipe)
@@ -113,6 +114,8 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Title Service](#title-service)
     - [Dynamic Title](#dynamic-title)
   - [Meta Service](#meta-service)
+- [Standalone Components](#standalone-components)
+- [Angular Signals](#angular-signals)
 - [Security](#security)
   - [Preventing cross-site scripting (XSS)](#preventing-cross-site-scripting-xss)
   - [Angular's cross-site scripting security model](#angulars-cross-site-scripting-security-model)
@@ -133,9 +136,6 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Disabling XSRF protection](#disabling-xsrf-protection)
   - [Cross-site script inclusion (XSSI)](#cross-site-script-inclusion-xssi)
   - [Auditing Angular applications](#auditing-angular-applications)
-- [Standalone Components](#standalone-components)
-- [Angular Signals](#angular-signals)
-- [Control Flow](#control-flow)
 - [Angular Animations](#angular-animations)
   - [Installing Angular Animations](#installing-angular-animations)
 - [Angular Universal](#angular-universal)
@@ -2012,7 +2012,7 @@ export class AppComponent {
 
 [Stackblitz Example](https://stackblitz.com/edit/stackblitz-starters-yerwcu?file=src%2Fmain.ts)
 
-## Control Flow
+## New Control Flow
 
 Conditionally display content with @if, @else-if and @else
 
@@ -5407,6 +5407,166 @@ this.metaService.removeTag("name='robots'");
 
 [Back to top⤴️](#table-of-contents)
 
+## Standalone Components
+
+A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications by reducing the need for NgModules. Standalone components are self-contained and declare their own dependencies.
+
+### Creating a Standalone Component
+
+```typescript
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-standalone',
+  standalone: true, // Mark as standalone
+  imports: [CommonModule], // Import required dependencies
+  template: `
+    <h1>Standalone Component</h1>
+    <p>This is a self-contained component</p>
+  `
+})
+export class StandaloneComponent {
+  // Component logic here
+}
+```
+
+### Key Features of Standalone Components
+
+- **Self-contained**: Declares its own dependencies through the imports array
+- **No NgModule required**: Can be used without declaring in a module
+- **Easier testing**: Simpler to test due to explicit dependencies
+- **Better tree-shaking**: Enables more efficient bundle optimization
+- **Simplified lazy-loading**: Can be lazy-loaded directly without module
+
+### Using Standalone Components
+
+```typescript
+// Importing in another standalone component
+@Component({
+  selector: 'app-parent',
+  standalone: true,
+  imports: [StandaloneComponent],
+  template: `
+    <app-standalone></app-standalone>
+  `
+})
+export class ParentComponent {}
+
+// Bootstrapping a standalone component
+import { bootstrapApplication } from '@angular/platform-browser';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    // Root providers here
+  ]
+});
+```
+
+### Converting to Standalone
+
+To convert an existing component to standalone:
+
+1. Add `standalone: true` to the component decorator
+2. Move dependencies from NgModule imports to component imports
+3. Remove component declaration from NgModule
+4. Import required dependencies directly in the component
+
+[Back to top⤴️](#table-of-contents)
+
+## Angular Signals
+
+Angular Signals is a powerful system that provides detailed monitoring of state usage within an application, enabling the framework to efficiently optimize rendering updates.
+
+### Writing Signals
+
+Writable signals provide an API for updating their values directly. You create writable signals by calling the `signal` function with the signal's initial value:
+
+```typescript
+import { signal } from '@angular/core';
+
+const count = signal(0); // Creates a writable signal with an initial value of 0
+
+count.set(5); // Updates the signal's value to 5
+console.log(count()); // Reads the current value of the signal, which is 5
+```
+
+### Computed Signals
+
+Computed signals are read-only signals that derive their value from other signals. You define computed signals using the `computed` function and specifying a derivation:
+
+```typescript
+import { signal, computed } from '@angular/core';
+
+const count = signal(0);
+const doubleCount = computed(() => count() * 2); // Creates a computed signal that doubles the count
+
+console.log(doubleCount()); // Reads the current value of the computed signal, which is 0
+
+count.set(3); // Updates the count signal to 3
+console.log(doubleCount()); // The computed signal automatically updates to 6
+```
+
+### Effects
+
+Signals are useful because they notify interested consumers when they change. An effect is an operation that runs whenever one or more signal values change. You can create an effect with the `effect` function:
+
+```typescript
+import { signal, effect } from '@angular/core';
+
+const count = signal(0);
+
+effect(() => {
+  console.log('Count changed to:', count()); // Logs the count value whenever it changes
+});
+
+count.set(5); // Triggers the effect, logging "Count changed to: 5"
+```
+
+Here is an example of using Angular Signals in an Angular component:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { signal, computed } from '@angular/core'; // Import from '@angular/core'
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  count = signal(0);
+  doubleCount = computed(() => this.count() * 2);
+
+  constructor() {}
+
+  ngOnInit() {
+    // Optional logging for debugging displayedCount changes
+    // console.log('Displayed count changed to:', this.displayedCount());
+  }
+
+  incrementCount() {
+    this.count.set(this.count() + 1);
+  }
+
+  decrementCount() {
+    this.count.update((value) => Math.max(0, value - 1));
+  }
+}
+```
+
+```html
+<h1>Angular Signals Example</h1>
+
+<button (click)="incrementCount()" style="margin-right: 10px;">Increment Count</button>
+<button (click)="decrementCount()">Decrement Count</button>
+
+<p>Count: {{ count() }}</p>
+<p>Double Count: {{ doubleCount() }}</p>
+```
+
+[Back to top⤴️](#table-of-contents)
+
 ## Security
 
 The security of an Angular application is a critical aspect that needs to be considered during development. Here are some best practices to enhance the security of your Angular application:
@@ -5635,56 +5795,6 @@ Cross-site script inclusion (XSSI) is a security vulnerability that allows attac
 ## Auditing Angular applications
 
 Auditing Angular applications is an essential step to identify and fix security vulnerabilities in the codebase. You can use various tools and techniques to audit Angular applications, such as security scanners, code reviews, penetration testing, and security best practices.
-
-[Back to top⤴️](#table-of-contents)
-
-## Standalone Components
-
-A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications.
-
-## Angular Signals
-
-Angular Signals is a powerful system that provides detailed monitoring of state usage within an application, enabling the framework to efficiently optimize rendering updates.
-
-```typescript
-import { Component, OnInit } from '@angular/core';
-import { signal, computed } from '@angular/core'; // Import from '@angular/core'
-
-@Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  count = signal(0);
-  doubleCount = computed(() => this.count() * 2);
-
-  constructor() {}
-
-  ngOnInit() {
-    // Optional logging for debugging displayedCount changes
-    // console.log('Displayed count changed to:', this.displayedCount());
-  }
-
-  incrementCount() {
-    this.count.set(this.count() + 1);
-  }
-
-  decrementCount() {
-    this.count.update((value) => Math.max(0, value - 1));
-  }
-}
-```
-
-```html
-<h1>Angular Signals Example</h1>
-
-<button (click)="incrementCount()" style="margin-right: 10px;">Increment Count</button>
-<button (click)="decrementCount()">Decrement Count</button>
-
-<p>Count: {{ count() }}</p>
-<p>Double Count: {{ doubleCount() }}</p>
-```
 
 [Back to top⤴️](#table-of-contents)
 
