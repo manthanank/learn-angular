@@ -4293,6 +4293,64 @@ export const ErrorInterceptor: HttpInterceptorFn = (req, next) => {
 };
 ```
 
+There are two ways to implement interceptors in Angular:
+
+1. Functional Interceptors (Modern Approach)
+For Angular v17+, use the `HttpInterceptorFn` type:
+
+    ```typescript
+    import { HttpInterceptorFn } from '@angular/common/http';
+
+    export const loggingInterceptor: HttpInterceptorFn = (req, next) => {
+      console.log('Request URL:', req.url);
+      return next.handle(req);
+    };
+    ```
+
+    Configure in your app config:
+
+    ```typescript
+    export const appConfig: ApplicationConfig = {
+      providers: [
+        provideHttpClient(
+          withInterceptors([loggingInterceptor])
+        )
+      ]
+    };
+    ```
+
+2. DI-based Interceptors (Traditional Approach)
+Create an injectable class implementing `HttpInterceptor`:
+
+    ```typescript
+    @Injectable()
+    export class LoggingInterceptor implements HttpInterceptor {
+      intercept(req: HttpRequest<any>, handler: HttpHandler): Observable<HttpEvent<any>> {
+        console.log('Request URL:', req.url);
+        return handler.handle(req);
+      }
+    }
+    ```
+
+    Configure in your app module:
+
+    ```typescript
+    bootstrapApplication(AppComponent, {
+      providers: [
+        provideHttpClient(
+          withInterceptorsFromDi(),  // Enable DI-based interceptors
+        ),
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: LoggingInterceptor,
+          multi: true
+        }
+      ]
+    });
+    ```
+
+**Note**: DI-based interceptors run in provider registration order, which can be unpredictable in complex applications with hierarchical DI configurations.
+
 ### Using Observable
 
 ```typescript
@@ -4725,6 +4783,27 @@ export class AuthGuard implements CanActivate {
     return true; // Allow access
   }
 }
+```
+
+***canActivateFn***:
+
+The CanActivateFn guard is a function used to decide if a route can be accessed. It works like the CanActivate guard but is a function instead of a class. It takes two arguments: ActivatedRouteSnapshot and RouterStateSnapshot. The guard returns a boolean value or an Observable or Promise that resolves to a boolean value. If the guard returns true, the route is activated; if it returns false, the route is blocked.
+
+```typescript
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+
+export const authGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
+  // Check if the user is authenticated
+  return true; // Allow access
+};
 ```
 
 ***CanActivateChild***:
