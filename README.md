@@ -243,6 +243,12 @@ Install the Angular CLI globally:
 npm install -g @angular/cli
 ```
 
+If you want to install a specific version of the Angular CLI, you can use the following command:
+
+```bash
+npm install -g @angular/cli@version-number
+```
+
 If you have already installed the Angular CLI, you can update it to the latest version using the following command:
 
 ```bash
@@ -263,9 +269,24 @@ ng new [PROJECT NAME]
 
 # without standalone component
 ng new [PROJECT NAME] --standalone=false
+
+## without routing
+ng new [PROJECT NAME] --routing=false
+
+## without testing
+ng new [PROJECT NAME] --skip-tests=true
+
+## without dependencies
+ng new [PROJECT NAME] --skip-install=true
+
+## without git
+ng new [PROJECT NAME] --skip-git=true
+
+## with experimental zonless
+ng new [PROJECT NAME] --experimental-zoneless
 ```
 
-**Note**: In version v17 and later, the standalone component is default enabled. In version v16 and earlier, the standalone component is disabled by default. You can enable or disable the standalone component using the `--standalone` flag. (In this repository, an example repository is created with the latest version of Angular.)
+**Note**: In version v16 and earlier, there is no standalone component. In version v17 and later, the standalone component is default enabled. You can enable or disable the standalone component using the `--standalone` flag while creating a new project (In this repository, an example repository is created with the latest version of Angular).
 
 Navigate to the project directory:
 
