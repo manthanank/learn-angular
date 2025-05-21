@@ -243,6 +243,24 @@ Install the Angular CLI globally:
 npm install -g @angular/cli
 ```
 
+If you are using `pnpm`, you can use the following command:
+
+```bash
+pnpm install -g @angular/cli
+```
+
+If you are using `yarn`, you can use the following command:
+
+```bash
+yarn global add @angular/cli
+```
+
+If you are using `bun`, you can use the following command:
+
+```bash
+bun install -g @angular/cli
+```
+
 If you want to install a specific version of the Angular CLI, you can use the following command:
 
 ```bash
