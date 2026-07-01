@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/manthanank/learn-angular/compare/v2.5.0...v2.6.0) (2026-07-01)
+
+
+### Features
+
+* add Angular application structure with best practices guidelines ([1d69a58](https://github.com/manthanank/learn-angular/commit/1d69a58b10652d946d422a5e197caae1d3daf618))
+
+
+
 # [2.5.0](https://github.com/manthanank/learn-angular/compare/v2.4.0...v2.5.0) (2024-10-03)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Bump version to 2.0.0 in package-lock.json, package.json, and releases.json ([b8033a2](https://github.com/manthanank/learn-angular/commit/b8033a2e13bca141b46909fa40374135b1316859))
-
-
-
-# [1.59.0](https://github.com/manthanank/learn-angular/compare/v1.58.0...v1.59.0) (2024-05-08)
-
-
-### Features
-
-* deleted issue templates ([62c5600](https://github.com/manthanank/learn-angular/commit/62c5600bf4c48df6c6e8f94a7a4dc022dc6b35c5))
 
 
 
