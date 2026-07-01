@@ -45,7 +45,7 @@ This repository contains a list of resources to learn Angular. It includes tutor
 - [Standalone Components](#standalone-components)
 - [Data Binding](#data-binding)
   - [One Way Binding](#one-way-binding)
-  - [Two Way Binding](#two-ways-binding)
+  - [Two-Way Binding](#two-way-binding)
 - [Directives](#directives)
   - [Structural Directives](#structural-directives)
   - [Attribute Directives](#attribute-directives)
@@ -65,9 +65,6 @@ This repository contains a list of resources to learn Angular. It includes tutor
 - [Decorators](#decorators)
   - [Input](#input)
   - [Output](#output)
-  - [HostListener](#hostlistener)
-  - [ContentChild & ContentChildren](#contentchild--contentchildren)
-  - [ViewChild & ViewChildren](#viewchild--viewchildren)
   - [HostListener](#hostlistener)
   - [ContentChild & ContentChildren](#contentchild--contentchildren)
   - [ViewChild & ViewChildren](#viewchild--viewchildren)
@@ -100,13 +97,13 @@ This repository contains a list of resources to learn Angular. It includes tutor
 - [Http](#http)
 - [Module](#module)
 - [Router](#router)
-- [Route Parameter](#route-parameters)
+  - [Route Parameters](#route-parameters)
 - [Route Guards](#route-guards)
-- [Observables](#observables-in-angular)
+  - [Observables in Angular](#observables-in-angular)
   - [Creating Observables](#creating-observables)
   - [Subscribing to Observables](#subscribing-to-observables)
   - [Difference between Observables and Promises in Angular](#difference-between-observables-and-promises-in-angular)
-- [Unsubscribe](#unsubscribe-in-angular)
+- [Unsubscribe in Angular](#unsubscribe-in-angular)
 - [Renderer2](#renderer2)
 - [JIT](#jit)
 - [AOT](#aot)
@@ -117,8 +114,6 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Meta Service](#meta-service)
 - [Angular Signals](#angular-signals)
 - [Security](#security)
-  - [Preventing cross-site scripting (XSS)](#preventing-cross-site-scripting-xss)
-  - [Angular's cross-site scripting security model](#angulars-cross-site-scripting-security-model)
   - [Preventing cross-site scripting (XSS)](#preventing-cross-site-scripting-xss)
   - [Angular's cross-site scripting security model](#angulars-cross-site-scripting-security-model)
   - [Sanitization and security contexts](#sanitization-and-security-contexts)
@@ -136,6 +131,61 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - [Disabling XSRF protection](#disabling-xsrf-protection)
   - [Cross-site script inclusion (XSSI)](#cross-site-script-inclusion-xssi)
   - [Auditing Angular applications](#auditing-angular-applications)
+- [Testing](#testing)
+  - [Unit Testing](#unit-testing)
+  - [Integration Testing](#integration-testing)
+  - [End-to-End Testing](#end-to-end-testing)
+  - [Testing Services](#testing-services)
+  - [Testing Components](#testing-components)
+  - [Testing Pipes](#testing-pipes)
+  - [Testing Directives](#testing-directives)
+  - [Mocking Dependencies](#mocking-dependencies)
+- [Error Handling](#error-handling)
+  - [Global Error Handler](#global-error-handler)
+  - [HTTP Error Handling](#http-error-handling)
+  - [Try-Catch Error Handling](#try-catch-error-handling)
+- [Performance Optimization](#performance-optimization)
+  - [OnPush Change Detection](#onpush-change-detection)
+  - [Track By Function](#track-by-function)
+  - [Lazy Loading](#lazy-loading)
+  - [Tree Shaking](#tree-shaking)
+  - [Preloading Strategies](#preloading-strategies)
+  - [Virtual Scrolling](#virtual-scrolling)
+  - [Web Workers](#web-workers)
+- [State Management](#state-management)
+  - [NgRx](#ngrx)
+  - [NgXS](#ngxs)
+  - [Akita](#akita)
+  - [Simple State Management](#simple-state-management)
+- [Internationalization (i18n)](#internationalization-i18n)
+  - [Setting up i18n](#setting-up-i18n)
+  - [Marking Text for Translation](#marking-text-for-translation)
+  - [Extracting Messages](#extracting-messages)
+  - [Building for Different Locales](#building-for-different-locales)
+- [Accessibility](#accessibility)
+  - [ARIA Attributes](#aria-attributes)
+  - [Keyboard Navigation](#keyboard-navigation)
+  - [Focus Management](#focus-management)
+  - [Screen Reader Support](#screen-reader-support)
+- [Angular CDK](#angular-cdk)
+  - [Layout](#layout)
+  - [A11y (Accessibility)](#a11y-accessibility)
+  - [Drag and Drop](#drag-and-drop)
+  - [Portals](#portals)
+  - [Overlay](#overlay)
+- [Advanced Topics](#advanced-topics)
+  - [Dynamic Component Loading](#dynamic-component-loading)
+  - [Angular Elements](#angular-elements)
+  - [Angular Schematics](#angular-schematics)
+  - [Custom Libraries](#custom-libraries)
+  - [Micro Frontends](#micro-frontends)
+- [Environment Configuration](#environment-configuration)
+- [Best Practices](#best-practices)
+  - [Code Organization](#code-organization)
+  - [Naming Conventions](#naming-conventions)
+  - [Performance Best Practices](#performance-best-practices)
+  - [Security Best Practices](#security-best-practices)
+- [Angular DevTools](#angular-devtools)
 - [Angular Animations](#angular-animations)
   - [Installing Angular Animations](#installing-angular-animations)
 - [Angular Universal](#angular-universal)
@@ -282,10 +332,10 @@ ng version
 Create a new Angular project: (Replace `[PROJECT NAME]` with your project name)
 
 ```bash
-# with standalone component
+**with standalone component**
 ng new [PROJECT NAME]
 
-# without standalone component
+**without standalone component**
 ng new [PROJECT NAME] --standalone=false
 
 ## without routing
@@ -456,7 +506,7 @@ templateUrl: './app.component.html'
 ```bash
 ng generate component [component-name]
 
-# or
+**or**
 
 ng g c [component-name]
 ```
@@ -566,7 +616,7 @@ export class AppComponent {
 ```bash
 ng serve
 
-# or
+**or**
 
 ng serve --open
 ```
@@ -1597,7 +1647,7 @@ The (change) event can also be specifically implemented by other Angular compone
 
 [☝️Source of Explaination](https://stackoverflow.com/a/51127794/14292971)
 
-### Two ways binding
+### Two-Way Binding
 
 Two-way binding allows for binding a property of an HTML element to a property in the component's class and vice-versa. It is denoted by `[(ngModel)]`.
 
@@ -2169,10 +2219,10 @@ Syntax:
 ```text
 Expression | pipeOperator[:pipeArguments]
 
-# Expression: is the expression, which you want to transform
-# | : is the Pipe Character
-# pipeOperator : name of the Pipe
-# pipeArguments: arguments to the Pipe
+**Expression:** is the expression, which you want to transform
+**|** : is the Pipe Character
+**pipeOperator** : name of the Pipe
+**pipeArguments:** arguments to the Pipe
 ```
 
 ### Built-in Pipes
@@ -3910,10 +3960,10 @@ export class AppComponent {
 }
 ```
 
-Using `@inject` decorator is an alternative way to inject dependencies into a class.
+Using `inject` function is an alternative way to inject dependencies into a class.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DataService } from './data.service';
 
 @Component({
@@ -4277,7 +4327,8 @@ Http Interceptors are a powerful feature provided by the `@angular/common/http` 
 ```typescript
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -4286,7 +4337,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error) => {
         console.error('Request failed', error);
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   }
@@ -4305,7 +4356,7 @@ export const ErrorInterceptor: HttpInterceptorFn = (req, next) => {
   return next.handle(req).pipe(
     catchError((error) => {
       console.error('Request failed', error);
-      return throwError(error);
+      return throwError(() => error);
     })
   );
 };
@@ -4374,6 +4425,7 @@ Create an injectable class implementing `HttpInterceptor`:
 ```typescript
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -4383,23 +4435,23 @@ export class MyService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
-    return this.http.get<any>('utl');
+    return this.http.get<any>('url');
   }
 
   sendData(data: any): Observable<any> {
-    return this.http.post<any>('utl', data);
+    return this.http.post<any>('url', data);
   }
 
   updateData(data: any): Observable<any> {
-    return this.http.put<any>('utl', data);
+    return this.http.put<any>('url', data);
   }
 
   updateData(data: any): Observable<any> {
-    return this.http.patch<any>('utl', data);
+    return this.http.patch<any>('url', data);
   }
 
   deleteData(id: string): Observable<any> {
-    return this.http.delete<any>(`utl/${id}`);
+    return this.http.delete<any>(`url/${id}`);
   }
 }
 ```
@@ -4455,179 +4507,6 @@ import { AppComponent } from './app.component';
 })
 
 export class AppModule {}
-```
-
-[Back to top⤴️](#table-of-contents)
-
-### Lazy loading
-
-Lazy loading is a technique used to load modules only when they are needed. This can help reduce the initial load time of the application by loading only the necessary modules.
-
-Example of lazy loading in non standalone components:
-
-```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-
-@NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
-
-```typescript
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: 'page-1',
-    loadChildren: () =>
-      import('./page-1/page-1.module').then((m) => m.Page1Module),
-  },
-  {
-    path: 'page-2',
-    loadChildren: () =>
-      import('./page-2/page-2.module').then((m) => m.Page2Module),
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
-```
-
-```typescript
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { Page1Component } from './page-1.component';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: Page1Component,
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class Page1RoutingModule {}
-```
-
-```typescript
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Page1Component } from './page-1.component';
-import { Page1RoutingModule } from './page-1-routing.module';
-
-@NgModule({
-  imports: [CommonModule, Page1RoutingModule],
-  declarations: [Page1Component],
-})
-export class Page1Module {}
-```
-
-```typescript
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { Page2Component } from './page-2.component';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: Page2Component,
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class Page2RoutingModule {}
-```
-
-```typescript
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Page2Component } from './page-2.component';
-import { Page2RoutingModule } from './page-2-routing.module';
-
-@NgModule({
-  imports: [CommonModule, Page2RoutingModule],
-  declarations: [Page2Component],
-})
-export class Page2Module {}
-```
-
-```html
-<h1>Lazy Loading Example</h1>
-<a routerLink="page-1">Page-1</a> &nbsp;
-<a routerLink="page-2">Page-2</a>
-<router-outlet></router-outlet>
-```
-
-Example of lazy loading in standalone components:
-
-```typescript
-import { Routes } from '@angular/router';
-
-export const routes: Routes = [
-  {
-    path: 'page-1',
-    loadComponent: () => import('./page-1/page-1.component').then((m) => m.Page1Component),
-  },
-  {
-    path: 'page-2',
-    loadComponent: () => import('./page-2/page-2.component').then((m) => m.Page2Component),
-  }
-];
-```
-
-```typescript
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
-  ],
-};
-```
-
-```typescript
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
-})
-export class AppComponent {
-  // component logic here
-}
-```
-
-```html
-<h1>Lazy Loading Example</h1>
-<a routerLink="page-1">Page-1</a> &nbsp;
-<a routerLink="page-2">Page-2</a>
-<router-outlet></router-outlet>
 ```
 
 [Back to top⤴️](#table-of-contents)
@@ -4809,11 +4688,10 @@ The CanActivateFn guard is a function used to decide if a route can be accessed.
 
 ```typescript
 import {
-  CanActivate,
+  CanActivateFn,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 
 export const authGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
@@ -5895,6 +5773,2504 @@ Auditing Angular applications is an essential step to identify and fix security 
 
 [Back to top⤴️](#table-of-contents)
 
+## Testing
+
+Testing is an essential part of software development. Angular provides various tools and frameworks to help you write effective tests.
+
+### Unit Testing
+
+Unit testing involves testing individual components or services in isolation. Angular provides the Angular TestBed module to create a testing module and configure the component or service before each test.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent]
+    });
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+});
+```
+
+### Integration Testing
+
+Integration testing involves testing components together with their dependencies. Angular provides the Angular TestBed module to create a testing module and configure the component or service before each test.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent]
+    });
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+});
+```
+
+### End-to-End Testing
+
+End-to-end testing involves testing the entire application as a user would interact with it. Angular provides the Angular TestBed module to create a testing module and configure the component or service before each test.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent]
+    });
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+});
+```
+
+### Testing Services
+
+Services are tested in isolation using dependency injection. You can use the Angular TestBed module to create a testing module and configure the service before each test.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { DataService } from './data.service';
+
+describe('DataService', () => {
+  let service: DataService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [DataService]
+    });
+    service = TestBed.inject(DataService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should return data from getData()', () => {
+    const data = service.getData();
+    expect(data).toEqual('Data from the service');
+  });
+});
+```
+
+### Testing Components
+
+Components are tested in isolation using dependency injection. You can use the Angular TestBed module to create a testing module and configure the component before each test.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent]
+    });
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+});
+```
+
+### Testing Pipes
+
+Pipes are tested in isolation using dependency injection. You can use the Angular TestBed module to create a testing module and configure the pipe before each test.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      providers: [DatePipe]
+    });
+  });
+
+  it('should format date correctly', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const date = new Date();
+    const formattedDate = app.formatDate();
+    expect(formattedDate).toEqual(date.toLocaleDateString());
+  });
+});
+```
+
+### Testing Directives
+
+Directives are tested in isolation using dependency injection. You can use the Angular TestBed module to create a testing module and configure the directive before each test.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { CustomDirectiveDirective } from './custom-directive.directive';
+
+describe('CustomDirectiveDirective', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [CustomDirectiveDirective]
+    });
+  });
+
+  it('should create an instance', () => {
+    const directive = TestBed.createComponent(CustomDirectiveDirective);
+    const app = directive.componentInstance;
+    expect(app).toBeTruthy();
+  });
+});
+```
+
+### Mocking Dependencies
+
+Mocking dependencies is an essential part of testing. Angular provides various tools and frameworks to help you mock dependencies.
+
+```typescript
+import { TestBed } from '@angular/core/testing';
+import { DataService } from './data.service';
+
+describe('DataService', () => {
+  let service: DataService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [DataService]
+    });
+    service = TestBed.inject(DataService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should return data from getData()', () => {
+    const data = service.getData();
+    expect(data).toEqual('Data from the service');
+  });
+});
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Error Handling
+
+Error handling is an essential part of software development. Angular provides various tools and frameworks to help you handle errors gracefully.
+
+### Global Error Handler
+
+The Global Error Handler is a service that allows you to handle errors globally across your application. You can use the `ErrorHandler` class to handle errors and log them to a centralized logging service.
+
+```typescript
+import { ErrorHandler, Injectable } from '@angular/core';
+
+@Injectable()
+export class GlobalErrorHandler implements ErrorHandler {
+  handleError(error: any) {
+    // Log the error to a centralized logging service
+    console.error('An error occurred:', error);
+  }
+}
+```
+
+### HTTP Error Handling
+
+HTTP error handling involves handling errors that occur during HTTP requests. You can use the `HttpClient` service to handle errors and retry requests.
+
+```typescript
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
+@Injectable()
+export class DataService {
+  constructor(private http: HttpClient) {}
+
+  getData() {
+    return this.http.get('https://api.example.com/data').pipe(
+      catchError(error => {
+        console.error('Error fetching data:', error);
+        return throwError(() => 'Failed to fetch data');
+      })
+    );
+  }
+}
+```
+
+### Try-Catch Error Handling
+
+Try-catch error handling involves using the `try-catch` statement to handle errors. You can use the `try-catch` statement to handle errors and log them to a centralized logging service.
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  onSubmit() {
+    try {
+      // Submit form data
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Performance Optimization
+
+Performance optimization is an essential part of software development. Angular provides various tools and frameworks to help you optimize your application's performance.
+
+### OnPush Change Detection
+
+OnPush change detection is a strategy that Angular uses to optimize performance by only re-rendering components when their inputs change. You can use the `ChangeDetectionStrategy.OnPush` strategy to enable OnPush change detection.
+
+```typescript
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class AppComponent {
+  // Component logic here
+}
+```
+
+### Track By Function
+
+Track by function is a technique used to optimize performance by reusing existing DOM elements instead of creating new ones. You can use the track by function to optimize performance.
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  items = ['Item 1', 'Item 2', 'Item 3'];
+
+  trackByFn(index: number, item: string) {
+    return item;
+  }
+}
+```
+
+### Lazy Loading
+
+Lazy loading is a technique used to load modules only when they are needed. This can help reduce the initial load time of the application by loading only the necessary modules.
+
+Example of lazy loading in non standalone components:
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'page-1',
+    loadChildren: () =>
+      import('./page-1/page-1.module').then((m) => m.Page1Module),
+  },
+  {
+    path: 'page-2',
+    loadChildren: () =>
+      import('./page-2/page-2.module').then((m) => m.Page2Module),
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { Page1Component } from './page-1.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: Page1Component,
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class Page1RoutingModule {}
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Page1Component } from './page-1.component';
+import { Page1RoutingModule } from './page-1-routing.module';
+
+@NgModule({
+  imports: [CommonModule, Page1RoutingModule],
+  declarations: [Page1Component],
+})
+export class Page1Module {}
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { Page2Component } from './page-2.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: Page2Component,
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class Page2RoutingModule {}
+```
+
+```typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Page2Component } from './page-2.component';
+import { Page2RoutingModule } from './page-2-routing.module';
+
+@NgModule({
+  imports: [CommonModule, Page2RoutingModule],
+  declarations: [Page2Component],
+})
+export class Page2Module {}
+```
+
+```html
+<h1>Lazy Loading Example</h1>
+<a routerLink="page-1">Page-1</a> &nbsp;
+<a routerLink="page-2">Page-2</a>
+<router-outlet></router-outlet>
+```
+
+Example of lazy loading in standalone components:
+
+```typescript
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: 'page-1',
+    loadComponent: () => import('./page-1/page-1.component').then((m) => m.Page1Component),
+  },
+  {
+    path: 'page-2',
+    loadComponent: () => import('./page-2/page-2.component').then((m) => m.Page2Component),
+  }
+];
+```
+
+```typescript
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes)
+  ],
+};
+```
+
+```typescript
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+  // component logic here
+}
+```
+
+```html
+<h1>Lazy Loading Example</h1>
+<a routerLink="page-1">Page-1</a> &nbsp;
+<a routerLink="page-2">Page-2</a>
+<router-outlet></router-outlet>
+```
+
+[Back to top⤴️](#table-of-contents)
+
+### Tree Shaking
+
+Tree shaking is a technique used to remove unused code from your application. Angular CLI automatically performs tree shaking when building for production.
+
+```bash
+ng build --prod
+```
+
+To ensure optimal tree shaking:
+
+- Use ES6 modules instead of CommonJS
+- Import only what you need
+- Use Angular's built-in optimization features
+
+```typescript
+// Good - import only what you need
+import { HttpClient } from '@angular/common/http';
+
+// Bad - imports entire module
+import * as http from '@angular/common/http';
+```
+
+### Preloading Strategies
+
+Preloading strategies allow you to load modules before they are needed. Angular provides several preloading strategies:
+
+```typescript
+import { PreloadAllModules, RouterModule } from '@angular/router';
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules
+    })
+  ]
+})
+export class AppModule { }
+```
+
+Custom preloading strategy:
+
+```typescript
+import { PreloadingStrategy, Route } from '@angular/router';
+import { Observable, of } from 'rxjs';
+
+export class CustomPreloadingStrategy implements PreloadingStrategy {
+  preload(route: Route, load: () => Observable<any>): Observable<any> {
+    if (route.data && route.data['preload']) {
+      return load();
+    }
+    return of(null);
+  }
+}
+```
+
+### Virtual Scrolling (CDK)
+
+Virtual scrolling efficiently renders large lists by only rendering visible items. Use Angular CDK's virtual scrolling:
+
+```bash
+npm install @angular/cdk
+```
+
+```typescript
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+@NgModule({
+  imports: [ScrollingModule]
+})
+export class AppModule { }
+```
+
+```html
+<cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+  <div *cdkVirtualFor="let item of items">{{item}}</div>
+</cdk-virtual-scroll-viewport>
+```
+
+```css
+.viewport {
+  height: 200px;
+}
+```
+
+### Web Workers
+
+Web workers run JavaScript in background threads, keeping the main thread responsive:
+
+```bash
+ng generate web-worker app
+```
+
+```typescript
+// app.worker.ts
+addEventListener('message', ({ data }) => {
+  const response = `Worker response to ${data}`;
+  postMessage(response);
+});
+```
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  
+  ngOnInit() {
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker(new URL('./app.worker', import.meta.url));
+      worker.onmessage = ({ data }) => {
+        console.log(`Page got message: ${data}`);
+      };
+      worker.postMessage('hello');
+    }
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## State Management
+
+State management is essential for maintaining application state across components and providing a predictable data flow.
+
+### NgRx
+
+NgRx is a reactive state management library inspired by Redux. It provides a centralized store for all application state.
+
+#### Installing NgRx
+
+```bash
+ng add @ngrx/store
+ng add @ngrx/effects
+ng add @ngrx/store-devtools
+```
+
+#### Setting up NgRx Store
+
+```typescript
+// counter.actions.ts
+import { createAction, props } from '@ngrx/store';
+
+export const increment = createAction('[Counter] Increment');
+export const decrement = createAction('[Counter] Decrement');
+export const reset = createAction('[Counter] Reset');
+```
+
+```typescript
+// counter.reducer.ts
+import { createReducer, on } from '@ngrx/store';
+import { increment, decrement, reset } from './counter.actions';
+
+export const initialState = 0;
+
+const _counterReducer = createReducer(
+  initialState,
+  on(increment, (state) => state + 1),
+  on(decrement, (state) => state - 1),
+  on(reset, () => 0)
+);
+
+export function counterReducer(state, action) {
+  return _counterReducer(state, action);
+}
+```
+
+```typescript
+// app.module.ts
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter.reducer';
+
+@NgModule({
+  imports: [
+    StoreModule.forRoot({ counter: counterReducer })
+  ]
+})
+export class AppModule { }
+```
+
+#### Using NgRx in Components
+
+```typescript
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { increment, decrement, reset } from './counter.actions';
+
+@Component({
+  selector: 'app-counter',
+  template: `
+    <div>Current Count: {{ count$ | async }}</div>
+    <button (click)="increment()">+</button>
+    <button (click)="decrement()">-</button>
+    <button (click)="reset()">Reset</button>
+  `
+})
+export class CounterComponent {
+  count$: Observable<number>;
+
+  constructor(private store: Store<{ counter: number }>) {
+    this.count$ = store.select('counter');
+  }
+
+  increment() {
+    this.store.dispatch(increment());
+  }
+
+  decrement() {
+    this.store.dispatch(decrement());
+  }
+
+  reset() {
+    this.store.dispatch(reset());
+  }
+}
+```
+
+### NgXS
+
+NgXS is a state management pattern that acts as a single source of truth for your application.
+
+#### Installing NgXS
+
+```bash
+npm install @ngxs/store
+```
+
+#### Setting up NgXS
+
+```typescript
+// counter.state.ts
+import { State, Action, StateContext, Selector } from '@ngxs/store';
+
+export class Increment {
+  static readonly type = '[Counter] Increment';
+}
+
+export class Decrement {
+  static readonly type = '[Counter] Decrement';
+}
+
+export interface CounterStateModel {
+  count: number;
+}
+
+@State<CounterStateModel>({
+  name: 'counter',
+  defaults: {
+    count: 0
+  }
+})
+export class CounterState {
+  @Selector()
+  static getCount(state: CounterStateModel) {
+    return state.count;
+  }
+
+  @Action(Increment)
+  increment(ctx: StateContext<CounterStateModel>) {
+    const state = ctx.getState();
+    ctx.setState({
+      count: state.count + 1
+    });
+  }
+
+  @Action(Decrement)
+  decrement(ctx: StateContext<CounterStateModel>) {
+    const state = ctx.getState();
+    ctx.setState({
+      count: state.count - 1
+    });
+  }
+}
+```
+
+### Akita
+
+Akita is a state management library built on top of RxJS.
+
+```bash
+npm install @datorama/akita
+```
+
+### Simple State Management
+
+For simple applications, you can use services with BehaviorSubject:
+
+```typescript
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StateService {
+  private countSubject = new BehaviorSubject<number>(0);
+  count$ = this.countSubject.asObservable();
+
+  increment() {
+    this.countSubject.next(this.countSubject.value + 1);
+  }
+
+  decrement() {
+    this.countSubject.next(this.countSubject.value - 1);
+  }
+
+  reset() {
+    this.countSubject.next(0);
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Internationalization (i18n)
+
+Internationalization (i18n) is the process of designing and preparing your application to be usable in multiple languages and regions.
+
+### Setting up i18n
+
+First, add the Angular i18n package:
+
+```bash
+ng add @angular/localize
+```
+
+Configure your application to support multiple locales in `angular.json`:
+
+```json
+{
+  "projects": {
+    "my-app": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": {
+            "translation": "src/locale/messages.fr.xlf",
+            "baseHref": "/fr/"
+          },
+          "es": {
+            "translation": "src/locale/messages.es.xlf",
+            "baseHref": "/es/"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Marking Text for Translation
+
+Mark text for translation using the `i18n` attribute:
+
+```html
+<!-- Simple text -->
+<h1 i18n="@@welcome">Welcome</h1>
+
+<!-- Text with description -->
+<p i18n="site.header|An introduction header for this sample@@intro">
+  Hello i18n!
+</p>
+
+<!-- Text with interpolation -->
+<span i18n="@@currently_online">
+  Currently there are {{ usersOnline }} users online
+</span>
+
+<!-- Plural expressions -->
+<span i18n="@@user_count">
+  {count, plural, 
+    =0 {no users} 
+    =1 {one user} 
+    other {{{count}} users}
+  }
+</span>
+
+<!-- ICU expressions -->
+<span i18n="@@gender_select">
+  {gender, select, 
+    male {he} 
+    female {she} 
+    other {they}
+  } will respond shortly.
+</span>
+```
+
+### Extracting Messages
+
+Extract marked text into translation files:
+
+```bash
+ng extract-i18n
+```
+
+This creates an XLIFF file (`messages.xlf`) in your `src/locale` directory:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="welcome" datatype="html">
+        <source>Welcome</source>
+        <note priority="1" from="description">Welcome message</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+```
+
+### Creating Translation Files
+
+Copy and translate the extraction file for each locale:
+
+```xml
+<!-- messages.fr.xlf -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="welcome" datatype="html">
+        <source>Welcome</source>
+        <target>Bienvenue</target>
+        <note priority="1" from="description">Welcome message</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+```
+
+### Building for Different Locales
+
+Build for specific locales:
+
+```bash
+# Build for French
+ng build --localize --locale=fr
+
+# Build for all configured locales
+ng build --localize
+
+# Serve with specific locale
+ng serve --configuration=fr
+```
+
+### Runtime i18n with Angular i18n Service
+
+For dynamic locale switching, use a custom service:
+
+```typescript
+import { Injectable, Inject, LOCALE_ID } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class I18nService {
+  private localeSubject = new BehaviorSubject<string>(this.locale);
+  public locale$ = this.localeSubject.asObservable();
+
+  constructor(@Inject(LOCALE_ID) public locale: string) {}
+
+  setLocale(locale: string) {
+    this.localeSubject.next(locale);
+    // Reload page with new locale
+    window.location.href = `/${locale}`;
+  }
+}
+```
+
+### Date and Currency Pipes with i18n
+
+```html
+<!-- Date formatting based on locale -->
+<p>{{ date | date:'short' }}</p>
+
+<!-- Currency formatting based on locale -->
+<p>{{ price | currency }}</p>
+
+<!-- Number formatting based on locale -->
+<p>{{ largeNumber | number:'1.2-2' }}</p>
+```
+
+### Custom i18n Pipe
+
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+import { I18nService } from './i18n.service';
+
+@Pipe({
+  name: 'translate',
+  pure: false
+})
+export class TranslatePipe implements PipeTransform {
+  constructor(private i18nService: I18nService) {}
+
+  transform(key: string): string {
+    return this.i18nService.translate(key);
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Accessibility
+
+Accessibility is an essential part of software development. Angular provides various tools and frameworks to help you create accessible applications.
+
+### ARIA Attributes
+
+ARIA attributes are used to improve the accessibility of web applications. Angular provides various directives to help you add ARIA attributes to your application.
+
+### Keyboard Navigation
+
+Keyboard navigation is an essential part of accessibility. Angular provides various tools and frameworks to help you implement keyboard navigation in your application.
+
+### Focus Management
+
+Focus management is an essential part of accessibility. Angular provides various tools and frameworks to help you manage focus in your application.
+
+### Screen Reader Support
+
+Screen reader support is an essential part of accessibility. Angular provides various tools and frameworks to help you implement screen reader support in your application.
+
+[Back to top⤴️](#table-of-contents)
+
+## Angular CDK
+
+Angular CDK (Component Dev Kit) provides low-level building blocks for creating custom components without Material Design styling.
+
+### Installation (CDK)
+
+```bash
+npm install @angular/cdk
+```
+
+### Layout
+
+The Layout module provides utilities for responsive design and managing layouts.
+
+#### Breakpoint Observer
+
+```typescript
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
+@Component({
+  selector: 'app-responsive',
+  template: `
+    <div *ngIf="isHandset$ | async">Mobile View</div>
+    <div *ngIf="!(isHandset$ | async)">Desktop View</div>
+  `
+})
+export class ResponsiveComponent {
+  isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
+}
+```
+
+### A11y (Accessibility)
+
+Accessibility utilities for focus management and screen reader support.
+
+#### Focus Trap
+
+```typescript
+import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+
+@Component({
+  selector: 'app-modal',
+  template: `
+    <div #modalContainer class="modal">
+      <input placeholder="First input">
+      <input placeholder="Second input">
+      <button (click)="close()">Close</button>
+    </div>
+  `
+})
+export class ModalComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('modalContainer') modalContainer: ElementRef;
+  private focusTrap: FocusTrap;
+
+  constructor(private focusTrapFactory: FocusTrapFactory) {}
+
+  ngAfterViewInit() {
+    this.focusTrap = this.focusTrapFactory.create(this.modalContainer.nativeElement);
+    this.focusTrap.focusInitialElement();
+  }
+
+  ngOnDestroy() {
+    this.focusTrap.destroy();
+  }
+}
+```
+
+#### Live Announcer
+
+```typescript
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+
+@Component({
+  selector: 'app-notification',
+  template: `<button (click)="announce()">Announce</button>`
+})
+export class NotificationComponent {
+  constructor(private liveAnnouncer: LiveAnnouncer) {}
+
+  announce() {
+    this.liveAnnouncer.announce('Message announced to screen readers');
+  }
+}
+```
+
+### Drag and Drop
+
+Powerful drag and drop functionality with customizable behavior.
+
+```typescript
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
+@Component({
+  selector: 'app-drag-drop',
+  template: `
+    <div cdkDropList 
+         [cdkDropListData]="todo" 
+         (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of todo" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  `
+})
+export class DragDropComponent {
+  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.todo, event.previousIndex, event.currentIndex);
+  }
+}
+```
+
+#### Multiple Lists
+
+```typescript
+@Component({
+  template: `
+    <div class="container">
+      <div cdkDropList
+           [cdkDropListData]="todo"
+           [cdkDropListConnectedTo]="[doneList]"
+           (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of todo" cdkDrag>{{ item }}</div>
+      </div>
+      
+      <div cdkDropList
+           #doneList
+           [cdkDropListData]="done"
+           [cdkDropListConnectedTo]="[todoList]"
+           (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of done" cdkDrag>{{ item }}</div>
+      </div>
+    </div>
+  `
+})
+export class MultiListComponent {
+  todo = ['Get to work', 'Pick up groceries'];
+  done = ['Go home', 'Fall asleep'];
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+}
+```
+
+### Portals
+
+Render components dynamically in different locations.
+
+```typescript
+import { ComponentPortal, DomPortal, Portal } from '@angular/cdk/portal';
+
+@Component({
+  selector: 'app-portal-example',
+  template: `
+    <div>
+      <button (click)="showComponent()">Show Component Portal</button>
+      <button (click)="showDom()">Show DOM Portal</button>
+    </div>
+    
+    <ng-container [cdkPortalOutlet]="selectedPortal"></ng-container>
+    
+    <div #domPortalContent>
+      <p>This DOM content can be moved around</p>
+    </div>
+  `
+})
+export class PortalExampleComponent {
+  @ViewChild('domPortalContent') domPortalContent: ElementRef;
+  selectedPortal: Portal<any>;
+
+  showComponent() {
+    this.selectedPortal = new ComponentPortal(SomeComponent);
+  }
+
+  showDom() {
+    this.selectedPortal = new DomPortal(this.domPortalContent);
+  }
+}
+```
+
+### Overlay
+
+Create overlays, tooltips, and modals positioned relative to other elements.
+
+```typescript
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+
+@Component({
+  selector: 'app-overlay-example',
+  template: `
+    <button #trigger (click)="openOverlay()" cdkOverlayOrigin>
+      Open Overlay
+    </button>
+  `
+})
+export class OverlayExampleComponent {
+  @ViewChild('trigger', { read: CdkOverlayOrigin }) trigger: CdkOverlayOrigin;
+  private overlayRef: OverlayRef;
+
+  constructor(private overlay: Overlay) {}
+
+  openOverlay() {
+    const positionStrategy = this.overlay.position()
+      .flexibleConnectedTo(this.trigger.elementRef)
+      .withPositions([{
+        originX: 'center',
+        originY: 'bottom',
+        overlayX: 'center',
+        overlayY: 'top'
+      }]);
+
+    this.overlayRef = this.overlay.create({
+      positionStrategy,
+      hasBackdrop: true,
+      backdropClass: 'cdk-overlay-transparent-backdrop'
+    });
+
+    const portal = new ComponentPortal(OverlayContentComponent);
+    this.overlayRef.attach(portal);
+
+    this.overlayRef.backdropClick().subscribe(() => {
+      this.overlayRef.dispose();
+    });
+  }
+}
+```
+
+### Virtual Scrolling
+
+Efficiently render large lists by only rendering visible items.
+
+```typescript
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+@Component({
+  selector: 'app-virtual-scroll',
+  template: `
+    <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+      <div *cdkVirtualFor="let item of items">{{ item }}</div>
+    </cdk-virtual-scroll-viewport>
+  `,
+  styles: [`
+    .viewport {
+      height: 300px;
+      border: 1px solid #ccc;
+    }
+  `]
+})
+export class VirtualScrollComponent {
+  items = Array.from({ length: 100000 }, (_, i) => `Item #${i}`);
+}
+```
+
+### Text Field
+
+Utilities for working with text inputs and text areas.
+
+```typescript
+import { TextFieldModule } from '@angular/cdk/text-field';
+
+@Component({
+  template: `
+    <textarea 
+      cdkTextareaAutosize 
+      cdkAutosizeMinRows="2" 
+      cdkAutosizeMaxRows="5"
+      placeholder="Auto-resizing textarea">
+    </textarea>
+  `
+})
+export class AutoResizeTextareaComponent {}
+```
+
+### Stepper
+
+Create step-by-step workflows.
+
+```typescript
+import { CdkStepper } from '@angular/cdk/stepper';
+
+@Component({
+  selector: 'app-custom-stepper',
+  template: `
+    <section class="step">
+      <ng-container [ngTemplateOutlet]="selected ? selected.content : null">
+      </ng-container>
+    </section>
+    
+    <footer class="step-navigation">
+      <button [disabled]="!hasPrevious()" (click)="previous()">Previous</button>
+      <button [disabled]="!hasNext()" (click)="next()">Next</button>
+    </footer>
+  `,
+  providers: [{ provide: CdkStepper, useExisting: CustomStepperComponent }]
+})
+export class CustomStepperComponent extends CdkStepper {
+  selectStepByIndex(index: number): void {
+    this.selectedIndex = index;
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Advanced Topics
+
+### Dynamic Component Loading
+
+Load and create components programmatically at runtime.
+
+#### Using ComponentFactory (Deprecated)
+
+```typescript
+import { 
+  ComponentFactoryResolver, 
+  ViewContainerRef, 
+  ComponentRef 
+} from '@angular/core';
+
+@Component({
+  selector: 'app-dynamic-host',
+  template: '<ng-template #dynamicHost></ng-template>'
+})
+export class DynamicHostComponent {
+  @ViewChild('dynamicHost', { read: ViewContainerRef }) 
+  dynamicHost: ViewContainerRef;
+
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+
+  loadComponent(componentType: any) {
+    const componentFactory = this.componentFactoryResolver
+      .resolveComponentFactory(componentType);
+    
+    this.dynamicHost.clear();
+    const componentRef = this.dynamicHost.createComponent(componentFactory);
+    
+    // Set component inputs
+    componentRef.instance.data = 'Dynamic data';
+  }
+}
+```
+
+#### Using ViewContainerRef.createComponent (Angular 13+)
+
+```typescript
+import { ViewContainerRef, ComponentRef } from '@angular/core';
+
+@Component({
+  selector: 'app-dynamic-host',
+  template: '<ng-template #dynamicHost></ng-template>'
+})
+export class DynamicHostComponent {
+  @ViewChild('dynamicHost', { read: ViewContainerRef }) 
+  dynamicHost: ViewContainerRef;
+
+  loadComponent(componentType: any) {
+    this.dynamicHost.clear();
+    const componentRef = this.dynamicHost.createComponent(componentType);
+    
+    // Set component inputs
+    componentRef.setInput('data', 'Dynamic data');
+    
+    // Subscribe to outputs
+    componentRef.instance.dataChange.subscribe(value => {
+      console.log('Component output:', value);
+    });
+  }
+}
+```
+
+#### Dynamic Component Service
+
+```typescript
+import { Injectable, Type, ViewContainerRef } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DynamicComponentService {
+  
+  createComponent<T>(
+    component: Type<T>, 
+    host: ViewContainerRef, 
+    inputs?: Partial<T>
+  ): ComponentRef<T> {
+    host.clear();
+    const componentRef = host.createComponent(component);
+    
+    if (inputs) {
+      Object.keys(inputs).forEach(key => {
+        componentRef.setInput(key, inputs[key]);
+      });
+    }
+    
+    return componentRef;
+  }
+}
+```
+
+### Angular Elements
+
+Create custom elements that can be used in any HTML page.
+
+#### Creating Angular Elements
+
+```bash
+ng add @angular/elements
+```
+
+```typescript
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { Injector } from '@angular/core';
+
+@Component({
+  selector: 'app-popup',
+  template: `
+    <div class="popup">
+      <h3>{{ title }}</h3>
+      <p>{{ message }}</p>
+      <button (click)="close()">Close</button>
+    </div>
+  `
+})
+export class PopupComponent {
+  @Input() title: string;
+  @Input() message: string;
+  @Output() closed = new EventEmitter<void>();
+
+  close() {
+    this.closed.emit();
+  }
+}
+
+@NgModule({
+  declarations: [PopupComponent],
+  entryComponents: [PopupComponent]
+})
+export class AppModule {
+  constructor(private injector: Injector) {
+    const PopupElement = createCustomElement(PopupComponent, { injector });
+    customElements.define('app-popup', PopupElement);
+  }
+
+  ngDoBootstrap() {
+    // No component to bootstrap
+  }
+}
+```
+
+#### Using Angular Elements
+
+```html
+<!-- Can be used in any HTML page -->
+<app-popup title="Alert" message="This is a custom element!"></app-popup>
+
+<script>
+  document.querySelector('app-popup').addEventListener('closed', () => {
+    console.log('Popup closed');
+  });
+</script>
+```
+
+### Angular Schematics
+
+Create custom code generators and transformers.
+
+#### Creating a Schematic
+
+```bash
+npm install -g @angular-devkit/schematics-cli
+schematics blank --name=my-schematic
+```
+
+#### Schematic Definition
+
+```typescript
+// src/my-component/index.ts
+import {
+  Rule,
+  SchematicContext,
+  Tree,
+  apply,
+  url,
+  template,
+  move,
+  chain,
+  mergeWith
+} from '@angular-devkit/schematics';
+import { strings, normalize } from '@angular-devkit/core';
+
+interface Options {
+  name: string;
+  path?: string;
+}
+
+export function myComponent(options: Options): Rule {
+  return (tree: Tree, context: SchematicContext) => {
+    const templateSource = apply(url('./files'), [
+      template({
+        ...strings,
+        ...options,
+      }),
+      move(normalize(options.path + '/' + strings.dasherize(options.name)))
+    ]);
+
+    return chain([
+      mergeWith(templateSource)
+    ]);
+  };
+}
+```
+
+#### Template Files
+
+```typescript
+// src/my-component/files/__name@dasherize__.component.ts.template
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-<%= dasherize(name) %>',
+  template: `
+    <h1><%= classify(name) %> Component</h1>
+  `
+})
+export class <%= classify(name) %>Component {}
+```
+
+### Custom Libraries
+
+Create reusable Angular libraries.
+
+#### Creating a Library
+
+```bash
+ng generate library my-lib
+```
+
+#### Library Structure
+
+```tree
+projects/
+  my-lib/
+    src/
+      lib/
+        my-lib.component.ts
+        my-lib.service.ts
+        my-lib.module.ts
+      public-api.ts
+    ng-package.json
+    package.json
+```
+
+#### Public API
+
+```typescript
+// public-api.ts
+export * from './lib/my-lib.service';
+export * from './lib/my-lib.component';
+export * from './lib/my-lib.module';
+```
+
+#### Building and Publishing
+
+```bash
+ng build my-lib
+cd dist/my-lib
+npm publish
+```
+
+#### Secondary Entry Points
+
+```typescript
+// projects/my-lib/testing/public-api.ts
+export * from './src/test-utils';
+
+// projects/my-lib/testing/ng-package.json
+{
+  "lib": {
+    "entryFile": "public-api.ts"
+  }
+}
+```
+
+### Micro Frontends
+
+Split large applications into smaller, manageable pieces.
+
+#### Module Federation Setup
+
+```bash
+npm install @angular-architects/module-federation
+ng add @angular-architects/module-federation --project shell --type host
+ng add @angular-architects/module-federation --project mfe1 --type remote
+```
+
+#### Shell Configuration
+
+```typescript
+// webpack.config.js (Shell)
+const ModuleFederationPlugin = require("@module-federation/webpack");
+
+module.exports = {
+  plugins: [
+    new ModuleFederationPlugin({
+      remotes: {
+        "mfe1": "http://localhost:4201/remoteEntry.js",
+      },
+    }),
+  ],
+};
+```
+
+#### Remote Configuration
+
+```typescript
+// webpack.config.js (Remote)
+const ModuleFederationPlugin = require("@module-federation/webpack");
+
+module.exports = {
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "mfe1",
+      filename: "remoteEntry.js",
+      exposes: {
+        './Component': './src/app/my-component/my-component.component.ts',
+      },
+    }),
+  ],
+};
+```
+
+#### Dynamic Import
+
+```typescript
+// Shell application
+import { loadRemoteModule } from '@angular-architects/module-federation';
+
+const routes: Routes = [
+  {
+    path: 'mfe1',
+    loadChildren: () =>
+      loadRemoteModule({
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        remoteName: 'mfe1',
+        exposedModule: './Module'
+      }).then(m => m.RemoteModule)
+  }
+];
+```
+
+### Content Projection Advanced Patterns
+
+#### Multiple Slot Projection
+
+```typescript
+@Component({
+  selector: 'app-card',
+  template: `
+    <div class="card">
+      <header class="card-header">
+        <ng-content select="[slot=header]"></ng-content>
+      </header>
+      <div class="card-body">
+        <ng-content></ng-content>
+      </div>
+      <footer class="card-footer">
+        <ng-content select="[slot=footer]"></ng-content>
+      </footer>
+    </div>
+  `
+})
+export class CardComponent {}
+
+// Usage
+// <app-card>
+//   <h2 slot="header">Card Title</h2>
+//   <p>Card content goes here</p>
+//   <button slot="footer">Action</button>
+// </app-card>
+```
+
+#### Conditional Content Projection
+
+```typescript
+@Component({
+  selector: 'app-conditional-wrapper',
+  template: `
+    <div *ngIf="showContent">
+      <ng-content></ng-content>
+    </div>
+    <div *ngIf="!showContent" class="placeholder">
+      <ng-content select="[slot=placeholder]"></ng-content>
+    </div>
+  `
+})
+export class ConditionalWrapperComponent {
+  @Input() showContent = true;
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Environment Configuration
+
+Environment configuration allows you to maintain different settings for development, testing, and production environments.
+
+### Setting Up Environment Variables
+
+Angular provides environment files to manage configuration:
+
+```bash
+src/
+  environments/
+    environment.ts          # Default environment (development)
+    environment.prod.ts     # Production environment
+    environment.staging.ts  # Staging environment (optional)
+```
+
+#### Development Environment (`environment.ts`)
+
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000/api',
+  enableLogging: true,
+  version: '1.0.0-dev',
+  firebase: {
+    apiKey: 'dev-api-key',
+    authDomain: 'myapp-dev.firebaseapp.com',
+    projectId: 'myapp-dev'
+  }
+};
+```
+
+#### Production Environment (`environment.prod.ts`)
+
+```typescript
+export const environment = {
+  production: true,
+  apiUrl: 'https://api.myapp.com',
+  enableLogging: false,
+  version: '1.0.0',
+  firebase: {
+    apiKey: 'prod-api-key',
+    authDomain: 'myapp.firebaseapp.com',
+    projectId: 'myapp-prod'
+  }
+};
+```
+
+### Using Environment Variables
+
+Import and use environment variables in your services:
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+  private apiUrl = environment.apiUrl;
+
+  constructor(private http: HttpClient) {
+    if (environment.enableLogging) {
+      console.log('API URL:', this.apiUrl);
+    }
+  }
+
+  getData() {
+    return this.http.get(`${this.apiUrl}/data`);
+  }
+}
+```
+
+### Building for Different Environments
+
+Configure build environments in `angular.json`:
+
+```json
+{
+  "projects": {
+    "my-app": {
+      "architect": {
+        "build": {
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Build commands:
+
+```bash
+# Development build
+ng build
+
+# Production build
+ng build --configuration=production
+
+# Staging build
+ng build --configuration=staging
+
+# Serve with specific environment
+ng serve --configuration=production
+```
+
+### Runtime Environment Configuration
+
+For runtime configuration, create a configuration service:
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+import { firstValueFrom } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ConfigService {
+  private config: any;
+
+  constructor(private http: HttpClient) {}
+
+  loadConfig(): Promise<any> {
+    return firstValueFrom(
+      this.http.get('/assets/config.json').pipe(
+        tap(config => this.config = config)
+      )
+    );
+  }
+
+  getConfig(key: string) {
+    return this.config[key];
+  }
+}
+```
+
+Load configuration at app startup:
+
+```typescript
+import { APP_INITIALIZER } from '@angular/core';
+import { ConfigService } from './config.service';
+
+export function configFactory(configService: ConfigService) {
+  return () => configService.loadConfig();
+}
+
+@NgModule({
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: configFactory,
+      deps: [ConfigService],
+      multi: true
+    }
+  ]
+})
+export class AppModule { }
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Best Practices
+
+Following Angular best practices ensures maintainable, scalable, and performant applications.
+
+### Code Organization
+
+#### Feature Modules
+
+Organize your application into feature modules:
+
+```tree
+src/
+  app/
+    core/               # Core module (singleton services)
+      services/
+      guards/
+      interceptors/
+    shared/             # Shared module (common components/pipes)
+      components/
+      pipes/
+      directives/
+    features/
+      user/             # Feature module
+        components/
+        services/
+        user.module.ts
+        user-routing.module.ts
+      product/          # Feature module
+        components/
+        services/
+        product.module.ts
+        product-routing.module.ts
+```
+
+#### Barrel Exports
+
+Use barrel exports (index.ts files) to simplify imports:
+
+```typescript
+// shared/index.ts
+export * from './components';
+export * from './pipes';
+export * from './directives';
+
+// Usage
+import { LoaderComponent, ConfirmDialogComponent } from '../shared';
+```
+
+### Naming Conventions
+
+Follow Angular's style guide for consistent naming:
+
+```typescript
+// Components: PascalCase with Component suffix
+export class UserDetailComponent { }
+
+// Services: PascalCase with Service suffix
+export class UserService { }
+
+// Files: kebab-case with type suffix
+user-detail.component.ts
+user.service.ts
+user-detail.component.spec.ts
+
+// Properties and methods: camelCase
+export class UserComponent {
+  userName: string;
+  
+  getUserData() { }
+}
+
+// Constants: UPPER_SNAKE_CASE
+export const API_BASE_URL = 'https://api.example.com';
+
+// Interfaces: PascalCase with descriptive names
+export interface User {
+  id: number;
+  name: string;
+}
+```
+
+### Performance Best Practices
+
+#### Use OnPush Change Detection
+
+```typescript
+@Component({
+  selector: 'app-user-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `...`
+})
+export class UserListComponent {
+  @Input() users: User[];
+}
+```
+
+#### Implement TrackBy Functions
+
+```typescript
+@Component({
+  template: `
+    <div *ngFor="let item of items; trackBy: trackByFn">
+      {{ item.name }}
+    </div>
+  `
+})
+export class ListComponent {
+  trackByFn(index: number, item: any) {
+    return item.id;
+  }
+}
+```
+
+#### Lazy Load Feature Modules
+
+```typescript
+const routes: Routes = [
+  {
+    path: 'users',
+    loadChildren: () => import('./features/user/user.module').then(m => m.UserModule)
+  }
+];
+```
+
+#### Unsubscribe from Observables
+
+```typescript
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+export class ComponentWithSubscription implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.dataService.getData()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {
+        // Handle data
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+```
+
+#### Use Async Pipe
+
+```html
+<!-- Instead of manual subscription -->
+<div *ngIf="users$ | async as users">
+  <div *ngFor="let user of users">
+    {{ user.name }}
+  </div>
+</div>
+```
+
+### Security Best Practices
+
+#### Sanitize User Input
+
+```typescript
+import { DomSanitizer } from '@angular/platform-browser';
+
+constructor(private sanitizer: DomSanitizer) {}
+
+sanitizeHtml(html: string) {
+  return this.sanitizer.sanitize(SecurityContext.HTML, html);
+}
+```
+
+#### Use HTTPS
+
+```typescript
+// environment.prod.ts
+export const environment = {
+  production: true,
+  apiUrl: 'https://secure-api.example.com'  // Always use HTTPS
+};
+```
+
+#### Implement Authentication Guards
+
+```typescript
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  canActivate(): boolean {
+    if (this.authService.isAuthenticated()) {
+      return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
+  }
+}
+```
+
+#### Validate Forms
+
+```typescript
+export class UserFormComponent {
+  userForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]]
+  });
+
+  constructor(private fb: FormBuilder) {}
+}
+```
+
+### Component Best Practices
+
+#### Keep Components Small and Focused
+
+```typescript
+// Good: Single responsibility
+@Component({
+  selector: 'app-user-avatar',
+  template: `<img [src]="user.avatarUrl" [alt]="user.name">`
+})
+export class UserAvatarComponent {
+  @Input() user: User;
+}
+
+// Bad: Too many responsibilities
+@Component({
+  selector: 'app-user-everything',
+  template: `...` // Handles avatar, profile, settings, etc.
+})
+export class UserEverythingComponent {
+  // Too much logic
+}
+```
+
+#### Use Smart and Dumb Components
+
+```typescript
+// Smart (Container) Component
+@Component({
+  selector: 'app-user-page',
+  template: `
+    <app-user-list 
+      [users]="users$ | async"
+      (userSelected)="onUserSelected($event)">
+    </app-user-list>
+  `
+})
+export class UserPageComponent {
+  users$ = this.userService.getUsers();
+  
+  constructor(private userService: UserService) {}
+  
+  onUserSelected(user: User) {
+    // Handle user selection
+  }
+}
+
+// Dumb (Presentational) Component
+@Component({
+  selector: 'app-user-list',
+  template: `...`
+})
+export class UserListComponent {
+  @Input() users: User[];
+  @Output() userSelected = new EventEmitter<User>();
+}
+```
+
+### Service Best Practices
+
+#### Use Injectable ProvidedIn Root
+
+```typescript
+@Injectable({
+  providedIn: 'root'  // Creates singleton service
+})
+export class UserService {
+  // Service implementation
+}
+```
+
+#### Handle Errors Consistently
+
+```typescript
+@Injectable()
+export class UserService {
+  constructor(
+    private http: HttpClient,
+    private errorHandler: ErrorHandlerService
+  ) {}
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>('/api/users')
+      .pipe(
+        catchError(error => this.errorHandler.handleError(error))
+      );
+  }
+}
+```
+
+#### Use RxJS Operators Efficiently
+
+```typescript
+// Good: Combine operators efficiently
+searchUsers(term: string): Observable<User[]> {
+  return this.searchTerms.pipe(
+    debounceTime(300),
+    distinctUntilChanged(),
+    switchMap(term => 
+      term.length >= 2 
+        ? this.userService.searchUsers(term)
+        : of([])
+    ),
+    catchError(error => {
+      console.error('Search error:', error);
+      return of([]);
+    })
+  );
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
+## Angular DevTools
+
+Angular DevTools is a browser extension that provides debugging and profiling utilities for Angular applications.
+
+### Installation of Angular DevTools
+
+Install Angular DevTools from the Chrome Web Store or Firefox Add-ons:
+
+- [Chrome Extension](https://chrome.google.com/webstore/detail/angular-devtools/)
+- [Firefox Add-on](https://addons.mozilla.org/en-US/firefox/addon/angular-devtools/)
+
+### Component Explorer
+
+The Component Explorer shows the component tree structure and allows you to:
+
+- **Inspect component properties**: View and modify component properties in real-time
+- **Navigate component hierarchy**: Browse through parent and child components
+- **View component metadata**: See selectors, lifecycle hooks, and change detection info
+
+```typescript
+// Component properties are editable in DevTools
+@Component({
+  selector: 'app-user',
+  template: `<h1>{{ userName }}</h1>`
+})
+export class UserComponent {
+  userName = 'John Doe';  // Editable in DevTools
+}
+```
+
+### Debugging
+
+#### Setting Breakpoints
+
+```typescript
+export class UserService {
+  getUsers(): Observable<User[]> {
+    debugger; // Will trigger DevTools breakpoint
+    return this.http.get<User[]>('/api/users');
+  }
+}
+```
+
+#### Console Debugging
+
+```typescript
+export class MyComponent implements OnInit {
+  ngOnInit() {
+    console.log('Component initialized');
+    console.table(this.users); // Display data in table format
+    console.group('User operations'); // Group related logs
+    console.log('Fetching users...');
+    console.groupEnd();
+  }
+}
+```
+
+#### Using ng.profiler
+
+Enable profiler in development mode:
+
+```typescript
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+// Enable profiler for development
+if (!environment.production) {
+  // Access ng.profiler in browser console
+  (window as any).ng = require('@angular/core');
+}
+```
+
+### Profiling
+
+#### Change Detection Profiling
+
+Monitor change detection cycles:
+
+```typescript
+import { ChangeDetectorRef, NgZone } from '@angular/core';
+
+export class ProfilingComponent {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone
+  ) {
+    // Run outside Angular zone for performance testing
+    this.ngZone.runOutsideAngular(() => {
+      // Heavy computation here
+    });
+  }
+
+  trackPerformance() {
+    console.time('change-detection');
+    this.cdr.detectChanges();
+    console.timeEnd('change-detection');
+  }
+}
+```
+
+#### Performance Monitoring
+
+```typescript
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PerformanceService {
+  measureApiCall<T>(operation: () => Observable<T>, label: string): Observable<T> {
+    console.time(label);
+    return operation().pipe(
+      finalize(() => console.timeEnd(label))
+    );
+  }
+}
+```
+
+### Profiler Tab
+
+The Profiler tab helps you:
+
+- **Record performance profiles**: Capture performance data over time
+- **Analyze change detection**: See which components triggered change detection
+- **Identify performance bottlenecks**: Find slow operations and heavy computations
+- **Memory usage tracking**: Monitor memory consumption patterns
+
+#### Profiling Configuration
+
+```typescript
+// Enable detailed profiling
+import { enableProdMode, isDevMode } from '@angular/core';
+
+if (isDevMode()) {
+  // Enable additional debugging info
+  console.log('Development mode: DevTools profiling enabled');
+}
+```
+
+### Router State Inspection
+
+DevTools shows router information:
+
+```typescript
+import { Router, NavigationEnd } from '@angular/router';
+
+export class AppComponent {
+  constructor(private router: Router) {
+    // Router events are visible in DevTools
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(event => {
+      console.log('Navigation completed:', event.url);
+    });
+  }
+}
+```
+
+### Injector Graph
+
+Visualize dependency injection:
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+// Services and their dependencies are shown in DevTools
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  constructor(
+    private http: HttpClient,
+    private logger: LoggerService,
+    private cache: CacheService
+  ) {}
+}
+```
+
+### Tips for Effective Debugging
+
+#### Use Meaningful Component Names
+
+```typescript
+// Good: Descriptive names appear in DevTools
+@Component({
+  selector: 'app-user-profile-card',
+  template: '...'
+})
+export class UserProfileCardComponent {}
+
+// Bad: Generic names are hard to debug
+@Component({
+  selector: 'app-comp1',
+  template: '...'
+})
+export class Comp1Component {}
+```
+
+#### Add Debug Information
+
+```typescript
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+
+export class DebugComponent implements OnInit, OnDestroy {
+  private componentName = 'DebugComponent';
+
+  ngOnInit() {
+    console.log(`${this.componentName} initialized`);
+  }
+
+  ngOnDestroy() {
+    console.log(`${this.componentName} destroyed`);
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(event: MouseEvent) {
+    console.log(`${this.componentName} clicked:`, event);
+  }
+}
+```
+
+#### Enable Source Maps
+
+Ensure source maps are enabled in `angular.json`:
+
+```json
+{
+  "projects": {
+    "my-app": {
+      "architect": {
+        "build": {
+          "options": {
+            "sourceMap": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+[Back to top⤴️](#table-of-contents)
+
 ## Angular Animations
 
 Angular's animation system is built on CSS functionality in order to animate any property that the browser considers animatable. These properties includes positions, sizes, transforms, colors, borders etc. The Angular modules for animations are @angular/animations and @angular/platform-browser.
@@ -5931,6 +8307,7 @@ export class AppModule { }
 
 ```typescript
 import { Component } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -6594,17 +8971,17 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
 ## TypeScript
 
-**TypeScript** is JavaScript with syntax for types. TypeScript is a superset of JavaScript that compiles to plain JavaScript. It is developed and maintained by Microsoft.
+**TypeScript** is JavaScript with syntax for types. TypeScript is a superset of JavaScript. It is developed and maintained by Microsoft.
 
 ## Rxjs
 
 **Reactive Extensions Library for JavaScript** - RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
 
-## NgRx
+## What is NgRx?
 
 **NgRx** is a Reactive libraries for Angular. It provides state management, side effects, and route handling. It is inspired by Redux. It is a set of Angular libraries to help manage state at scale in Angular applications.
 
-## NgXS
+## What is NgXS?
 
 **NgXS** is a state management pattern + library for Angular. It acts as a single source of truth for your application's state, providing simple rules for predictable state mutations.
 
@@ -6612,7 +8989,7 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
 ## Learn more from GitHub Repositories
 
-- [Awesomw Angular](https://github.com/PatrickJS/awesome-angular)
+- [Awesome Angular](https://github.com/PatrickJS/awesome-angular)
 - [Angular JumpStart](https://github.com/DanWahlin/Angular-JumpStart)
 - [Angular Interview Questions by Sudheerj](https://github.com/sudheerj/angular-interview-questions)
 - [Angular Learning Resources](https://github.com/avatsaev/angular-learning-resources)
@@ -6756,9 +9133,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you like this learning repository and find it useful, consider buying me a coffee or sponsoring me through the GitHub Sponsor. Your support will help me to continue and bring more exciting projects. Thank you!
 
-[![Buy Me A Coffee](/public/bmc-button.svg)](https://www.buymeacoffee.com/manthanank)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-FFDD00?logo=buymeacoffee&logoColor=000)](https://www.buymeacoffee.com/manthanank)
 
-[![Sponsor Me](https://img.shields.io/badge/Sponsor-GitHub-green)]([https://](https://github.com/sponsors/manthanank))
+[![Sponsor Me](https://img.shields.io/badge/Sponsor-GitHub-green?logo=github)](https://github.com/sponsors/manthanank)
 
 ---
 
