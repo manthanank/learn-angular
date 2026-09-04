@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/manthanank/learn-angular/compare/v2.6.0...v2.7.0) (2026-09-04)
+
+
+### Features
+
+* update comprehensive curriculum and harden CI/CD workflows ([5c71b32](https://github.com/manthanank/learn-angular/commit/5c71b320eefe70f839e01706d7080e721b703e37))
+
+
+
 # [2.6.0](https://github.com/manthanank/learn-angular/compare/v2.5.0...v2.6.0) (2026-07-01)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Update README.md with improved description of Angular framework ([fa07520](https://github.com/manthanank/learn-angular/commit/fa0752021f6d5c15b3b1cd8dc554dc5322fd62ec))
-
-
-
-# [2.1.0](https://github.com/manthanank/learn-angular/compare/v1.59.0...v2.1.0) (2024-06-26)
-
-
-### Features
-
-* Bump version to 2.0.0 in package-lock.json, package.json, and releases.json ([b8033a2](https://github.com/manthanank/learn-angular/commit/b8033a2e13bca141b46909fa40374135b1316859))
 
 
 
