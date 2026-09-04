@@ -9,16 +9,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Check DockerHub Credentials
+        id: check_creds
+        run: |
+          if [ -n "${{ secrets.DOCKERHUB_USERNAME }}" ] && [ -n "${{ secrets.DOCKERHUB_PASSWORD }}" ]; then
+            echo "has_creds=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_creds=false" >> $GITHUB_OUTPUT
+            echo "DockerHub credentials not provided; skipping image push."
+          fi
 
       - name: DockerHub Login
-        uses: docker/login-action@v2.1.0
+        if: steps.check_creds.outputs.has_creds == 'true'
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/learn-angular
+      - name: Set up Docker Buildx
+        if: steps.check_creds.outputs.has_creds == 'true'
+        uses: docker/setup-buildx-action@v3
 
-      - name: Docker Push
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/learn-angular
+      - name: Build and Push Docker image
+        if: steps.check_creds.outputs.has_creds == 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/learn-angular:latest
