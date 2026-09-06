@@ -1,24 +1,55 @@
-# Learn Angular
+# Learn Angular 🅰️
 
-This repository contains a list of resources to learn Angular. It includes tutorials, articles, videos, books, and other resources to help you learn Angular from scratch.
+<div align="center">
 
-![npm](https://img.shields.io/npm/dw/learn-angular)
-![npm](https://img.shields.io/npm/dm/learn-angular)
-![npm](https://img.shields.io/npm/dy/learn-angular)
-![npm](https://img.shields.io/npm/dt/learn-angular)
-![GitHub issues](https://img.shields.io/github/issues/manthanank/learn-angular)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/manthanank/learn-angular)
-![GitHub](https://img.shields.io/github/license/manthanank/learn-angular)
-![GitHub last commit](https://img.shields.io/github/last-commit/manthanank/learn-angular)
-![GitHub top language](https://img.shields.io/github/languages/top/manthanank/learn-angular)
-![GitHub repo size](https://img.shields.io/github/repo-size/manthanank/learn-angular)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/manthanank/learn-angular)
-![GitHub contributors](https://img.shields.io/github/contributors/manthanank/learn-angular)
-![GitHub forks](https://img.shields.io/github/forks/manthanank/learn-angular)
-![GitHub stars](https://img.shields.io/github/stars/manthanank/learn-angular)
-![GitHub watchers](https://img.shields.io/github/watchers/manthanank/learn-angular)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Angular Version](https://img.shields.io/badge/Angular-21.2+-DD0031.svg?logo=angular)](https://angular.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9+-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![Zoneless Ready](https://img.shields.io/badge/Reactivity-Signals%20%26%20Zoneless-purple.svg)](https://angular.dev/guide/signals)
+[![SSR & Hydration](https://img.shields.io/badge/Rendering-Event%20Replay%20%26%20SSR-brightgreen.svg)](https://angular.dev/guide/ssr)
+[![Production Ready](https://img.shields.io/badge/Status-Enterprise%20Grade-blue.svg)](https://github.com/manthanank/learn-angular)
 
-## Table of Contents
+**An exhaustive, production-grade masterclass from absolute zero to staff-level Angular platform architecture.**  
+Master standalone applications, modern Signals reactivity, `@defer` incremental hydration, hierarchical dependency injection, functional router guards, reactive forms, and zoneless performance.
+
+[Getting Started](#-getting-started) • [Standalone Components](#2-stage-2-standalone-components-templates--modern-control-flow) • [Signals & Reactivity](#3-stage-3-modern-signals-reactivity--state-management) • [Dependency Injection](#4-stage-4-hierarchical-dependency-injection--routing) • [Forms & HTTP](#5-stage-5-enterprise-reactive-forms--http-client) • [SSR & Performance](#6-stage-6-server-side-rendering-ssr-deferrable-views--performance) • [Interview Prep](#7-stage-7-staff-angular-architect-interview-handbook--cheatsheet)
+
+<br/>
+
+<a href="https://www.buymeacoffee.com/manthanank">
+  <img src="public/bmc-button.svg" alt="Buy Me A Coffee" width="180">
+</a>
+
+</div>
+
+---
+
+## 🗺️ 7-Stage Pedagogical Roadmap
+
+```mermaid
+flowchart LR
+    S1["Stage 1: Foundations & Standalone"] --> S2["Stage 2: Components & Templates"]
+    S2 --> S3["Stage 3: Signals & Reactivity"]
+    S3 --> S4["Stage 4: DI & Routing"]
+    S4 --> S5["Stage 5: Reactive Forms & HTTP"]
+    S5 --> S6["Stage 6: SSR, @defer & Perf"]
+    S6 --> S7["Stage 7: Staff Architect Handbook"]
+```
+
+| Stage | Focus Domain | Core Concepts & Engineering Outcomes |
+| :--- | :--- | :--- |
+| **Stage 1** | **Absolute Beginner Foundations** | Standalone bootstrapping (`bootstrapApplication`), application configuration, TypeScript 5 essentials. |
+| **Stage 2** | **Components & Modern Control Flow** | Standalone components, `@if`, `@for (track)`, `@switch`, template bindings, content projection. |
+| **Stage 3** | **Modern Signals Reactivity** | Fine-grained reactivity (`signal`, `computed`, `effect`), `input()`/`output()`, RxJS `toSignal()`, zoneless change detection. |
+| **Stage 4** | **Hierarchical DI & Routing** | Tree-shakeable providers, `inject()` function, functional route guards (`canActivateFn`), resolvers, lazy loading. |
+| **Stage 5** | **Reactive Forms & HTTP Engine** | Strongly-typed `FormGroup`, async validators, functional interceptors (`HttpInterceptorFn`), retry strategies. |
+| **Stage 6** | **SSR, @defer & Enterprise Performance** | Event replay, incremental DOM hydration, `@defer` trigger conditions (`on viewport`, `on idle`), OnPush profiling. |
+| **Stage 7** | **Staff Architect Interview Handbook** | Zone.js patching vs Zoneless microtasks, Module Federation, 40+ staff-level interview Q&As, cheat sheet. |
+
+---
+
+
+## 📋 Table of Contents
 
 - [Introduction](#introduction)
   - What is Angular?
@@ -486,7 +517,53 @@ This repository contains a list of resources to learn Angular. It includes tutor
   - Newsletters
   - Podcasts
 
-## Introduction
+## 1. Stage 1: Absolute Beginner Foundations & Standalone Architecture
+
+### 1.1 Architecture & Philosophy
+```mermaid
+flowchart TD
+    Main["main.ts: bootstrapApplication(AppComponent, appConfig)"] --> AppConfig["app.config.ts: ApplicationConfig"]
+    AppConfig --> Providers["provideRouter(), provideHttpClient(), provideClientHydration()"]
+    Providers --> RootEnv["Root EnvironmentInjector"]
+    RootEnv --> RootComp["AppComponent (Standalone Component)"]
+    RootComp --> ChildComps["Child Standalone Components (Direct Imports)"]
+```
+
+### Line-by-Line Code Breakdown: Standalone Bootstrapping (`src/main.ts` & `src/app/app.config.ts`)
+
+```typescript
+// app.config.ts
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { routes } from './app.routes';
+import { authInterceptor } from './core/auth.interceptor';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes, withComponentInputBinding()),
+    provideHttpClient(withInterceptors([authInterceptor]))
+  ]
+};
+
+// main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app';
+import { appConfig } from './app/app.config';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error('[Bootstrap Error]', err));
+```
+
+| Statement / API | Architectural Role | Pedagogical Runtime Mechanism |
+| :--- | :--- | :--- |
+| `ApplicationConfig` | **Configuration Interface** | Replaces historic `AppModule`. Holds the global array of environment providers passed during application bootstrap. |
+| `provideZoneChangeDetection({ eventCoalescing: true })` | **Event Coalescing** | Coalesces multiple microtasks and DOM events into a single change detection tick, significantly reducing redundant template re-evaluations. |
+| `withComponentInputBinding()` | **Router Feature** | Automatically maps route parameters (`:id`) and query parameters directly into component inputs (`input<string>()`) without subscribing to `ActivatedRoute`. |
+| `provideHttpClient(withInterceptors([...]))` | **HTTP Engine** | Configures tree-shakeable, functional HTTP interceptors instead of legacy multi-provider class tokens (`HTTP_INTERCEPTORS`). |
+| `bootstrapApplication(AppComponent, appConfig)` | **Platform Bootstrapper** | Mounts the root standalone component directly to the DOM host element without declaring an intermediate `NgModule`. |
+
 
 ### What is Angular?
 
@@ -1864,7 +1941,19 @@ import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { AngularFireAuthGuardModule } from "@angular/fire/auth-guard";
 ```
 
-## Components
+## 2. Stage 2: Standalone Components, Templates & Modern Control Flow
+
+```mermaid
+flowchart TD
+    subgraph ControlFlow["Modern Angular Control Flow"]
+        IfBlock["@if (condition) { ... } @else { ... }"]
+        ForBlock["@for (item of items(); track item.id) { ... } @empty { ... }"]
+        SwitchBlock["@switch (status()) { @case ('active') { ... } }"]
+        DeferBlock["@defer (on viewport) { &lt;heavy-chart /&gt; } @placeholder { ... }"]
+    end
+```
+
+### 2.1 Standalone Components Deep Dive
 
 ### Components
 
@@ -5297,7 +5386,17 @@ Example:
 
 [Back to top⤴️](#table-of-contents)
 
-## Signals
+## 3. Stage 3: Modern Signals Reactivity & State Management
+
+```mermaid
+flowchart LR
+    SourceSignal["signal(value) (State Node)"] --> ComputedSignal["computed(() => fn()) (Derived Node)"]
+    ComputedSignal --> EffectNode["effect(() => sideEffect()) (Consumer Node)"]
+    SourceSignal --> TemplateView["Template View Binding (Reactive UI)"]
+    Note over SourceSignal,EffectNode: Fine-grained tracking: only dependent nodes re-evaluate!
+```
+
+### 3.1 Signals Internals & Reactive Primitives
 
 ### Signals Introduction
 
@@ -7022,7 +7121,17 @@ export class LiveSearchComponent {
 - **Signals**: Best for synchronous state management, template bindings, and local reactivity.
 - **RxJS**: Best for asynchronous operations, event streams, timers, HTTP calls, and complex data flows.
 
-## Dependency Injection
+## 4. Stage 4: Hierarchical Dependency Injection & Routing
+
+```mermaid
+flowchart TD
+    PlatformInj["Platform Injector"] --> RootInj["Root EnvironmentInjector (provideIn: 'root')"]
+    RootInj --> RouteInj["Route / Environment Injector (Lazy Route Providers)"]
+    RouteInj --> ElementInj["Element Injector (Component @Component providers)"]
+    ElementInj --> DirectiveInj["Directive Injector"]
+```
+
+### 4.1 Dependency Injection Architecture
 
 ### Dependency Injection
 
@@ -8590,7 +8699,9 @@ export class AuthGuard implements CanLoad {
 
 With `withComponentInputBinding()` enabled, Angular can automatically bind route parameters directly to component inputs (including Signal inputs).
 
-## Forms
+## 5. Stage 5: Enterprise Reactive Forms & HTTP Client
+
+### 5.1 Reactive Forms Architecture
 
 ### Forms Introduction
 
@@ -12878,7 +12989,9 @@ Deferrable views can be used in component template to defer the loading of selec
 }
 ```
 
-## Server-Side Rendering (SSR)
+## 6. Stage 6: Server-Side Rendering (SSR), Deferrable Views & Performance
+
+### 6.1 Server-Side Rendering & Hydration
 
 ### SSR Introduction
 
@@ -17348,7 +17461,9 @@ Abstract data storage access routines from component consumers.
 
 Delegate dependency resolution tasks dynamically using Angular's DI systems.
 
-## Interview Questions
+## 7. Stage 7: Staff Angular Architect Interview Handbook & Cheatsheet
+
+### 7.1 40 Core Staff Architect Technical Interview Q&As
 
 ### Angular Interview Questions
 
