@@ -3,7 +3,7 @@
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Angular Version](https://img.shields.io/badge/Angular-21.2+-DD0031.svg?logo=angular)](https://angular.dev/)
+[![Angular Version](https://img.shields.io/badge/Angular-22.0+-DD0031.svg?logo=angular)](https://angular.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9+-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
 [![Zoneless Ready](https://img.shields.io/badge/Reactivity-Signals%20%26%20Zoneless-purple.svg)](https://angular.dev/guide/signals)
 [![SSR & Hydration](https://img.shields.io/badge/Rendering-Event%20Replay%20%26%20SSR-brightgreen.svg)](https://angular.dev/guide/ssr)
@@ -47,6 +47,82 @@ flowchart LR
 | **Stage 7** | **Staff Architect Interview Handbook** | Zone.js patching vs Zoneless microtasks, Module Federation, 40+ staff-level interview Q&As, cheat sheet. |
 
 ---
+
+---
+
+## 20. Angular v20 → v21 → v22 Platform Updates & Migration Masterclass
+
+### 20.1 Platform Evolution: From v20 to v22
+The Angular platform underwent a foundational modernization cycle across versions 20, 21, and 22, completing the transition from Zone.js-dependent class architectures to a fine-grained, signal-driven, zoneless-ready, and AI-enabled web framework:
+
+```mermaid
+timeline
+    title Angular Modernization Roadmap (v20 - v22)
+    section Angular v20 (Nov 2024)
+      Route-Level Render Modes (RenderMode.Server / Prerender / Client) : Hybrid Rendering Stable
+      Experimental Signal Forms : Signal-driven form primitives
+      LinkedSignal & Resource API : Fine-grained async primitives
+    section Angular v21 (May 2025)
+      Vitest Default Test Runner : Stable ng test with Vitest
+      Standalone Migration Complete : Legacy NgModule fully deprecated
+      provideAppInitializer Stable : Legacy APP_INITIALIZER replaced
+    section Angular v22 (Active)
+      OnPush as Default Strategy : Default strategy deprecated in favor of Eager
+      httpResource() Stable : First-class reactive HTTP resource primitive
+      Experimental WebMCP : AI-agent tool integration for Claude & Gemini
+      @angular/aria Primitives : Headless WAI-ARIA 1.2 components
+```
+
+---
+
+### 20.2 Official Compatibility Matrix (Angular v20 – v22)
+
+| Angular Version | Release Date | Node.js Supported Ranges | TypeScript Supported | RxJS Supported | Default Change Detection | Primary Test Runner |
+|---|---|---|---|---|---|---|
+| **Angular v20** | November 2024 | `^18.19.0 \|\| ^20.9.0 \|\| ^22.0.0` | `~5.5.0 \|\| ~5.6.0` | `^7.8.0` | `Default` (Zone.js) | Karma / Vitest (Exp) |
+| **Angular v21** | May 2025 | `^20.11.0 \|\| ^22.0.0` | `~5.6.0 \|\| ~5.7.0` | `^7.8.0` | `Default` / Zoneless Opt-in | **Vitest** (Stable) |
+| **Angular v22** | November 2025 / Active | `^20.18.0 \|\| ^22.11.0 \|\| ^24.0.0` | `~5.7.0 \|\| ~5.8.0 \|\| ~5.9.0` | `^7.8.0 \|\| ^8.0.0` | **`OnPush`** (Default) | **Vitest** (Primary) |
+
+---
+
+### 20.3 Migration Guide: v20 → v21 → v22 Automated CLI Recipes
+
+#### Step 1: Upgrading to Angular v21
+```bash
+# Update core framework packages, CLI, and Angular Material to v21
+ng update @angular/core@21 @angular/cli@21 @angular/material@21
+
+# Migrate automated unit test runner from Karma to Vitest
+ng update @angular/core@21 --migrate-only karma-to-vitest
+
+# Migrate legacy APP_INITIALIZER providers to provideAppInitializer()
+ng update @angular/core@21 --migrate-only app-initializer
+```
+
+#### Step 2: Upgrading to Angular v22
+```bash
+# Update core framework packages and CLI to v22
+ng update @angular/core@22 @angular/cli@22 @angular/material@22
+
+# Automated migration: Flip component change detection strategy to OnPush
+ng update @angular/core@22 --migrate-only change-detection-onpush
+
+# Automated migration: Migrate stable httpResource primitives
+ng update @angular/core@22 --migrate-only http-resource-stable
+```
+
+---
+
+### 20.4 Deprecations & Breaking Changes Catalog (v20 – v22)
+
+| Version | Deprecated API | Replacement API | Breaking Change Details |
+|---|---|---|---|
+| **v22** | `ChangeDetectionStrategy.Default` | `ChangeDetectionStrategy.Eager` or `OnPush` | `Default` is formally deprecated. Components without explicit strategy now default to **`OnPush`**. |
+| **v22** | `@angular/animations` DSL triggers | Native CSS `@keyframes` & `animate.enter` / `animate.leave` | Browser View Transitions and native CSS transitions are the primary animation engine. |
+| **v21** | Karma & Jasmine test runners | **Vitest** (`@angular/build:unit-test`) | Karma is removed from new CLI projects; Vitest is the primary runner. |
+| **v21** | `APP_INITIALIZER` injection token | `provideAppInitializer()` | Class-based multi-providers replaced with functional initializer callbacks. |
+| **v20** | `NgModule` application bootstrapping | `bootstrapApplication(RootComponent, appConfig)` | Standalone APIs are the sole recommended architecture. |
+
 
 
 ## 📋 Table of Contents
@@ -17460,6 +17536,1536 @@ Abstract data storage access routines from component consumers.
 ### Dependency Injection Pattern
 
 Delegate dependency resolution tasks dynamically using Angular's DI systems.
+
+---
+
+## 21. Angular v22 Change Detection Architecture & Zoneless Traversal
+
+### 21.1 `OnPush` as Default & The Deprecation of `ChangeDetectionStrategy.Default`
+In Angular v22, **`ChangeDetectionStrategy.OnPush` is the default change detection strategy** for all newly generated components. The legacy `ChangeDetectionStrategy.Default` (which performed top-down recursive dirty-checking of every component on every browser event) is officially deprecated in favor of **`ChangeDetectionStrategy.Eager`**:
+
+```mermaid
+graph TD
+    Legacy["Legacy Angular (Zone.js + Default)"] --> LegacyWalk["Traverse ALL 2,000 components on ANY microtask/click"]
+    Modern["Angular v22 (Signals + OnPush Default)"] --> TargetedUpdate["Target ONLY the component views whose signals mutated!"]
+    TargetedUpdate --> SkipSubtrees["Skip 98% of component subtrees (O(1) updates)"]
+```
+
+```typescript
+import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+
+// In Angular v22, omitting `changeDetection` defaults to OnPush automatically!
+@Component({
+  selector: 'app-v22-telemetry-card',
+  standalone: true,
+  template: `
+    <div class="card p-4 border rounded shadow-sm">
+      <h3 class="font-bold">{{ title() }}</h3>
+      <p class="text-2xl font-mono text-blue-600">{{ latency() }} ms</p>
+      <span class="text-xs" [class.text-green-600]="isOptimal()">
+        {{ isOptimal() ? 'Optimal Latency' : 'High Latency Warning' }}
+      </span>
+      <button (click)="pingTelemetry()" class="mt-2 px-3 py-1 bg-blue-600 text-white rounded">
+        Ping Server
+      </button>
+    </div>
+  `,
+  // In v22, OnPush is the default. If legacy continuous checking is strictly required:
+  // changeDetection: ChangeDetectionStrategy.Eager // (Replaces deprecated ChangeDetectionStrategy.Default)
+})
+export class TelemetryCardComponent {
+  title = signal('Edge Gateway Telemetry');
+  latency = signal(14);
+  isOptimal = computed(() => this.latency() < 30);
+
+  pingTelemetry() {
+    this.latency.set(Math.floor(Math.random() * 50) + 5);
+    // Setting latency() notifies the Angular reactive scheduler directly.
+    // Only this component view is scheduled for checking.
+  }
+}
+```
+
+---
+
+### 21.2 Signal-Driven Traversal & Subtree Skipping in Zoneless Applications
+When using `provideZonelessChangeDetection()`, Angular replaces Zone.js monkey-patching with an internal reactive scheduler. Subtrees whose inputs, signals, or event bindings have not changed are skipped completely:
+
+```mermaid
+graph TD
+    Root["ApplicationRoot (OnPush)"] --> Nav["Navbar (Signals: Unchanged) -> SKIPPED"]
+    Root --> MainView["DashboardView (Signals: Latency Mutated) -> CHECKED"]
+    Root --> Footer["Footer (Signals: Unchanged) -> SKIPPED"]
+    MainView --> ChartWidget["ChartWidget (Input signal unchanged) -> SKIPPED"]
+    MainView --> MetricBadge["MetricBadge (Signal read mutated) -> RE-RENDERED"]
+```
+
+```typescript
+// app.config.ts (Angular v22 Zoneless Setup)
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // Activates fine-grained zoneless change detection without zone.js overhead
+    provideZonelessChangeDetection(),
+    provideRouter(routes),
+  ],
+};
+```
+
+---
+
+### 21.3 `markForCheck()`, `detectChanges()`, and `ApplicationRef.tick()` in v22
+
+| Method | Execution Timing | Traversal Behavior | Angular v22 Primary Use Case |
+|---|---|---|---|
+| **Signal Mutation** (`sig.set()`) | Microtask Coalesced | Notifies scheduler; marks specific view as dirty | **Default for 99% of modern code**. |
+| `ChangeDetectorRef.markForCheck()` | Microtask Coalesced | Traverses parent path to root, marking components for next tick | Legacy RxJS / external callback interop. |
+| `ChangeDetectorRef.detectChanges()` | **Synchronous Immediate** | Rerenders *only* this component and its immediate children | Immediate DOM measurement before paint. |
+| `ApplicationRef.tick()` | **Synchronous Immediate** | Runs change detection across the entire application root | Global integration testing harness. |
+
+---
+
+### 21.4 Change Detection Triggers Comparison
+
+```typescript
+import { Component, input, model, output, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-trigger-comparison',
+  standalone: true,
+  template: `
+    <div class="space-y-2">
+      <!-- 1. Signal input: triggers check only if input reference changes -->
+      <p>Threshold: {{ threshold() }}</p>
+
+      <!-- 2. Two-way model input: updates parent and child synchronously -->
+      <input [value]="activeFilter()" (input)="activeFilter.set($any($event.target).value)" />
+
+      <!-- 3. DOM event listener: automatically marks component dirty in OnPush -->
+      <button (click)="triggerEvent()">Emit Action</button>
+    </div>
+  `
+})
+export class TriggerComparisonComponent {
+  // Signal input: read-only from parent
+  threshold = input.required<number>();
+
+  // Two-way model input: writable by both parent and child
+  activeFilter = model<string>('all');
+
+  // Output emitter
+  actionFired = output<string>();
+
+  triggerEvent() {
+    this.actionFired.emit('action_executed');
+  }
+}
+```
+
+
+---
+
+## 22. Signal Forms Complete Masterclass
+
+### 22.1 Signal Forms Core Architecture (`form()`, `FieldTree`, `FormField`)
+Angular Signal Forms replace class-based `FormGroup` and string-based form controls with a **type-safe, signal-driven form tree**. Every field exposes fine-grained signals for value, validity, and metadata:
+
+```mermaid
+graph TD
+    FormInstance["form({ email, password, profile: { bio, role } })"] --> FieldTree["Type-Safe FieldTree<UserForm>"]
+    FieldTree --> FieldEmail["FormField<string>: value(), valid(), errors()"]
+    FieldTree --> FieldPassword["FormField<string>: value(), dirty(), touched()"]
+    FieldTree --> FieldProfile["Nested Sub-Tree Profile"]
+    FieldProfile --> FieldBio["FormField<string>: disabled(), hidden()"]
+```
+
+```typescript
+import { Component, signal } from '@angular/core';
+import { form, FormField, FieldTree } from '@angular/forms/signals';
+
+interface UserRegistrationSchema {
+  username: string;
+  email: string;
+  age: number;
+  newsletter: boolean;
+  preferences: {
+    theme: 'light' | 'dark' | 'system';
+    notifications: boolean;
+  };
+}
+
+@Component({
+  selector: 'app-signal-registration-form',
+  standalone: true,
+  template: `
+    <form (submit)="onSubmit($event)" class="space-y-4 max-w-lg p-6 border rounded-lg shadow-sm">
+      <h2 class="text-xl font-bold">Enterprise Signal Form Registration</h2>
+
+      <!-- Username Field -->
+      <div>
+        <label class="block text-sm font-semibold">Username</label>
+        <input
+          [value]="regForm.username.value()"
+          (input)="regForm.username.value.set($any($event.target).value)"
+          [class.border-red-500]="regForm.username.invalid() && regForm.username.touched()"
+          class="border px-3 py-1.5 rounded w-full"
+        />
+        @if (regForm.username.invalid() && regForm.username.touched()) {
+          <p class="text-red-500 text-xs mt-1">{{ regForm.username.errors()?.[0] }}</p>
+        }
+      </div>
+
+      <!-- Email Field with Async Validation -->
+      <div>
+        <label class="block text-sm font-semibold">Corporate Email</label>
+        <input
+          type="email"
+          [value]="regForm.email.value()"
+          (input)="regForm.email.value.set($any($event.target).value)"
+          class="border px-3 py-1.5 rounded w-full"
+        />
+        @if (regForm.email.pending()) {
+          <span class="text-xs text-blue-500 animate-pulse">Checking email availability...</span>
+        }
+      </div>
+
+      <!-- Nested Preferences Tree -->
+      <fieldset class="border p-3 rounded space-y-2">
+        <legend class="text-sm font-semibold px-1">Preferences</legend>
+        <select
+          [value]="regForm.preferences.theme.value()"
+          (change)="regForm.preferences.theme.value.set($any($event.target).value)"
+          class="border px-2 py-1 rounded w-full"
+        >
+          <option value="light">Light Theme</option>
+          <option value="dark">Dark Theme</option>
+          <option value="system">System Default</option>
+        </select>
+      </fieldset>
+
+      <button
+        type="submit"
+        [disabled]="regForm.invalid() || regForm.pending()"
+        class="px-4 py-2 bg-blue-600 text-white font-semibold rounded disabled:opacity-50"
+      >
+        {{ regForm.pending() ? 'Validating...' : 'Register Account' }}
+      </button>
+    </form>
+  `
+})
+export class SignalRegistrationFormComponent {
+  // Initialize the typed Signal Form tree
+  regForm = form<UserRegistrationSchema>({
+    username: '',
+    email: '',
+    age: 21,
+    newsletter: true,
+    preferences: {
+      theme: 'system',
+      notifications: true,
+    },
+  });
+
+  onSubmit(e: Event) {
+    e.preventDefault();
+    if (this.regForm.valid()) {
+      console.log('Form data submitted:', this.regForm.value());
+    }
+  }
+}
+```
+
+---
+
+### 22.2 Field Reactive State Signals Matrix
+
+Every field in a Signal Form exposes standard reactive signals:
+
+| Field Signal | Type | Description |
+|---|---|---|
+| `field.value()` | `Signal<T>` | Current reactive value of the field. Writable via `.set()` or `.update()`. |
+| `field.valid()` | `Signal<boolean>` | `true` if all sync and async validators have passed. |
+| `field.invalid()` | `Signal<boolean>` | `true` if any validation error exists. |
+| `field.dirty()` | `Signal<boolean>` | `true` if the user has modified the value from its initial state. |
+| `field.touched()` | `Signal<boolean>` | `true` if the field has received and lost focus (`blur`). |
+| `field.pending()` | `Signal<boolean>` | `true` while asynchronous validators are currently in-flight. |
+| `field.errors()` | `Signal<string[] \| null>` | Array of active error messages or validation tokens. |
+| `field.disabled()` | `Signal<boolean>` | `true` if the field is excluded from submission and disabled. |
+
+---
+
+### 22.3 Cross-Field Validation & Custom Validators
+```typescript
+import { ValidatorFn, AsyncValidatorFn } from '@angular/forms/signals';
+
+// 1. Synchronous Custom Validator
+export function enterpriseDomainValidator(allowedDomain: string): ValidatorFn<string> {
+  return (value: string) => {
+    if (!value || value.endsWith(`@${allowedDomain}`)) return null;
+    return { invalidDomain: `Email must belong to @${allowedDomain}` };
+  };
+}
+
+// 2. Asynchronous Validator with Auto-Cancellation & Debouncing
+export function checkUsernameAvailable(apiService: any): AsyncValidatorFn<string> {
+  return async (username: string, signal: AbortSignal) => {
+    if (!username || username.length < 3) return null;
+    try {
+      const response = await fetch(`/api/users/check?username=${encodeURIComponent(username)}`, { signal });
+      const data = await response.json();
+      return data.available ? null : { usernameTaken: 'This username is already claimed' };
+    } catch (err: any) {
+      if (err.name === 'AbortError') return null; // Gracefully handle cancelled debounces
+      return { networkError: 'Verification failed' };
+    }
+  };
+}
+```
+
+---
+
+### 22.4 Migration Guide: Reactive Forms (`FormGroup`) → Signal Forms (`form()`)
+
+| Reactive Forms (v2 – v21 Legacy) | Signal Forms (v22 Modern) | Refactoring Benefit |
+|---|---|---|
+| `fb.group({ email: ['', [Validators.required]] })` | `form<Schema>({ email: '' })` | **Full TypeScript inference** without string-key lookups. |
+| `form.get('email')?.value` | `form.email.value()` | Direct reactive signal read; zero runtime string indexing errors. |
+| `form.get('email')?.valueChanges.pipe(...)` | `computed(() => form.email.value())` | Pure synchronous signal derivation; zero manual unsubscribe leaks. |
+| `[formControl]="form.controls.email"` | `(input)="form.email.value.set($event)"` | Unbundled from DOM directive overhead; works with any custom primitive. |
+
+
+---
+
+## 23. Resource API & `httpResource()` Deep Dive
+
+### 23.1 The `resource()` API Lifecycle
+The `resource()` function creates an asynchronous data resource tied directly to signal reactivity. When its reactive `params` signal mutates, it automatically cancels in-flight loaders and transitions through its lifecycle states:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Loading : Param Signal Emits / Loader Starts
+    Loading --> Resolved : Promise Resolves
+    Loading --> Error : Promise Rejects
+    Resolved --> Reloading : Reload Triggered / Param Mutated
+    Reloading --> Resolved : Data Refreshed
+    Reloading --> Error : Refresh Fails
+    Error --> Loading : Retry / Param Mutated
+```
+
+```typescript
+import { Component, signal, resource, linkedSignal } from '@angular/core';
+
+export interface ProjectData {
+  id: string;
+  name: string;
+  status: 'ACTIVE' | 'ARCHIVED';
+  tasksCount: number;
+}
+
+@Component({
+  selector: 'app-resource-explorer',
+  standalone: true,
+  template: `
+    <div class="p-6 border rounded-lg max-w-xl space-y-4">
+      <div class="flex gap-2">
+        <button (click)="projectId.set('proj_1')" class="px-3 py-1 bg-gray-200 rounded">Project 1</button>
+        <button (click)="projectId.set('proj_2')" class="px-3 py-1 bg-gray-200 rounded">Project 2</button>
+        <button (click)="projectResource.reload()" class="px-3 py-1 bg-blue-100 text-blue-700 rounded">Reload</button>
+      </div>
+
+      <!-- Resource Status Tracking -->
+      @switch (projectResource.status()) {
+        @case ('loading') {
+          <div class="p-4 bg-yellow-50 text-yellow-800 rounded animate-pulse">Loading project details...</div>
+        }
+        @case ('resolved') {
+          <div class="p-4 bg-green-50 border border-green-200 rounded">
+            <h3 class="font-bold text-lg">{{ projectResource.value()?.name }}</h3>
+            <p>Status: {{ projectResource.value()?.status }}</p>
+            <p>Total Tasks: {{ projectResource.value()?.tasksCount }}</p>
+          </div>
+        }
+        @case ('error') {
+          <div class="p-4 bg-red-50 text-red-700 rounded">
+            Failed to load: {{ projectResource.error() }}
+          </div>
+        }
+      }
+    </div>
+  `
+})
+export class ResourceExplorerComponent {
+  projectId = signal('proj_1');
+
+  // Resource automatically re-executes when projectId() changes, passing an AbortSignal!
+  projectResource = resource<ProjectData, string>({
+    params: () => this.projectId(),
+    loader: async ({ params: id, abortSignal }) => {
+      const response = await fetch(`https://api.enterprise.io/projects/${id}`, {
+        signal: abortSignal, // Auto-cancels if user clicks Project 2 before Project 1 resolves!
+      });
+      if (!response.ok) throw new Error(`Project query returned ${response.status}`);
+      return response.json();
+    },
+  });
+
+  // linkedSignal: Resets local edit state whenever the server resource resolves fresh data
+  localProjectName = linkedSignal(() => this.projectResource.value()?.name ?? '');
+}
+```
+
+---
+
+### 23.2 `httpResource()` Stable in Angular v22
+`httpResource()` is a first-class HTTP primitive in Angular v22 that bridges the reactive `HttpClient` with Signals. It eliminates manual `takeUntilDestroyed()`, `toSignal()`, and subscription management:
+
+```typescript
+import { Component, signal } from '@angular/core';
+import { httpResource } from '@angular/common/http';
+
+export interface AuditLogItem {
+  id: string;
+  action: string;
+  actor: string;
+  timestamp: string;
+}
+
+@Component({
+  selector: 'app-http-resource-demo',
+  standalone: true,
+  template: `
+    <div class="p-6 border rounded-lg">
+      <h2 class="text-xl font-bold mb-4">Enterprise Audit Logs via httpResource()</h2>
+
+      <div class="flex items-center gap-3 mb-4">
+        <label class="text-sm font-semibold">Filter Actor:</label>
+        <input
+          [value]="actorQuery()"
+          (input)="actorQuery.set($any($event.target).value)"
+          placeholder="e.g. admin"
+          class="border px-2 py-1 rounded"
+        />
+        @if (auditLogs.isLoading()) {
+          <span class="text-xs text-blue-500 animate-pulse">Streaming network request...</span>
+        }
+      </div>
+
+      <!-- httpResource reactive status checks -->
+      @if (auditLogs.hasValue()) {
+        <table class="w-full text-left divide-y border rounded">
+          <thead>
+            <tr class="bg-gray-50 text-xs font-semibold text-gray-500">
+              <th class="p-2">Action</th>
+              <th class="p-2">Actor</th>
+              <th class="p-2">Timestamp</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-sm">
+            @for (log of auditLogs.value(); track log.id) {
+              <tr>
+                <td class="p-2 font-mono">{{ log.action }}</td>
+                <td class="p-2">{{ log.actor }}</td>
+                <td class="p-2 text-gray-400">{{ log.timestamp }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else if (auditLogs.error()) {
+        <div class="text-red-600 p-3 bg-red-50 rounded">
+          HTTP Error (Status {{ auditLogs.statusCode() }}): {{ auditLogs.error()?.message }}
+        </div>
+      }
+    </div>
+  `
+})
+export class HttpResourceDemoComponent {
+  actorQuery = signal('');
+
+  // httpResource re-triggers reactively whenever actorQuery() emits!
+  auditLogs = httpResource<AuditLogItem[]>(() => ({
+    url: '/api/audit-logs',
+    params: { actor: this.actorQuery() },
+    headers: { 'X-Telemetry-Channel': 'Enterprise-HTTP' }
+  }));
+}
+```
+
+---
+
+### 23.3 Specialized Response Formats & SSR TransferState Caching
+```typescript
+import { httpResource } from '@angular/common/http';
+
+// 1. Text Parsing
+export const rawLicenseAgreement = httpResource.text(() => '/assets/legal/enterprise-eula.txt');
+
+// 2. Blob Parsing (Binary Report PDF)
+export const financialReportPdf = httpResource.blob(() => '/api/reports/q4-financials.pdf');
+
+// 3. ArrayBuffer Parsing (Protobuf / WebAssembly Binaries)
+export const tensorModelWeights = httpResource.arrayBuffer(() => '/models/recommendation-engine.onnx');
+
+// 4. SSR State Transfer Integration
+// In Angular v22 SSR, httpResource automatically transfers its resolved JSON payload
+// into the TransferState cache script, preventing duplicate client-side re-fetches during hydration!
+```
+
+
+---
+
+## 24. Angular Aria (`@angular/aria`) & WebMCP / Angular AI
+
+### 24.1 Angular Aria (`@angular/aria`) Headless Primitives
+Angular Aria provides **headless accessibility directives** that implement strict WAI-ARIA 1.2 interaction behaviors (keyboard navigation, focus management, ARIA attribute reflection) without imposing any opinionated CSS or HTML markup:
+
+```mermaid
+graph TD
+    AngularAria["@angular/aria (Headless Behavior Directives)"] --> Combobox["ariaCombobox / ariaListbox (Keyboard Navigation)"]
+    AngularAria --> Tabs["ariaTabGroup / ariaTab (Roving Tabindex)"]
+    AngularAria --> Menu["ariaMenu / ariaMenuItem (Typeahead & Submenus)"]
+    Combobox --> CustomUI["Custom Tailored UI (Tailwind CSS / Vanilla CSS)"]
+    Tabs --> CustomUI
+```
+
+```typescript
+import { Component, signal } from '@angular/core';
+import {
+  AriaCombobox,
+  AriaComboboxInput,
+  AriaListbox,
+  AriaOption,
+} from '@angular/aria/combobox';
+
+@Component({
+  selector: 'app-headless-combobox',
+  standalone: true,
+  imports: [AriaCombobox, AriaComboboxInput, AriaListbox, AriaOption],
+  template: `
+    <div class="combobox-wrapper relative max-w-xs" ariaCombobox>
+      <label class="block text-sm font-semibold mb-1">Select Security Clearance</label>
+      
+      <!-- Headless input managing ARIA-expanded and keyboard arrow navigation -->
+      <input
+        ariaComboboxInput
+        [value]="selectedRole()"
+        (input)="query.set($any($event.target).value)"
+        class="w-full border px-3 py-1.5 rounded focus:ring-2 focus:ring-blue-500"
+        placeholder="Search clearance..."
+      />
+
+      <!-- Headless Listbox with automatic activeDescendant management -->
+      <ul ariaListbox class="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border rounded shadow-lg divide-y max-h-48 overflow-auto">
+        @for (item of filteredRoles(); track item) {
+          <li
+            ariaOption
+            [value]="item"
+            (selected)="selectedRole.set(item)"
+            class="p-2 cursor-pointer hover:bg-blue-50 dark:hover:bg-gray-700 text-sm"
+          >
+            {{ item }}
+          </li>
+        }
+      </ul>
+    </div>
+  `
+})
+export class HeadlessComboboxComponent {
+  roles = ['Level 1: Public Trust', 'Level 2: Confidential', 'Level 3: Secret', 'Level 4: Top Secret'];
+  query = signal('');
+  selectedRole = signal('Level 1: Public Trust');
+
+  filteredRoles = () => this.roles.filter(r => r.toLowerCase().includes(this.query().toLowerCase()));
+}
+```
+
+#### Angular Aria vs Angular CDK vs Angular Material Decision Matrix
+
+| Dimension | `@angular/aria` (v22) | `@angular/cdk` | `@angular/material` |
+|---|---|---|---|
+| **Styling** | 100% Unstyled (Zero CSS) | Mostly Unstyled (Basic structural CSS) | Opinionated Material Design 3 |
+| **Focus** | Strict WAI-ARIA behavioral contracts | General utility behaviors (Overlay, Drag) | Ready-to-ship UI design components |
+| **Primary Use** | Building custom enterprise design systems | Complex UI widgets (Portals, Virtual Scroll) | Standardized Material enterprise apps |
+
+---
+
+### 24.2 WebMCP: AI-Agent Integration with Angular Applications
+The Web Model Context Protocol (WebMCP) enables AI agents (Claude, Gemini, Cursor) to discover, inspect, and execute typed tools directly inside a running Angular application:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Agent as AI Coding Agent (Gemini / Claude)
+    participant WebMCP as Angular WebMCP Registry
+    participant AngularApp as Angular Application State
+    
+    Agent->>WebMCP: Discover Available Client Tools
+    WebMCP-->>Agent: Returns JSON Schema: [searchUsers, exportAuditLogs, updateBillingTier]
+    Agent->>WebMCP: Call Tool: updateBillingTier({ tenantId: 't1', tier: 'ENTERPRISE' })
+    WebMCP->>AngularApp: Invoke declareExperimentalWebMcpTool() handler
+    AngularApp->>AngularApp: Mutate Signals Form / Trigger HTTP Action
+    AngularApp-->>WebMCP: Result: { success: true, updatedBalance: 4200 }
+    WebMCP-->>Agent: Tool Output JSON
+```
+
+```typescript
+// app.config.ts (Registering WebMCP AI Tool Registry)
+import { ApplicationConfig } from '@angular/core';
+import { provideExperimentalWebMcpTools } from '@angular/core/ai';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideExperimentalWebMcpTools({
+      agentName: 'EnterpriseConsoleAgent',
+      capabilities: ['form-inspection', 'data-export', 'workflow-automation'],
+    }),
+  ],
+};
+```
+
+```typescript
+// services/billing-mcp-tools.service.ts
+import { Injectable, inject } from '@angular/core';
+import { declareExperimentalWebMcpTool } from '@angular/core/ai';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({ providedIn: 'root' })
+export class BillingMcpToolsService {
+  private http = inject(HttpClient);
+
+  // Expose a typed tool callable by AI agents interacting with the Angular browser tab
+  readonly updateBillingTool = declareExperimentalWebMcpTool({
+    name: 'updateBillingTier',
+    description: 'Upgrades or downgrades the current enterprise organization subscription tier',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        organizationId: { type: 'string', description: 'Unique organization UUID' },
+        tier: { type: 'string', enum: ['STARTER', 'PRO', 'ENTERPRISE'] },
+      },
+      required: ['organizationId', 'tier'],
+    },
+    handler: async ({ organizationId, tier }) => {
+      console.log(`[WebMCP Invocation] Upgrading ${organizationId} to ${tier}`);
+      const result = await fetch(`/api/organizations/${organizationId}/billing`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier }),
+      });
+      return result.json();
+    },
+  });
+}
+```
+
+
+---
+
+## 25. Route-Level Rendering, Modern Router, View Transitions & Native CSS Animations
+
+### 25.1 Server Routing & Route-Level Rendering (`RenderMode`)
+In Angular v20+, applications no longer need to choose globally between SSR or SSG. The Server Routing API allows configuring **granular render modes per route** in `app.routes.server.ts`:
+
+```mermaid
+graph TD
+    IncomingRoute["Incoming HTTP Route"] --> CheckServerRoutes["Check app.routes.server.ts"]
+    CheckServerRoutes --> PrerenderMode["/about, /pricing -> RenderMode.Prerender (Static HTML at build)"]
+    CheckServerRoutes --> ServerMode["/dashboard, /checkout -> RenderMode.Server (Dynamic SSR per request)"]
+    CheckServerRoutes --> ClientMode["/admin/** -> RenderMode.Client (Pure CSR, zero server compute)"]
+```
+
+```typescript
+// app.routes.server.ts (Server Route Configuration)
+import { RenderMode, ServerRoute } from '@angular/ssr';
+
+export const serverRoutes: ServerRoute[] = [
+  // 1. Static Prerendering (Built ahead of time during 'ng build')
+  {
+    path: '',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'features',
+    renderMode: RenderMode.Prerender,
+  },
+
+  // 2. Dynamic Parameterized Prerendering (e.g. Top 500 Product Slugs)
+  {
+    path: 'products/:slug',
+    renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      const topSlugs = ['cloud-compute', 'edge-storage', 'ai-accelerator'];
+      return topSlugs.map(slug => ({ slug }));
+    },
+  },
+
+  // 3. Dynamic Server-Side Rendering (SSR) per request (Personalized dashboards)
+  {
+    path: 'dashboard',
+    renderMode: RenderMode.Server,
+  },
+
+  // 4. Client-Only Rendering (CSR) for heavily interactive admin portals
+  {
+    path: 'console/**',
+    renderMode: RenderMode.Client,
+  },
+];
+```
+
+---
+
+### 25.2 Modern Angular Router: `withViewTransitions()`, `UrlTree` & Navigation Handlers
+
+```typescript
+// app.config.ts (Modern Router Feature Functions)
+import { ApplicationConfig } from '@angular/core';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withViewTransitions,
+  withNavigationErrorHandler,
+} from '@angular/router';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(
+      routes,
+      // 1. Automatic route & query param binding directly to component input() signals
+      withComponentInputBinding(),
+
+      // 2. Native Browser View Transitions API Integration
+      withViewTransitions({
+        skipInitialTransition: true,
+        onViewTransitionCreated: ({ transition, from, to }) => {
+          console.log(`Transitioning from ${from.url} -> ${to.url}`);
+        },
+      }),
+
+      // 3. Resilient Navigation Error Handling
+      withNavigationErrorHandler((error) => {
+        console.error('[Router Navigation Error Caught]:', error);
+      })
+    ),
+  ],
+};
+```
+
+---
+
+### 25.3 Native CSS Morphing Transitions (`view-transition-name`)
+View Transitions smoothly animate layout changes between route changes:
+
+```html
+<!-- product-list.component.html -->
+<div class="product-grid">
+  @for (product of products(); track product.id) {
+    <a [routerLink]="['/products', product.id]">
+      <!-- Element morphs seamlessly into the detail hero image on click! -->
+      <img
+        [src]="product.imageUrl"
+        [style.view-transition-name]="'product-hero-' + product.id"
+        class="w-32 h-32 rounded object-cover"
+      />
+      <h4>{{ product.title }}</h4>
+    </a>
+  }
+</div>
+```
+
+```css
+/* styles.css: Custom View Transition Animations */
+::view-transition-old(root) {
+  animation: 0.25s ease-out both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.25s ease-in both fade-in;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.98); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+```
+
+---
+
+### 25.4 Modern Angular Animations: `animate.enter` & `animate.leave`
+
+> [!IMPORTANT]
+> The legacy `@angular/animations` package (with `trigger`, `state`, `transition`, and `animate`) is formally deprecated. Angular recommends **native CSS animations** paired with signal control or the modern `animate.enter` / `animate.leave` structural classes.
+
+```html
+<!-- modern-dialog.component.html -->
+@if (isOpen()) {
+  <div class="modal-dialog animate-fade-in animate-slide-up">
+    <h3>Enterprise Security Audit</h3>
+    <p>Session tokens verified via biometric challenge.</p>
+    <button (click)="isOpen.set(false)">Dismiss</button>
+  </div>
+}
+```
+
+```css
+/* Native CSS Transitions replacing legacy @angular/animations DSL */
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+```
+
+
+---
+
+## 26. Modern HTTP Engine, Advanced DI, SSR Hydration & `@defer` Deep Dive
+
+### 26.1 Modern HTTP Engine: `withFetch()`, Streaming & Resilient Token Refresh
+Angular's `HttpClient` in modern architectures uses the native browser `fetch` API via `withFetch()`. This enables streaming responses, Service Worker cache interaction, and zero-allocation network transfers:
+
+```typescript
+// app.config.ts (Configuring Modern HTTP Engine)
+import { ApplicationConfig } from '@angular/core';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { authRefreshInterceptor } from './interceptors/auth-refresh.interceptor';
+import { correlationIdInterceptor } from './interceptors/correlation-id.interceptor';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideHttpClient(
+      // Replaces legacy XMLHttpRequest with Fetch API
+      withFetch(),
+      withInterceptors([correlationIdInterceptor, authRefreshInterceptor])
+    ),
+  ],
+};
+```
+
+```typescript
+// interceptors/auth-refresh.interceptor.ts
+import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { catchError, switchMap, throwError, from, Subject, filter, take } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+
+let isRefreshing = false;
+const refreshTokenSubject = new Subject<string | null>();
+
+export const authRefreshInterceptor: HttpInterceptorFn = (req, next) => {
+  const auth = inject(AuthService);
+
+  return next(req).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401 && !req.url.includes('/api/auth/refresh')) {
+        if (!isRefreshing) {
+          isRefreshing = true;
+          refreshTokenSubject.next(null);
+
+          return from(auth.rotateRefreshToken()).pipe(
+            switchMap((newToken: string) => {
+              isRefreshing = false;
+              refreshTokenSubject.next(newToken);
+              return next(req.clone({ setHeaders: { Authorization: `Bearer ${newToken}` } }));
+            }),
+            catchError((refreshErr) => {
+              isRefreshing = false;
+              auth.forceLogout();
+              return throwError(() => refreshErr);
+            })
+          );
+        } else {
+          // Concurrent 401 queue: queue all subsequent requests until new token arrives!
+          return refreshTokenSubject.pipe(
+            filter((token): token is string => token !== null),
+            take(1),
+            switchMap((token) => next(req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })))
+          );
+        }
+      }
+      return throwError(() => error);
+    })
+  );
+};
+```
+
+---
+
+### 26.2 Advanced Dependency Injection: `provideAppInitializer()` & `runInInjectionContext`
+Angular v21 deprecated the legacy `APP_INITIALIZER` token in favor of the clean functional `provideAppInitializer()`:
+
+```typescript
+import { ApplicationConfig, provideAppInitializer, inject } from '@angular/core';
+import { RuntimeConfigService } from './services/runtime-config.service';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // Asynchronous Application Bootstrap Initializer
+    provideAppInitializer(async () => {
+      const configService = inject(RuntimeConfigService);
+      console.log('Loading enterprise runtime configurations before bootstrap...');
+      await configService.loadRemoteConfig();
+    }),
+  ],
+};
+```
+
+```typescript
+// Executing code inside dynamic injection context
+import { Injector, runInInjectionContext } from '@angular/core';
+
+export function executeDynamicTask(injector: Injector, callback: () => void) {
+  // Enables calling inject() inside plain callbacks, microtasks, or WebSocket events!
+  runInInjectionContext(injector, () => {
+    callback();
+  });
+}
+```
+
+---
+
+### 26.3 `@defer` Multi-Trigger Architecture & Prefetch Optimization
+`@defer` allows deferring the loading and hydration of component subtrees until specific browser conditions are satisfied:
+
+```html
+<!-- Heavy analytics chart deferred with composite viewport and interaction triggers -->
+@defer (on viewport; prefetch on idle) {
+  <app-heavy-financial-chart [data]="portfolioData()" />
+} @placeholder (minimum 300ms) {
+  <div class="h-64 bg-gray-100 dark:bg-gray-800 rounded animate-pulse p-4">
+    <p class="text-xs text-gray-400">Chart will render when scrolled into viewport...</p>
+  </div>
+} @loading (after 100ms; minimum 500ms) {
+  <div class="h-64 flex items-center justify-center">
+    <span class="animate-spin h-6 w-6 border-2 border-blue-600 border-t-transparent rounded-full" />
+  </div>
+} @error {
+  <div class="p-4 bg-red-50 text-red-700 rounded">
+    Failed to load chart asset chunk.
+  </div>
+}
+```
+
+---
+
+### 26.4 Modern Templates: `@let` Declarations & Loop Context Variables
+Angular supports local template variable declarations via `@let`:
+
+```html
+<!-- Local template variables eliminate repetitive signal calls and async unwraps -->
+@let activeUser = currentUser();
+@let isPrivileged = activeUser?.role === 'SUPER_ADMIN';
+
+@if (isPrivileged) {
+  <div class="admin-banner bg-amber-100 text-amber-900 p-2 rounded">
+    Logged in as Administrator: {{ activeUser.name }}
+  </div>
+}
+
+<!-- Contextual loop variables reference -->
+<ul class="divide-y">
+  @for (log of auditLogs(); track log.id; let idx = $index, let total = $count, let isFirst = $first, let isLast = $last) {
+    <li class="p-2 flex justify-between" [class.bg-gray-50]="isFirst">
+      <span>#{{ idx + 1 }} of {{ total }}: {{ log.message }}</span>
+      @if (isLast) { <span class="text-xs text-gray-400">(Oldest Entry)</span> }
+    </li>
+  }
+</ul>
+```
+
+---
+
+### 26.5 Rendering Lifecycle Hooks: DOM Read/Write Separation
+`afterNextRender()` and `afterRenderEffect()` execute only in the browser (never on the server during SSR), guaranteeing SSR safety:
+
+```typescript
+import { Component, ElementRef, viewChild, afterNextRender, afterRenderEffect } from '@angular/core';
+
+@Component({
+  selector: 'app-canvas-telemetry',
+  standalone: true,
+  template: `<canvas #canvasRef width="400" height="200" class="border rounded"></canvas>`
+})
+export class CanvasTelemetryComponent {
+  canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('canvasRef');
+
+  constructor() {
+    // 1. afterNextRender: Executes once after the next render cycle completes
+    afterNextRender({
+      write: () => {
+        const ctx = this.canvas().nativeElement.getContext('2d')!;
+        ctx.fillStyle = '#2563eb';
+        ctx.fillRect(10, 10, 80, 80);
+      }
+    });
+
+    // 2. afterRenderEffect: Automatically re-runs when tracked signals mutate, separating Read and Write phases
+    afterRenderEffect({
+      read: () => {
+        // Safe DOM measurement phase (prevents layout thrashing)
+        const rect = this.canvas().nativeElement.getBoundingClientRect();
+        return rect.width;
+      },
+      write: (width) => {
+        // Safe DOM mutation phase based on measured width
+        console.log('Canvas rendered with width:', width);
+      }
+    });
+  }
+}
+```
+
+
+---
+
+## 27. Vitest Testing, Library Development, Compiler Internals & Web Workers
+
+### 27.1 Vitest as Primary Test Runner in Angular
+Angular adopted **Vitest** as the official, high-speed test runner. Vitest executes unit tests natively via ESM and Vite transforms, reducing test suite execution times by 5x to 10x compared to legacy Karma/Webpack:
+
+```typescript
+// vitest.config.ts (Angular Production Test Configuration)
+import { defineConfig } from 'vitest/config';
+import angular from '@analogjs/vite-plugin-angular';
+
+export default defineConfig({
+  plugins: [angular()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['src/test-setup.ts'],
+    include: ['src/**/*.spec.ts'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      thresholds: { lines: 85, functions: 85, branches: 80, statements: 85 },
+    },
+  },
+});
+```
+
+```typescript
+// src/app/components/counter.component.spec.ts (Vitest Component Test)
+import { TestBed } from '@angular/core/testing';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { CounterComponent } from './counter.component';
+
+describe('CounterComponent with Vitest', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [CounterComponent],
+    }).compileComponents();
+  });
+
+  it('should initialize signal state and increment cleanly', () => {
+    const fixture = TestBed.createComponent(CounterComponent);
+    const component = fixture.componentInstance;
+
+    expect(component.count()).toBe(0);
+
+    component.increment();
+    fixture.detectChanges();
+
+    expect(component.count()).toBe(1);
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.count-display')?.textContent).toContain('1');
+  });
+});
+```
+
+---
+
+### 27.2 Angular Package & Library Development (`ng-packagr` & APF)
+Enterprise teams publish shared design systems and domain libraries using the **Angular Package Format (APF)**:
+
+```bash
+# Generate standalone library inside an Angular workspace
+ng generate library @enterprise/ui-primitives
+```
+
+```json
+// projects/ui-primitives/ng-package.json
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/enterprise/ui-primitives",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  }
+}
+```
+
+```typescript
+// projects/ui-primitives/src/public-api.ts (Strict Public Interface)
+export * from './lib/components/button/button.component';
+export * from './lib/components/modal/modal.component';
+export * from './lib/directives/autofocus.directive';
+export * from './lib/tokens/theme.token';
+```
+
+#### Secondary Entrypoints (`@enterprise/ui-primitives/charts`)
+Secondary entrypoints prevent consumers from pulling heavy dependencies unless explicitly imported. Create a subfolder with its own `ng-package.json`:
+
+```json
+// projects/ui-primitives/charts/ng-package.json
+{
+  "lib": {
+    "entryFile": "public-api.ts"
+  }
+}
+```
+
+---
+
+### 27.3 Angular Compiler Architecture & Extended Diagnostics
+The Angular Compiler transforms HTML templates into concise JavaScript instructions (Ivy runtime calls like `ɵɵelementStart`, `ɵɵtext`, `ɵɵadvance`). Extended diagnostics catch common developer bugs at build time:
+
+```json
+// tsconfig.json
+{
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "extendedDiagnostics": {
+      "checks": {
+        "invalidBananaInBox": "error",
+        "nullishCoalescingNotNullable": "warning",
+        "missingControlFlowDirective": "error"
+      }
+    }
+  }
+}
+```
+
+---
+
+### 27.4 Web Workers with Signals & Transferable Objects
+Offload CPU-intensive computations (e.g. processing large data sets or encryption) to a background Web Worker without blocking the UI:
+
+```typescript
+// src/app/workers/heavy-compute.worker.ts
+/// <reference lib="webworker" />
+
+addEventListener('message', ({ data }: { data: Float64Array }) => {
+  // Heavy numerical analysis
+  let sum = 0;
+  for (let i = 0; i < data.length; i++) {
+    sum += Math.sqrt(data[i]);
+  }
+  postMessage({ result: sum });
+});
+```
+
+```typescript
+// src/app/services/worker-runner.service.ts
+import { Injectable, signal } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class WorkerRunnerService {
+  readonly resultSignal = signal<number | null>(null);
+  private worker = new Worker(new URL('../workers/heavy-compute.worker', import.meta.url), { type: 'module' });
+
+  constructor() {
+    this.worker.onmessage = ({ data }) => {
+      this.resultSignal.set(data.result);
+    };
+  }
+
+  runComputation(numbers: Float64Array) {
+    // Transfer buffer ownership with zero memory copy!
+    this.worker.postMessage(numbers, [numbers.buffer]);
+  }
+}
+```
+
+
+---
+
+## 28. Advanced Security, Accessibility, Enterprise State & Flagship Blueprints
+
+### 28.1 Advanced Security: Dynamic CSP Nonces, Trusted Types & SRI
+Enterprise Angular applications protect against XSS and injection attacks via multi-layer browser defenses:
+
+```html
+<!-- index.html (Strict Content Security Policy with Dynamic Nonce) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Enterprise Security Console</title>
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'nonce-RANDOM_SERVER_NONCE' 'strict-dynamic';
+    style-src 'self' 'nonce-RANDOM_SERVER_NONCE';
+    require-trusted-types-for 'script';
+    trusted-types angular angular#unsafe-bypass;
+  ">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+```
+
+```typescript
+// Enforcing Dynamic Nonces in Angular App Bootstrap (main.ts)
+import { bootstrapApplication } from '@angular/platform-browser';
+import { CSP_NONCE } from '@angular/core';
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
+
+// Read server-injected nonce from meta tag or window global
+const serverNonce = (window as any).__CSP_NONCE__ || '';
+
+bootstrapApplication(AppComponent, {
+  ...appConfig,
+  providers: [
+    ...appConfig.providers,
+    { provide: CSP_NONCE, useValue: serverNonce },
+  ],
+});
+```
+
+---
+
+### 28.2 Enterprise State Management with NgRx SignalStore
+NgRx SignalStore provides a lightweight, modular, signal-based state management solution built natively for modern Angular:
+
+```typescript
+// src/app/store/organization.store.ts
+import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
+import { computed, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+
+export interface OrgMember {
+  id: string;
+  name: string;
+  role: 'OWNER' | 'ADMIN' | 'MEMBER';
+}
+
+export interface OrganizationState {
+  members: OrgMember[];
+  selectedMemberId: string | null;
+  isLoading: boolean;
+  filterQuery: string;
+}
+
+const initialState: OrganizationState = {
+  members: [],
+  selectedMemberId: null,
+  isLoading: false,
+  filterQuery: '',
+};
+
+export const OrganizationStore = signalStore(
+  { providedIn: 'root' },
+  withState(initialState),
+  withComputed(({ members, filterQuery }) => ({
+    filteredMembers: computed(() =>
+      members().filter(m => m.name.toLowerCase().includes(filterQuery().toLowerCase()))
+    ),
+    adminCount: computed(() =>
+      members().filter(m => m.role === 'ADMIN' || m.role === 'OWNER').length
+    ),
+  })),
+  withMethods((store, http = inject(HttpClient)) => ({
+    async loadMembers(orgId: string) {
+      patchState(store, { isLoading: true });
+      try {
+        const members = await firstValueFrom(http.get<OrgMember[]>(`/api/orgs/${orgId}/members`));
+        patchState(store, { members, isLoading: false });
+      } catch (err) {
+        patchState(store, { isLoading: false });
+      }
+    },
+    setFilter(query: string) {
+      patchState(store, { filterQuery: query });
+    },
+  }))
+);
+```
+
+---
+
+### 28.3 Enterprise Architecture: Feature-Sliced Design (FSD) in Angular
+```mermaid
+graph TD
+    App["app/ (Application root, providers, routing, styles)"] --> Pages["pages/ (Routed views, composition)"]
+    Pages --> Widgets["widgets/ (Complex standalone composition blocks: Header, Sidebar)"]
+    Widgets --> Features["features/ (User interactions: auth-by-email, export-audit)"]
+    Features --> Entities["entities/ (Business domains: user, billing, telemetry)"]
+    Entities --> Shared["shared/ (Headless aria directives, API clients, design tokens)"]
+```
+
+```
+src/
+├── app/
+│   ├── app.config.ts
+│   └── app.routes.ts
+├── pages/
+│   └── telemetry-dashboard/
+├── widgets/
+│   ├── navigation-header/
+│   └── server-health-grid/
+├── features/
+│   ├── rotate-api-keys/
+│   └── export-audit-logs/
+├── entities/
+│   ├── user/
+│   │   ├── index.ts (Strict Public API)
+│   │   ├── ui/user-card.component.ts
+│   │   └── model/user.model.ts
+│   └── tenant/
+└── shared/
+    ├── ui/ (Design Tokens, CVA variants)
+    └── api/ (tracedFetch, httpResource wrappers)
+```
+
+---
+
+### 28.4 Flagship Blueprint 1: AI-Agent Enabled Angular WebMCP Workspace
+```typescript
+import { Component, inject, signal } from '@angular/core';
+import { declareExperimentalWebMcpTool } from '@angular/core/ai';
+import { OrganizationStore } from './store/organization.store';
+
+@Component({
+  selector: 'app-ai-workspace',
+  standalone: true,
+  template: `
+    <div class="ai-console p-6 border rounded-lg max-w-2xl bg-slate-900 text-slate-100">
+      <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
+        <h2 class="text-lg font-mono font-bold text-emerald-400">Angular WebMCP Agent Hub</h2>
+        <span class="text-xs bg-emerald-950 text-emerald-300 px-2 py-1 rounded">Claude/Gemini Ready</span>
+      </div>
+
+      <p class="text-sm text-slate-400 mb-4">
+        AI coding agents can automatically query active member rosters and promote organization roles via WebMCP tool calls.
+      </p>
+
+      <div class="space-y-2">
+        <p class="text-xs font-semibold uppercase text-slate-500">Live Organization Members (Signals Store):</p>
+        <div class="grid grid-cols-2 gap-2">
+          @for (member of store.members(); track member.id) {
+            <div class="p-2 border border-slate-700 rounded bg-slate-800 text-xs flex justify-between">
+              <span>{{ member.name }}</span>
+              <span class="font-mono text-emerald-400">{{ member.role }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  `
+})
+export class AiWorkspaceComponent {
+  store = inject(OrganizationStore);
+
+  // Expose WebMCP Tool to connected LLM agents
+  readonly rolePromotionTool = declareExperimentalWebMcpTool({
+    name: 'promoteMemberRole',
+    description: 'Promotes an organization team member to ADMIN or OWNER',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        memberId: { type: 'string' },
+        targetRole: { type: 'string', enum: ['ADMIN', 'OWNER'] },
+      },
+      required: ['memberId', 'targetRole'],
+    },
+    handler: async ({ memberId, targetRole }) => {
+      console.log(`[WebMCP Tool Called by AI]: Promoting ${memberId} to ${targetRole}`);
+      // Mutate signal store directly in response to AI agent instructions!
+      return { success: true, updatedRole: targetRole };
+    }
+  });
+}
+```
+
+---
+
+### 28.5 Flagship Blueprint 2: Signal Forms Multi-Step Enterprise Stepper
+```typescript
+import { Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+
+interface StepperSchema {
+  step1: { corporateEmail: string; fullName: string };
+  step2: { cloudTier: 'STANDARD' | 'ENTERPRISE'; dedicatedIps: number };
+  step3: { agreementAccepted: boolean };
+}
+
+@Component({
+  selector: 'app-multi-step-form',
+  standalone: true,
+  template: `
+    <div class="stepper-container p-6 border rounded-lg max-w-lg shadow">
+      <!-- Step Indicator -->
+      <div class="flex justify-between border-b pb-3 mb-4 text-xs font-semibold">
+        <span [class.text-blue-600]="currentStep() === 1">1. Identity</span>
+        <span [class.text-blue-600]="currentStep() === 2">2. Cloud Infrastructure</span>
+        <span [class.text-blue-600]="currentStep() === 3">3. Final Review</span>
+      </div>
+
+      <!-- Step 1: Identity -->
+      @if (currentStep() === 1) {
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold">Full Name</label>
+            <input
+              [value]="stepperForm.step1.fullName.value()"
+              (input)="stepperForm.step1.fullName.value.set($any($event.target).value)"
+              class="border px-3 py-1.5 rounded w-full"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-bold">Corporate Email</label>
+            <input
+              [value]="stepperForm.step1.corporateEmail.value()"
+              (input)="stepperForm.step1.corporateEmail.value.set($any($event.target).value)"
+              class="border px-3 py-1.5 rounded w-full"
+            />
+          </div>
+          <button (click)="currentStep.set(2)" class="px-4 py-2 bg-blue-600 text-white rounded text-sm">
+            Continue to Cloud Setup →
+          </button>
+        </div>
+      }
+
+      <!-- Step 2: Infrastructure -->
+      @if (currentStep() === 2) {
+        <div class="space-y-3">
+          <label class="block text-xs font-bold">Select Cloud Tier</label>
+          <select
+            [value]="stepperForm.step2.cloudTier.value()"
+            (change)="stepperForm.step2.cloudTier.value.set($any($event.target).value)"
+            class="border px-2 py-1.5 rounded w-full"
+          >
+            <option value="STANDARD">Standard Tier (Shared Nodes)</option>
+            <option value="ENTERPRISE">Enterprise Tier (Dedicated VPC)</option>
+          </select>
+          <div class="flex gap-2">
+            <button (click)="currentStep.set(1)" class="px-3 py-1.5 border rounded text-sm">Back</button>
+            <button (click)="currentStep.set(3)" class="px-3 py-1.5 bg-blue-600 text-white rounded text-sm">Review</button>
+          </div>
+        </div>
+      }
+
+      <!-- Step 3: Confirmation -->
+      @if (currentStep() === 3) {
+        <div class="space-y-3">
+          <h4 class="font-bold">Order Summary</h4>
+          <p class="text-sm">Account: {{ stepperForm.step1.corporateEmail.value() }}</p>
+          <p class="text-sm">Tier: {{ stepperForm.step2.cloudTier.value() }}</p>
+          <button (click)="submitFinalOrder()" class="w-full py-2 bg-green-600 text-white font-bold rounded">
+            Confirm & Deploy Enterprise Cluster
+          </button>
+        </div>
+      }
+    </div>
+  `
+})
+export class MultiStepFormComponent {
+  currentStep = signal(1);
+
+  stepperForm = form<StepperSchema>({
+    step1: { corporateEmail: '', fullName: '' },
+    step2: { cloudTier: 'ENTERPRISE', dedicatedIps: 4 },
+    step3: { agreementAccepted: true },
+  });
+
+  submitFinalOrder() {
+    console.log('Final deployment triggered:', this.stepperForm.value());
+    alert('Enterprise cluster deployment initiated successfully!');
+  }
+}
+```
+
+---
+
+### 28.6 Flagship Blueprint 3: Real-Time High-Throughput Trading Orderbook (Web Worker + Signals)
+Processes 10,000 WebSocket market orderbook ticks per second in a background Web Worker, batching updates to an Angular Signal state to render 60fps animations:
+
+```typescript
+import { Component, signal, OnInit, OnDestroy, ElementRef, viewChild } from '@angular/core';
+
+export interface OrderbookRow {
+  price: number;
+  size: number;
+  total: number;
+}
+
+@Component({
+  selector: 'app-trading-orderbook',
+  standalone: true,
+  template: `
+    <div class="orderbook-panel p-4 bg-gray-950 text-gray-100 rounded-lg max-w-md font-mono text-xs">
+      <div class="flex justify-between text-gray-500 pb-2 border-b border-gray-800">
+        <span>Price (USDT)</span>
+        <span>Size (BTC)</span>
+        <span>Total</span>
+      </div>
+
+      <!-- Ask Rows (Red) -->
+      <div class="space-y-0.5 my-2">
+        @for (row of asks(); track row.price) {
+          <div class="flex justify-between text-red-400">
+            <span>{{ row.price.toFixed(2) }}</span>
+            <span>{{ row.size.toFixed(4) }}</span>
+            <span class="text-gray-400">{{ row.total.toFixed(4) }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="py-2 text-center text-lg font-bold border-y border-gray-800 text-emerald-400">
+        $98,420.50 ↗
+      </div>
+
+      <!-- Bid Rows (Green) -->
+      <div class="space-y-0.5 my-2">
+        @for (row of bids(); track row.price) {
+          <div class="flex justify-between text-green-400">
+            <span>{{ row.price.toFixed(2) }}</span>
+            <span>{{ row.size.toFixed(4) }}</span>
+            <span class="text-gray-400">{{ row.total.toFixed(4) }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  `
+})
+export class TradingOrderbookComponent implements OnInit, OnDestroy {
+  asks = signal<OrderbookRow[]>([]);
+  bids = signal<OrderbookRow[]>([]);
+  private worker?: Worker;
+
+  ngOnInit() {
+    // Spin up specialized background Web Worker for WebSocket tick crunching
+    this.worker = new Worker(new URL('../workers/orderbook.worker', import.meta.url), { type: 'module' });
+    this.worker.onmessage = ({ data }: { data: { asks: OrderbookRow[]; bids: OrderbookRow[] } }) => {
+      // Direct signal updates trigger fine-grained DOM updates without zone.js overhead
+      this.asks.set(data.asks);
+      this.bids.set(data.bids);
+    };
+  }
+
+  ngOnDestroy() {
+    this.worker?.terminate();
+  }
+}
+```
+
+
 
 ## 7. Stage 7: Staff Angular Architect Interview Handbook & Cheatsheet
 
